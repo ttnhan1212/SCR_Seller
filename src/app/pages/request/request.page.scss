@@ -1,0 +1,41 @@
+.smllogo {
+	&__img {
+		height: 2.6rem;
+	}
+}
+
+.scroll__horizontal {
+	overflow: auto;
+	white-space: nowrap;
+	& ion-card {
+		display: inline-block;
+		width: 10rem !important;
+	}
+}
+
+.item {
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: center;
+	&__image {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.export__button {
+	margin-bottom: 3rem !important;
+}
+
+.request__button {
+	position: absolute;
+	top: 85%; /* position the top  edge of the element at the middle of the parent */
+	left: 50%; /* position the left edge of the element at the middle of the parent */
+	transform: translate(-50%, -50%);
+
+	text-align: center;
+
+	width: 80vw;
+
+	z-index: 1;
+}

@@ -1,0 +1,85 @@
+.horizontal-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+	height: 4rem;
+
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+
+	background-color: #f1f5fd;
+}
+
+.smllogo {
+	&__img {
+		height: 2.6rem;
+	}
+}
+
+.bannerimg {
+	padding: 2rem 0 2rem 0;
+	background-size: cover;
+}
+
+.container {
+	width: 100%;
+	padding-right: 0.75rem;
+	padding-left: 0.75rem;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.cover-image {
+	background-size: cover !important;
+	width: 100%;
+	background-image: url('../../../assets/images/banners/banner2.jpg');
+}
+
+.bg-background3:before {
+	background: linear-gradient(
+		to right,
+		rgba(141, 11, 183, 0.8),
+		rgba(33, 63, 148, 0.8)
+	);
+}
+
+.bg-background3:before {
+	background: linear-gradient(
+		to right,
+		rgba(106, 17, 203, 0.8),
+		rgba(37, 117, 252, 0.8)
+	);
+	//background-image: linear-gradient(135deg, #667eea 0%, #764ba2 10%);
+}
+
+.bg-background3 .header-text {
+	position: relative;
+	z-index: 10;
+}
+
+.single-page .wrapper.wrapper2 {
+	background: #fff;
+	width: 100%;
+	background: #fff;
+	transition: all 0.5s;
+	color: #fff;
+	overflow: hidden;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.sptb {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	width: 200%;
+}
+
+.header-md::after {
+	width: 0 !important;
+}
+
+ion-item {
+	--inner-padding-end: 0px;
+	--padding-start: 0px;
+}
