@@ -12,10 +12,10 @@
 		<ion-select
 			interface="action-sheet"
 			placeholder="Select your car model..."
-			[(ngModel)]="model"
+			[(ngModel)]="name"
 		>
-			<ion-select-option *ngFor="let item of items | async as list">
-				{{item.name}}
+			<ion-select-option *ngFor="let model of models">
+				{{model.name}}
 			</ion-select-option>
 		</ion-select>
 	</ion-item>

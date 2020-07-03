@@ -1,6 +1,6 @@
+import { ModelService } from './../../../services/model.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Model } from '../../../models/model';
 
 @Component({
 	selector: 'app-request',
@@ -8,27 +8,34 @@ import { Observable } from 'rxjs';
 	styleUrls: ['./request.page.scss'],
 })
 export class RequestPage implements OnInit {
-	items: Observable<any[]>;
+	models: Model[];
 	logo: any;
 	image: any;
-	model: string;
 	year: number;
+	name: string;
 
 	slideOpts = {
 		initialSlide: 1,
 		speed: 400,
 	};
 
-	constructor(firestore: AngularFirestore) {
+	constructor(private modelService: ModelService) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 		this.image = 'http://placekitten.com/g/500/400';
 
-		this.items = firestore.collection('models').valueChanges();
+		this.modelService.getModel().subscribe((data) => {
+			this.models = data.map((e) => {
+				return {
+					id: e.payload.doc.id,
+					...(e.payload.doc.data() as Model),
+				};
+			});
+		});
 	}
 
 	ngOnInit() {}
 
 	exportAvai() {
-		console.log(this.model, this.year);
+		console.log(this.name, this.year);
 	}
 }
