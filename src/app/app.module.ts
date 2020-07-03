@@ -14,9 +14,10 @@ import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NavigationPipe } from './pages/navigation.pipe';
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, NavigationPipe],
 	entryComponents: [],
 	imports: [
 		BrowserModule,

@@ -1,4 +1,4 @@
-import { ErrorsPage } from './../pages/errors/errors.page';
+import { ErrorsPage } from './../errors/errors.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexPage } from './index.page';
@@ -15,14 +15,12 @@ const routes: Routes = [
 			{
 				path: '',
 				loadChildren: () =>
-					import('../pages/welcome/welcome.module').then(
-						(m) => m.WelcomePageModule,
-					),
+					import('../welcome/welcome.module').then((m) => m.WelcomePageModule),
 			},
 			{
 				path: 'login',
 				loadChildren: () =>
-					import('../pages/login/login.module').then((m) => m.LoginPageModule),
+					import('../login/login.module').then((m) => m.LoginPageModule),
 				...canActivate(redirectLoggedInToRequest),
 			},
 			{ path: '**', component: ErrorsPage },
