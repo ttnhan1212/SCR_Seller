@@ -8,7 +8,7 @@ import { Request } from '../models/request';
 export class ModelService {
 	constructor(private firestore: AngularFirestore) {}
 
-	getModel = () => {
-		return this.firestore.collection('models').snapshotChanges();
-	};
+	getModel() {
+		return this.firestore.collection('brands').snapshotChanges();
+	}
 }

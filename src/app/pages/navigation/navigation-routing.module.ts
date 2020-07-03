@@ -1,4 +1,4 @@
-import { ErrorsPage } from './../errors/errors.page';
+// import { ErrorsPage } from './../errors/errors.page';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -19,6 +19,13 @@ const routes: Routes = [
 					import('./request/request.module').then((m) => m.RequestPageModule),
 			},
 			{
+				path: 'request/plate',
+				loadChildren: () =>
+					import('./platenumber/platenumber.module').then(
+						(m) => m.PlatenumberPageModule,
+					),
+			},
+			{
 				path: 'ongoing',
 				loadChildren: () =>
 					import('./ongoing/ongoing.module').then((m) => m.OngoingPageModule),
@@ -30,7 +37,11 @@ const routes: Routes = [
 						(m) => m.SettingsPageModule,
 					),
 			},
-			// { path: '**', component: ErrorsPage },
+			{
+				path: '',
+				redirectTo: 'request',
+				pathMatch: 'full',
+			},
 		],
 		...canActivate(redirectUnauthorizedToLogin),
 	},

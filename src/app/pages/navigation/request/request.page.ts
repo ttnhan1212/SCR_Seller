@@ -1,6 +1,7 @@
 import { ModelService } from './../../../services/model.service';
 import { Component, OnInit } from '@angular/core';
 import { Model } from '../../../models/model';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-request',
@@ -19,9 +20,9 @@ export class RequestPage implements OnInit {
 		speed: 400,
 	};
 
-	constructor(private modelService: ModelService) {
+	constructor(private modelService: ModelService, public router: Router) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
-		this.image = 'http://placekitten.com/g/500/400';
+		this.image = '../../../../assets/images/banners/banner2.jpg';
 
 		this.modelService.getModel().subscribe((data) => {
 			this.models = data.map((e) => {
@@ -37,5 +38,12 @@ export class RequestPage implements OnInit {
 
 	exportAvai() {
 		console.log(this.name, this.year);
+	}
+
+	doRefresh(event) {
+		setTimeout(() => {
+			this.router.navigate(['home', 'request']);
+			event.target.complete();
+		}, 2000);
 	}
 }

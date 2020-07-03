@@ -1,0 +1,84 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title class="smllogo">
+			<ion-img [src]="logo" class="smllogo__img p-1" alt="logo"></ion-img>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!-- Header/Banner section -->
+	<ion-item>
+		<div class="bannerimg cover-image bg-background3">
+			<div class="header-text">
+				<div class="text-center text-white">
+					<h1 class="">Welcome to SCRoads</h1>
+				</div>
+			</div>
+		</div>
+	</ion-item>
+	<!-- End of Header/Banner section -->
+
+	<!-- Login content section -->
+	<ion-card class="m-5">
+		<div class="container customerpage">
+			<div class="row">
+				<div class="single-page">
+					<div class="col-lg-5 col-xl-4 col-md-6 d-block mx-auto">
+						<div class="wrapper wrapper2">
+							<form id="login" class="card-body" tabindex="500">
+								<h3>Continue as:</h3>
+								<ion-button
+									expand="block"
+									color="tertiary"
+									(click)="anonyLogin()"
+								>
+									Seller
+								</ion-button>
+							</form>
+							<hr class="divider" />
+							<ion-grid>
+								<ion-text class="text-body text-center">
+									Continue using Social Accounts
+								</ion-text>
+								<ion-row>
+									<ion-col>
+										<ion-button
+											fill="outline"
+											shape="round"
+											color="dark"
+											href="https://www.facebook.com/"
+											class="text-left"
+										>
+											<ion-icon
+												slot="start"
+												src="../../../assets/images/svgs/facebook.svg"
+											></ion-icon>
+											Facebook
+										</ion-button>
+									</ion-col>
+									<ion-col>
+										<ion-button
+											fill="outline"
+											shape="round"
+											color="dark"
+											href="https://www.google.com/gmail/"
+											class="text-left"
+										>
+											<ion-icon
+												slot="start"
+												src="../../../assets/images/svgs/search.svg"
+											></ion-icon>
+											Google
+										</ion-button>
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-card>
+	<!-- End of Login content section -->
+</ion-content>

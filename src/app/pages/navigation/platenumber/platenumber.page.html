@@ -1,33 +1,42 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-title>platenumber</ion-title>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Request</ion-title>
 	</ion-toolbar>
 </ion-header>
 
-<ion-content>
-	<ion-item>
-		<ion-label position="stacked">Plate Number</ion-label>
-		<ion-input type="text" placeholder="Your Plate Number" required></ion-input>
-	</ion-item>
-	<ion-item-group>
+<ion-content class="p-1">
+	<ion-card class="p-2">
 		<ion-item>
-			<ion-checkbox slot="start" color="primary"></ion-checkbox>
-			<ion-label>Privacy Policy</ion-label>
+			<ion-label position="stacked">Plate Number</ion-label>
+			<ion-input
+				type="text"
+				placeholder="Your Plate Number"
+				required
+			></ion-input>
 		</ion-item>
-		<ion-item>
-			<ion-checkbox slot="start" color="primary"></ion-checkbox>
-			<ion-label>Term & Condition</ion-label>
-		</ion-item>
-		<ion-item>
-			<ion-checkbox slot="start" color="primary"></ion-checkbox>
-			<ion-label>Privacy info usage</ion-label>
-		</ion-item>
-		<ion-item>
-			<ion-checkbox slot="start" color="primary"></ion-checkbox>
-			<ion-label>Select All</ion-label>
-		</ion-item>
-	</ion-item-group>
-	<ion-button expand="block">
-		Confirm
-	</ion-button>
+		<ion-item-group>
+			<ion-item>
+				<ion-checkbox slot="start" color="primary"></ion-checkbox>
+				<ion-label>Privacy Policy</ion-label>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox slot="start" color="primary"></ion-checkbox>
+				<ion-label>Term & Condition</ion-label>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox slot="start" color="primary"></ion-checkbox>
+				<ion-label>Privacy info usage</ion-label>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox slot="start" color="primary"></ion-checkbox>
+				<ion-label>Select All</ion-label>
+			</ion-item>
+		</ion-item-group>
+		<ion-button expand="block">
+			Confirm
+		</ion-button>
+	</ion-card>
 </ion-content>

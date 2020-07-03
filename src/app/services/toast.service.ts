@@ -6,7 +6,7 @@ import { ToastController } from '@ionic/angular';
 	providedIn: 'root',
 })
 export class ToastService {
-	private myToast: any;
+	myToast: any;
 	constructor(public toast: ToastController) {}
 
 	showToast(message: string) {

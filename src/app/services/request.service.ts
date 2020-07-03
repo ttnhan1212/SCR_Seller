@@ -8,20 +8,20 @@ import { Request } from '../models/request';
 export class RequestService {
 	constructor(private firestore: AngularFirestore) {}
 
-	getRequest = () => {
+	getRequest() {
 		return this.firestore.collection('requests').snapshotChanges();
-	};
+	}
 
-	createRequest = (request: Request) => {
+	createRequest(request: Request) {
 		return this.firestore.collection('requests').add(request);
-	};
+	}
 
-	updateRequest = (request: Request) => {
+	updateRequest(request: Request) {
 		delete request.id;
 		this.firestore.doc('requests/' + request.id).update(request);
-	};
+	}
 
-	deleteRequest = (requestId: string) => {
+	deleteRequest(requestId: string) {
 		this.firestore.doc('requests/' + requestId).delete();
-	};
+	}
 }

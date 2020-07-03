@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
 	<ion-item class="ion-margin-bottom">
 		<ion-label position="stacked">Model</ion-label>
 		<ion-select
@@ -23,12 +26,13 @@
 		<ion-label position="stacked">Year</ion-label>
 		<ion-select
 			interface="action-sheet"
-			placeholder="Select your car model..."
+			placeholder="Select your car year..."
 			[(ngModel)]="year"
 		>
-			<ion-select-option *ngFor="let item of items | async as list">
-				{{item.year}}
-			</ion-select-option>
+			<ion-select-option>2010</ion-select-option>
+			<ion-select-option>2010</ion-select-option>
+			<ion-select-option>2010</ion-select-option>
+			<ion-select-option>2010</ion-select-option>
 		</ion-select>
 	</ion-item>
 	<ion-button
@@ -50,13 +54,13 @@
 				<ion-img [src]="image"></ion-img>
 			</ion-slide>
 		</ion-slides>
-		<ion-button class="request__button" routerLink="platenumber">
+		<ion-button class="request__button" [routerLink]="['plate']">
 			Request Quote
 		</ion-button>
 	</ion-card>
 	<ion-item-divider></ion-item-divider>
 	<ion-list class="scroll__horizontal">
-		<ion-card routerLink="/home/menu">
+		<ion-card [routerLink]="['/','home','setting']">
 			<ion-img class="item__image" [src]="image"></ion-img>
 			<ion-card-header>
 				<ion-card-subtitle>Rating</ion-card-subtitle>
