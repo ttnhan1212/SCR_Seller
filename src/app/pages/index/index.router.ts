@@ -21,10 +21,10 @@ const routes: Routes = [
 				path: 'login',
 				loadChildren: () =>
 					import('../login/login.module').then((m) => m.LoginPageModule),
-				...canActivate(redirectLoggedInToRequest),
 			},
-			{ path: '**', component: ErrorsPage },
+			// { path: '**', component: ErrorsPage },
 		],
+		...canActivate(redirectLoggedInToRequest),
 	},
 ];
 @NgModule({

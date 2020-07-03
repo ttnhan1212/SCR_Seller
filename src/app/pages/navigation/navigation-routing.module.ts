@@ -4,6 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NavigationPage } from './navigation.page';
 
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+
 const routes: Routes = [
 	{
 		path: '',
@@ -20,14 +24,15 @@ const routes: Routes = [
 					import('./ongoing/ongoing.module').then((m) => m.OngoingPageModule),
 			},
 			{
-				path: 'menu',
+				path: 'setting',
 				loadChildren: () =>
 					import('./settings/settings.module').then(
 						(m) => m.SettingsPageModule,
 					),
 			},
-			{ path: '**', component: ErrorsPage },
+			// { path: '**', component: ErrorsPage },
 		],
+		...canActivate(redirectUnauthorizedToLogin),
 	},
 ];
 
