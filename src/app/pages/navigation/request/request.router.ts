@@ -6,15 +6,6 @@ const routes: Routes = [
 	{
 		path: '',
 		component: RequestPage,
-		children: [
-			{
-				path: 'platenumber',
-				loadChildren: () =>
-					import('../platenumber/platenumber.module').then(
-						(m) => m.PlatenumberPageModule,
-					),
-			},
-		],
 	},
 ];
 @NgModule({

@@ -12,6 +12,6 @@ export class ErrorsPage implements OnInit {
 	ngOnInit() {}
 
 	navigateHome = () => {
-		this.router.navigate(['home']);
+		this.router.navigate(['home/request']);
 	};
 }
