@@ -86,9 +86,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       children: [{
         path: 'request',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | request-request-module */
-          "request-request-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~ongoing-ongoing-module~request-request-module"), __webpack_require__.e("request-request-module")]).then(__webpack_require__.bind(null,
           /*! ./request/request.module */
           "./src/app/pages/navigation/request/request.module.ts")).then(function (m) {
             return m.RequestPageModule;
@@ -108,9 +108,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         path: 'ongoing',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | ongoing-ongoing-module */
-          "ongoing-ongoing-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~ongoing-ongoing-module~request-request-module"), __webpack_require__.e("ongoing-ongoing-module")]).then(__webpack_require__.bind(null,
           /*! ./ongoing/ongoing.module */
           "./src/app/pages/navigation/ongoing/ongoing.module.ts")).then(function (m) {
             return m.OngoingPageModule;
@@ -212,7 +212,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     NavigationPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _navigation_routing_module__WEBPACK_IMPORTED_MODULE_5__["NavigationPageRoutingModule"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _navigation_routing_module__WEBPACK_IMPORTED_MODULE_5__["NavigationPageRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"]],
       declarations: [_navigation_page__WEBPACK_IMPORTED_MODULE_6__["NavigationPage"]]
     })], NavigationPageModule);
     /***/

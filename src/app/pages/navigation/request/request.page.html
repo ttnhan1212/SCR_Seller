@@ -11,11 +11,24 @@
 		<ion-refresher-content></ion-refresher-content>
 	</ion-refresher>
 	<ion-item class="ion-margin-bottom">
+		<ion-label position="stacked">Brands</ion-label>
+		<ion-select
+			interface="action-sheet"
+			placeholder="Select your car year..."
+			[(ngModel)]="brands"
+			(ionChange)="onBrandChange($event)"
+		>
+			<ion-select-option *ngFor="let brand of brands" [value]="brand.id">
+				{{brand.name}}
+			</ion-select-option>
+		</ion-select>
+	</ion-item>
+	<ion-item class="ion-margin-bottom">
 		<ion-label position="stacked">Model</ion-label>
 		<ion-select
 			interface="action-sheet"
 			placeholder="Select your car model..."
-			[(ngModel)]="name"
+			[(ngModel)]="models"
 		>
 			<ion-select-option *ngFor="let model of models">
 				{{model.name}}

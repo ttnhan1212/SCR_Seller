@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "scr-seller",
+	"appId": "io.scroads.seller",
+	"appName": "SCRoads Seller",
 	"bundledWebRuntime": false,
 	"linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
 	"npmClient": "npm",

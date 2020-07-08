@@ -39,7 +39,7 @@ const routes = [
     Object.assign({ path: '', component: _navigation_page__WEBPACK_IMPORTED_MODULE_3__["NavigationPage"], children: [
             {
                 path: 'request',
-                loadChildren: () => __webpack_require__.e(/*! import() | request-request-module */ "request-request-module").then(__webpack_require__.bind(null, /*! ./request/request.module */ "./src/app/pages/navigation/request/request.module.ts")).then((m) => m.RequestPageModule),
+                loadChildren: () => Promise.all(/*! import() | request-request-module */[__webpack_require__.e("default~ongoing-ongoing-module~request-request-module"), __webpack_require__.e("request-request-module")]).then(__webpack_require__.bind(null, /*! ./request/request.module */ "./src/app/pages/navigation/request/request.module.ts")).then((m) => m.RequestPageModule),
             },
             {
                 path: 'request/plate',
@@ -47,7 +47,7 @@ const routes = [
             },
             {
                 path: 'ongoing',
-                loadChildren: () => __webpack_require__.e(/*! import() | ongoing-ongoing-module */ "ongoing-ongoing-module").then(__webpack_require__.bind(null, /*! ./ongoing/ongoing.module */ "./src/app/pages/navigation/ongoing/ongoing.module.ts")).then((m) => m.OngoingPageModule),
+                loadChildren: () => Promise.all(/*! import() | ongoing-ongoing-module */[__webpack_require__.e("default~ongoing-ongoing-module~request-request-module"), __webpack_require__.e("ongoing-ongoing-module")]).then(__webpack_require__.bind(null, /*! ./ongoing/ongoing.module */ "./src/app/pages/navigation/ongoing/ongoing.module.ts")).then((m) => m.OngoingPageModule),
             },
             {
                 path: 'setting',
@@ -106,6 +106,7 @@ NavigationPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
             _navigation_routing_module__WEBPACK_IMPORTED_MODULE_5__["NavigationPageRoutingModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
         ],
         declarations: [_navigation_page__WEBPACK_IMPORTED_MODULE_6__["NavigationPage"]],
     })

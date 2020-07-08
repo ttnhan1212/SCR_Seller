@@ -12,7 +12,7 @@ export class RequestService {
 		return this.firestore.collection('requests').snapshotChanges();
 	}
 
-	createRequest(request: Request) {
+	createRequest(request: any) {
 		return this.firestore.collection('requests').add(request);
 	}
 
