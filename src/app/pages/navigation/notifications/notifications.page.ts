@@ -1,21 +1,21 @@
-import { Request } from '../../../models/request';
-import { RequestService } from 'src/app/services/request.service';
-import { NotificationsService } from './../../../services/notifications.service';
-import { Notifications } from '../../../models/notifications';
-import { Component, OnInit } from '@angular/core';
+import { Request } from "../../../models/request";
+import { RequestService } from "src/app/services/request.service";
+import { NotificationsService } from "./../../../services/notifications.service";
+import { Notifications } from "../../../models/notifications";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-	selector: 'app-notifications',
-	templateUrl: './notifications.page.html',
-	styleUrls: ['./notifications.page.scss'],
+	selector: "app-notifications",
+	templateUrl: "./notifications.page.html",
+	styleUrls: ["./notifications.page.scss"],
 })
 export class NotificationsPage implements OnInit {
 	noti: Notifications[];
-	request: any;
+	request: Request[];
 
 	constructor(
 		public notiService: NotificationsService,
-		public requestService: RequestService,
+		public requestService: RequestService
 	) {}
 
 	ngOnInit() {
@@ -23,15 +23,30 @@ export class NotificationsPage implements OnInit {
 			this.noti = data.map((e) => {
 				return {
 					id: e.payload.doc.id,
-					requestId: e.payload.doc.data()['requestId'],
-					status: e.payload.doc.data()['status'],
-					updateDate: e.payload.doc.data()['updateDate'],
+					request: this.requestService
+						.getRequestById(e.payload.doc.data()["requestId"])
+						.subscribe((val) => {
+							const req = val.map((e) => {
+								return {
+									id: e.payload.doc.id,
+									...(e.payload.doc.data() as Request),
+								};
+							});
+							console.log(req[0]);
+							return req[0];
+						}),
+					...(e.payload.doc.data() as Notifications),
 				};
 			});
-			console.log(this.noti[0]['requestId']);
-			this.requestService
-				.getRequestById(this.noti[0]['requestId'])
-				.subscribe((val) => console.log(val.data()));
+			// this.requestService
+			// 	.getRequestById(this.noti[0]["requestId"])
+			// 	.subscribe((val) => {
+			// 		this.request = val as Request;
+			// 		return this.request;
+			// 	});
 		});
+		// setTimeout(() => {
+		// 	console.log(this.noti);
+		// }, 3000);
 	}
 }

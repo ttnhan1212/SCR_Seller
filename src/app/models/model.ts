@@ -1,4 +1,4 @@
 export class Model {
-	brandsId: string;
+	id: string;
 	name: string;
 }

@@ -1,8 +1,7 @@
 <ion-header>
 	<ion-toolbar>
 		<ion-title>
-			<!-- <ion-img [src]="logo" class="smllogo__img p-1" alt="logo"></ion-img> -->
-			SCRoads
+			<ion-img [src]="logo" class="smllogo__img p-1" alt="logo"></ion-img>
 		</ion-title>
 		<ion-button fill="clear" slot="end" [routerLink]="['/','home','infor']">
 			<ion-icon name="information-circle-outline"></ion-icon>
@@ -21,19 +20,6 @@
 	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
 		<ion-refresher-content></ion-refresher-content>
 	</ion-refresher>
-	<ion-item class="ion-margin-bottom">
-		<ion-label position="stacked">Brands</ion-label>
-		<ion-select
-			interface="action-sheet"
-			placeholder="Select your car year..."
-			[(ngModel)]="brands"
-			(ionChange)="onBrandChange($event)"
-		>
-			<ion-select-option *ngFor="let brand of brands" [value]="brand.id">
-				{{brand.name}}
-			</ion-select-option>
-		</ion-select>
-	</ion-item>
 	<ion-item class="ion-margin-bottom">
 		<ion-label position="stacked">Model</ion-label>
 		<ion-select

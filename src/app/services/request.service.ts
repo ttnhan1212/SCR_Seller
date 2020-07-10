@@ -1,24 +1,26 @@
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Injectable } from '@angular/core';
-import { Request } from '../models/request';
+import { AngularFirestore } from "@angular/fire/firestore";
+import { Injectable } from "@angular/core";
+import { Request } from "../models/request";
 
 @Injectable({
-	providedIn: 'root',
+	providedIn: "root",
 })
 export class RequestService {
 	constructor(private firestore: AngularFirestore) {}
 
 	getRequest() {
 		return this.firestore
-			.collection('requests', (ref) => ref.orderBy('effectedTime', 'desc'))
+			.collection("requests", (ref) => ref.orderBy("effectedTime", "desc"))
 			.snapshotChanges();
 	}
-	getRequestById(id) {
-		return this.firestore.collection('requests').doc(id).get();
+	getRequestById(id: string) {
+		return this.firestore
+			.collection("requests", (ref) => ref.where("id", "==", id))
+			.snapshotChanges();
 	}
 
 	createRequest(request: any) {
-		return this.firestore.collection('requests').add(request);
+		return this.firestore.collection("requests").add(request);
 	}
 
 	// updateRequest(request: Request) {
