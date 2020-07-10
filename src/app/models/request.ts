@@ -1,10 +1,10 @@
 export class Request {
 	id: string;
-	sellerId: string;
+	userId: string;
 	sellerName: string;
 	vehiclesId: string;
 	effectedTime: Date;
-	expireDate: Date;
+	expireTime: Date;
 	phone: number;
 	location: string;
 }

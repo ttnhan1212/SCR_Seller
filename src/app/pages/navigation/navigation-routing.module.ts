@@ -43,6 +43,13 @@ const routes: Routes = [
 					import('./infor/infor.module').then((m) => m.InforPageModule),
 			},
 			{
+				path: 'notifications',
+				loadChildren: () =>
+					import('./notifications/notifications.module').then(
+						(m) => m.NotificationsPageModule,
+					),
+			},
+			{
 				path: '',
 				redirectTo: 'request',
 				pathMatch: 'full',
