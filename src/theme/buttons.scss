@@ -535,9 +535,9 @@ fieldset:disabled a.btn {
 .btn-block + .btn-block {
 	margin-top: 0.5rem;
 }
-input[type="button"].btn-block,
-input[type="reset"].btn-block,
-input[type="submit"].btn-block {
+input[type='button'].btn-block,
+input[type='reset'].btn-block,
+input[type='submit'].btn-block {
 	width: 100%;
 }
 .fade {
@@ -1567,7 +1567,7 @@ input[type="submit"].btn-block {
 	position: relative;
 }
 .btn-loading:after {
-	content: "";
+	content: '';
 	-webkit-animation: loader 0.5s infinite linear;
 	animation: loader 0.5s infinite linear;
 	border: 2px solid #fff;
