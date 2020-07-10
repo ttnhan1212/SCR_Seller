@@ -38,12 +38,22 @@ const routes: Routes = [
 					),
 			},
 			{
+				path: 'infor',
+				loadChildren: () =>
+					import('./infor/infor.module').then((m) => m.InforPageModule),
+			},
+			{
 				path: '',
 				redirectTo: 'request',
 				pathMatch: 'full',
 			},
 		],
 		...canActivate(redirectUnauthorizedToLogin),
+	},
+	{
+		path: 'export',
+		loadChildren: () =>
+			import('./export/export.module').then((m) => m.ExportPageModule),
 	},
 ];
 
