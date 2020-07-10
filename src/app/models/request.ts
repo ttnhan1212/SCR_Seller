@@ -1,6 +1,6 @@
 export class Request {
 	id: string;
-	uuid: string;
+	sellerId: string;
 	sellerName: string;
 	vehiclesId: string;
 	effectedTime: Date;
