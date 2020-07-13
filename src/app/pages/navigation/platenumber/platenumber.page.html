@@ -14,7 +14,7 @@
 			<ion-input
 				type="text"
 				placeholder="Your Plate Number"
-				required
+				[(ngModel)]="plate"
 			></ion-input>
 		</ion-item>
 		<ion-item-group>
@@ -35,7 +35,7 @@
 				<ion-label>Select All</ion-label>
 			</ion-item>
 		</ion-item-group>
-		<ion-button expand="block">
+		<ion-button expand="block" [disabled]="!plate">
 			Confirm
 		</ion-button>
 	</ion-card>

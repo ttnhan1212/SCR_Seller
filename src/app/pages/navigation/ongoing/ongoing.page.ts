@@ -50,7 +50,7 @@ export class OngoingPage implements OnInit {
 	}
 
 	async createRequest() {
-		const Request = {};
+		// const Request = {};
 
 		const loading = await this.loadingController.create({
 			message: 'Please wait...',
@@ -65,7 +65,7 @@ export class OngoingPage implements OnInit {
 
 		try {
 			await loading.present();
-			this.requestService
+			await this.requestService
 				.createRequest(Request)
 				.then((res) => {
 					this.name = '';

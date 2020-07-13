@@ -26,6 +26,13 @@ const routes: Routes = [
 					),
 			},
 			{
+				path: 'request/:id',
+				loadChildren: () =>
+					import('./request-detail/request-detail.page').then(
+						(m) => m.RequestDetailPage,
+					),
+			},
+			{
 				path: 'ongoing',
 				loadChildren: () =>
 					import('./ongoing/ongoing.module').then((m) => m.OngoingPageModule),
@@ -61,6 +68,13 @@ const routes: Routes = [
 		path: 'export',
 		loadChildren: () =>
 			import('./export/export.module').then((m) => m.ExportPageModule),
+	},
+	{
+		path: 'request-detail',
+		loadChildren: () =>
+			import('./request-detail/request-detail.module').then(
+				(m) => m.RequestDetailPageModule,
+			),
 	},
 ];
 
