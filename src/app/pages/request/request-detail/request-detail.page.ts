@@ -14,7 +14,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class RequestDetailPage implements OnInit {
 	id: string;
 	name: string;
-	phone: string;
+	phone: number;
 	location: string;
 	sellerId: string;
 
@@ -31,6 +31,7 @@ export class RequestDetailPage implements OnInit {
 		public toast: ToastService
 	) {
 		this.id = this.route.snapshot.paramMap.get("id"); //get id parameter
+		console.log(this.id);
 		this.sellerId = JSON.parse(localStorage.getItem("user")).uid;
 	}
 
@@ -43,12 +44,20 @@ export class RequestDetailPage implements OnInit {
 			message: "Please wait...",
 			showBackdrop: true,
 		});
-		request["sellerName"] = this.name;
-		request["phone"] = this.phone;
-		request["location"] = this.location;
-		request["effectedTime"] = this.effDate;
-		request["expiredTime"] = this.expDate;
-		request["sellerId"] = this.sellerId;
+		// request["sellerName"] = this.name;
+		// request["phone"] = this.phone;
+		// request["location"] = this.location;
+		// request["effectedTime"] = this.effDate;
+		// request["expiredTime"] = this.expDate;
+		// request["sellerId"] = this.sellerId;
+		request = {
+			sellerName: this.name,
+			phone: this.phone,
+			location: this.location,
+			effectedTime: this.effDate,
+			expiredTime: this.expDate,
+			sellerId: this.sellerId,
+		};
 
 		try {
 			await loading.present();
@@ -57,6 +66,7 @@ export class RequestDetailPage implements OnInit {
 			await loading.dismiss();
 			this.router.navigate(["/", "home", "ongoing"]);
 		} catch (error) {
+			console.log(error);
 			this.toast.showToast(error.message);
 			await loading.dismiss();
 		}

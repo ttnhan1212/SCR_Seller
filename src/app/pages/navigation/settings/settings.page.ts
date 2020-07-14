@@ -11,11 +11,15 @@ import { LoadingController } from "@ionic/angular";
 })
 export class SettingsPage implements OnInit {
 	panelOpenState = false;
+
+	logo: any;
 	constructor(
 		private toast: ToastService,
 		public loadingController: LoadingController,
 		public authService: AuthService
-	) {}
+	) {
+		this.logo = "../../../assets/images/logo/scroadslight.svg";
+	}
 
 	ngOnInit() {}
 

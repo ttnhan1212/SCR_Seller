@@ -1,26 +1,31 @@
-import { ErrorsPage } from './pages/errors/errors.page';
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ErrorsPage } from "./pages/errors/errors.page";
+import { NgModule } from "@angular/core";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
 	{
-		path: '',
+		path: "",
 		loadChildren: () =>
-			import('./pages/index/index.module').then((m) => m.IndexPageModule),
+			import("./pages/index/index.module").then((m) => m.IndexPageModule),
 	},
 	{
-		path: 'home',
+		path: "home",
 		loadChildren: () =>
-			import('./pages/navigation/navigation.module').then(
-				(m) => m.NavigationPageModule,
+			import("./pages/navigation/navigation.module").then(
+				(m) => m.NavigationPageModule
 			),
 	},
 	{
-		path: '',
-		redirectTo: '',
-		pathMatch: 'full',
+		path: "request",
+		loadChildren: () =>
+			import("./pages/request/request.module").then((m) => m.RequestPageModule),
 	},
-	{ path: '**', component: ErrorsPage },
+	{
+		path: "",
+		redirectTo: "",
+		pathMatch: "full",
+	},
+	{ path: "**", component: ErrorsPage },
 ];
 
 @NgModule({

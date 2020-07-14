@@ -35,11 +35,11 @@ export class RequestService {
 		return user !== null;
 	}
 
-	updateRequest(request, id) {
-		this.firestore.doc("requests/" + id).update(request);
+	updateRequest(request: any, id: string) {
+		this.firestore.collection("requests").doc(id).update(request);
 	}
 
-	// deleteRequest(requestId: string) {
-	// 	this.firestore.doc("requests/" + requestId).delete();
-	// }
+	deleteRequest(requestId: string) {
+		this.firestore.doc("requests/" + requestId).delete();
+	}
 }

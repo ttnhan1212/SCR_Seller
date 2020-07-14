@@ -1,30 +1,30 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { IndexPage } from './index.page';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { IndexPage } from "./index.page";
 
-import { canActivate, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { canActivate, redirectLoggedInTo } from "@angular/fire/auth-guard";
 
-const redirectLoggedInToRequest = () => redirectLoggedInTo(['home/request']);
+const redirectLoggedInToRequest = () => redirectLoggedInTo(["home/seller"]);
 
 const routes: Routes = [
 	{
-		path: '',
+		path: "",
 		component: IndexPage,
 		children: [
 			{
-				path: '',
+				path: "",
 				loadChildren: () =>
-					import('./welcome/welcome.module').then((m) => m.WelcomePageModule),
+					import("./welcome/welcome.module").then((m) => m.WelcomePageModule),
 			},
 			{
-				path: 'login',
+				path: "login",
 				loadChildren: () =>
-					import('./login/login.module').then((m) => m.LoginPageModule),
+					import("./login/login.module").then((m) => m.LoginPageModule),
 			},
 			{
-				path: '',
-				redirectTo: '',
-				pathMatch: 'full',
+				path: "",
+				redirectTo: "",
+				pathMatch: "full",
 			},
 		],
 		...canActivate(redirectLoggedInToRequest),

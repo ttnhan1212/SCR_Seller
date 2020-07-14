@@ -5,7 +5,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { NavigationPage } from "./navigation.page";
 
 import { canActivate, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
-import { RequestDetailPage } from "./request-detail/request-detail.page";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["login"]);
 
@@ -15,20 +14,9 @@ const routes: Routes = [
 		component: NavigationPage,
 		children: [
 			{
-				path: "request",
+				path: "seller",
 				loadChildren: () =>
-					import("./request/request.module").then((m) => m.RequestPageModule),
-			},
-			{
-				path: "request/plate",
-				loadChildren: () =>
-					import("./platenumber/platenumber.module").then(
-						(m) => m.PlatenumberPageModule
-					),
-			},
-			{
-				path: "request/:id",
-				component: RequestDetailPage,
+					import("./home/home.module").then((m) => m.HomePageModule),
 			},
 			{
 				path: "ongoing",
@@ -55,29 +43,18 @@ const routes: Routes = [
 					),
 			},
 			{
+				path: "export",
+				loadChildren: () =>
+					import("./export/export.module").then((m) => m.ExportPageModule),
+			},
+			{
 				path: "",
-				redirectTo: "request",
+				redirectTo: "home",
 				pathMatch: "full",
 			},
 		],
 		...canActivate(redirectUnauthorizedToLogin),
 	},
-	{
-		path: "export",
-		loadChildren: () =>
-			import("./export/export.module").then((m) => m.ExportPageModule),
-	},
-	{
-		path: "request-detail",
-		loadChildren: () =>
-			import("./request-detail/request-detail.module").then(
-				(m) => m.RequestDetailPageModule
-			),
-	},
-  {
-    path: 'adspage',
-    loadChildren: () => import('./adspage/adspage.module').then( m => m.AdspagePageModule)
-  },
 ];
 
 @NgModule({

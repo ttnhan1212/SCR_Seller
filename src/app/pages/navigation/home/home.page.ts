@@ -5,10 +5,10 @@ import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-request",
-	templateUrl: "./request.page.html",
-	styleUrls: ["./request.page.scss"],
+	templateUrl: "./home.page.html",
+	styleUrls: ["./home.page.scss"],
 })
-export class RequestPage implements OnInit {
+export class HomePage implements OnInit {
 	models: Model[];
 
 	logo: any;
