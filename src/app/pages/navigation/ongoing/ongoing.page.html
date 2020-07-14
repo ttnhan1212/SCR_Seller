@@ -1,38 +1,45 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-title>On-going</ion-title>
+		<ion-title>
+			<ion-img [src]="logo" class="smllogo__img p-1" alt="logo"></ion-img>
+		</ion-title>
+		<ion-button fill="clear" slot="end" [routerLink]="['/','home','infor']">
+			<ion-icon name="information-circle-outline"></ion-icon>
+		</ion-button>
+		<ion-button
+			fill="clear"
+			slot="end"
+			[routerLink]="['/','home','notifications']"
+		>
+			<ion-icon name="notifications-outline"></ion-icon>
+		</ion-button>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-	<ion-item-group>
+	<ion-card *ngFor="let request of requests">
 		<ion-item>
-			<ion-label position="floating">Seller</ion-label>
-			<ion-input type="text" [(ngModel)]="name"></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label position="floating">Phone</ion-label>
-			<ion-input type="number" [(ngModel)]="phone"></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label position="floating">Location</ion-label>
-			<ion-input type="text" [(ngModel)]="location"></ion-input>
-		</ion-item>
-	</ion-item-group>
-	<ion-button
-		expand="block"
-		[disabled]="!name || !phone || !location"
-		(click)="createRequest()"
-	>
-		Create Request
-	</ion-button>
-
-	<ion-card>
-		<ion-item *ngFor="let request of requests">
-			<ion-label>Name: {{request.sellerName}}</ion-label>
-			<ion-label>EffDate: {{request.effectedTime}}</ion-label>
-			<ion-label>ExpDate: {{request.expireDate}}</ion-label>
-			<ion-label>uuid: {{request.sellerId}}</ion-label>
+			<ion-avatar slot="start">
+				<img src="./avatar-finn.png" />
+			</ion-avatar>
+			<ion-label>
+				<h2>{{request.sellerName}}</h2>
+				<ion-grid class="p-0 m-0">
+					<ion-row>
+						<ion-col>
+							<p>{{request.sellerId}}</p>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="6">
+							<p>{{request.effectedTime}}</p>
+						</ion-col>
+						<ion-col size="6">
+							<p>{{request.expiredTime}}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-label>
 		</ion-item>
 	</ion-card>
 </ion-content>

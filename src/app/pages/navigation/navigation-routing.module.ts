@@ -5,6 +5,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { NavigationPage } from "./navigation.page";
 
 import { canActivate, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
+import { RequestDetailPage } from "./request-detail/request-detail.page";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["login"]);
 
@@ -27,10 +28,7 @@ const routes: Routes = [
 			},
 			{
 				path: "request/:id",
-				loadChildren: () =>
-					import("./request-detail/request-detail.page").then(
-						(m) => m.RequestDetailPage
-					),
+				component: RequestDetailPage,
 			},
 			{
 				path: "ongoing",

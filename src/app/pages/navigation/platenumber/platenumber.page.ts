@@ -44,13 +44,15 @@ export class PlatenumberPage implements OnInit {
 					let request = {};
 					request["vehiclesId"] = res.id;
 					try {
+						this.toast.showToast("Your request is successfully created!");
 						this.requestService.createRequest(request).then((val) => {
-							this.route.navigate(["/", "home", "request", val.id]);
+							setTimeout(() => {
+								this.route.navigate(["/", "home", "request", val.id]);
+							}, 1500);
 						});
 					} catch (error) {
 						this.toast.showToast(error.message);
 					}
-					this.toast.showToast("Your request is successfully created!");
 				})
 				.catch((error) => {
 					this.toast.showToast(error.message);
