@@ -74,6 +74,10 @@ const routes: Routes = [
 				(m) => m.RequestDetailPageModule
 			),
 	},
+  {
+    path: 'adspage',
+    loadChildren: () => import('./adspage/adspage.module').then( m => m.AdspagePageModule)
+  },
 ];
 
 @NgModule({
