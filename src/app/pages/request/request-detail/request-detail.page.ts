@@ -5,6 +5,12 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { RequestService } from "../../../services/request.service";
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import {
+	FormGroup,
+	FormBuilder,
+	FormControl,
+	Validators,
+} from "@angular/forms";
 
 @Component({
 	selector: "app-request-detail",
@@ -13,10 +19,12 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class RequestDetailPage implements OnInit {
 	id: string;
-	name: string;
-	phone: number;
-	location: string;
+	// name: string;
+	// phone: number;
+	// location: string;
 	sellerId: string;
+
+	detailForm: FormGroup;
 
 	effDate = Math.floor(new Date().getTime() / 1000.0);
 	expDate = Math.floor(new Date().getTime() / 1000.0 + 7200);
@@ -28,18 +36,32 @@ export class RequestDetailPage implements OnInit {
 		public afAuth: AngularFireAuth,
 		public authService: AuthService,
 		public loadingController: LoadingController,
-		public toast: ToastService
+		public toast: ToastService,
+		private formBuilder: FormBuilder
 	) {
 		this.id = this.route.snapshot.paramMap.get("id"); //get id parameter
 		console.log(this.id);
 		this.sellerId = JSON.parse(localStorage.getItem("user")).uid;
+
+		this.detailForm = this.formBuilder.group({
+			name: [
+				"",
+				Validators.compose([Validators.minLength(3), Validators.required]),
+			],
+			phone: [
+				null,
+				Validators.compose([Validators.minLength(10), Validators.required]),
+			],
+			location: ["", Validators.required],
+			effectedTime: this.effDate,
+			expiredTime: this.expDate,
+			sellerId: this.sellerId,
+		});
 	}
 
 	ngOnInit() {}
 
 	async updateRequest() {
-		let request = {};
-
 		const loading = await this.loadingController.create({
 			message: "Please wait...",
 			showBackdrop: true,
@@ -50,18 +72,20 @@ export class RequestDetailPage implements OnInit {
 		// request["effectedTime"] = this.effDate;
 		// request["expiredTime"] = this.expDate;
 		// request["sellerId"] = this.sellerId;
-		request = {
-			sellerName: this.name,
-			phone: this.phone,
-			location: this.location,
-			effectedTime: this.effDate,
-			expiredTime: this.expDate,
-			sellerId: this.sellerId,
-		};
-
+		// request = {
+		// 	sellerName: this.name,
+		// 	phone: this.phone,
+		// 	location: this.location,
+		// 	effectedTime: this.effDate,
+		// 	expiredTime: this.expDate,
+		// 	sellerId: this.sellerId,
+		// };
+		console.log(this.detailForm.value);
+		//this.requestService.updateRequest(this.detailForm.value, this.id);
 		try {
 			await loading.present();
-			await this.requestService.updateRequest(request, this.id);
+			console.log(this.detailForm.value);
+			await this.requestService.updateRequest(this.detailForm.value, this.id);
 			this.toast.showToast("Your request is successfully uploaded!");
 			await loading.dismiss();
 			this.router.navigate(["/", "home", "ongoing"]);

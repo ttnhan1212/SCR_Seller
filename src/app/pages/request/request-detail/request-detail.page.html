@@ -5,21 +5,23 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-	<ion-item-group>
-		<ion-item>
-			<ion-label position="floating">Seller</ion-label>
-			<ion-input type="text" [(ngModel)]="name"></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label position="floating">Phone</ion-label>
-			<ion-input type="number" [(ngModel)]="phone"></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label position="floating">Location</ion-label>
-			<ion-input type="text" [(ngModel)]="location"></ion-input>
-		</ion-item>
-	</ion-item-group>
-	<ion-button expand="block" (click)="updateRequest()">
-		Create Request
-	</ion-button>
+	<form [formGroup]="detailForm">
+		<ion-item-group>
+			<ion-item>
+				<ion-label position="floating">Seller</ion-label>
+				<ion-input type="text" formControlName="name"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Phone</ion-label>
+				<ion-input type="number" formControlName="phone"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Location</ion-label>
+				<ion-input type="text" formControlName="location"></ion-input>
+			</ion-item>
+		</ion-item-group>
+		<ion-button expand="block" (click)="updateRequest()">
+			Create Request
+		</ion-button>
+	</form>
 </ion-content>
