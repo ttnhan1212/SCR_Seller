@@ -21,6 +21,11 @@ const routes: Routes = [
 			import("./pages/request/request.module").then((m) => m.RequestPageModule),
 	},
 	{
+		path: "ads",
+		loadChildren: () =>
+			import("./pages/request/request.module").then((m) => m.RequestPageModule),
+	},
+	{
 		path: "",
 		redirectTo: "",
 		pathMatch: "full",

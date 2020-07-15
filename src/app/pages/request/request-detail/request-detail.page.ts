@@ -56,10 +56,10 @@ export class RequestDetailPage implements OnInit {
 	ngOnInit() {}
 
 	async updateRequest() {
-		const loading = await this.loadingController.create({
-			message: "Please wait...",
-			showBackdrop: true,
-		});
+		// const loading = await this.loadingController.create({
+		// 	message: "Please wait...",
+		// 	showBackdrop: true,
+		// });
 		// request["sellerName"] = this.name;
 		// request["phone"] = this.phone;
 		// request["location"] = this.location;
@@ -76,17 +76,17 @@ export class RequestDetailPage implements OnInit {
 		// };
 		console.log(this.detailForm.value);
 		//this.requestService.updateRequest(this.detailForm.value, this.id);
-		try {
-			await loading.present();
-			console.log(this.detailForm.value);
-			await this.requestService.updateRequest(this.detailForm.value, this.id);
-			this.toast.showToast("Your request is successfully uploaded!");
-			await loading.dismiss();
-			this.router.navigate(["/", "home", "ongoing"]);
-		} catch (error) {
-			console.log(error);
-			this.toast.showToast(error.message);
-			await loading.dismiss();
-		}
+		// try {
+		// 	await loading.present();
+		// 	console.log(this.detailForm.value);
+		// 	await this.requestService.updateRequest(this.detailForm.value, this.id);
+		// 	this.toast.showToast("Your request is successfully uploaded!");
+		// 	await loading.dismiss();
+		// 	this.router.navigate(["/", "home", "ongoing"]);
+		// } catch (error) {
+		// 	console.log(error);
+		// 	this.toast.showToast(error.message);
+		// 	await loading.dismiss();
+		// }
 	}
 }
