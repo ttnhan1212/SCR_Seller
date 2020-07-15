@@ -19,12 +19,12 @@ import {
 })
 export class RequestDetailPage implements OnInit {
 	id: string;
-	// name: string;
-	// phone: number;
-	// location: string;
 	sellerId: string;
 
 	detailForm: FormGroup;
+	name = new FormControl("", [Validators.required]);
+	phone = new FormControl(null, [Validators.required]);
+	location = new FormControl("", [Validators.required]);
 
 	effDate = Math.floor(new Date().getTime() / 1000.0);
 	expDate = Math.floor(new Date().getTime() / 1000.0 + 7200);
@@ -44,15 +44,9 @@ export class RequestDetailPage implements OnInit {
 		this.sellerId = JSON.parse(localStorage.getItem("user")).uid;
 
 		this.detailForm = this.formBuilder.group({
-			name: [
-				"",
-				Validators.compose([Validators.minLength(3), Validators.required]),
-			],
-			phone: [
-				null,
-				Validators.compose([Validators.minLength(10), Validators.required]),
-			],
-			location: ["", Validators.required],
+			name: this.name,
+			phone: this.phone,
+			location: this.location,
 			effectedTime: this.effDate,
 			expiredTime: this.expDate,
 			sellerId: this.sellerId,
