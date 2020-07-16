@@ -7,8 +7,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AdspagePage implements OnInit {
 	logo: any;
+	image: any;
 	constructor() {
 		this.logo = "../../../assets/images/logo/scroadslight.svg";
+		this.image = "../../../../assets/images/banners/banner2.jpg";
 	}
 
 	ngOnInit() {}

@@ -23,7 +23,7 @@ const routes: Routes = [
 	{
 		path: "ads",
 		loadChildren: () =>
-			import("./pages/request/request.module").then((m) => m.RequestPageModule),
+			import("./pages/adspage/adspage.module").then((m) => m.AdspagePageModule),
 	},
 	{
 		path: "",
