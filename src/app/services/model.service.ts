@@ -11,9 +11,15 @@ export class ModelService {
 		return this.firestore.collection('models').snapshotChanges();
 	}
 
-	getModelByBrand(brand: string) {
+	getModelById(id: string) {
+		return this.firestore.collection('models').doc(id).snapshotChanges();
+	}
+
+	getModelYear(id: string) {
 		return this.firestore
-			.collection('models', (ref) => ref.where('brandsId', '==', brand))
+			.collection('models')
+			.doc(id)
+			.collection('years')
 			.snapshotChanges();
 	}
 }

@@ -1,16 +1,16 @@
-import { Router } from "@angular/router";
-import { RequestService } from "../../../services/request.service";
-import { ToastService } from "../../../services/toast.service";
-import { LoadingController } from "@ionic/angular";
-import { AuthService } from "../../../services/auth.service";
-import { AngularFireAuth } from "@angular/fire/auth";
-import { Component, OnInit } from "@angular/core";
-import { VehicleService } from "../../../services/vehicles.service";
+import { Router } from '@angular/router';
+import { RequestService } from '../../../services/request.service';
+import { ToastService } from '../../../services/toast.service';
+import { LoadingController } from '@ionic/angular';
+import { AuthService } from '../../../services/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Component, OnInit } from '@angular/core';
+import { VehicleService } from '../../../services/vehicles.service';
 
 @Component({
-	selector: "app-platenumber",
-	templateUrl: "./platenumber.page.html",
-	styleUrls: ["./platenumber.page.scss"],
+	selector: 'app-platenumber',
+	templateUrl: './platenumber.page.html',
+	styleUrls: ['./platenumber.page.scss'],
 })
 export class PlatenumberPage implements OnInit {
 	plate: string;
@@ -30,24 +30,24 @@ export class PlatenumberPage implements OnInit {
 		let vehicle = {};
 
 		const loading = await this.loadingController.create({
-			message: "Please wait...",
+			message: 'Please wait...',
 			showBackdrop: true,
 		});
-		vehicle["platenumber"] = this.plate;
+		vehicle['platenumber'] = this.plate;
 
 		try {
 			await loading.present();
 			await this.vehicleService
 				.createVehicle(vehicle)
 				.then((res) => {
-					this.plate = "";
+					this.plate = '';
 					let request = {};
-					request["vehiclesId"] = res.id;
+					request['vehiclesId'] = res.id;
 					try {
-						this.toast.showToast("Your request is successfully created!");
+						this.toast.showToast('Your request is successfully created!');
 						this.requestService.createRequest(request).then((val) => {
 							setTimeout(() => {
-								this.route.navigate(["/", "request", val.id]);
+								this.route.navigate(['/', 'request', val.id]);
 							}, 1000);
 						});
 					} catch (error) {

@@ -19,6 +19,10 @@ const routes: Routes = [
 			{
 				path: ":id",
 				component: RequestDetailPage,
+				loadChildren: () =>
+					import("./request-detail/request-detail.module").then(
+						(m) => m.RequestDetailPageModule
+					),
 			},
 		],
 	},

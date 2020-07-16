@@ -1,8 +1,8 @@
-import { AngularFirestore } from "@angular/fire/firestore";
-import { Injectable } from "@angular/core";
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-	providedIn: "root",
+	providedIn: 'root',
 })
 export class VehicleService {
 	constructor(private firestore: AngularFirestore) {}
@@ -15,19 +15,14 @@ export class VehicleService {
 	// 		.snapshotChanges();
 	// }
 
-	getRequestById(id: string) {
+	getVehicleById(id: string) {
 		return this.firestore
-			.collection("requests", (ref) => ref.where("id", "==", id))
+			.collection('vehicles', (ref) => ref.where('id', '==', id))
 			.snapshotChanges();
 	}
 
 	createVehicle(vehicle: any) {
-		return this.firestore.collection("vehicles").add(vehicle);
-	}
-
-	get isLoggedIn(): boolean {
-		const user = JSON.parse(localStorage.getItem("user"));
-		return user !== null;
+		return this.firestore.collection('vehicles').add(vehicle);
 	}
 
 	// updateRequest(request: Request) {
@@ -35,7 +30,7 @@ export class VehicleService {
 	// 	this.firestore.doc('requests/' + request.id).update(request);
 	// }
 
-	// deleteRequest(requestId: string) {
-	// 	this.firestore.doc("requests/" + requestId).delete();
-	// }
+	deleteVehicle(id: string) {
+		this.firestore.collection('vehicles').doc(id).delete();
+	}
 }
