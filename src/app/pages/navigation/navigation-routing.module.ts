@@ -26,13 +26,6 @@ const routes: Routes = [
 					import('./ongoing/ongoing.module').then((m) => m.OngoingPageModule),
 			},
 			{
-				path: 'ongoing/:id',
-				loadChildren: () =>
-					import('./ongoing-detail/ongoing-detail.module').then(
-						(m) => m.OngoingDetailPageModule
-					),
-			},
-			{
 				path: 'setting',
 				loadChildren: () =>
 					import('./settings/settings.module').then(

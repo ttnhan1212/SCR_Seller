@@ -9,15 +9,18 @@ P {
 	}
 }
 
-.request__button {
-	position: absolute;
-	top: 85%; /* position the top  edge of the element at the middle of the parent */
-	left: 50%; /* position the left edge of the element at the middle of the parent */
-	transform: translate(-50%, -50%);
+.request {
+	margin-top: 6rem;
+	&__button {
+		position: absolute;
+		top: 85%; /* position the top  edge of the element at the middle of the parent */
+		left: 50%; /* position the left edge of the element at the middle of the parent */
+		transform: translate(-50%, -50%);
 
-	text-align: center;
+		text-align: center;
 
-	width: 80vw;
+		width: 80vw;
 
-	z-index: 1;
+		z-index: 1;
+	}
 }

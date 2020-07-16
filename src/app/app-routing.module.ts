@@ -1,36 +1,43 @@
-import { ErrorsPage } from "./pages/errors/errors.page";
-import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { ErrorsPage } from './pages/errors/errors.page';
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 	{
-		path: "",
+		path: '',
 		loadChildren: () =>
-			import("./pages/index/index.module").then((m) => m.IndexPageModule),
+			import('./pages/index/index.module').then((m) => m.IndexPageModule),
 	},
 	{
-		path: "home",
+		path: 'home',
 		loadChildren: () =>
-			import("./pages/navigation/navigation.module").then(
+			import('./pages/navigation/navigation.module').then(
 				(m) => m.NavigationPageModule
 			),
 	},
 	{
-		path: "request",
+		path: 'request',
 		loadChildren: () =>
-			import("./pages/request/request.module").then((m) => m.RequestPageModule),
+			import('./pages/request/request.module').then((m) => m.RequestPageModule),
 	},
 	{
-		path: "ads",
+		path: 'ads',
 		loadChildren: () =>
-			import("./pages/adspage/adspage.module").then((m) => m.AdspagePageModule),
+			import('./pages/adspage/adspage.module').then((m) => m.AdspagePageModule),
 	},
 	{
-		path: "",
-		redirectTo: "",
-		pathMatch: "full",
+		path: 'home/ongoing/:id',
+		loadChildren: () =>
+			import('./pages/ongoing-detail/ongoing-detail.module').then(
+				(m) => m.OngoingDetailPageModule
+			),
 	},
-	{ path: "**", component: ErrorsPage },
+	{
+		path: '',
+		redirectTo: '',
+		pathMatch: 'full',
+	},
+	{ path: '**', component: ErrorsPage },
 ];
 
 @NgModule({
