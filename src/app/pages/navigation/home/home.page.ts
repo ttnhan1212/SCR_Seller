@@ -37,7 +37,7 @@ export class HomePage implements OnInit, OnDestroy {
 	constructor(
 		private modelService: ModelService,
 		public router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 		this.image = '../../../../assets/images/banners/banner2.jpg';
@@ -60,13 +60,15 @@ export class HomePage implements OnInit, OnDestroy {
 			},
 			(error: any) => {
 				console.log(error);
-			}
+			},
 		);
 	}
 
 	ngOnDestroy() {
-		this.modelSub.unsubscribe();
-		this.yearSub.unsubscribe();
+		if (this.modelSub && this.yearSub) {
+			this.modelSub.unsubscribe();
+			this.yearSub.unsubscribe();
+		}
 	}
 
 	async fetchYear(e: any) {
@@ -80,7 +82,7 @@ export class HomePage implements OnInit, OnDestroy {
 			},
 			(err: any) => {
 				console.log(err);
-			}
+			},
 		);
 	}
 

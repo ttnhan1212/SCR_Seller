@@ -5,10 +5,47 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+	<ion-grid class="mb-5">
+		<ion-row class="mt-4 mb-4">
+			<ion-col>
+				<ion-label class="pl-2 pr-2 fs-35">2009</ion-label>
+				<ion-label class="pl-2 pr-2 fs-35">K-5</ion-label>
+				<ion-label class="pl-2 pr-2">12K1234</ion-label>
+			</ion-col>
+		</ion-row>
+		<ion-label>Please upload car images</ion-label>
+		<ion-row class="mb-4 p-5">
+			<ion-col size="4">
+				<ion-label class="label fs-25">Front</ion-label>
+				<ion-img [src]="sample"></ion-img>
+			</ion-col>
+			<ion-col size="4">
+				<ion-label class="label fs-25">Back</ion-label>
+				<ion-img [src]="sample"></ion-img>
+			</ion-col>
+			<ion-col size="4">
+				<ion-label class="label fs-25">Left</ion-label>
+				<ion-img [src]="sample"></ion-img>
+			</ion-col>
+			<ion-col size="4">
+				<ion-label class="label fs-25">Right</ion-label>
+				<ion-img [src]="sample"></ion-img>
+			</ion-col>
+			<ion-col size="4">
+				<ion-img [src]="sample"></ion-img>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="text-center">
+				<ion-button expand="block">See Insurance history</ion-button>
+				<ion-label>Please upload at least 4 images</ion-label>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 	<form [formGroup]="detailForm">
-		<ion-item-group>
+		<ion-item-group class="mb-5">
 			<ion-item>
-				<ion-label position="floating">Seller</ion-label>
+				<ion-label position="floating">Name</ion-label>
 				<ion-input type="text" [formControl]="name"></ion-input>
 			</ion-item>
 			<ion-item>
@@ -17,7 +54,23 @@
 			</ion-item>
 			<ion-item>
 				<ion-label position="floating">Location</ion-label>
-				<ion-input type="text" [formControl]="location"></ion-input>
+				<ion-select
+					interface="action-sheet"
+					placeholder="Select your car year..."
+					[formControl]="location"
+				>
+					<ion-select-option *ngFor="let item of locations">
+						{{item.city}}
+					</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Mileages</ion-label>
+				<ion-input type="text" [formControl]="miles"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Other</ion-label>
+				<ion-textarea type="text" [formControl]="other"></ion-textarea>
 			</ion-item>
 		</ion-item-group>
 		<ion-button
@@ -25,7 +78,7 @@
 			(click)="updateRequest()"
 			[disabled]="!detailForm.valid"
 		>
-			Create Request
+			Request Quote
 		</ion-button>
 	</form>
 </ion-content>

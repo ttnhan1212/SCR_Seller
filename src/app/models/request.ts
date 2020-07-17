@@ -7,4 +7,5 @@ export class Request {
 	expiredTime: Date;
 	phone: number;
 	location: string;
+	status: string;
 }

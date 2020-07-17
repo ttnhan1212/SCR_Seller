@@ -9,15 +9,20 @@
 
 <ion-content class="p-1">
 	<ion-card class="p-2">
-		<ion-item>
-			<ion-label position="stacked">Plate Number</ion-label>
+		<ion-item class="mt-4">
+			<ion-label position="floating">Plate Number</ion-label>
 			<ion-input
 				type="text"
 				placeholder="Your Plate Number"
 				[(ngModel)]="plate"
 			></ion-input>
 		</ion-item>
-		<ion-button expand="block" [disabled]="!plate" (click)="createPlate()">
+		<ion-button
+			class="mt-4"
+			expand="block"
+			[disabled]="!plate"
+			(click)="createPlate()"
+		>
 			Confirm
 		</ion-button>
 	</ion-card>

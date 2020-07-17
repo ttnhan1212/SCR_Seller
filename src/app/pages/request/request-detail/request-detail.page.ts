@@ -1,3 +1,4 @@
+import { LocationService } from './../../../services/location.service';
 import { ToastService } from '../../../services/toast.service';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from '../../../services/auth.service';
@@ -22,12 +23,24 @@ export class RequestDetailPage implements OnInit {
 	sellerId: string;
 
 	detailForm: FormGroup;
-	name = new FormControl('', [Validators.required]);
-	phone = new FormControl(null, [Validators.required]);
-	location = new FormControl('', [Validators.required]);
+	name = new FormControl(
+		'',
+		Validators.compose([(Validators.minLength(3), Validators.required)]),
+	);
+	phone = new FormControl(
+		null,
+		Validators.compose([Validators.minLength(10), Validators.required]),
+	);
+	location = new FormControl('', Validators.required);
+	miles = new FormControl('', Validators.required);
+	other = new FormControl('', Validators.required);
 
 	effDate = Math.floor(new Date().getTime() / 1000.0);
 	expDate = Math.floor(new Date().getTime() / 1000.0 + 7200);
+
+	sample: any;
+
+	locations = [];
 
 	constructor(
 		private router: Router,
@@ -37,11 +50,13 @@ export class RequestDetailPage implements OnInit {
 		public authService: AuthService,
 		public loadingController: LoadingController,
 		public toast: ToastService,
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		public locationService: LocationService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		console.log(this.id);
 		this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
+		this.sample = '../../../../assets/images/png/spares/1.png';
 
 		this.detailForm = this.formBuilder.group({
 			name: this.name,
@@ -50,31 +65,27 @@ export class RequestDetailPage implements OnInit {
 			effectedTime: this.effDate,
 			expiredTime: this.expDate,
 			sellerId: this.sellerId,
+			miles: this.miles,
+			other: this.other,
 			status: 'ongoing',
 		});
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.locationService.getLocation().subscribe((data) => {
+			this.locations = data.map((val) => {
+				return {
+					city: val.payload.doc.data()['city'],
+				};
+			});
+		});
+	}
 
 	async updateRequest() {
 		const loading = await this.loadingController.create({
 			message: 'Please wait...',
 			showBackdrop: true,
 		});
-		// request["sellerName"] = this.name;
-		// request["phone"] = this.phone;
-		// request["location"] = this.location;
-		// request["effectedTime"] = this.effDate;
-		// request["expiredTime"] = this.expDate;
-		// request["sellerId"] = this.sellerId;
-		// request = {
-		// 	sellerName: this.name,
-		// 	phone: this.phone,
-		// 	location: this.location,
-		// 	effectedTime: this.effDate,
-		// 	expiredTime: this.expDate,
-		// 	sellerId: this.sellerId,
-		// };
 		console.log(this.detailForm.value);
 		try {
 			await loading.present();

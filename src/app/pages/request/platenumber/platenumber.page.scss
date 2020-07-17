@@ -1,4 +1,10 @@
 ion-card {
-	margin: 160px 20px;
-	display: block;
+	position: absolute;
+	top: 45%;
+	left: 48%;
+
+	transform: translate(-50%, -50%);
+
+	width: 90vw;
+	height: 20vh;
 }
