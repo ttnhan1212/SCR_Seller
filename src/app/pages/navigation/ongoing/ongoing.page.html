@@ -1,9 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>ongoing</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>
+			<ion-img [src]="logo" class="smllogo__img p-1" alt="logo"></ion-img>
+		</ion-title>
+		<ion-button fill="clear" slot="end" [routerLink]="['/','home','infor']">
+			<ion-icon name="information-circle-outline"></ion-icon>
+		</ion-button>
+		<ion-button
+			fill="clear"
+			slot="end"
+			[routerLink]="['/','home','notifications']"
+		>
+			<ion-icon name="notifications-outline"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+	<ion-card *ngFor="let request of requests">
+		<ion-item [routerLink]="[request.id]">
+			<ion-avatar slot="start">
+				<img src="../../../../assets/images/photos/8627.jpg" />
+			</ion-avatar>
+			<ion-label>
+				<h2>{{request.name}}</h2>
+				<ion-grid class="p-0 m-0">
+					<ion-row>
+						<ion-col>
+							<p>{{request.location}}</p>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="6">
+							<p>{{request.phone}}</p>
+						</ion-col>
+						<ion-col size="6">
+							<p>{{request.status}}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-label>
+		</ion-item>
+	</ion-card>
 </ion-content>

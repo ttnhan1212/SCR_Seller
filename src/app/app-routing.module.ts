@@ -12,7 +12,24 @@ const routes: Routes = [
 		path: 'home',
 		loadChildren: () =>
 			import('./pages/navigation/navigation.module').then(
-				(m) => m.NavigationPageModule,
+				(m) => m.NavigationPageModule
+			),
+	},
+	{
+		path: 'request',
+		loadChildren: () =>
+			import('./pages/request/request.module').then((m) => m.RequestPageModule),
+	},
+	{
+		path: 'ads',
+		loadChildren: () =>
+			import('./pages/adspage/adspage.module').then((m) => m.AdspagePageModule),
+	},
+	{
+		path: 'home/ongoing/:id',
+		loadChildren: () =>
+			import('./pages/ongoing-detail/ongoing-detail.module').then(
+				(m) => m.OngoingDetailPageModule
 			),
 	},
 	{

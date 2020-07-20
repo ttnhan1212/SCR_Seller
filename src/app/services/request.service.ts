@@ -1,27 +1,59 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { Request } from '../models/request';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class RequestService {
-	constructor(private firestore: AngularFirestore) {}
+	loggedUser: any;
 
-	getRequest = () => {
-		return this.firestore.collection('requests').snapshotChanges();
-	};
+	constructor(private firestore: AngularFirestore) {
+		if (this.isLoggedIn === true) {
+			this.loggedUser = JSON.parse(localStorage.getItem('user')).uid;
+		}
+	}
 
-	createRequest = (request: Request) => {
+	getRequest() {
+		return this.firestore
+			.collection('requests', (ref) =>
+				ref.where('sellerId', '==', this.loggedUser),
+			)
+			.snapshotChanges();
+	}
+	getRequestById(id: string) {
+		return this.firestore.collection('requests').doc(id).snapshotChanges();
+	}
+
+	createRequest(request: any) {
 		return this.firestore.collection('requests').add(request);
-	};
+	}
 
-	updateRequest = (request: Request) => {
-		delete request.id;
-		this.firestore.doc('requests/' + request.id).update(request);
-	};
+	createRequestBySeller(request: any, id: string) {
+		return this.firestore
+			.collection('Seller')
+			.doc(id)
+			.collection('Requests')
+			.add(request);
+	}
 
-	deleteRequest = (requestId: string) => {
-		this.firestore.doc('requests/' + requestId).delete();
-	};
+	get isLoggedIn(): boolean {
+		const user = JSON.parse(localStorage.getItem('user'));
+		return user !== null;
+	}
+
+	updateRequest(request: any, id: string) {
+		this.firestore.collection('requests').doc(id).update(request);
+	}
+	updateRequestBySeller(request: any, sellerId: string, requestId: string) {
+		this.firestore
+			.collection('Seller')
+			.doc(sellerId)
+			.collection('Requests')
+			.doc(requestId)
+			.update(request);
+	}
+
+	deleteRequest(id: string) {
+		this.firestore.collection('requests').doc(id).delete();
+	}
 }

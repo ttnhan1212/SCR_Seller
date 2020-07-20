@@ -1,3 +1,5 @@
+import { SellerService } from './services/seller.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -15,6 +17,8 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { AuthService } from './services/auth.service';
+
 @NgModule({
 	declarations: [AppComponent],
 	entryComponents: [],
@@ -25,9 +29,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 		BrowserAnimationsModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireAuthModule,
+		FormsModule,
+		ReactiveFormsModule,
 	],
 	providers: [
+		AuthService,
 		StatusBar,
+		SellerService,
 		SplashScreen,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 	],

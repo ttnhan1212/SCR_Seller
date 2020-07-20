@@ -1,0 +1,43 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			<ion-img [src]="logo" class="smllogo__img p-1" alt="logo"></ion-img>
+		</ion-title>
+		<ion-button fill="clear" slot="end" [routerLink]="['/','home','infor']">
+			<ion-icon name="information-circle-outline"></ion-icon>
+		</ion-button>
+		<ion-button
+			fill="clear"
+			slot="end"
+			[routerLink]="['/','home','notifications']"
+		>
+			<ion-icon name="notifications-outline"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<p class="mt-6 p-4 fs-25 text-center">
+		<strong>{{name}},{{data.year}}</strong> 는(은) 수출차 입니다
+	</p>
+	<p class="p-4 fs-20 mt-2">
+		“이 차는 이집트에서 인기 있는 차종으로 보통 이렇고 저렇습니다.”
+	</p>
+
+	<ion-card class="request">
+		<ion-slides pager="true" [options]="slideOpts">
+			<ion-slide>
+				<ion-img [src]="image"></ion-img>
+			</ion-slide>
+			<ion-slide>
+				<ion-img [src]="image"></ion-img>
+			</ion-slide>
+			<ion-slide>
+				<ion-img [src]="image"></ion-img>
+			</ion-slide>
+		</ion-slides>
+		<ion-button class="request__button" [routerLink]="['/','request','plate']">
+			Request Quote
+		</ion-button>
+	</ion-card>
+</ion-content>

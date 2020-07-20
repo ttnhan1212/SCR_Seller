@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./errors.page.scss'],
 })
 export class ErrorsPage implements OnInit {
-	constructor(private router: Router) {}
+	constructor(public router: Router) {}
 
 	ngOnInit() {}
 
 	navigateHome = () => {
-		this.router.navigate(['home/request']);
+		this.router.navigate(['home', 'seller']);
 	};
 }

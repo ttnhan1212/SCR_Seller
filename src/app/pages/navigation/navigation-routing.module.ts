@@ -1,10 +1,12 @@
-import { ErrorsPage } from './../errors/errors.page';
+// import { ErrorsPage } from './../errors/errors.page';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { NavigationPage } from './navigation.page';
 
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { ExportPageModule } from './export/export.module';
+import { ExportPage } from './export/export.page';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -14,9 +16,9 @@ const routes: Routes = [
 		component: NavigationPage,
 		children: [
 			{
-				path: 'request',
+				path: 'seller',
 				loadChildren: () =>
-					import('./request/request.module').then((m) => m.RequestPageModule),
+					import('./home/home.module').then((m) => m.HomePageModule),
 			},
 			{
 				path: 'ongoing',
@@ -27,10 +29,32 @@ const routes: Routes = [
 				path: 'setting',
 				loadChildren: () =>
 					import('./settings/settings.module').then(
-						(m) => m.SettingsPageModule,
+						(m) => m.SettingsPageModule
 					),
 			},
-			// { path: '**', component: ErrorsPage },
+			{
+				path: 'infor',
+				loadChildren: () =>
+					import('./infor/infor.module').then((m) => m.InforPageModule),
+			},
+			{
+				path: 'notifications',
+				loadChildren: () =>
+					import('./notifications/notifications.module').then(
+						(m) => m.NotificationsPageModule
+					),
+			},
+			{
+				path: 'export',
+				component: ExportPage,
+				loadChildren: () =>
+					import('./export/export.module').then((m) => m.ExportPageModule),
+			},
+			{
+				path: '',
+				redirectTo: 'home',
+				pathMatch: 'full',
+			},
 		],
 		...canActivate(redirectUnauthorizedToLogin),
 	},

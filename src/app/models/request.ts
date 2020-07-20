@@ -1,10 +1,11 @@
-import { Timestamp } from 'rxjs';
-
 export class Request {
 	id: string;
-	uuid: string;
+	sellerId: string;
 	name: string;
-	vehicle_id: string;
-	effectiveTime: Date;
-	expireDate: Date;
+	vehiclesId: string;
+	effectedTime: Date;
+	expiredTime: Date;
+	phone: number;
+	location: string;
+	status: string;
 }

@@ -1,0 +1,139 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			<ion-img [src]="logo" class="smllogo__img p-1" alt="logo"></ion-img>
+		</ion-title>
+		<ion-button fill="clear" slot="end" [routerLink]="['/','home','infor']">
+			<ion-icon name="information-circle-outline"></ion-icon>
+		</ion-button>
+		<ion-button
+			fill="clear"
+			slot="end"
+			[routerLink]="['/','home','notifications']"
+		>
+			<ion-icon name="notifications-outline"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	<form [formGroup]="exportForm" (ngSubmit)="exportSubmit()">
+		<ion-item class="ion-margin-bottom">
+			<ion-label position="stacked">Model</ion-label>
+			<ion-select
+				interface="action-sheet"
+				placeholder="Select your car model..."
+				(ionChange)="fetchYear($event)"
+				[formControl]="model"
+			>
+				<ion-select-option *ngFor="let model of models" [value]="model.id">
+					{{model.name}}
+				</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item class="ion-margin-bottom">
+			<ion-label position="stacked">Year</ion-label>
+			<ion-select
+				interface="action-sheet"
+				placeholder="Select your car year..."
+				[formControl]="year"
+			>
+				<ion-select-option *ngFor="let year of years">
+					{{year.year}}
+				</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-button
+			class="ion-margin-bottom export__button"
+			expand="block"
+			type="submit"
+			[disabled]="!exportForm.valid"
+		>
+			Check export availability
+		</ion-button>
+	</form>
+	<ion-card class="m-0">
+		<ion-slides pager="true" [options]="slideOpts">
+			<ion-slide>
+				<ion-img [src]="image"></ion-img>
+			</ion-slide>
+			<ion-slide>
+				<ion-img [src]="image"></ion-img>
+			</ion-slide>
+			<ion-slide>
+				<ion-img [src]="image"></ion-img>
+			</ion-slide>
+		</ion-slides>
+		<ion-button class="request__button" [routerLink]="['/','request','plate']">
+			Request Quote
+		</ion-button>
+	</ion-card>
+	<ion-item-divider></ion-item-divider>
+	<ion-grid class="p-0">
+		<ion-row>
+			<ion-col size="6" class="ion-no-padding">
+				<ion-card [routerLink]="['/','home','setting']">
+					<ion-img class="item__image" [src]="image"></ion-img>
+					<ion-card-header>
+						<ion-card-subtitle>Rating</ion-card-subtitle>
+						<ion-card-title>Name</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>Descriptions</ion-card-content>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6" class="ion-no-padding">
+				<ion-card [routerLink]="['/','home','setting']">
+					<ion-img class="item__image" [src]="image"></ion-img>
+					<ion-card-header>
+						<ion-card-subtitle>Rating</ion-card-subtitle>
+						<ion-card-title>Name</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>Descriptions</ion-card-content>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6" class="ion-no-padding">
+				<ion-card [routerLink]="['/','home','setting']">
+					<ion-img class="item__image" [src]="image"></ion-img>
+					<ion-card-header>
+						<ion-card-subtitle>Rating</ion-card-subtitle>
+						<ion-card-title>Name</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>Descriptions</ion-card-content>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6" class="ion-no-padding">
+				<ion-card [routerLink]="['/','home','setting']">
+					<ion-img class="item__image" [src]="image"></ion-img>
+					<ion-card-header>
+						<ion-card-subtitle>Rating</ion-card-subtitle>
+						<ion-card-title>Name</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>Descriptions</ion-card-content>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6" class="ion-no-padding">
+				<ion-card [routerLink]="['/','home','setting']">
+					<ion-img class="item__image" [src]="image"></ion-img>
+					<ion-card-header>
+						<ion-card-subtitle>Rating</ion-card-subtitle>
+						<ion-card-title>Name</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>Descriptions</ion-card-content>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6" class="ion-no-padding">
+				<ion-card [routerLink]="['/','home','setting']">
+					<ion-img class="item__image" [src]="image"></ion-img>
+					<ion-card-header>
+						<ion-card-subtitle>Rating</ion-card-subtitle>
+						<ion-card-title>Name</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>Descriptions</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
