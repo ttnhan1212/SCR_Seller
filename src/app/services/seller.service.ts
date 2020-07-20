@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class SellerService {
 	constructor(private firestore: AngularFirestore) {}
 
-	createSeller(seller: any) {
-		return this.firestore.collection('Seller').add(seller);
+	createSeller(id: string, seller: any) {
+		return this.firestore.collection('Seller').doc(id).set(seller);
 	}
 
 	getSeller() {

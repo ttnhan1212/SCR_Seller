@@ -16,7 +16,7 @@ export class RequestService {
 	getRequest() {
 		return this.firestore
 			.collection('requests', (ref) =>
-				ref.where('sellerId', '==', this.loggedUser)
+				ref.where('sellerId', '==', this.loggedUser),
 			)
 			.snapshotChanges();
 	}
@@ -28,6 +28,14 @@ export class RequestService {
 		return this.firestore.collection('requests').add(request);
 	}
 
+	createRequestBySeller(request: any, id: string) {
+		return this.firestore
+			.collection('Seller')
+			.doc(id)
+			.collection('Requests')
+			.add(request);
+	}
+
 	get isLoggedIn(): boolean {
 		const user = JSON.parse(localStorage.getItem('user'));
 		return user !== null;
@@ -35,6 +43,14 @@ export class RequestService {
 
 	updateRequest(request: any, id: string) {
 		this.firestore.collection('requests').doc(id).update(request);
+	}
+	updateRequestBySeller(request: any, sellerId: string, requestId: string) {
+		this.firestore
+			.collection('Seller')
+			.doc(sellerId)
+			.collection('Requests')
+			.doc(requestId)
+			.update(request);
 	}
 
 	deleteRequest(id: string) {

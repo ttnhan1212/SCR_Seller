@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { RequestService } from '../../../services/request.service';
 import { ToastService } from '../../../services/toast.service';
 import { LoadingController } from '@ionic/angular';
@@ -14,6 +14,11 @@ import { VehicleService } from '../../../services/vehicles.service';
 })
 export class PlatenumberPage implements OnInit {
 	plate: string;
+
+	sellerId: string;
+	requestSellerId: string;
+
+	requestState: NavigationExtras;
 	constructor(
 		public vehicleService: VehicleService,
 		public requestService: RequestService,
@@ -21,8 +26,10 @@ export class PlatenumberPage implements OnInit {
 		public authService: AuthService,
 		public loadingController: LoadingController,
 		public toast: ToastService,
-		public route: Router
-	) {}
+		public route: Router,
+	) {
+		this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
+	}
 
 	ngOnInit() {}
 
@@ -45,11 +52,32 @@ export class PlatenumberPage implements OnInit {
 					request['vehiclesId'] = res.id;
 					try {
 						this.toast.showToast('Your request is successfully created!');
-						this.requestService.createRequest(request).then((val) => {
-							setTimeout(() => {
-								this.route.navigate(['/', 'request', val.id]);
-							}, 1000);
-						});
+						this.requestService
+							.createRequestBySeller(request, this.sellerId)
+							.then((val) => {
+								this.requestSellerId = val.id;
+								console.log(this.requestSellerId);
+							})
+							.catch((err) => {
+								console.log(err.message);
+							});
+						this.requestService
+							.createRequest(request)
+							.then((val) => {
+								this.requestState = {
+									state: {
+										requestSellerId: this.requestSellerId,
+									},
+								};
+								console.log(this.requestState.state.requestSellerId);
+								this.route.navigate(
+									['/', 'request', val.id],
+									this.requestState,
+								);
+							})
+							.catch((err) => {
+								console.log(err.message);
+							});
 					} catch (error) {
 						this.toast.showToast(error.message);
 					}

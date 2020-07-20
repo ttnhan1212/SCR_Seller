@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
 			await this.authService.loginAny();
 			await this.afAuth.onAuthStateChanged((user) => {
 				if (user) {
-					this.sellerService.createSeller({
+					this.sellerService.createSeller(user.uid, {
 						seller_name: this.name,
 						uid: user.uid,
 						create_date: this.createDate,

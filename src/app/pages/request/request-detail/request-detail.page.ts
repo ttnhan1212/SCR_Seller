@@ -21,6 +21,7 @@ import {
 export class RequestDetailPage implements OnInit {
 	id: string;
 	sellerId: string;
+	request: any;
 
 	detailForm: FormGroup;
 	name = new FormControl(
@@ -54,9 +55,14 @@ export class RequestDetailPage implements OnInit {
 		public locationService: LocationService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
-		console.log(this.id);
 		this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
 		this.sample = '../../../../assets/images/png/spares/1.png';
+
+		this.route.queryParams.subscribe((params) => {
+			if (this.router.getCurrentNavigation().extras.state) {
+				this.request = this.router.getCurrentNavigation().extras.state.requestSellerId;
+			}
+		});
 
 		this.detailForm = this.formBuilder.group({
 			name: this.name,
@@ -86,16 +92,18 @@ export class RequestDetailPage implements OnInit {
 			message: 'Please wait...',
 			showBackdrop: true,
 		});
-		console.log(this.detailForm.value);
 		try {
 			await loading.present();
-			console.log(this.detailForm.value);
+			await this.requestService.updateRequestBySeller(
+				this.detailForm.value,
+				this.sellerId,
+				this.request,
+			);
 			await this.requestService.updateRequest(this.detailForm.value, this.id);
-			this.toast.showToast('Your request is successfully uploaded!');
+			await this.toast.showToast('Your request is successfully uploaded!');
 			await loading.dismiss();
-			this.router.navigate(['/', 'home', 'ongoing']);
+			await this.router.navigate(['/', 'home', 'ongoing']);
 		} catch (error) {
-			console.log(error);
 			this.toast.showToast(error.message);
 			await loading.dismiss();
 		}
