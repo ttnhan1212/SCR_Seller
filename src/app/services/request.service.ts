@@ -13,6 +13,11 @@ export class RequestService {
 		}
 	}
 
+	get isLoggedIn(): boolean {
+		const user = JSON.parse(localStorage.getItem('user'));
+		return user !== null;
+	}
+
 	getRequest() {
 		return this.firestore
 			.collection('requests', (ref) =>
@@ -22,6 +27,14 @@ export class RequestService {
 	}
 	getRequestById(id: string) {
 		return this.firestore.collection('requests').doc(id).snapshotChanges();
+	}
+
+	getParticipant(id: string) {
+		return this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants')
+			.snapshotChanges();
 	}
 
 	createRequest(request: any) {
@@ -34,11 +47,6 @@ export class RequestService {
 			.doc(id)
 			.collection('Requests')
 			.add(request);
-	}
-
-	get isLoggedIn(): boolean {
-		const user = JSON.parse(localStorage.getItem('user'));
-		return user !== null;
 	}
 
 	updateRequest(request: any, id: string) {
