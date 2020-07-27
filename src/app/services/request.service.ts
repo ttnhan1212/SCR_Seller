@@ -29,14 +29,6 @@ export class RequestService {
 		return this.firestore.collection('requests').doc(id).snapshotChanges();
 	}
 
-	getParticipant(id: string) {
-		return this.firestore
-			.collection('requests')
-			.doc(id)
-			.collection('participants')
-			.snapshotChanges();
-	}
-
 	createRequest(request: any) {
 		return this.firestore.collection('requests').add(request);
 	}
@@ -63,5 +55,22 @@ export class RequestService {
 
 	deleteRequest(id: string) {
 		this.firestore.collection('requests').doc(id).delete();
+	}
+
+	getParticipant(id: string) {
+		return this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants')
+			.snapshotChanges();
+	}
+
+	deleteParticipant(id: string, partId: string) {
+		this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants')
+			.doc(partId)
+			.delete();
 	}
 }

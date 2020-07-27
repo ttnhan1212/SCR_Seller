@@ -59,6 +59,15 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 			});
 	}
 
+	async selectDealer(user) {
+		await this.requestService.updateRequest({ dealerId: user }, this.id);
+		await this.requestService.getParticipant(this.id).subscribe((val) => {
+			val.forEach((part) => {
+				this.requestService.deleteParticipant(this.id, part.payload.doc.id);
+			});
+		});
+	}
+
 	ngOnDestroy() {
 		if (this.myValueSub && this.dealerSub && this.partSub) {
 			this.myValueSub.unsubscribe();
