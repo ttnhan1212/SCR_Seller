@@ -15,6 +15,7 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	ongoing = {};
 	participants: any = [];
 	dealer = {};
+	selectedDealer: boolean;
 
 	myValueSub: Subscription;
 	dealerSub: Subscription;
@@ -37,7 +38,12 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 				};
 			});
 
-		this.dealerSub = this.requestService
+		this.getParticipant();
+		this.selectedRequest();
+	}
+
+	async getParticipant() {
+		this.dealerSub = await this.requestService
 			.getParticipant(this.id)
 			.subscribe((val) => {
 				this.participants = val.map((m) => {
@@ -61,14 +67,30 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 
 	async selectDealer(user) {
 		await this.requestService.updateParticipant(this.id, user, {
-			status: true,
+			selected: true,
+		});
+	}
+
+	async selectedRequest() {
+		await this.requestService.selectedRequest(this.id).subscribe((val) => {
+			if (val.length > 0) {
+				this.selectedDealer = Boolean(val);
+			} else {
+				this.selectedDealer = !Boolean(val);
+			}
 		});
 	}
 
 	ngOnDestroy() {
-		if (this.myValueSub && this.dealerSub && this.partSub) {
+		if (this.myValueSub) {
 			this.myValueSub.unsubscribe();
+		}
+
+		if (this.dealerSub) {
 			this.dealerSub.unsubscribe();
+		}
+
+		if (this.partSub) {
 			this.partSub.unsubscribe();
 		}
 	}

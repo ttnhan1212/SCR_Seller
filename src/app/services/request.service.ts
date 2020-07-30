@@ -82,4 +82,12 @@ export class RequestService {
 			.doc(partId)
 			.delete();
 	}
+
+	selectedRequest(id: string) {
+		return this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants', (ref) => ref.where('selected', '==', true))
+			.snapshotChanges();
+	}
 }
