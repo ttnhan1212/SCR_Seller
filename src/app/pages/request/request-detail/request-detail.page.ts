@@ -74,6 +74,7 @@ export class RequestDetailPage implements OnInit {
 			miles: this.miles,
 			other: this.other,
 			status: 'ongoing',
+			participants: [],
 		});
 	}
 

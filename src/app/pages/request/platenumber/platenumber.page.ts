@@ -1,3 +1,4 @@
+import { NotiService } from './../../../services/noti.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { RequestService } from '../../../services/request.service';
 import { ToastService } from '../../../services/toast.service';
@@ -27,6 +28,7 @@ export class PlatenumberPage implements OnInit {
 		public loadingController: LoadingController,
 		public toast: ToastService,
 		public route: Router,
+		public notiService: NotiService,
 	) {
 		this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
 	}
@@ -50,6 +52,7 @@ export class PlatenumberPage implements OnInit {
 					this.plate = '';
 					let request = {};
 					request['vehiclesId'] = res.id;
+					request['status'] = 'draft';
 					try {
 						this.toast.showToast('Your request is successfully created!');
 						this.requestService
@@ -69,7 +72,13 @@ export class PlatenumberPage implements OnInit {
 										requestSellerId: this.requestSellerId,
 									},
 								};
-								console.log(this.requestState.state.requestSellerId);
+
+								this.notiService.createNoti({
+									requestId: val.id,
+									status: 'ongoing',
+									updateDate: Math.floor(new Date().getTime() / 1000.0),
+									user: this.sellerId,
+								});
 								this.route.navigate(
 									['/', 'request', val.id],
 									this.requestState,

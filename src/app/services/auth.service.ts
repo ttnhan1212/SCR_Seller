@@ -1,9 +1,7 @@
-import { SellerService } from './seller.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
-import { FormGroup } from '@angular/forms';
 
 @Injectable({
 	providedIn: 'root',

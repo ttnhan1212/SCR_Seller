@@ -13,6 +13,11 @@ export class RequestService {
 		}
 	}
 
+	get isLoggedIn(): boolean {
+		const user = JSON.parse(localStorage.getItem('user'));
+		return user !== null;
+	}
+
 	getRequest() {
 		return this.firestore
 			.collection('requests', (ref) =>
@@ -36,11 +41,6 @@ export class RequestService {
 			.add(request);
 	}
 
-	get isLoggedIn(): boolean {
-		const user = JSON.parse(localStorage.getItem('user'));
-		return user !== null;
-	}
-
 	updateRequest(request: any, id: string) {
 		this.firestore.collection('requests').doc(id).update(request);
 	}
@@ -55,5 +55,31 @@ export class RequestService {
 
 	deleteRequest(id: string) {
 		this.firestore.collection('requests').doc(id).delete();
+	}
+
+	getParticipant(id: string) {
+		return this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants')
+			.snapshotChanges();
+	}
+
+	updateParticipant(id: string, partId: string, status: any) {
+		this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants')
+			.doc(partId)
+			.update(status);
+	}
+
+	deleteParticipant(id: string, partId: string) {
+		this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants')
+			.doc(partId)
+			.delete();
 	}
 }
