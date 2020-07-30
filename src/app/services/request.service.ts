@@ -65,6 +65,15 @@ export class RequestService {
 			.snapshotChanges();
 	}
 
+	updateParticipant(id: string, partId: string, status: any) {
+		this.firestore
+			.collection('requests')
+			.doc(id)
+			.collection('participants')
+			.doc(partId)
+			.update(status);
+	}
+
 	deleteParticipant(id: string, partId: string) {
 		this.firestore
 			.collection('requests')

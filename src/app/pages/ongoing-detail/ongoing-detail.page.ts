@@ -1,4 +1,3 @@
-import { Request } from '../../models/request';
 import { RequestService } from '../../services/request.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -43,6 +42,7 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 			.subscribe((val) => {
 				this.participants = val.map((m) => {
 					return {
+						id: m.payload.doc.id,
 						bidTime: m.payload.doc.data()['bidTime'],
 						price: m.payload.doc.data()['price'],
 						user: m.payload.doc.data()['userId'],
@@ -60,11 +60,8 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	}
 
 	async selectDealer(user) {
-		await this.requestService.updateRequest({ dealerId: user }, this.id);
-		await this.requestService.getParticipant(this.id).subscribe((val) => {
-			val.forEach((part) => {
-				this.requestService.deleteParticipant(this.id, part.payload.doc.id);
-			});
+		await this.requestService.updateParticipant(this.id, user, {
+			status: true,
 		});
 	}
 
