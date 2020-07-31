@@ -8,4 +8,7 @@ export class Request {
 	phone: number;
 	location: string;
 	status: string;
+	miles: number;
+	other: string;
+	participants: [];
 }
