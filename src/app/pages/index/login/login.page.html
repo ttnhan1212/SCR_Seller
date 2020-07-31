@@ -26,59 +26,16 @@
 				<div class="single-page">
 					<div class="col-lg-5 col-xl-4 col-md-6 d-block mx-auto">
 						<div class="wrapper wrapper2">
+							<div class="card-body">
+								<h3>Continue as:</h3>
+								<ion-input type="text" style="color: black;" [(ngModel)]="name"></ion-input>
+								<br/>
+								<ion-button expand="block" color="tertiary" (click)="anonyLogin()">
+									Proceed
+								</ion-button>
+								<!-- </form> -->
+							</div>
 							<!-- <form id="login" class="card-body" tabindex="500"> -->
-							<h3>Continue as:</h3>
-							<ion-input
-								type="text"
-								style="color: black;"
-								[(ngModel)]="name"
-							></ion-input>
-							<ion-button
-								expand="block"
-								color="tertiary"
-								(click)="anonyLogin()"
-							>
-								Seller
-							</ion-button>
-							<!-- </form> -->
-							<hr class="divider" />
-							<ion-grid>
-								<ion-text class="text-body text-center">
-									Continue using Social Accounts
-								</ion-text>
-								<ion-row>
-									<ion-col>
-										<ion-button
-											fill="outline"
-											shape="round"
-											color="dark"
-											href="https://www.facebook.com/"
-											class="text-left"
-										>
-											<ion-icon
-												slot="start"
-												src="../../../assets/images/svgs/facebook.svg"
-											></ion-icon>
-											Facebook
-										</ion-button>
-									</ion-col>
-									<ion-col>
-										<ion-button
-											fill="outline"
-											shape="round"
-											color="dark"
-											href="https://www.google.com/gmail/"
-											class="text-left"
-										>
-											<ion-icon
-												slot="start"
-												src="../../../assets/images/svgs/search.svg"
-											></ion-icon>
-											Google
-										</ion-button>
-									</ion-col>
-								</ion-row>
-							</ion-grid>
 						</div>
 					</div>
 				</div>
