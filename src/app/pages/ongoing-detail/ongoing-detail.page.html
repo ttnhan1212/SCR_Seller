@@ -36,7 +36,12 @@
 		</ion-grid>
 	</ion-card>
 
-	<ion-item-group class="mt-8">
+	<ion-item-group class="mt-8 text-center" *ngIf="selectedDealer">
+		<ion-label>Waiting for confirmation</ion-label>
+		<ion-spinner name="dots"></ion-spinner>
+	</ion-item-group>
+
+	<ion-item-group class="mt-8" *ngIf="!selectedDealer">
 		<ion-label>Please select a Dealer</ion-label>
 		<ion-item-sliding *ngFor="let item of participants">
 			<ion-item>
