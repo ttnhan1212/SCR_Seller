@@ -31,3 +31,29 @@
 
 	z-index: 1;
 }
+
+ion-ripple-effect {
+    color: #5260ff;
+} 
+
+.fa {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.item-overly-trans .rating-stars .rating-stars-container .rating-star.sm {
+	color: #f1c40f !important;
+}
+
+.rating-stars .rating-stars-container .rating-star.sm {
+	font-size: 13px;
+}
+
+.item-overly-trans .rating-stars {
+	position: unset;
+	display: table;
+}
