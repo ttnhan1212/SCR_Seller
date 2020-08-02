@@ -36,7 +36,7 @@
       !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/a11y.js ***!
       \*****************************************************************/
 
-    /*! exports provided: A11yModule, ActiveDescendantKeyManager, AriaDescriber, CDK_DESCRIBEDBY_HOST_ATTRIBUTE, CDK_DESCRIBEDBY_ID_PREFIX, CdkAriaLive, CdkMonitorFocus, CdkTrapFocus, ConfigurableFocusTrap, ConfigurableFocusTrapFactory, EventListenerFocusTrapInertStrategy, FOCUS_MONITOR_DEFAULT_OPTIONS, FOCUS_TRAP_INERT_STRATEGY, FocusKeyManager, FocusMonitor, FocusTrap, FocusTrapFactory, HighContrastModeDetector, InteractivityChecker, LIVE_ANNOUNCER_DEFAULT_OPTIONS, LIVE_ANNOUNCER_ELEMENT_TOKEN, LIVE_ANNOUNCER_ELEMENT_TOKEN_FACTORY, ListKeyManager, LiveAnnouncer, MESSAGES_CONTAINER_ID, TOUCH_BUFFER_MS, isFakeMousedownFromScreenReader, ɵangular_material_src_cdk_a11y_a11y_a, ɵangular_material_src_cdk_a11y_a11y_b */
+    /*! exports provided: A11yModule, ActiveDescendantKeyManager, AriaDescriber, CDK_DESCRIBEDBY_HOST_ATTRIBUTE, CDK_DESCRIBEDBY_ID_PREFIX, CdkAriaLive, CdkMonitorFocus, CdkTrapFocus, ConfigurableFocusTrap, ConfigurableFocusTrapFactory, EventListenerFocusTrapInertStrategy, FOCUS_MONITOR_DEFAULT_OPTIONS, FOCUS_TRAP_INERT_STRATEGY, FocusKeyManager, FocusMonitor, FocusTrap, FocusTrapFactory, HighContrastModeDetector, InteractivityChecker, IsFocusableConfig, LIVE_ANNOUNCER_DEFAULT_OPTIONS, LIVE_ANNOUNCER_ELEMENT_TOKEN, LIVE_ANNOUNCER_ELEMENT_TOKEN_FACTORY, ListKeyManager, LiveAnnouncer, MESSAGES_CONTAINER_ID, TOUCH_BUFFER_MS, isFakeMousedownFromScreenReader, ɵangular_material_src_cdk_a11y_a11y_a, ɵangular_material_src_cdk_a11y_a11y_b */
 
     /***/
     function node_modulesAngularCdk__ivy_ngcc__Fesm2015A11yJs(module, __webpack_exports__, __webpack_require__) {
@@ -160,6 +160,12 @@
       /* harmony export (binding) */
 
 
+      __webpack_require__.d(__webpack_exports__, "IsFocusableConfig", function () {
+        return IsFocusableConfig;
+      });
+      /* harmony export (binding) */
+
+
       __webpack_require__.d(__webpack_exports__, "LIVE_ANNOUNCER_DEFAULT_OPTIONS", function () {
         return LIVE_ANNOUNCER_DEFAULT_OPTIONS;
       });
@@ -232,33 +238,33 @@
       /* harmony import */
 
 
-      var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/cdk/platform */
+      "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
+      /* harmony import */
+
+
+      var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! rxjs */
       "./node_modules/rxjs/_esm2015/index.js");
       /* harmony import */
 
 
-      var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/cdk/keycodes */
       "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js");
       /* harmony import */
 
 
-      var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! rxjs/operators */
       "./node_modules/rxjs/_esm2015/operators/index.js");
       /* harmony import */
 
 
-      var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @angular/cdk/coercion */
       "./node_modules/@angular/cdk/fesm2015/coercion.js");
-      /* harmony import */
-
-
-      var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! @angular/cdk/platform */
-      "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
       /* harmony import */
 
 
@@ -356,9 +362,14 @@
        */
 
       var AriaDescriber = /*#__PURE__*/function () {
-        function AriaDescriber(_document) {
+        function AriaDescriber(_document,
+        /**
+         * @breaking-change 8.0.0 `_platform` parameter to be made required.
+         */
+        _platform) {
           _classCallCheck(this, AriaDescriber);
 
+          this._platform = _platform;
           this._document = _document;
         }
         /**
@@ -488,6 +499,9 @@
           key: "_createMessagesContainer",
           value: function _createMessagesContainer() {
             if (!messagesContainer) {
+              // @breaking-change 8.0.0 `_platform` null check can be removed once the parameter is required
+              var canBeAriaHidden = !this._platform || !this._platform.EDGE && !this._platform.TRIDENT;
+
               var preExistingContainer = this._document.getElementById(MESSAGES_CONTAINER_ID); // When going from the server to the client, we may end up in a situation where there's
               // already a container on the page, but we don't have a reference to it. Clear the
               // old container so we don't get duplicates. Doing this, instead of emptying the previous
@@ -500,8 +514,12 @@
 
               messagesContainer = this._document.createElement('div');
               messagesContainer.id = MESSAGES_CONTAINER_ID;
-              messagesContainer.setAttribute('aria-hidden', 'true');
-              messagesContainer.style.display = 'none';
+              messagesContainer.classList.add('cdk-visually-hidden'); // IE and Edge won't read out the messages if they're in an `aria-hidden` container.
+              // We only disable `aria-hidden` for these platforms, because it comes with the
+              // disadvantage that people might hit the messages when they've navigated past
+              // the end of the document using the arrow keys.
+
+              messagesContainer.setAttribute('aria-hidden', canBeAriaHidden + '');
 
               this._document.body.appendChild(messagesContainer);
             }
@@ -600,12 +618,12 @@
       }();
 
       AriaDescriber.ɵfac = function AriaDescriber_Factory(t) {
-        return new (t || AriaDescriber)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+        return new (t || AriaDescriber)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]));
       };
 
       AriaDescriber.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({
         factory: function AriaDescriber_Factory() {
-          return new AriaDescriber(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+          return new AriaDescriber(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]));
         },
         token: AriaDescriber,
         providedIn: "root"
@@ -618,6 +636,8 @@
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
             args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
           }]
+        }, {
+          type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
         }];
       };
       /*@__PURE__*/
@@ -636,6 +656,8 @@
               type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
               args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
             }]
+          }, {
+            type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
           }];
         }, null);
       })();
@@ -663,10 +685,11 @@
           this._activeItemIndex = -1;
           this._activeItem = null;
           this._wrap = false;
-          this._letterKeyStream = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-          this._typeaheadSubscription = rxjs__WEBPACK_IMPORTED_MODULE_2__["Subscription"].EMPTY;
+          this._letterKeyStream = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+          this._typeaheadSubscription = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
           this._vertical = true;
           this._allowedModifierKeys = [];
+          this._homeAndEnd = false;
           /**
            * Predicate function that can be used to check whether an item should be skipped
            * by the key manager. By default, disabled items are skipped.
@@ -683,10 +706,10 @@
            * when focus is shifted off of the list.
            */
 
-          this.tabOut = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+          this.tabOut = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
           /** Stream that emits whenever the active item of the list manager changes. */
 
-          this.change = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"](); // We allow for the items to be an array because, in some cases, the consumer may
+          this.change = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](); // We allow for the items to be an array because, in some cases, the consumer may
           // not have access to a QueryList of the items they want to manage (e.g. when the
           // items aren't being collected via `ViewChildren` or `ContentChildren`).
 
@@ -787,11 +810,11 @@
             // with that string and select it.
 
 
-            this._typeaheadSubscription = this._letterKeyStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (letter) {
+            this._typeaheadSubscription = this._letterKeyStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (letter) {
               return _this2._pressedLetters.push(letter);
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(debounceInterval), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["filter"])(function () {
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["debounceTime"])(debounceInterval), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(function () {
               return _this2._pressedLetters.length > 0;
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function () {
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function () {
               return _this2._pressedLetters.join('');
             })).subscribe(function (inputString) {
               var items = _this2._getItemsArray(); // Start at 1 because we want to start searching at the item immediately
@@ -811,6 +834,17 @@
 
               _this2._pressedLetters = [];
             });
+            return this;
+          }
+          /**
+           * Configures the key manager to focus the first and last items
+           * respectively when the Home key and End Key are pressed.
+           */
+
+        }, {
+          key: "withHomeAndEnd",
+          value: function withHomeAndEnd() {
+            this._homeAndEnd = true;
             return this;
           }
         }, {
@@ -840,11 +874,11 @@
             });
 
             switch (keyCode) {
-              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["TAB"]:
+              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["TAB"]:
                 this.tabOut.next();
                 return;
 
-              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["DOWN_ARROW"]:
+              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["DOWN_ARROW"]:
                 if (this._vertical && isModifierAllowed) {
                   this.setNextItemActive();
                   break;
@@ -852,7 +886,7 @@
                   return;
                 }
 
-              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["UP_ARROW"]:
+              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["UP_ARROW"]:
                 if (this._vertical && isModifierAllowed) {
                   this.setPreviousItemActive();
                   break;
@@ -860,7 +894,7 @@
                   return;
                 }
 
-              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["RIGHT_ARROW"]:
+              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["RIGHT_ARROW"]:
                 if (this._horizontal && isModifierAllowed) {
                   this._horizontal === 'rtl' ? this.setPreviousItemActive() : this.setNextItemActive();
                   break;
@@ -868,7 +902,7 @@
                   return;
                 }
 
-              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["LEFT_ARROW"]:
+              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["LEFT_ARROW"]:
                 if (this._horizontal && isModifierAllowed) {
                   this._horizontal === 'rtl' ? this.setNextItemActive() : this.setPreviousItemActive();
                   break;
@@ -876,13 +910,29 @@
                   return;
                 }
 
+              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["HOME"]:
+                if (this._homeAndEnd && isModifierAllowed) {
+                  this.setFirstItemActive();
+                  break;
+                } else {
+                  return;
+                }
+
+              case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["END"]:
+                if (this._homeAndEnd && isModifierAllowed) {
+                  this.setLastItemActive();
+                  break;
+                } else {
+                  return;
+                }
+
               default:
-                if (isModifierAllowed || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["hasModifierKey"])(event, 'shiftKey')) {
+                if (isModifierAllowed || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["hasModifierKey"])(event, 'shiftKey')) {
                   // Attempt to use the `event.key` which also maps it to the user's keyboard language,
                   // otherwise fall back to resolving alphanumeric characters via the keyCode.
                   if (event.key && event.key.length === 1) {
                     this._letterKeyStream.next(event.key.toLocaleUpperCase());
-                  } else if (keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["A"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["Z"] || keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["ZERO"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["NINE"]) {
+                  } else if (keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["A"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["Z"] || keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["ZERO"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["NINE"]) {
                     this._letterKeyStream.next(String.fromCharCode(keyCode));
                   }
                 } // Note that we return here, in order to avoid preventing
@@ -1126,7 +1176,20 @@
        * Use of this source code is governed by an MIT-style license that can be
        * found in the LICENSE file at https://angular.io/license
        */
-      // The InteractivityChecker leans heavily on the ally.js accessibility utilities.
+
+      /**
+       * Configuration for the isFocusable method.
+       */
+
+
+      var IsFocusableConfig = function IsFocusableConfig() {
+        _classCallCheck(this, IsFocusableConfig);
+
+        /**
+         * Whether to count an element as focusable even if it is not currently visible.
+         */
+        this.ignoreVisibility = false;
+      }; // The InteractivityChecker leans heavily on the ally.js accessibility utilities.
       // Methods like `isTabbable` are only covering specific edge-cases for the browsers which are
       // supported.
 
@@ -1256,15 +1319,16 @@
            * Gets whether an element can be focused by the user.
            *
            * @param element Element to be checked.
+           * @param config The config object with options to customize this method's behavior
            * @returns Whether the element is focusable.
            */
 
         }, {
           key: "isFocusable",
-          value: function isFocusable(element) {
+          value: function isFocusable(element, config) {
             // Perform checks in order of left to most expensive.
             // Again, naive approach that does not capture many edge cases and browser quirks.
-            return isPotentiallyFocusable(element) && !this.isDisabled(element) && this.isVisible(element);
+            return isPotentiallyFocusable(element) && !this.isDisabled(element) && ((config === null || config === void 0 ? void 0 : config.ignoreVisibility) || this.isVisible(element));
           }
         }]);
 
@@ -1272,12 +1336,12 @@
       }();
 
       InteractivityChecker.ɵfac = function InteractivityChecker_Factory(t) {
-        return new (t || InteractivityChecker)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]));
+        return new (t || InteractivityChecker)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]));
       };
 
       InteractivityChecker.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({
         factory: function InteractivityChecker_Factory() {
-          return new InteractivityChecker(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]));
+          return new InteractivityChecker(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]));
         },
         token: InteractivityChecker,
         providedIn: "root"
@@ -1285,7 +1349,7 @@
 
       InteractivityChecker.ctorParameters = function () {
         return [{
-          type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]
+          type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
         }];
       };
       /*@__PURE__*/
@@ -1299,7 +1363,7 @@
           }]
         }], function () {
           return [{
-            type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]
+            type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
           }];
         }, null);
       })();
@@ -1780,7 +1844,7 @@
             if (this._ngZone.isStable) {
               fn();
             } else {
-              this._ngZone.onStable.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["take"])(1)).subscribe(fn);
+              this._ngZone.onStable.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(fn);
             }
           }
         }, {
@@ -1951,7 +2015,7 @@
             return this.focusTrap.enabled;
           },
           set: function set(value) {
-            this.focusTrap.enabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value);
+            this.focusTrap.enabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceBooleanProperty"])(value);
           }
           /**
            * Whether the directive should automatially move focus into the trapped region upon
@@ -1964,7 +2028,7 @@
             return this._autoCapture;
           },
           set: function set(value) {
-            this._autoCapture = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value);
+            this._autoCapture = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceBooleanProperty"])(value);
           }
         }]);
 
@@ -2875,7 +2939,7 @@
        * mark the listener as passive if the browser supports it.
        */
 
-      var captureEventListenerOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["normalizePassiveListenerOptions"])({
+      var captureEventListenerOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["normalizePassiveListenerOptions"])({
         passive: true,
         capture: true
       });
@@ -3000,14 +3064,14 @@
 
             // Do nothing if we're not on the browser platform.
             if (!this._platform.isBrowser) {
-              return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(null);
+              return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null);
             }
 
-            var nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element); // If the element is inside the shadow DOM, we need to bind our focus/blur listeners to
+            var nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element); // If the element is inside the shadow DOM, we need to bind our focus/blur listeners to
             // the shadow root, rather than the `document`, because the browser won't emit focus events
             // to the `document`, if focus is moving within the same shadow root.
 
-            var rootNode = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["_getShadowRoot"])(nativeElement) || this._getDocument();
+            var rootNode = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["_getShadowRoot"])(nativeElement) || this._getDocument();
 
             var cachedInfo = this._elementInfo.get(nativeElement); // Check if we're already monitoring this element.
 
@@ -3026,7 +3090,7 @@
 
             var info = {
               checkChildren: checkChildren,
-              subject: new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"](),
+              subject: new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](),
               rootNode: rootNode
             };
 
@@ -3039,7 +3103,7 @@
         }, {
           key: "stopMonitoring",
           value: function stopMonitoring(element) {
-            var nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
+            var nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
 
             var elementInfo = this._elementInfo.get(nativeElement);
 
@@ -3056,7 +3120,7 @@
         }, {
           key: "focusVia",
           value: function focusVia(element, origin, options) {
-            var nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
+            var nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
 
             this._setOriginForCurrentEventQueue(origin); // `focus` isn't available on the server
 
@@ -3333,12 +3397,12 @@
       }();
 
       FocusMonitor.ɵfac = function FocusMonitor_Factory(t) {
-        return new (t || FocusMonitor)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](FOCUS_MONITOR_DEFAULT_OPTIONS, 8));
+        return new (t || FocusMonitor)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](FOCUS_MONITOR_DEFAULT_OPTIONS, 8));
       };
 
       FocusMonitor.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({
         factory: function FocusMonitor_Factory() {
-          return new FocusMonitor(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(FOCUS_MONITOR_DEFAULT_OPTIONS, 8));
+          return new FocusMonitor(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(FOCUS_MONITOR_DEFAULT_OPTIONS, 8));
         },
         token: FocusMonitor,
         providedIn: "root"
@@ -3348,7 +3412,7 @@
         return [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]
         }, {
-          type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]
+          type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
         }, {
           type: undefined,
           decorators: [{
@@ -3380,7 +3444,7 @@
           return [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]
           }, {
-            type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]
+            type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
           }, {
             type: undefined,
             decorators: [{
@@ -3613,12 +3677,12 @@
       }();
 
       HighContrastModeDetector.ɵfac = function HighContrastModeDetector_Factory(t) {
-        return new (t || HighContrastModeDetector)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+        return new (t || HighContrastModeDetector)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
       };
 
       HighContrastModeDetector.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({
         factory: function HighContrastModeDetector_Factory() {
-          return new HighContrastModeDetector(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
+          return new HighContrastModeDetector(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]));
         },
         token: HighContrastModeDetector,
         providedIn: "root"
@@ -3626,7 +3690,7 @@
 
       HighContrastModeDetector.ctorParameters = function () {
         return [{
-          type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]
+          type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
         }, {
           type: undefined,
           decorators: [{
@@ -3646,7 +3710,7 @@
           }]
         }], function () {
           return [{
-            type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]
+            type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]
           }, {
             type: undefined,
             decorators: [{
@@ -3678,7 +3742,7 @@
         factory: function A11yModule_Factory(t) {
           return new (t || A11yModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](HighContrastModeDetector));
         },
-        imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]]
+        imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]]
       });
 
       A11yModule.ctorParameters = function () {
@@ -3693,7 +3757,7 @@
             return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus];
           },
           imports: function imports() {
-            return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]];
+            return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]];
           },
           exports: function exports() {
             return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus];
@@ -3707,7 +3771,7 @@
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](A11yModule, [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
           args: [{
-            imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]],
+            imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]],
             declarations: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus],
             exports: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]
           }]
@@ -3740,7 +3804,7 @@
       !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/accordion.js ***!
       \**********************************************************************/
 
-    /*! exports provided: CdkAccordion, CdkAccordionItem, CdkAccordionModule */
+    /*! exports provided: CdkAccordion, CdkAccordionItem, CdkAccordionModule, ɵangular_material_src_cdk_accordion_accordion_a */
 
     /***/
     function node_modulesAngularCdk__ivy_ngcc__Fesm2015AccordionJs(module, __webpack_exports__, __webpack_require__) {
@@ -3764,6 +3828,12 @@
 
       __webpack_require__.d(__webpack_exports__, "CdkAccordionModule", function () {
         return CdkAccordionModule;
+      });
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ɵangular_material_src_cdk_accordion_accordion_a", function () {
+        return CDK_ACCORDION;
       });
       /* harmony import */
 
@@ -3801,6 +3871,13 @@
 
 
       var nextId = 0;
+      /**
+       * Injection token that can be used to reference instances of `CdkAccordion`. It serves
+       * as alternative token to the actual `CdkAccordion` class which could cause unnecessary
+       * retention of the class and its directive metadata.
+       */
+
+      var CDK_ACCORDION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('CdkAccordion');
       /**
        * Directive whose purpose is to manage the expanded state of CdkAccordionItem children.
        */
@@ -3877,7 +3954,10 @@
           multi: "multi"
         },
         exportAs: ["cdkAccordion"],
-        features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]]
+        features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{
+          provide: CDK_ACCORDION,
+          useExisting: CdkAccordion
+        }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]]
       });
       CdkAccordion.propDecorators = {
         multi: [{
@@ -3891,7 +3971,11 @@
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
           args: [{
             selector: 'cdk-accordion, [cdkAccordion]',
-            exportAs: 'cdkAccordion'
+            exportAs: 'cdkAccordion',
+            providers: [{
+              provide: CDK_ACCORDION,
+              useExisting: CdkAccordion
+            }]
           }]
         }], function () {
           return [];
@@ -4069,7 +4153,7 @@
       }();
 
       CdkAccordionItem.ɵfac = function CdkAccordionItem_Factory(t) {
-        return new (t || CdkAccordionItem)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](CdkAccordion, 12), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__["UniqueSelectionDispatcher"]));
+        return new (t || CdkAccordionItem)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](CDK_ACCORDION, 12), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__["UniqueSelectionDispatcher"]));
       };
 
       CdkAccordionItem.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
@@ -4086,10 +4170,10 @@
           expandedChange: "expandedChange"
         },
         exportAs: ["cdkAccordionItem"],
-        features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([// Provide CdkAccordion as undefined to prevent nested accordion items from registering
-        // to the same accordion.
+        features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([// Provide `CDK_ACCORDION` as undefined to prevent nested accordion items from
+        // registering to the same accordion.
         {
-          provide: CdkAccordion,
+          provide: CDK_ACCORDION,
           useValue: ɵ0
         }])]
       });
@@ -4099,6 +4183,9 @@
           type: CdkAccordion,
           decorators: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+          }, {
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [CDK_ACCORDION]
           }, {
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"]
           }]
@@ -4137,10 +4224,10 @@
           args: [{
             selector: 'cdk-accordion-item, [cdkAccordionItem]',
             exportAs: 'cdkAccordionItem',
-            providers: [// Provide CdkAccordion as undefined to prevent nested accordion items from registering
-            // to the same accordion.
+            providers: [// Provide `CDK_ACCORDION` as undefined to prevent nested accordion items from
+            // registering to the same accordion.
             {
-              provide: CdkAccordion,
+              provide: CDK_ACCORDION,
               useValue: ɵ0
             }]
           }]
@@ -4149,6 +4236,9 @@
             type: CdkAccordion,
             decorators: [{
               type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }, {
+              type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+              args: [CDK_ACCORDION]
             }, {
               type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"]
             }]

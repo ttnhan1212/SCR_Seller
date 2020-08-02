@@ -89,9 +89,13 @@ let RequestDetailPage = class RequestDetailPage {
         this.expDate = Math.floor(new Date().getTime() / 1000.0 + 7200);
         this.locations = [];
         this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
-        console.log(this.id);
         this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
         this.sample = '../../../../assets/images/png/spares/1.png';
+        this.route.queryParams.subscribe((params) => {
+            if (this.router.getCurrentNavigation().extras.state) {
+                this.request = this.router.getCurrentNavigation().extras.state.requestSellerId;
+            }
+        });
         this.detailForm = this.formBuilder.group({
             name: this.name,
             phone: this.phone,
@@ -102,6 +106,7 @@ let RequestDetailPage = class RequestDetailPage {
             miles: this.miles,
             other: this.other,
             status: 'ongoing',
+            participants: [],
         });
     }
     ngOnInit() {
@@ -119,17 +124,15 @@ let RequestDetailPage = class RequestDetailPage {
                 message: 'Please wait...',
                 showBackdrop: true,
             });
-            console.log(this.detailForm.value);
             try {
                 yield loading.present();
-                console.log(this.detailForm.value);
+                yield this.requestService.updateRequestBySeller(this.detailForm.value, this.sellerId, this.request);
                 yield this.requestService.updateRequest(this.detailForm.value, this.id);
-                this.toast.showToast('Your request is successfully uploaded!');
+                yield this.toast.showToast('Your request is successfully uploaded!');
                 yield loading.dismiss();
-                this.router.navigate(['/', 'home', 'ongoing']);
+                yield this.router.navigate(['/', 'home', 'ongoing']);
             }
             catch (error) {
-                console.log(error);
                 this.toast.showToast(error.message);
                 yield loading.dismiss();
             }
@@ -186,7 +189,7 @@ const routes = [
         children: [
             {
                 path: 'plate',
-                loadChildren: () => __webpack_require__.e(/*! import() | platenumber-platenumber-module */ "platenumber-platenumber-module").then(__webpack_require__.bind(null, /*! ./platenumber/platenumber.module */ "./src/app/pages/request/platenumber/platenumber.module.ts")).then((m) => m.PlatenumberPageModule),
+                loadChildren: () => Promise.all(/*! import() | platenumber-platenumber-module */[__webpack_require__.e("common"), __webpack_require__.e("platenumber-platenumber-module")]).then(__webpack_require__.bind(null, /*! ./platenumber/platenumber.module */ "./src/app/pages/request/platenumber/platenumber.module.ts")).then((m) => m.PlatenumberPageModule),
             },
             {
                 path: ':id',

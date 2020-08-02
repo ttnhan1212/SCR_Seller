@@ -29,11 +29,21 @@ export class NotificationsPage implements OnInit, OnDestroy {
 		this.notiSub = this.notiService.getNoti(this.sellerId).subscribe((data) => {
 			this.noti = data.map((e) => {
 				return {
-					id: e.payload.doc.id,
-					...(e.payload.doc.data() as Notifications),
+					...(e.payload.doc.data() as {}),
 				};
 			});
+			this.noti.forEach((val) => {
+				this.requestService.getRequestById(val.requestId).subscribe((m) => {
+					val.request = { ...(m.payload.data() as {}) };
+				});
+			});
+			console.log(this.noti);
 		});
+	}
+
+	localeDate(time) {
+		let myDate = new Date(time * 1000);
+		return myDate.toLocaleString();
 	}
 
 	ngOnDestroy() {

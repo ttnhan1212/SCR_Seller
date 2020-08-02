@@ -12,14 +12,30 @@ const routes: Routes = [
 		component: IndexPage,
 		children: [
 			{
-				path: '',
+				path: 'welcome',
 				loadChildren: () =>
 					import('./welcome/welcome.module').then((m) => m.WelcomePageModule),
 			},
 			{
-				path: 'login',
+				path: 'privatepolicy',
 				loadChildren: () =>
-					import('./login/login.module').then((m) => m.LoginPageModule),
+					import(
+						'../../components/modals/privacypolicy/privacypolicy.module'
+					).then((m) => m.PrivacypolicyPageModule),
+			},
+			{
+				path: 'termcondition',
+				loadChildren: () =>
+					import(
+						'../../components/modals/termcondition/termcondition.module'
+					).then((m) => m.TermconditionPageModule),
+			},
+			{
+				path: 'puagreement',
+				loadChildren: () =>
+					import('../../components/modals/puagreement/puagreement.module').then(
+						(m) => m.PuagreementPageModule,
+					),
 			},
 			{
 				path: '',

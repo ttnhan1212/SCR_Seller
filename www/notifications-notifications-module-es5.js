@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Notifications</ion-title>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button defaultHref=\"/home/seller\"></ion-back-button>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content>\n\t<ion-item-group>\n\t\t<ion-item *ngFor=\"let item of noti\">\n\t\t\t<ion-label>{{item.status}}</ion-label>\n\t\t\t<ion-label>{{item.requestId}}</ion-label>\n\t\t\t<ion-label>{{item.request}}</ion-label>\n\t\t</ion-item>\n\t</ion-item-group>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Notifications</ion-title>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button defaultHref=\"/home/seller\"></ion-back-button>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\t<ion-card *ngFor=\"let item of noti\">\n\t\t<ion-item [routerLink]=\"[item.id]\">\n\t\t\t<ion-avatar slot=\"start\">\n\t\t\t\t<img src=\"../../../../assets/images/photos/8627.jpg\" />\n\t\t\t</ion-avatar>\n\t\t\t<ion-label>\n\t\t\t\t<h2>Request: {{item.requestId}}</h2>\n\t\t\t\t<ion-grid class=\"p-0 m-0\">\n\t\t\t\t\t<ion-row>\n\t\t\t\t\t\t<ion-col>\n\t\t\t\t\t\t\t<p>User: {{item.user}}</p>\n\t\t\t\t\t\t</ion-col>\n\t\t\t\t\t</ion-row>\n\t\t\t\t\t<ion-row>\n\t\t\t\t\t\t<ion-col size=\"6\">\n\t\t\t\t\t\t\t<p>{{item.updateDate}}</p>\n\t\t\t\t\t\t</ion-col>\n\t\t\t\t\t\t<ion-col size=\"6\">\n\t\t\t\t\t\t\t<p>{{item.status}}</p>\n\t\t\t\t\t\t</ion-col>\n\t\t\t\t\t</ion-row>\n\t\t\t\t</ion-grid>\n\t\t\t</ion-label>\n\t\t</ion-item>\n\t</ion-card>\n</ion-content>\n";
       /***/
     },
 
@@ -207,15 +207,15 @@
       /* harmony import */
 
 
-      var src_app_services_request_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! src/app/services/request.service */
-      "./src/app/services/request.service.ts");
+      var _services_noti_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./../../../services/noti.service */
+      "./src/app/services/noti.service.ts");
       /* harmony import */
 
 
-      var _services_notifications_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ./../../../services/notifications.service */
-      "./src/app/services/notifications.service.ts");
+      var src_app_services_request_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! src/app/services/request.service */
+      "./src/app/services/request.service.ts");
       /* harmony import */
 
 
@@ -229,6 +229,7 @@
 
           this.notiService = notiService;
           this.requestService = requestService;
+          this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
         }
 
         _createClass(NotificationsPage, [{
@@ -236,20 +237,13 @@
           value: function ngOnInit() {
             var _this = this;
 
-            this.notiSub = this.notiService.getNoti().subscribe(function (data) {
+            this.notiSub = this.notiService.getNoti(this.sellerId).subscribe(function (data) {
               _this.noti = data.map(function (e) {
                 return Object.assign({
                   id: e.payload.doc.id
                 }, e.payload.doc.data());
-              }); // this.requestService
-              // 	.getRequestById(this.noti[0]["requestId"])
-              // 	.subscribe((val) => {
-              // 		this.request = val as Request;
-              // 		return this.request;
-              // 	});
-            }); // setTimeout(() => {
-            // 	console.log(this.noti);
-            // }, 3000);
+              });
+            });
           }
         }, {
           key: "ngOnDestroy",
@@ -265,9 +259,9 @@
 
       NotificationsPage.ctorParameters = function () {
         return [{
-          type: _services_notifications_service__WEBPACK_IMPORTED_MODULE_2__["NotificationsService"]
+          type: _services_noti_service__WEBPACK_IMPORTED_MODULE_1__["NotiService"]
         }, {
-          type: src_app_services_request_service__WEBPACK_IMPORTED_MODULE_1__["RequestService"]
+          type: src_app_services_request_service__WEBPACK_IMPORTED_MODULE_2__["RequestService"]
         }];
       };
 
@@ -280,73 +274,6 @@
         /*! ./notifications.page.scss */
         "./src/app/pages/navigation/notifications/notifications.page.scss"))["default"]]
       })], NotificationsPage);
-      /***/
-    },
-
-    /***/
-    "./src/app/services/notifications.service.ts":
-    /*!***************************************************!*\
-      !*** ./src/app/services/notifications.service.ts ***!
-      \***************************************************/
-
-    /*! exports provided: NotificationsService */
-
-    /***/
-    function srcAppServicesNotificationsServiceTs(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "NotificationsService", function () {
-        return NotificationsService;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
-      /* harmony import */
-
-
-      var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/fire/firestore */
-      "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-firestore.js");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-      var NotificationsService = /*#__PURE__*/function () {
-        function NotificationsService(firestore) {
-          _classCallCheck(this, NotificationsService);
-
-          this.firestore = firestore;
-        }
-
-        _createClass(NotificationsService, [{
-          key: "getNoti",
-          value: function getNoti() {
-            return this.firestore.collection('notifications').snapshotChanges();
-          }
-        }]);
-
-        return NotificationsService;
-      }();
-
-      NotificationsService.ctorParameters = function () {
-        return [{
-          type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__["AngularFirestore"]
-        }];
-      };
-
-      NotificationsService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
-        providedIn: 'root'
-      })], NotificationsService);
       /***/
     }
   }]);

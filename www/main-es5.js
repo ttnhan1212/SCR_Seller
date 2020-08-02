@@ -251,7 +251,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-navigation-navigation-module */
-          [__webpack_require__.e("default~pages-navigation-navigation-module~pages-ongoing-detail-ongoing-detail-module~pages-request-~350da11d"), __webpack_require__.e("common"), __webpack_require__.e("pages-navigation-navigation-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-navigation-navigation-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/navigation/navigation.module */
           "./src/app/pages/navigation/navigation.module.ts")).then(function (m) {
             return m.NavigationPageModule;
@@ -262,7 +262,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-request-request-module */
-          [__webpack_require__.e("default~pages-navigation-navigation-module~pages-ongoing-detail-ongoing-detail-module~pages-request-~350da11d"), __webpack_require__.e("common"), __webpack_require__.e("pages-request-request-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-request-request-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/request/request.module */
           "./src/app/pages/request/request.module.ts")).then(function (m) {
             return m.RequestPageModule;
@@ -284,7 +284,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-ongoing-detail-ongoing-detail-module */
-          [__webpack_require__.e("default~pages-navigation-navigation-module~pages-ongoing-detail-ongoing-detail-module~pages-request-~350da11d"), __webpack_require__.e("common"), __webpack_require__.e("pages-ongoing-detail-ongoing-detail-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-ongoing-detail-ongoing-detail-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/ongoing-detail/ongoing-detail.module */
           "./src/app/pages/ongoing-detail/ongoing-detail.module.ts")).then(function (m) {
             return m.OngoingDetailPageModule;
@@ -458,85 +458,91 @@
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _services_seller_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./services/seller.service */
+      "./src/app/services/seller.service.ts");
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/forms */
       "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/core */
       "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
-      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/platform-browser */
       "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/router */
       "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
       /* harmony import */
 
 
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @ionic/angular */
       "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
-      var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @ionic-native/splash-screen/ngx */
       "./node_modules/@ionic-native/splash-screen/__ivy_ngcc__/ngx/index.js");
       /* harmony import */
 
 
-      var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! @ionic-native/status-bar/ngx */
       "./node_modules/@ionic-native/status-bar/__ivy_ngcc__/ngx/index.js");
       /* harmony import */
 
 
-      var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! ./app.component */
       "./src/app/app.component.ts");
       /* harmony import */
 
 
-      var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      var _app_routing_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! ./app-routing.module */
       "./src/app/app-routing.module.ts");
       /* harmony import */
 
 
-      var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
       /*! @angular/platform-browser/animations */
       "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js");
       /* harmony import */
 
 
-      var _environments_environment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+      var _environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
       /*! ../environments/environment */
       "./src/environments/environment.ts");
       /* harmony import */
 
 
-      var _angular_fire__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+      var _angular_fire__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
       /*! @angular/fire */
       "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire.js");
       /* harmony import */
 
 
-      var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+      var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
       /*! @angular/fire/auth */
       "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-auth.js");
       /* harmony import */
 
 
-      var _services_auth_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+      var _services_auth_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
       /*! ./services/auth.service */
       "./src/app/services/auth.service.ts");
 
@@ -544,15 +550,15 @@
         _classCallCheck(this, AppModule);
       };
 
-      AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
+      AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_12__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_13__["AngularFireAuthModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ReactiveFormsModule"]],
-        providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_14__["AuthService"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"], {
-          provide: _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouteReuseStrategy"],
-          useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicRouteStrategy"]
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_11__["BrowserAnimationsModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_13__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__["AngularFireAuthModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"]],
+        providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_15__["AuthService"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_8__["StatusBar"], _services_seller_service__WEBPACK_IMPORTED_MODULE_1__["SellerService"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_7__["SplashScreen"], {
+          provide: _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouteReuseStrategy"],
+          useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"]
         }],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
       })], AppModule);
       /***/
     },
@@ -709,9 +715,9 @@
           this.afAuth.authState.subscribe(function (user) {
             if (user) {
               _this3.user = user;
-              localStorage.setItem("user", JSON.stringify(_this3.user));
+              localStorage.setItem('user', JSON.stringify(_this3.user));
             } else {
-              localStorage.setItem("user", null);
+              localStorage.setItem('user', null);
             }
           });
         }
@@ -728,7 +734,7 @@
                       return this.afAuth.signInAnonymously();
 
                     case 2:
-                      this.router.navigate(["home/request"]);
+                      this.router.navigate(['home/seller']);
 
                     case 3:
                     case "end":
@@ -750,7 +756,7 @@
                       return this.afAuth.signOut();
 
                     case 2:
-                      this.router.navigate(["login"]);
+                      this.router.navigate(['login']);
 
                     case 3:
                     case "end":
@@ -774,8 +780,85 @@
       };
 
       AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: "root"
+        providedIn: 'root'
       })], AuthService);
+      /***/
+    },
+
+    /***/
+    "./src/app/services/seller.service.ts":
+    /*!********************************************!*\
+      !*** ./src/app/services/seller.service.ts ***!
+      \********************************************/
+
+    /*! exports provided: SellerService */
+
+    /***/
+    function srcAppServicesSellerServiceTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "SellerService", function () {
+        return SellerService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/fire/firestore */
+      "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-firestore.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+      var SellerService = /*#__PURE__*/function () {
+        function SellerService(fireStore) {
+          _classCallCheck(this, SellerService);
+
+          this.fireStore = fireStore;
+        }
+
+        _createClass(SellerService, [{
+          key: "createSeller",
+          value: function createSeller(id, seller) {
+            return this.fireStore.collection('Seller').doc(id).set(seller);
+          }
+        }, {
+          key: "getSeller",
+          value: function getSeller() {
+            return this.fireStore.collection('models').snapshotChanges();
+          }
+        }, {
+          key: "updateSeller",
+          value: function updateSeller(seller, id) {
+            return this.fireStore.collection('Seller').doc(id).update(seller);
+          }
+        }]);
+
+        return SellerService;
+      }();
+
+      SellerService.ctorParameters = function () {
+        return [{
+          type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__["AngularFirestore"]
+        }];
+      };
+
+      SellerService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+        providedIn: 'root'
+      })], SellerService);
       /***/
     },
 

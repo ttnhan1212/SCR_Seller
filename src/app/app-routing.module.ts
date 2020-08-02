@@ -6,13 +6,20 @@ const routes: Routes = [
 	{
 		path: '',
 		loadChildren: () =>
+			import('./pages/index/splash/splash.module').then(
+				(m) => m.SplashPageModule,
+			),
+	},
+	{
+		path: '',
+		loadChildren: () =>
 			import('./pages/index/index.module').then((m) => m.IndexPageModule),
 	},
 	{
 		path: 'home',
 		loadChildren: () =>
 			import('./pages/navigation/navigation.module').then(
-				(m) => m.NavigationPageModule
+				(m) => m.NavigationPageModule,
 			),
 	},
 	{
@@ -28,9 +35,9 @@ const routes: Routes = [
 	{
 		path: 'home/ongoing/:id',
 		loadChildren: () =>
-			import('./pages/ongoing-detail/ongoing-detail.module').then(
-				(m) => m.OngoingDetailPageModule
-			),
+			import(
+				'./pages/navigation/ongoing/ongoing-detail/ongoing-detail.module'
+			).then((m) => m.OngoingDetailPageModule),
 	},
 	{
 		path: '',
@@ -38,6 +45,27 @@ const routes: Routes = [
 		pathMatch: 'full',
 	},
 	{ path: '**', component: ErrorsPage },
+	{
+		path: 'privacypolicy',
+		loadChildren: () =>
+			import('./components/modals/privacypolicy/privacypolicy.module').then(
+				(m) => m.PrivacypolicyPageModule,
+			),
+	},
+	{
+		path: 'puagreement',
+		loadChildren: () =>
+			import('./components/modals/puagreement/puagreement.module').then(
+				(m) => m.PuagreementPageModule,
+			),
+	},
+	{
+		path: 'termcondition',
+		loadChildren: () =>
+			import('./components/modals/termcondition/termcondition.module').then(
+				(m) => m.TermconditionPageModule,
+			),
+	},
 ];
 
 @NgModule({

@@ -1127,6 +1127,85 @@
     },
 
     /***/
+    "./src/app/services/noti.service.ts":
+    /*!******************************************!*\
+      !*** ./src/app/services/noti.service.ts ***!
+      \******************************************/
+
+    /*! exports provided: NotiService */
+
+    /***/
+    function srcAppServicesNotiServiceTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "NotiService", function () {
+        return NotiService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/fire/firestore */
+      "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-firestore.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+      var NotiService = /*#__PURE__*/function () {
+        function NotiService(firestore) {
+          _classCallCheck(this, NotiService);
+
+          this.firestore = firestore;
+        }
+
+        _createClass(NotiService, [{
+          key: "getNoti",
+          value: function getNoti(id) {
+            return this.firestore.collection('notifications', function (ref) {
+              return ref.where('user', '==', id);
+            }).snapshotChanges();
+          }
+        }, {
+          key: "createNoti",
+          value: function createNoti(noti) {
+            return this.firestore.collection('notifications').add(noti);
+          }
+        }, {
+          key: "updateNoti",
+          value: function updateNoti(noti, id) {
+            return this.firestore.collection('notifications').doc(id).update(noti);
+          }
+        }]);
+
+        return NotiService;
+      }();
+
+      NotiService.ctorParameters = function () {
+        return [{
+          type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__["AngularFirestore"]
+        }];
+      };
+
+      NotiService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+        providedIn: 'root'
+      })], NotiService);
+      /***/
+    },
+
+    /***/
     "./src/app/services/request.service.ts":
     /*!*********************************************!*\
       !*** ./src/app/services/request.service.ts ***!
@@ -1195,14 +1274,46 @@
             return this.firestore.collection('requests').add(request);
           }
         }, {
+          key: "createRequestBySeller",
+          value: function createRequestBySeller(request, id) {
+            return this.firestore.collection('Seller').doc(id).collection('Requests').add(request);
+          }
+        }, {
           key: "updateRequest",
           value: function updateRequest(request, id) {
             this.firestore.collection('requests').doc(id).update(request);
           }
         }, {
+          key: "updateRequestBySeller",
+          value: function updateRequestBySeller(request, sellerId, requestId) {
+            this.firestore.collection('Seller').doc(sellerId).collection('Requests').doc(requestId).update(request);
+          }
+        }, {
           key: "deleteRequest",
           value: function deleteRequest(id) {
             this.firestore.collection('requests').doc(id)["delete"]();
+          }
+        }, {
+          key: "getParticipant",
+          value: function getParticipant(id) {
+            return this.firestore.collection('requests').doc(id).collection('participants').snapshotChanges();
+          }
+        }, {
+          key: "updateParticipant",
+          value: function updateParticipant(id, partId, status) {
+            this.firestore.collection('requests').doc(id).collection('participants').doc(partId).update(status);
+          }
+        }, {
+          key: "deleteParticipant",
+          value: function deleteParticipant(id, partId) {
+            this.firestore.collection('requests').doc(id).collection('participants').doc(partId)["delete"]();
+          }
+        }, {
+          key: "selectedRequest",
+          value: function selectedRequest(id) {
+            return this.firestore.collection('requests').doc(id).collection('participants', function (ref) {
+              return ref.where('selected', '==', true);
+            }).snapshotChanges();
           }
         }, {
           key: "isLoggedIn",

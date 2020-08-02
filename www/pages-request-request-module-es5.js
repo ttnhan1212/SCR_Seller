@@ -148,6 +148,8 @@
 
       var RequestDetailPage = /*#__PURE__*/function () {
         function RequestDetailPage(router, route, requestService, afAuth, authService, loadingController, toast, formBuilder, locationService) {
+          var _this = this;
+
           _classCallCheck(this, RequestDetailPage);
 
           this.router = router;
@@ -169,9 +171,13 @@
           this.locations = [];
           this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 
-          console.log(this.id);
           this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
           this.sample = '../../../../assets/images/png/spares/1.png';
+          this.route.queryParams.subscribe(function (params) {
+            if (_this.router.getCurrentNavigation().extras.state) {
+              _this.request = _this.router.getCurrentNavigation().extras.state.requestSellerId;
+            }
+          });
           this.detailForm = this.formBuilder.group({
             name: this.name,
             phone: this.phone,
@@ -181,17 +187,18 @@
             sellerId: this.sellerId,
             miles: this.miles,
             other: this.other,
-            status: 'ongoing'
+            status: 'ongoing',
+            participants: []
           });
         }
 
         _createClass(RequestDetailPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this = this;
+            var _this2 = this;
 
             this.locationService.getLocation().subscribe(function (data) {
-              _this.locations = data.map(function (val) {
+              _this2.locations = data.map(function (val) {
                 return {
                   city: val.payload.doc.data()['city']
                 };
@@ -215,40 +222,47 @@
 
                     case 2:
                       loading = _context.sent;
-                      console.log(this.detailForm.value);
-                      _context.prev = 4;
-                      _context.next = 7;
+                      _context.prev = 3;
+                      _context.next = 6;
                       return loading.present();
 
-                    case 7:
-                      console.log(this.detailForm.value);
+                    case 6:
+                      _context.next = 8;
+                      return this.requestService.updateRequestBySeller(this.detailForm.value, this.sellerId, this.request);
+
+                    case 8:
                       _context.next = 10;
                       return this.requestService.updateRequest(this.detailForm.value, this.id);
 
                     case 10:
-                      this.toast.showToast('Your request is successfully uploaded!');
-                      _context.next = 13;
+                      _context.next = 12;
+                      return this.toast.showToast('Your request is successfully uploaded!');
+
+                    case 12:
+                      _context.next = 14;
                       return loading.dismiss();
 
-                    case 13:
-                      this.router.navigate(['/', 'home', 'ongoing']);
-                      _context.next = 22;
-                      break;
+                    case 14:
+                      _context.next = 16;
+                      return this.router.navigate(['/', 'home', 'ongoing']);
 
                     case 16:
-                      _context.prev = 16;
-                      _context.t0 = _context["catch"](4);
-                      console.log(_context.t0);
+                      _context.next = 23;
+                      break;
+
+                    case 18:
+                      _context.prev = 18;
+                      _context.t0 = _context["catch"](3);
                       this.toast.showToast(_context.t0.message);
-                      _context.next = 22;
+                      _context.next = 23;
                       return loading.dismiss();
 
-                    case 22:
+                    case 23:
                     case "end":
                       return _context.stop();
                   }
                 }
-              }, _callee, this, [[4, 16]]);
+              }, _callee, this, [[3, 18]]);
             }));
           }
         }]);
@@ -346,9 +360,9 @@
         children: [{
           path: 'plate',
           loadChildren: function loadChildren() {
-            return __webpack_require__.e(
+            return Promise.all(
             /*! import() | platenumber-platenumber-module */
-            "platenumber-platenumber-module").then(__webpack_require__.bind(null,
+            [__webpack_require__.e("common"), __webpack_require__.e("platenumber-platenumber-module")]).then(__webpack_require__.bind(null,
             /*! ./platenumber/platenumber.module */
             "./src/app/pages/request/platenumber/platenumber.module.ts")).then(function (m) {
               return m.PlatenumberPageModule;

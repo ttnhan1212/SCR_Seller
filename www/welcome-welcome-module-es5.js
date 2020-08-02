@@ -62,7 +62,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content class=\"ion-padding\">\n\t<app-slides></app-slides>\n\t<ion-item-group>\n\t\t<ion-item>\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Privacy Policy</ion-label>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Term & Condition</ion-label>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Privacy info usage</ion-label>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Select All</ion-label>\n\t\t</ion-item>\n\t</ion-item-group>\n\t<app-start></app-start>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-content class=\"ion-padding\">\n\t<app-slides></app-slides>\n\t<ion-item-group>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Privacy Policy</ion-label>\n\t\t</ion-item>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Term & Condition</ion-label>\n\t\t</ion-item>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Privacy info usage</ion-label>\n\t\t</ion-item>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Select All</ion-label>\n\t\t</ion-item>\n\t</ion-item-group>\n\t<app-start></app-start>\n</ion-content>\n";
       /***/
     },
 

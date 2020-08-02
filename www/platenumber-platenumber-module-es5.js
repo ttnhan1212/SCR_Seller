@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-button slot=\"end\" fill=\"clear\" [routerLink]=\"['/','home','seller']\">\n\t\t\t<ion-icon name=\"log-out-outline\"></ion-icon>\n\t\t</ion-button>\n\t\t<ion-title>Request</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"p-1\">\n\t<ion-card class=\"p-2\">\n\t\t<ion-item class=\"mt-4\">\n\t\t\t<ion-label position=\"floating\">Plate Number</ion-label>\n\t\t\t<ion-input\n\t\t\t\ttype=\"text\"\n\t\t\t\tplaceholder=\"Your Plate Number\"\n\t\t\t\t[(ngModel)]=\"plate\"\n\t\t\t></ion-input>\n\t\t</ion-item>\n\t\t<ion-button\n\t\t\tclass=\"mt-4\"\n\t\t\texpand=\"block\"\n\t\t\t[disabled]=\"!plate\"\n\t\t\t(click)=\"createPlate()\"\n\t\t>\n\t\t\tConfirm\n\t\t</ion-button>\n\t</ion-card>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-button slot=\"end\" fill=\"clear\" [routerLink]=\"['/','home','seller']\">\n\t\t\t<ion-icon name=\"log-out-outline\"></ion-icon>\n\t\t</ion-button>\n\t\t<ion-title>Request</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"p-1\">\n\t<ion-card class=\"p-2\">\n\t\t<ion-item class=\"mt-4\">\n\t\t\t<ion-label position=\"floating\">Plate Number</ion-label>\n\t\t\t<ion-input\n\t\t\t\ttype=\"text\"\n\t\t\t\tplaceholder=\"Your Plate Number\"\n\t\t\t\t[(ngModel)]=\"plate\"\n\t\t\t></ion-input>\n\t\t</ion-item>\n\t\t<ion-button\n\t\t\tclass=\"mt-4\"\n\t\t\texpand=\"block\"\n\t\t\tcolor=\"tertiary\"\n\t\t\t[disabled]=\"!plate\"\n\t\t\t(click)=\"createPlate()\"\n\t\t>\n\t\t\tConfirm\n\t\t</ion-button>\n\t</ion-card>\n</ion-content>\n";
       /***/
     },
 
@@ -175,7 +175,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "ion-card {\n  position: absolute;\n  top: 45%;\n  left: 48%;\n  transform: translate(-50%, -50%);\n  width: 90vw;\n  height: 20vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcmVxdWVzdC9wbGF0ZW51bWJlci9wbGF0ZW51bWJlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQyxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBRUEsZ0NBQUE7RUFFQSxXQUFBO0VBQ0EsWUFBQTtBQUREIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcmVxdWVzdC9wbGF0ZW51bWJlci9wbGF0ZW51bWJlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2FyZCB7XG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcblx0dG9wOiA0NSU7XG5cdGxlZnQ6IDQ4JTtcblxuXHR0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcblxuXHR3aWR0aDogOTB2dztcblx0aGVpZ2h0OiAyMHZoO1xufVxuIl19 */";
+      __webpack_exports__["default"] = "ion-card {\n  position: absolute;\n  top: 45%;\n  left: 48%;\n  transform: translate(-50%, -50%);\n  width: 90vw;\n  height: 20vh;\n}\n\n* {\n  font-family: \"Noto Sans KR\", sans-serif;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcmVxdWVzdC9wbGF0ZW51bWJlci9wbGF0ZW51bWJlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQyxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBRUEsZ0NBQUE7RUFFQSxXQUFBO0VBQ0EsWUFBQTtBQUREOztBQUlBO0VBQ0MsdUNBQUE7QUFERCIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3JlcXVlc3QvcGxhdGVudW1iZXIvcGxhdGVudW1iZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNhcmQge1xuXHRwb3NpdGlvbjogYWJzb2x1dGU7XG5cdHRvcDogNDUlO1xuXHRsZWZ0OiA0OCU7XG5cblx0dHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG5cblx0d2lkdGg6IDkwdnc7XG5cdGhlaWdodDogMjB2aDtcbn1cblxuKiB7XG5cdGZvbnQtZmFtaWx5OiAnTm90byBTYW5zIEtSJywgc2Fucy1zZXJpZjtcbn1cbiJdfQ== */";
       /***/
     },
 
@@ -207,54 +207,60 @@
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _services_noti_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./../../../services/noti.service */
+      "./src/app/services/noti.service.ts");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/router */
       "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
       /* harmony import */
 
 
-      var _services_request_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _services_request_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! ../../../services/request.service */
       "./src/app/services/request.service.ts");
       /* harmony import */
 
 
-      var _services_toast_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _services_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! ../../../services/toast.service */
       "./src/app/services/toast.service.ts");
       /* harmony import */
 
 
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @ionic/angular */
       "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
-      var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _services_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ../../../services/auth.service */
       "./src/app/services/auth.service.ts");
       /* harmony import */
 
 
-      var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @angular/fire/auth */
       "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-auth.js");
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! @angular/core */
       "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
-      var _services_vehicles_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var _services_vehicles_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! ../../../services/vehicles.service */
       "./src/app/services/vehicles.service.ts");
 
       var PlatenumberPage = /*#__PURE__*/function () {
-        function PlatenumberPage(vehicleService, requestService, afAuth, authService, loadingController, toast, route) {
+        function PlatenumberPage(vehicleService, requestService, afAuth, authService, loadingController, toast, route, notiService) {
           _classCallCheck(this, PlatenumberPage);
 
           this.vehicleService = vehicleService;
@@ -264,6 +270,8 @@
           this.loadingController = loadingController;
           this.toast = toast;
           this.route = route;
+          this.notiService = notiService;
+          this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
         }
 
         _createClass(PlatenumberPage, [{
@@ -300,14 +308,35 @@
                         _this.plate = '';
                         var request = {};
                         request['vehiclesId'] = res.id;
+                        request['status'] = 'draft';
 
                         try {
                           _this.toast.showToast('Your request is successfully created!');
 
+                          _this.requestService.createRequestBySeller(request, _this.sellerId).then(function (val) {
+                            _this.requestSellerId = val.id;
+                            console.log(_this.requestSellerId);
+                          })["catch"](function (err) {
+                            console.log(err.message);
+                          });
+
                           _this.requestService.createRequest(request).then(function (val) {
-                            setTimeout(function () {
-                              _this.route.navigate(['/', 'request', val.id]);
-                            }, 1000);
+                            _this.requestState = {
+                              state: {
+                                requestSellerId: _this.requestSellerId
+                              }
+                            };
+
+                            _this.notiService.createNoti({
+                              requestId: val.id,
+                              status: 'ongoing',
+                              updateDate: Math.floor(new Date().getTime() / 1000.0),
+                              user: _this.sellerId
+                            });
+
+                            _this.route.navigate(['/', 'request', val.id], _this.requestState);
+                          })["catch"](function (err) {
+                            console.log(err.message);
                           });
                         } catch (error) {
                           _this.toast.showToast(error.message);
@@ -346,23 +375,25 @@
 
       PlatenumberPage.ctorParameters = function () {
         return [{
-          type: _services_vehicles_service__WEBPACK_IMPORTED_MODULE_8__["VehicleService"]
+          type: _services_vehicles_service__WEBPACK_IMPORTED_MODULE_9__["VehicleService"]
         }, {
-          type: _services_request_service__WEBPACK_IMPORTED_MODULE_2__["RequestService"]
+          type: _services_request_service__WEBPACK_IMPORTED_MODULE_3__["RequestService"]
         }, {
-          type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__["AngularFireAuth"]
+          type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_7__["AngularFireAuth"]
         }, {
-          type: _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]
+          type: _services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]
         }, {
-          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"]
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"]
         }, {
-          type: _services_toast_service__WEBPACK_IMPORTED_MODULE_3__["ToastService"]
+          type: _services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+        }, {
+          type: _services_noti_service__WEBPACK_IMPORTED_MODULE_1__["NotiService"]
         }];
       };
 
-      PlatenumberPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_7__["Component"])({
+      PlatenumberPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_8__["Component"])({
         selector: 'app-platenumber',
         template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
         /*! raw-loader!./platenumber.page.html */

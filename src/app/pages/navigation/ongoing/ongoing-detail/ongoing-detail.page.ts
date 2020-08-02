@@ -1,4 +1,4 @@
-import { RequestService } from '../../services/request.service';
+import { RequestService } from '../../../../services/request.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -21,7 +21,6 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	dealerSub: Subscription;
 	partSub: Subscription;
 	constructor(
-		private router: Router,
 		public route: ActivatedRoute,
 		public requestService: RequestService,
 		public dealerService: DealerService,

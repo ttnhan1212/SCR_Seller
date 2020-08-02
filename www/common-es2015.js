@@ -658,6 +658,51 @@ const openURL = async (url, ev, direction, animation) => {
 
 /***/ }),
 
+/***/ "./src/app/services/noti.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/noti.service.ts ***!
+  \******************************************/
+/*! exports provided: NotiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotiService", function() { return NotiService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-firestore.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+
+let NotiService = class NotiService {
+    constructor(firestore) {
+        this.firestore = firestore;
+    }
+    getNoti(id) {
+        return this.firestore
+            .collection('notifications', (ref) => ref.where('user', '==', id))
+            .snapshotChanges();
+    }
+    createNoti(noti) {
+        return this.firestore.collection('notifications').add(noti);
+    }
+    updateNoti(noti, id) {
+        return this.firestore.collection('notifications').doc(id).update(noti);
+    }
+};
+NotiService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_1__["AngularFirestore"] }
+];
+NotiService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+        providedIn: 'root',
+    })
+], NotiService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/request.service.ts":
 /*!*********************************************!*\
   !*** ./src/app/services/request.service.ts ***!
@@ -681,6 +726,10 @@ let RequestService = class RequestService {
             this.loggedUser = JSON.parse(localStorage.getItem('user')).uid;
         }
     }
+    get isLoggedIn() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        return user !== null;
+    }
     getRequest() {
         return this.firestore
             .collection('requests', (ref) => ref.where('sellerId', '==', this.loggedUser))
@@ -692,15 +741,56 @@ let RequestService = class RequestService {
     createRequest(request) {
         return this.firestore.collection('requests').add(request);
     }
-    get isLoggedIn() {
-        const user = JSON.parse(localStorage.getItem('user'));
-        return user !== null;
+    createRequestBySeller(request, id) {
+        return this.firestore
+            .collection('Seller')
+            .doc(id)
+            .collection('Requests')
+            .add(request);
     }
     updateRequest(request, id) {
         this.firestore.collection('requests').doc(id).update(request);
     }
+    updateRequestBySeller(request, sellerId, requestId) {
+        this.firestore
+            .collection('Seller')
+            .doc(sellerId)
+            .collection('Requests')
+            .doc(requestId)
+            .update(request);
+    }
     deleteRequest(id) {
         this.firestore.collection('requests').doc(id).delete();
+    }
+    getParticipant(id) {
+        return this.firestore
+            .collection('requests')
+            .doc(id)
+            .collection('participants')
+            .snapshotChanges();
+    }
+    updateParticipant(id, partId, status) {
+        this.firestore
+            .collection('requests')
+            .doc(id)
+            .collection('participants')
+            .doc(partId)
+            .update(status);
+    }
+    deleteParticipant(id, partId) {
+        this.firestore
+            .collection('requests')
+            .doc(id)
+            .collection('participants')
+            .doc(partId)
+            .delete();
+    }
+    selectedRequest(id) {
+        return this.firestore
+            .collection('requests')
+            .doc(id)
+            .collection('participants', (ref) => ref.where('selected', '==', true))
+            .snapshotChanges();
     }
 };
 RequestService.ctorParameters = () => [
