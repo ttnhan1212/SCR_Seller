@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-index-splash-splash-module"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["splash-splash-module"],{
 
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/index/splash/splash.page.html":
 /*!*******************************************************************************************!*\
@@ -125,14 +125,12 @@ let SplashPage = class SplashPage {
     constructor(router) {
         this.router = router;
         this.logo = '../../../assets/images/logo/scroadslight.svg';
-        this.image = 'https://picsum.photos/300/400';
+        this.image = '../../../../assets/images/photos/OBC8OG0.jpg';
     }
     ngOnInit() {
-        if (this.image) {
-            setTimeout(() => {
-                this.router.navigate(['/', 'welcome']);
-            }, 3500);
-        }
+        setTimeout(() => {
+            this.router.navigate(['welcome']);
+        }, 3000);
     }
 };
 SplashPage.ctorParameters = () => [
@@ -151,4 +149,4 @@ SplashPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 /***/ })
 
 }]);
-//# sourceMappingURL=pages-index-splash-splash-module-es2015.js.map
+//# sourceMappingURL=splash-splash-module-es2015.js.map

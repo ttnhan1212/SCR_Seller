@@ -23,9 +23,8 @@ export class OngoingPage implements OnInit, OnDestroy {
 		public afAuth: AngularFireAuth,
 		public authService: AuthService,
 		public loadingController: LoadingController,
-		public toast: ToastService
+		public toast: ToastService,
 	) {
-		// this.sellerId = JSON.parse(localStorage.getItem("user")).uid;
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 	}
 
@@ -33,10 +32,10 @@ export class OngoingPage implements OnInit, OnDestroy {
 		this.requestSub = this.requestService.getRequest().subscribe((data) => {
 			this.requests = data.map((e) => {
 				const effectedTime = new Date(
-					e.payload.doc.data()['effectedTime'] * 1000
+					e.payload.doc.data()['effectedTime'] * 1000,
 				).toLocaleString();
 				const expireDate = new Date(
-					e.payload.doc.data()['expireDate'] * 1000
+					e.payload.doc.data()['expireDate'] * 1000,
 				).toLocaleString();
 				return {
 					id: e.payload.doc.id,

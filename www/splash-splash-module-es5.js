@@ -5,7 +5,7 @@
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-index-splash-splash-module"], {
+  (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["splash-splash-module"], {
     /***/
     "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/index/splash/splash.page.html":
     /*!*******************************************************************************************!*\
@@ -223,7 +223,7 @@
 
           this.router = router;
           this.logo = '../../../assets/images/logo/scroadslight.svg';
-          this.image = 'https://picsum.photos/300/400';
+          this.image = '../../../../assets/images/photos/OBC8OG0.jpg';
         }
 
         _createClass(SplashPage, [{
@@ -231,11 +231,9 @@
           value: function ngOnInit() {
             var _this = this;
 
-            if (this.image) {
-              setTimeout(function () {
-                _this.router.navigate(['/', 'welcome']);
-              }, 3500);
-            }
+            setTimeout(function () {
+              _this.router.navigate(['welcome']);
+            }, 3000);
           }
         }]);
 
@@ -261,4 +259,4 @@
     }
   }]);
 })();
-//# sourceMappingURL=pages-index-splash-splash-module-es5.js.map
+//# sourceMappingURL=splash-splash-module-es5.js.map

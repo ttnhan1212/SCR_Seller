@@ -84,6 +84,17 @@
         path: '',
         component: _index_page__WEBPACK_IMPORTED_MODULE_3__["IndexPage"],
         children: [{
+          path: '',
+          loadChildren: function loadChildren() {
+            return __webpack_require__.e(
+            /*! import() | splash-splash-module */
+            "splash-splash-module").then(__webpack_require__.bind(null,
+            /*! ./splash/splash.module */
+            "./src/app/pages/index/splash/splash.module.ts")).then(function (m) {
+              return m.SplashPageModule;
+            });
+          }
+        }, {
           path: 'welcome',
           loadChildren: function loadChildren() {
             return Promise.all(

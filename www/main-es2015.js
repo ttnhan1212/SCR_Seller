@@ -474,10 +474,6 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-index-splash-splash-module */ "pages-index-splash-splash-module").then(__webpack_require__.bind(null, /*! ./pages/index/splash/splash.module */ "./src/app/pages/index/splash/splash.module.ts")).then((m) => m.SplashPageModule),
-    },
-    {
-        path: '',
         loadChildren: () => Promise.all(/*! import() | pages-index-index-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-index-index-module")]).then(__webpack_require__.bind(null, /*! ./pages/index/index.module */ "./src/app/pages/index/index.module.ts")).then((m) => m.IndexPageModule),
     },
     {

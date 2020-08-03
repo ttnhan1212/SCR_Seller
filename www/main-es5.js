@@ -238,17 +238,6 @@
       var routes = [{
         path: '',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
-          /*! import() | pages-index-splash-splash-module */
-          "pages-index-splash-splash-module").then(__webpack_require__.bind(null,
-          /*! ./pages/index/splash/splash.module */
-          "./src/app/pages/index/splash/splash.module.ts")).then(function (m) {
-            return m.SplashPageModule;
-          });
-        }
-      }, {
-        path: '',
-        loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-index-index-module */
           [__webpack_require__.e("common"), __webpack_require__.e("pages-index-index-module")]).then(__webpack_require__.bind(null,

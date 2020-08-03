@@ -49,6 +49,10 @@ export class HomePage implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
+		this.getModel();
+	}
+
+	getModel() {
 		this.modelSub = this.modelService.getModel().subscribe(
 			(data: any) => {
 				this.models = data.map((e) => {

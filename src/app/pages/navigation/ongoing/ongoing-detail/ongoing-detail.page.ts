@@ -29,16 +29,19 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		this.myValueSub = this.requestService
+		this.getRequestById();
+		this.getParticipant();
+		this.selectedRequest();
+	}
+
+	async getRequestById() {
+		this.myValueSub = await this.requestService
 			.getRequestById(this.id)
 			.subscribe((data) => {
 				this.ongoing = {
 					name: data.payload.data()['name'],
 				};
 			});
-
-		this.getParticipant();
-		this.selectedRequest();
 	}
 
 	async getParticipant() {
@@ -64,8 +67,8 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 			});
 	}
 
-	async selectDealer(user) {
-		await this.requestService.updateParticipant(this.id, user, {
+	selectDealer(user) {
+		this.requestService.updateParticipant(this.id, user, {
 			selected: true,
 		});
 	}

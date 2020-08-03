@@ -37,6 +37,10 @@ const redirectLoggedInToRequest = () => Object(_angular_fire_auth_guard__WEBPACK
 const routes = [
     Object.assign({ path: '', component: _index_page__WEBPACK_IMPORTED_MODULE_3__["IndexPage"], children: [
             {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | splash-splash-module */ "splash-splash-module").then(__webpack_require__.bind(null, /*! ./splash/splash.module */ "./src/app/pages/index/splash/splash.module.ts")).then((m) => m.SplashPageModule),
+            },
+            {
                 path: 'welcome',
                 loadChildren: () => Promise.all(/*! import() | welcome-welcome-module */[__webpack_require__.e("common"), __webpack_require__.e("welcome-welcome-module")]).then(__webpack_require__.bind(null, /*! ./welcome/welcome.module */ "./src/app/pages/index/welcome/welcome.module.ts")).then((m) => m.WelcomePageModule),
             },
