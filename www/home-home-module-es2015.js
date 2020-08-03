@@ -147,6 +147,9 @@ let HomePage = class HomePage {
         });
     }
     ngOnInit() {
+        this.getModel();
+    }
+    getModel() {
         this.modelSub = this.modelService.getModel().subscribe((data) => {
             this.models = data.map((e) => {
                 return Object.assign({ id: e.payload.doc.id }, e.payload.doc.data());

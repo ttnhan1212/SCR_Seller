@@ -136,7 +136,6 @@ let OngoingPage = class OngoingPage {
         this.authService = authService;
         this.loadingController = loadingController;
         this.toast = toast;
-        // this.sellerId = JSON.parse(localStorage.getItem("user")).uid;
         this.logo = '../../../assets/images/logo/scroadslight.svg';
     }
     ngOnInit() {

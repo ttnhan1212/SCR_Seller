@@ -739,20 +739,10 @@
 
       var AuthService = /*#__PURE__*/function () {
         function AuthService(afAuth, router) {
-          var _this3 = this;
-
           _classCallCheck(this, AuthService);
 
           this.afAuth = afAuth;
           this.router = router;
-          this.afAuth.authState.subscribe(function (user) {
-            if (user) {
-              _this3.user = user;
-              localStorage.setItem('user', JSON.stringify(_this3.user));
-            } else {
-              localStorage.setItem('user', null);
-            }
-          });
         }
 
         _createClass(AuthService, [{

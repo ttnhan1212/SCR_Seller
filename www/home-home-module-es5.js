@@ -254,6 +254,11 @@
         _createClass(HomePage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
+            this.getModel();
+          }
+        }, {
+          key: "getModel",
+          value: function getModel() {
             var _this = this;
 
             this.modelSub = this.modelService.getModel().subscribe(function (data) {

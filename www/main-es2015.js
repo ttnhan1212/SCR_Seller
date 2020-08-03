@@ -738,15 +738,6 @@ let AuthService = class AuthService {
     constructor(afAuth, router) {
         this.afAuth = afAuth;
         this.router = router;
-        this.afAuth.authState.subscribe((user) => {
-            if (user) {
-                this.user = user;
-                localStorage.setItem('user', JSON.stringify(this.user));
-            }
-            else {
-                localStorage.setItem('user', null);
-            }
-        });
     }
     loginAny() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {

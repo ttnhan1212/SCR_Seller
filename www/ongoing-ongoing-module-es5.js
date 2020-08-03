@@ -249,8 +249,7 @@
           this.afAuth = afAuth;
           this.authService = authService;
           this.loadingController = loadingController;
-          this.toast = toast; // this.sellerId = JSON.parse(localStorage.getItem("user")).uid;
-
+          this.toast = toast;
           this.logo = '../../../assets/images/logo/scroadslight.svg';
         }
 

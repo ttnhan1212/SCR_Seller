@@ -136,15 +136,20 @@ let OngoingDetailPage = class OngoingDetailPage {
         this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
     }
     ngOnInit() {
-        this.myValueSub = this.requestService
-            .getRequestById(this.id)
-            .subscribe((data) => {
-            this.ongoing = {
-                name: data.payload.data()['name'],
-            };
-        });
+        this.getRequestById();
         this.getParticipant();
         this.selectedRequest();
+    }
+    getRequestById() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.myValueSub = yield this.requestService
+                .getRequestById(this.id)
+                .subscribe((data) => {
+                this.ongoing = {
+                    name: data.payload.data()['name'],
+                };
+            });
+        });
     }
     getParticipant() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -170,10 +175,8 @@ let OngoingDetailPage = class OngoingDetailPage {
         });
     }
     selectDealer(user) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            yield this.requestService.updateParticipant(this.id, user, {
-                selected: true,
-            });
+        this.requestService.updateParticipant(this.id, user, {
+            selected: true,
         });
     }
     selectedRequest() {

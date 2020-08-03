@@ -245,27 +245,49 @@
         _createClass(OngoingDetailPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this = this;
-
-            this.myValueSub = this.requestService.getRequestById(this.id).subscribe(function (data) {
-              _this.ongoing = {
-                name: data.payload.data()['name']
-              };
-            });
+            this.getRequestById();
             this.getParticipant();
             this.selectedRequest();
           }
         }, {
-          key: "getParticipant",
-          value: function getParticipant() {
+          key: "getRequestById",
+          value: function getRequestById() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var _this2 = this;
+              var _this = this;
 
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
                     case 0:
                       _context.next = 2;
+                      return this.requestService.getRequestById(this.id).subscribe(function (data) {
+                        _this.ongoing = {
+                          name: data.payload.data()['name']
+                        };
+                      });
+
+                    case 2:
+                      this.myValueSub = _context.sent;
+
+                    case 3:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "getParticipant",
+          value: function getParticipant() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var _this2 = this;
+
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
                       return this.requestService.getParticipant(this.id).subscribe(function (val) {
                         _this2.participants = val.map(function (m) {
                           return {
@@ -283,36 +305,22 @@
                       });
 
                     case 2:
-                      this.dealerSub = _context.sent;
+                      this.dealerSub = _context2.sent;
 
                     case 3:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, _callee, this);
-            }));
-          }
-        }, {
-          key: "selectDealer",
-          value: function selectDealer(user) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                while (1) {
-                  switch (_context2.prev = _context2.next) {
-                    case 0:
-                      _context2.next = 2;
-                      return this.requestService.updateParticipant(this.id, user, {
-                        selected: true
-                      });
-
-                    case 2:
                     case "end":
                       return _context2.stop();
                   }
                 }
               }, _callee2, this);
             }));
+          }
+        }, {
+          key: "selectDealer",
+          value: function selectDealer(user) {
+            this.requestService.updateParticipant(this.id, user, {
+              selected: true
+            });
           }
         }, {
           key: "selectedRequest",
