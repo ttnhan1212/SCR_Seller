@@ -36,7 +36,35 @@
 		</ion-grid>
 	</ion-card>
 
-	<ion-item-group class="mt-8 text-center" *ngIf="selectedDealer">
+	<ion-item-group class="mt-8 text-center" *ngIf="!participants">
+		<ion-label>
+			<ion-skeleton-text animated></ion-skeleton-text>
+		</ion-label>
+		<ion-item-sliding *ngFor="let item of participants">
+			<ion-item>
+				<ion-avatar slot="start">
+					<ion-skeleton-text animated></ion-skeleton-text>
+				</ion-avatar>
+				<ion-label>
+					<h2>
+						<ion-skeleton-text animated></ion-skeleton-text>
+					</h2>
+					<p class="fs-25">
+						<ion-skeleton-text animated></ion-skeleton-text>
+					</p>
+				</ion-label>
+				<ion-note slot="end">
+					<ion-skeleton-text animated></ion-skeleton-text>
+				</ion-note>
+				<ion-icon slot="end" name="chevron-back-outline"></ion-icon>
+			</ion-item>
+		</ion-item-sliding>
+	</ion-item-group>
+
+	<ion-item-group
+		class="mt-8 text-center"
+		*ngIf="selectedDealer && participants"
+	>
 		<ion-label>Waiting for confirmation</ion-label>
 		<ion-spinner name="dots"></ion-spinner>
 	</ion-item-group>
@@ -50,7 +78,7 @@
 				</ion-avatar>
 				<ion-label>
 					<h2>{{item.dealer.email}}</h2>
-					<p class="fs-25">{{item.price}}</p>
+					<p class="fs-25">${{item.price}}</p>
 				</ion-label>
 				<ion-note slot="end">
 					Rating
