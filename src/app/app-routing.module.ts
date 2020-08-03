@@ -6,13 +6,6 @@ const routes: Routes = [
 	{
 		path: '',
 		loadChildren: () =>
-			import('./pages/index/splash/splash.module').then(
-				(m) => m.SplashPageModule,
-			),
-	},
-	{
-		path: '',
-		loadChildren: () =>
 			import('./pages/index/index.module').then((m) => m.IndexPageModule),
 	},
 	{

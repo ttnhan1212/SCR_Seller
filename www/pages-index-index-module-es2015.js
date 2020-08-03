@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n\t<ion-router-outlet></ion-router-outlet>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-router-outlet></ion-router-outlet>\n");
 
 /***/ }),
 
@@ -37,12 +37,20 @@ const redirectLoggedInToRequest = () => Object(_angular_fire_auth_guard__WEBPACK
 const routes = [
     Object.assign({ path: '', component: _index_page__WEBPACK_IMPORTED_MODULE_3__["IndexPage"], children: [
             {
-                path: '',
-                loadChildren: () => __webpack_require__.e(/*! import() | welcome-welcome-module */ "welcome-welcome-module").then(__webpack_require__.bind(null, /*! ./welcome/welcome.module */ "./src/app/pages/index/welcome/welcome.module.ts")).then((m) => m.WelcomePageModule),
+                path: 'welcome',
+                loadChildren: () => Promise.all(/*! import() | welcome-welcome-module */[__webpack_require__.e("common"), __webpack_require__.e("welcome-welcome-module")]).then(__webpack_require__.bind(null, /*! ./welcome/welcome.module */ "./src/app/pages/index/welcome/welcome.module.ts")).then((m) => m.WelcomePageModule),
             },
             {
-                path: 'login',
-                loadChildren: () => Promise.all(/*! import() | login-login-module */[__webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/pages/index/login/login.module.ts")).then((m) => m.LoginPageModule),
+                path: 'privatepolicy',
+                loadChildren: () => Promise.all(/*! import() | components-modals-privacypolicy-privacypolicy-module */[__webpack_require__.e("common"), __webpack_require__.e("components-modals-privacypolicy-privacypolicy-module")]).then(__webpack_require__.bind(null, /*! ../../components/modals/privacypolicy/privacypolicy.module */ "./src/app/components/modals/privacypolicy/privacypolicy.module.ts")).then((m) => m.PrivacypolicyPageModule),
+            },
+            {
+                path: 'termcondition',
+                loadChildren: () => Promise.all(/*! import() | components-modals-termcondition-termcondition-module */[__webpack_require__.e("common"), __webpack_require__.e("components-modals-termcondition-termcondition-module")]).then(__webpack_require__.bind(null, /*! ../../components/modals/termcondition/termcondition.module */ "./src/app/components/modals/termcondition/termcondition.module.ts")).then((m) => m.TermconditionPageModule),
+            },
+            {
+                path: 'puagreement',
+                loadChildren: () => Promise.all(/*! import() | components-modals-puagreement-puagreement-module */[__webpack_require__.e("common"), __webpack_require__.e("components-modals-puagreement-puagreement-module")]).then(__webpack_require__.bind(null, /*! ../../components/modals/puagreement/puagreement.module */ "./src/app/components/modals/puagreement/puagreement.module.ts")).then((m) => m.PuagreementPageModule),
             },
             {
                 path: '',

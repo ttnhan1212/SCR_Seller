@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content>\n\t<ion-router-outlet></ion-router-outlet>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-router-outlet></ion-router-outlet>\n";
       /***/
     },
 
@@ -84,25 +84,47 @@
         path: '',
         component: _index_page__WEBPACK_IMPORTED_MODULE_3__["IndexPage"],
         children: [{
-          path: '',
+          path: 'welcome',
           loadChildren: function loadChildren() {
-            return __webpack_require__.e(
+            return Promise.all(
             /*! import() | welcome-welcome-module */
-            "welcome-welcome-module").then(__webpack_require__.bind(null,
+            [__webpack_require__.e("common"), __webpack_require__.e("welcome-welcome-module")]).then(__webpack_require__.bind(null,
             /*! ./welcome/welcome.module */
             "./src/app/pages/index/welcome/welcome.module.ts")).then(function (m) {
               return m.WelcomePageModule;
             });
           }
         }, {
-          path: 'login',
+          path: 'privatepolicy',
           loadChildren: function loadChildren() {
             return Promise.all(
-            /*! import() | login-login-module */
-            [__webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null,
-            /*! ./login/login.module */
-            "./src/app/pages/index/login/login.module.ts")).then(function (m) {
-              return m.LoginPageModule;
+            /*! import() | components-modals-privacypolicy-privacypolicy-module */
+            [__webpack_require__.e("common"), __webpack_require__.e("components-modals-privacypolicy-privacypolicy-module")]).then(__webpack_require__.bind(null,
+            /*! ../../components/modals/privacypolicy/privacypolicy.module */
+            "./src/app/components/modals/privacypolicy/privacypolicy.module.ts")).then(function (m) {
+              return m.PrivacypolicyPageModule;
+            });
+          }
+        }, {
+          path: 'termcondition',
+          loadChildren: function loadChildren() {
+            return Promise.all(
+            /*! import() | components-modals-termcondition-termcondition-module */
+            [__webpack_require__.e("common"), __webpack_require__.e("components-modals-termcondition-termcondition-module")]).then(__webpack_require__.bind(null,
+            /*! ../../components/modals/termcondition/termcondition.module */
+            "./src/app/components/modals/termcondition/termcondition.module.ts")).then(function (m) {
+              return m.TermconditionPageModule;
+            });
+          }
+        }, {
+          path: 'puagreement',
+          loadChildren: function loadChildren() {
+            return Promise.all(
+            /*! import() | components-modals-puagreement-puagreement-module */
+            [__webpack_require__.e("common"), __webpack_require__.e("components-modals-puagreement-puagreement-module")]).then(__webpack_require__.bind(null,
+            /*! ../../components/modals/puagreement/puagreement.module */
+            "./src/app/components/modals/puagreement/puagreement.module.ts")).then(function (m) {
+              return m.PuagreementPageModule;
             });
           }
         }, {

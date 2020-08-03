@@ -238,6 +238,17 @@
       var routes = [{
         path: '',
         loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | pages-index-splash-splash-module */
+          "pages-index-splash-splash-module").then(__webpack_require__.bind(null,
+          /*! ./pages/index/splash/splash.module */
+          "./src/app/pages/index/splash/splash.module.ts")).then(function (m) {
+            return m.SplashPageModule;
+          });
+        }
+      }, {
+        path: '',
+        loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-index-index-module */
           [__webpack_require__.e("common"), __webpack_require__.e("pages-index-index-module")]).then(__webpack_require__.bind(null,
@@ -283,10 +294,10 @@
         path: 'home/ongoing/:id',
         loadChildren: function loadChildren() {
           return Promise.all(
-          /*! import() | pages-ongoing-detail-ongoing-detail-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("pages-ongoing-detail-ongoing-detail-module")]).then(__webpack_require__.bind(null,
-          /*! ./pages/ongoing-detail/ongoing-detail.module */
-          "./src/app/pages/ongoing-detail/ongoing-detail.module.ts")).then(function (m) {
+          /*! import() | pages-navigation-ongoing-ongoing-detail-ongoing-detail-module */
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-navigation-ongoing-ongoing-detail-ongoing-detail-module")]).then(__webpack_require__.bind(null,
+          /*! ./pages/navigation/ongoing/ongoing-detail/ongoing-detail.module */
+          "./src/app/pages/navigation/ongoing/ongoing-detail/ongoing-detail.module.ts")).then(function (m) {
             return m.OngoingDetailPageModule;
           });
         }
@@ -297,6 +308,39 @@
       }, {
         path: '**',
         component: _pages_errors_errors_page__WEBPACK_IMPORTED_MODULE_1__["ErrorsPage"]
+      }, {
+        path: 'privacypolicy',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() | components-modals-privacypolicy-privacypolicy-module */
+          [__webpack_require__.e("common"), __webpack_require__.e("components-modals-privacypolicy-privacypolicy-module")]).then(__webpack_require__.bind(null,
+          /*! ./components/modals/privacypolicy/privacypolicy.module */
+          "./src/app/components/modals/privacypolicy/privacypolicy.module.ts")).then(function (m) {
+            return m.PrivacypolicyPageModule;
+          });
+        }
+      }, {
+        path: 'puagreement',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() | components-modals-puagreement-puagreement-module */
+          [__webpack_require__.e("common"), __webpack_require__.e("components-modals-puagreement-puagreement-module")]).then(__webpack_require__.bind(null,
+          /*! ./components/modals/puagreement/puagreement.module */
+          "./src/app/components/modals/puagreement/puagreement.module.ts")).then(function (m) {
+            return m.PuagreementPageModule;
+          });
+        }
+      }, {
+        path: 'termcondition',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() | components-modals-termcondition-termcondition-module */
+          [__webpack_require__.e("common"), __webpack_require__.e("components-modals-termcondition-termcondition-module")]).then(__webpack_require__.bind(null,
+          /*! ./components/modals/termcondition/termcondition.module */
+          "./src/app/components/modals/termcondition/termcondition.module.ts")).then(function (m) {
+            return m.TermconditionPageModule;
+          });
+        }
       }];
 
       var AppRoutingModule = function AppRoutingModule() {

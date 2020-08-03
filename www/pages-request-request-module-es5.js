@@ -187,8 +187,10 @@
             sellerId: this.sellerId,
             miles: this.miles,
             other: this.other,
-            status: 'ongoing',
-            participants: []
+            status: 'On-going',
+            participants: [{
+              created: true
+            }]
           });
         }
 

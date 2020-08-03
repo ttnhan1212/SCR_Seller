@@ -29,7 +29,7 @@ const routes: Routes = [
 				path: 'setting',
 				loadChildren: () =>
 					import('./settings/settings.module').then(
-						(m) => m.SettingsPageModule
+						(m) => m.SettingsPageModule,
 					),
 			},
 			{
@@ -41,7 +41,7 @@ const routes: Routes = [
 				path: 'notifications',
 				loadChildren: () =>
 					import('./notifications/notifications.module').then(
-						(m) => m.NotificationsPageModule
+						(m) => m.NotificationsPageModule,
 					),
 			},
 			{

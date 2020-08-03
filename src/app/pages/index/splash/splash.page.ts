@@ -11,14 +11,12 @@ export class SplashPage implements OnInit {
 	image: any;
 	constructor(private router: Router) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
-		this.image = 'https://picsum.photos/300/400';
+		this.image = '../../../../assets/images/photos/OBC8OG0.jpg';
 	}
 
 	ngOnInit() {
-		if (this.image) {
-			setTimeout(() => {
-				this.router.navigate(['/', 'welcome']);
-			}, 3500);
-		}
+		setTimeout(() => {
+			this.router.navigate(['welcome']);
+		}, 3000);
 	}
 }

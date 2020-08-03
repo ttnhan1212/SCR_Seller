@@ -27,26 +27,6 @@
     },
 
     /***/
-    "./node_modules/raw-loader/dist/cjs.js!./src/app/components/start/start.component.html":
-    /*!*********************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/start/start.component.html ***!
-      \*********************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function node_modulesRawLoaderDistCjsJsSrcAppComponentsStartStartComponentHtml(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "<ion-button expand=\"block\" color=\"warning\" (click)=\"navigateToLogin()\"\n\t>Start</ion-button\n>\n";
-      /***/
-    },
-
-    /***/
     "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/index/welcome/welcome.page.html":
     /*!*********************************************************************************************!*\
       !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/index/welcome/welcome.page.html ***!
@@ -62,7 +42,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content class=\"ion-padding\">\n\t<app-slides></app-slides>\n\t<ion-item-group>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Privacy Policy</ion-label>\n\t\t</ion-item>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Term & Condition</ion-label>\n\t\t</ion-item>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Privacy info usage</ion-label>\n\t\t</ion-item>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-checkbox slot=\"start\" color=\"primary\"></ion-checkbox>\n\t\t\t<ion-label>Select All</ion-label>\n\t\t</ion-item>\n\t</ion-item-group>\n\t<app-start></app-start>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-content class=\"ion-padding\">\n\t<ion-title class=\"text-center title\">Welcome to SCRoads</ion-title>\n\t<ion-title class=\"text-center subtitle\">Before you start:</ion-title>\n\t<ion-list class=\"ion-padding\">\n\t\t<ion-item *ngFor=\"let item of checkBoxList\" lines=\"none\">\n\t\t\t<ion-label>{{item.value}}</ion-label>\n\t\t\t<ion-checkbox\n\t\t\t\tslot=\"start\"\n\t\t\t\t#checkBoxList\n\t\t\t\tname=\"itemoption\"\n\t\t\t\t(click)=\"modalNavigate(item.id)\"\n\t\t\t\t[(ngModel)]=\"item.isChecked\"\n\t\t\t\t[attr.data-id]=\"item.id\"\n\t\t\t\t(ionChange)=\"checkEvent()\"\n\t\t\t></ion-checkbox>\n\t\t</ion-item>\n\t\t<ion-item lines=\"none\">\n\t\t\t<ion-label><strong>Agree All</strong></ion-label>\n\t\t\t<ion-checkbox\n\t\t\t\tslot=\"start\"\n\t\t\t\tname=\"selectallcheck\"\n\t\t\t\t[(ngModel)]=\"masterCheck\"\n\t\t\t\t[indeterminate]=\"isIndeterminate\"\n\t\t\t\t(click)=\"checkMaster($event)\"\n\t\t\t></ion-checkbox>\n\t\t</ion-item>\n\t</ion-list>\n\t<ion-button\n\t\texpand=\"block\"\n\t\tcolor=\"warning\"\n\t\t(click)=\"anonyLogin()\"\n\t\t[disabled]=\"!masterCheck\"\n\t>\n\t\tStart\n\t</ion-button>\n</ion-content>\n";
       /***/
     },
 
@@ -100,19 +80,13 @@
       /* harmony import */
 
 
-      var _start_start_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ./start/start.component */
-      "./src/app/components/start/start.component.ts");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
       "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/common */
       "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
@@ -120,10 +94,10 @@
         _classCallCheck(this, ComponentsModule);
       };
 
-      ComponentsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
-        declarations: [_start_start_component__WEBPACK_IMPORTED_MODULE_2__["StartComponent"], _slides_slides_component__WEBPACK_IMPORTED_MODULE_1__["SlidesComponent"]],
-        exports: [_start_start_component__WEBPACK_IMPORTED_MODULE_2__["StartComponent"], _slides_slides_component__WEBPACK_IMPORTED_MODULE_1__["SlidesComponent"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"]]
+      ComponentsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+        declarations: [_slides_slides_component__WEBPACK_IMPORTED_MODULE_1__["SlidesComponent"]],
+        exports: [_slides_slides_component__WEBPACK_IMPORTED_MODULE_1__["SlidesComponent"]],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]]
       })], ComponentsModule);
       /***/
     },
@@ -211,102 +185,6 @@
         /*! ./slides.component.scss */
         "./src/app/components/slides/slides.component.scss"))["default"]]
       })], SlidesComponent);
-      /***/
-    },
-
-    /***/
-    "./src/app/components/start/start.component.scss":
-    /*!*******************************************************!*\
-      !*** ./src/app/components/start/start.component.scss ***!
-      \*******************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function srcAppComponentsStartStartComponentScss(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc3RhcnQvc3RhcnQuY29tcG9uZW50LnNjc3MifQ== */";
-      /***/
-    },
-
-    /***/
-    "./src/app/components/start/start.component.ts":
-    /*!*****************************************************!*\
-      !*** ./src/app/components/start/start.component.ts ***!
-      \*****************************************************/
-
-    /*! exports provided: StartComponent */
-
-    /***/
-    function srcAppComponentsStartStartComponentTs(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "StartComponent", function () {
-        return StartComponent;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/router */
-      "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-
-      var StartComponent = /*#__PURE__*/function () {
-        function StartComponent(router) {
-          _classCallCheck(this, StartComponent);
-
-          this.router = router;
-        }
-
-        _createClass(StartComponent, [{
-          key: "ngOnInit",
-          value: function ngOnInit() {}
-        }, {
-          key: "navigateToLogin",
-          value: function navigateToLogin() {
-            this.router.navigate(['login']);
-          }
-        }]);
-
-        return StartComponent;
-      }();
-
-      StartComponent.ctorParameters = function () {
-        return [{
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-        }];
-      };
-
-      StartComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-start',
-        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
-        /*! raw-loader!./start.component.html */
-        "./node_modules/raw-loader/dist/cjs.js!./src/app/components/start/start.component.html"))["default"],
-        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
-        /*! ./start.component.scss */
-        "./src/app/components/start/start.component.scss"))["default"]]
-      })], StartComponent);
       /***/
     },
 
@@ -465,7 +343,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2luZGV4L3dlbGNvbWUvd2VsY29tZS5wYWdlLnNjc3MifQ== */";
+      __webpack_exports__["default"] = ".title {\n  margin-top: 8rem;\n  height: 20vh;\n  font-size: 32px;\n  line-height: normal;\n}\n\n.subtitle {\n  height: 4vh;\n  color: gray;\n  font-size: 20px;\n  line-height: normal;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvaW5kZXgvd2VsY29tZS93ZWxjb21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLGdCQUFBO0VBQ0EsWUFBQTtFQUVBLGVBQUE7RUFDQSxtQkFBQTtBQUFEOztBQUdBO0VBQ0MsV0FBQTtFQUNBLFdBQUE7RUFFQSxlQUFBO0VBQ0EsbUJBQUE7QUFERCIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2luZGV4L3dlbGNvbWUvd2VsY29tZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGl0bGUge1xuXHRtYXJnaW4tdG9wOiA4cmVtO1xuXHRoZWlnaHQ6IDIwdmg7XG5cblx0Zm9udC1zaXplOiAzMnB4O1xuXHRsaW5lLWhlaWdodDogbm9ybWFsO1xufVxuXG4uc3VidGl0bGUge1xuXHRoZWlnaHQ6IDR2aDtcblx0Y29sb3I6IGdyYXk7XG5cblx0Zm9udC1zaXplOiAyMHB4O1xuXHRsaW5lLWhlaWdodDogbm9ybWFsO1xufVxuIl19 */";
       /***/
     },
 
@@ -497,28 +375,309 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _services_seller_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./../../../services/seller.service */
+      "./src/app/services/seller.service.ts");
+      /* harmony import */
+
+
+      var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/fire/auth */
+      "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-auth.js");
+      /* harmony import */
+
+
+      var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ./../../../services/auth.service */
+      "./src/app/services/auth.service.ts");
+      /* harmony import */
+
+
+      var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! src/app/services/toast.service */
+      "./src/app/services/toast.service.ts");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/core */
       "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      /* harmony import */
+
+
+      var _components_modals_privacypolicy_privacypolicy_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! ../../../components/modals/privacypolicy/privacypolicy.page */
+      "./src/app/components/modals/privacypolicy/privacypolicy.page.ts");
+      /* harmony import */
+
+
+      var _components_modals_puagreement_puagreement_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! ../../../components/modals/puagreement/puagreement.page */
+      "./src/app/components/modals/puagreement/puagreement.page.ts");
+      /* harmony import */
+
+
+      var _components_modals_termcondition_termcondition_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      /*! ../../../components/modals/termcondition/termcondition.page */
+      "./src/app/components/modals/termcondition/termcondition.page.ts");
 
       var WelcomePage = /*#__PURE__*/function () {
-        function WelcomePage() {
+        function WelcomePage(modalController, loadingController, toast, authService, afAuth, sellerService) {
           _classCallCheck(this, WelcomePage);
+
+          this.modalController = modalController;
+          this.loadingController = loadingController;
+          this.toast = toast;
+          this.authService = authService;
+          this.afAuth = afAuth;
+          this.sellerService = sellerService;
+          this.createDate = Math.floor(new Date().getTime() / 1000.0);
+          this.checkBoxList = [{
+            id: 1,
+            value: 'Privacy Policy',
+            isChecked: false
+          }, {
+            id: 2,
+            value: 'Terms & Condition',
+            isChecked: false
+          }, {
+            id: 3,
+            value: 'Privacy Usage Agreement',
+            isChecked: false
+          }];
         }
 
         _createClass(WelcomePage, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
+        }, {
+          key: "privatePolicyModal",
+          value: function privatePolicyModal() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var modal;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      _context.next = 2;
+                      return this.modalController.create({
+                        component: _components_modals_privacypolicy_privacypolicy_page__WEBPACK_IMPORTED_MODULE_7__["PrivacypolicyPage"]
+                      });
+
+                    case 2:
+                      modal = _context.sent;
+                      _context.next = 5;
+                      return modal.present();
+
+                    case 5:
+                      return _context.abrupt("return", _context.sent);
+
+                    case 6:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "termConditionModal",
+          value: function termConditionModal() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var modal;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.modalController.create({
+                        component: _components_modals_termcondition_termcondition_page__WEBPACK_IMPORTED_MODULE_9__["TermconditionPage"]
+                      });
+
+                    case 2:
+                      modal = _context2.sent;
+                      _context2.next = 5;
+                      return modal.present();
+
+                    case 5:
+                      return _context2.abrupt("return", _context2.sent);
+
+                    case 6:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
+        }, {
+          key: "PuaModal",
+          value: function PuaModal() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              var modal;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _context3.next = 2;
+                      return this.modalController.create({
+                        component: _components_modals_puagreement_puagreement_page__WEBPACK_IMPORTED_MODULE_8__["PuagreementPage"]
+                      });
+
+                    case 2:
+                      modal = _context3.sent;
+                      _context3.next = 5;
+                      return modal.present();
+
+                    case 5:
+                      return _context3.abrupt("return", _context3.sent);
+
+                    case 6:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+          }
+        }, {
+          key: "checkMaster",
+          value: function checkMaster() {
+            var _this = this;
+
+            setTimeout(function () {
+              _this.checkBoxList.forEach(function (obj) {
+                obj.isChecked = _this.masterCheck;
+              });
+            });
+          }
+        }, {
+          key: "checkEvent",
+          value: function checkEvent() {
+            var totalItems = this.checkBoxList.length;
+            var checked = 0;
+            this.checkBoxList.map(function (obj) {
+              if (obj.isChecked) checked++; // console.log(obj.isChecked);
+            });
+
+            if (checked > 0 && checked < totalItems) {
+              //If even one item is checked but not all
+              this.isIndeterminate = true;
+              this.masterCheck = false;
+            } else if (checked == totalItems) {
+              //If all are checked
+              this.masterCheck = true;
+              this.isIndeterminate = false;
+            } else {
+              //If none is checked
+              this.isIndeterminate = false;
+              this.masterCheck = false;
+            }
+          }
+        }, {
+          key: "modalNavigate",
+          value: function modalNavigate(id) {
+            var checkboxId = id; //let messageId = el.dataset.messageId;
+
+            if (checkboxId === 1) {
+              this.privatePolicyModal();
+            } else {
+              if (checkboxId === 2) {
+                this.termConditionModal();
+              } else if (checkboxId === 3) {
+                this.PuaModal();
+              }
+            }
+          }
+        }, {
+          key: "anonyLogin",
+          value: function anonyLogin() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              var _this2 = this;
+
+              var loading;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      _context4.next = 2;
+                      return this.loadingController.create({
+                        message: 'Please wait...',
+                        showBackdrop: true
+                      });
+
+                    case 2:
+                      loading = _context4.sent;
+                      _context4.prev = 3;
+                      _context4.next = 6;
+                      return loading.present();
+
+                    case 6:
+                      _context4.next = 8;
+                      return this.authService.loginAny();
+
+                    case 8:
+                      _context4.next = 10;
+                      return this.afAuth.onAuthStateChanged(function (user) {
+                        if (user) {
+                          _this2.sellerService.createSeller(user.uid, {
+                            uid: user.uid,
+                            create_date: _this2.createDate
+                          });
+                        }
+                      });
+
+                    case 10:
+                      _context4.next = 12;
+                      return loading.dismiss();
+
+                    case 12:
+                      _context4.next = 19;
+                      break;
+
+                    case 14:
+                      _context4.prev = 14;
+                      _context4.t0 = _context4["catch"](3);
+                      this.toast.showToast(_context4.t0.message);
+                      _context4.next = 19;
+                      return loading.dismiss();
+
+                    case 19:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this, [[3, 14]]);
+            }));
+          }
         }]);
 
         return WelcomePage;
       }();
 
       WelcomePage.ctorParameters = function () {
-        return [];
+        return [{
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["LoadingController"]
+        }, {
+          type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
+        }, {
+          type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
+        }, {
+          type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"]
+        }, {
+          type: _services_seller_service__WEBPACK_IMPORTED_MODULE_1__["SellerService"]
+        }];
       };
 
-      WelcomePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      WelcomePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_5__["Component"])({
         selector: 'app-welcome',
         template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
         /*! raw-loader!./welcome.page.html */

@@ -12,6 +12,11 @@ const routes: Routes = [
 		component: IndexPage,
 		children: [
 			{
+				path: '',
+				loadChildren: () =>
+					import('./splash/splash.module').then((m) => m.SplashPageModule),
+			},
+			{
 				path: 'welcome',
 				loadChildren: () =>
 					import('./welcome/welcome.module').then((m) => m.WelcomePageModule),

@@ -186,7 +186,7 @@ let PlatenumberPage = class PlatenumberPage {
                             };
                             this.notiService.createNoti({
                                 requestId: val.id,
-                                status: 'ongoing',
+                                status: 'On-going',
                                 updateDate: Math.floor(new Date().getTime() / 1000.0),
                                 user: this.sellerId,
                             });

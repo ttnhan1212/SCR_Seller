@@ -658,6 +658,210 @@ const openURL = async (url, ev, direction, animation) => {
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/privacypolicy/privacypolicy.page.html":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/privacypolicy/privacypolicy.page.html ***!
+  \***************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Private Policy</ion-title>\n\t\t<ion-buttons slot=\"end\">\n\t\t\t<ion-button (click)=\"closePrivatePolicyModal()\">\n\t\t\t\t<ion-icon slot=\"icon-only\" name=\"checkmark-done-outline\"></ion-icon>\n\t\t\t</ion-button>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\t<ion-item lines=\"none\">\n\t\t<p>\n\t\t\tYou can use our services in a variety of ways to manage your privacy. For\n\t\t\texample, you can sign up for a Google Account if you want to create and\n\t\t\tmanage content like emails and photos, or see more relevant search\n\t\t\tresults. And you can use many Google services when you’re signed out or\n\t\t\twithout creating an account at all, like searching on Google or watching\n\t\t\tYouTube videos. You can also choose to browse the web privately using\n\t\t\tChrome in Incognito mode. And across our services, you can adjust your\n\t\t\tprivacy settings to control what we collect and how your information is\n\t\t\tused.\n\t\t</p>\n\t</ion-item>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/puagreement/puagreement.page.html":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/puagreement/puagreement.page.html ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Privacy Usage Agreement</ion-title>\n\t\t<ion-buttons slot=\"end\">\n\t\t\t<ion-button (click)=\"closePuaModal()\">\n\t\t\t\t<ion-icon slot=\"icon-only\" name=\"checkmark-done-outline\"></ion-icon>\n\t\t\t</ion-button>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\t<ion-item lines=\"none\">\n\t\t<p>\n\t\t\tYou can use our services in a variety of ways to manage your privacy. For\n\t\t\texample, you can sign up for a Google Account if you want to create and\n\t\t\tmanage content like emails and photos, or see more relevant search\n\t\t\tresults. And you can use many Google services when you’re signed out or\n\t\t\twithout creating an account at all, like searching on Google or watching\n\t\t\tYouTube videos. You can also choose to browse the web privately using\n\t\t\tChrome in Incognito mode. And across our services, you can adjust your\n\t\t\tprivacy settings to control what we collect and how your information is\n\t\t\tused.\n\t\t</p>\n\t</ion-item>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/termcondition/termcondition.page.html":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/termcondition/termcondition.page.html ***!
+  \***************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Terms & Conditions</ion-title>\n\t\t<ion-buttons slot=\"end\">\n\t\t\t<ion-button (click)=\"closeTermCondition()\">\n\t\t\t\t<ion-icon slot=\"icon-only\" name=\"checkmark-done-outline\"></ion-icon>\n\t\t\t</ion-button>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\t<ion-item lines=\"none\">\n\t\t<p>\n\t\t\tYou can use our services in a variety of ways to manage your privacy. For\n\t\t\texample, you can sign up for a Google Account if you want to create and\n\t\t\tmanage content like emails and photos, or see more relevant search\n\t\t\tresults. And you can use many Google services when you’re signed out or\n\t\t\twithout creating an account at all, like searching on Google or watching\n\t\t\tYouTube videos. You can also choose to browse the web privately using\n\t\t\tChrome in Incognito mode. And across our services, you can adjust your\n\t\t\tprivacy settings to control what we collect and how your information is\n\t\t\tused.\n\t\t</p>\n\t</ion-item>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./src/app/components/modals/privacypolicy/privacypolicy.page.scss":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/modals/privacypolicy/privacypolicy.page.scss ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-item {\n  --padding-top: 10px;\n}\n\n/*# sourceMappingURL=privatepolicy.page.css.map */\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tb2RhbHMvcHJpdmFjeXBvbGljeS9wcml2YWN5cG9saWN5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLG1CQUFBO0FBQ0Q7O0FBQ0EsaURBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL21vZGFscy9wcml2YWN5cG9saWN5L3ByaXZhY3lwb2xpY3kucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWl0ZW0ge1xuXHQtLXBhZGRpbmctdG9wOiAxMHB4O1xufVxuLyojIHNvdXJjZU1hcHBpbmdVUkw9cHJpdmF0ZXBvbGljeS5wYWdlLmNzcy5tYXAgKi9cbiJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/components/modals/privacypolicy/privacypolicy.page.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/modals/privacypolicy/privacypolicy.page.ts ***!
+  \***********************************************************************/
+/*! exports provided: PrivacypolicyPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrivacypolicyPage", function() { return PrivacypolicyPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+
+let PrivacypolicyPage = class PrivacypolicyPage {
+    constructor(modalController) {
+        this.modalController = modalController;
+    }
+    ngOnInit() { }
+    closePrivatePolicyModal() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.modalController.dismiss();
+        });
+    }
+};
+PrivacypolicyPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"] }
+];
+PrivacypolicyPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-privacypolicy',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./privacypolicy.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/privacypolicy/privacypolicy.page.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./privacypolicy.page.scss */ "./src/app/components/modals/privacypolicy/privacypolicy.page.scss")).default]
+    })
+], PrivacypolicyPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/modals/puagreement/puagreement.page.scss":
+/*!*********************************************************************!*\
+  !*** ./src/app/components/modals/puagreement/puagreement.page.scss ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-item {\n  --padding-top: 10px;\n}\n\n/*# sourceMappingURL=puagreement.page.css.map */\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tb2RhbHMvcHVhZ3JlZW1lbnQvcHVhZ3JlZW1lbnQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0MsbUJBQUE7QUFDRDs7QUFDQSwrQ0FBQSIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbW9kYWxzL3B1YWdyZWVtZW50L3B1YWdyZWVtZW50LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVtIHtcblx0LS1wYWRkaW5nLXRvcDogMTBweDtcbn1cbi8qIyBzb3VyY2VNYXBwaW5nVVJMPXB1YWdyZWVtZW50LnBhZ2UuY3NzLm1hcCAqL1xuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/components/modals/puagreement/puagreement.page.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/modals/puagreement/puagreement.page.ts ***!
+  \*******************************************************************/
+/*! exports provided: PuagreementPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PuagreementPage", function() { return PuagreementPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+
+let PuagreementPage = class PuagreementPage {
+    constructor(modalController) {
+        this.modalController = modalController;
+    }
+    ngOnInit() { }
+    closePuaModal() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.modalController.dismiss();
+        });
+    }
+};
+PuagreementPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"] }
+];
+PuagreementPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-puagreement',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./puagreement.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/puagreement/puagreement.page.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./puagreement.page.scss */ "./src/app/components/modals/puagreement/puagreement.page.scss")).default]
+    })
+], PuagreementPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/modals/termcondition/termcondition.page.scss":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/modals/termcondition/termcondition.page.scss ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-item {\n  --padding-top: 10px;\n}\n\n/*# sourceMappingURL=puagreement.page.css.map */\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tb2RhbHMvdGVybWNvbmRpdGlvbi90ZXJtY29uZGl0aW9uLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLG1CQUFBO0FBQ0Q7O0FBQ0EsK0NBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL21vZGFscy90ZXJtY29uZGl0aW9uL3Rlcm1jb25kaXRpb24ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWl0ZW0ge1xuXHQtLXBhZGRpbmctdG9wOiAxMHB4O1xufVxuLyojIHNvdXJjZU1hcHBpbmdVUkw9cHVhZ3JlZW1lbnQucGFnZS5jc3MubWFwICovXG4iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/components/modals/termcondition/termcondition.page.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/modals/termcondition/termcondition.page.ts ***!
+  \***********************************************************************/
+/*! exports provided: TermconditionPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TermconditionPage", function() { return TermconditionPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+
+let TermconditionPage = class TermconditionPage {
+    constructor(modalController) {
+        this.modalController = modalController;
+    }
+    ngOnInit() { }
+    closeTermCondition() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.modalController.dismiss();
+        });
+    }
+};
+TermconditionPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"] }
+];
+TermconditionPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-termcondition',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./termcondition.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/modals/termcondition/termcondition.page.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./termcondition.page.scss */ "./src/app/components/modals/termcondition/termcondition.page.scss")).default]
+    })
+], TermconditionPage);
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/noti.service.ts":
 /*!******************************************!*\
   !*** ./src/app/services/noti.service.ts ***!
