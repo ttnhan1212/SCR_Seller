@@ -66,12 +66,13 @@
 			</ion-item>
 			<ion-item>
 				<ion-label position="floating">Mileages</ion-label>
-				<ion-input type="text" [formControl]="miles"></ion-input>
+				<ion-input type="number" [formControl]="miles"></ion-input>
 			</ion-item>
 			<ion-item>
 				<ion-label position="floating">Other</ion-label>
 				<ion-textarea type="text" [formControl]="other"></ion-textarea>
 			</ion-item>
+			<ion-input hidden [formControl]="seller" [value]="sellerId"></ion-input>
 		</ion-item-group>
 		<ion-button
 			expand="block"

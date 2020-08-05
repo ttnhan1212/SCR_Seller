@@ -1,3 +1,4 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 
@@ -7,24 +8,27 @@ import { Injectable } from '@angular/core';
 export class RequestService {
 	loggedUser: any;
 
-	constructor(private firestore: AngularFirestore) {
-		if (this.isLoggedIn === true) {
-			this.loggedUser = JSON.parse(localStorage.getItem('user')).uid;
-		}
+	constructor(
+		private firestore: AngularFirestore,
+		private afAuth: AngularFireAuth,
+	) {
+		this.afAuth.authState.subscribe((user) => {
+			if (user) {
+				this.loggedUser = user;
+			}
+		});
 	}
 
-	get isLoggedIn(): boolean {
-		const user = JSON.parse(localStorage.getItem('user'));
-		return user !== null;
+	getAllRequest() {
+		return this.firestore.collection('requests').snapshotChanges();
 	}
 
-	getRequest() {
+	getRequestBySeller(sellerId: string) {
 		return this.firestore
-			.collection('requests', (ref) =>
-				ref.where('sellerId', '==', this.loggedUser),
-			)
+			.collection('requests', (ref) => ref.where('sellerId', '==', sellerId))
 			.snapshotChanges();
 	}
+
 	getRequestById(id: string) {
 		return this.firestore.collection('requests').doc(id).snapshotChanges();
 	}
@@ -33,21 +37,21 @@ export class RequestService {
 		return this.firestore.collection('requests').add(request);
 	}
 
-	createRequestBySeller(request: any, id: string) {
+	createRequestBySeller(request: any) {
 		return this.firestore
 			.collection('Seller')
-			.doc(id)
+			.doc(this.loggedUser.uid)
 			.collection('Requests')
 			.add(request);
 	}
 
-	updateRequest(request: any, id: string) {
+	updateRequest(id: string, request: any) {
 		this.firestore.collection('requests').doc(id).update(request);
 	}
-	updateRequestBySeller(request: any, sellerId: string, requestId: string) {
+	updateRequestBySeller(request: any, requestId: string) {
 		this.firestore
 			.collection('Seller')
-			.doc(sellerId)
+			.doc(this.loggedUser.uid)
 			.collection('Requests')
 			.doc(requestId)
 			.update(request);

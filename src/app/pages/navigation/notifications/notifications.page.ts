@@ -1,7 +1,7 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { NotiService } from './../../../services/noti.service';
 import { Request } from '../../../models/request';
 import { RequestService } from 'src/app/services/request.service';
-import { Notifications } from '../../../models/notifications';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -21,12 +21,26 @@ export class NotificationsPage implements OnInit, OnDestroy {
 	constructor(
 		public notiService: NotiService,
 		public requestService: RequestService,
+		private afAuth: AngularFireAuth,
 	) {
-		this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
+		// this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
 	}
 
 	ngOnInit() {
-		this.notiSub = this.notiService.getNoti(this.sellerId).subscribe((data) => {
+		this.getUser();
+	}
+
+	async getUser() {
+		this.afAuth.authState.subscribe((user) => {
+			if (user) {
+				this.sellerId = user.uid;
+			}
+			this.getNoti(this.sellerId);
+		});
+	}
+
+	getNoti(id: string) {
+		this.notiSub = this.notiService.getNoti(id).subscribe((data) => {
 			this.noti = data.map((e) => {
 				return {
 					...(e.payload.doc.data() as {}),
@@ -37,7 +51,6 @@ export class NotificationsPage implements OnInit, OnDestroy {
 					val.request = { ...(m.payload.data() as {}) };
 				});
 			});
-			console.log(this.noti);
 		});
 	}
 

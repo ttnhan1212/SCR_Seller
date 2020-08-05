@@ -13,9 +13,4 @@ export class AuthService {
 		await this.afAuth.signInAnonymously();
 		this.router.navigate(['home/seller']);
 	}
-
-	async logout() {
-		await this.afAuth.signOut();
-		this.router.navigate(['login']);
-	}
 }

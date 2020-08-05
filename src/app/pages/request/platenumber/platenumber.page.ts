@@ -30,7 +30,12 @@ export class PlatenumberPage implements OnInit {
 		public route: Router,
 		public notiService: NotiService,
 	) {
-		this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
+		// this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
+		this.afAuth.authState.subscribe((user) => {
+			if (user) {
+				this.sellerId = user.uid;
+			}
+		});
 	}
 
 	ngOnInit() {}
@@ -52,11 +57,11 @@ export class PlatenumberPage implements OnInit {
 					this.plate = '';
 					let request = {};
 					request['vehiclesId'] = res.id;
-					request['status'] = 'draft';
+					request['status'] = 'Draft';
 					try {
 						this.toast.showToast('Your request is successfully created!');
 						this.requestService
-							.createRequestBySeller(request, this.sellerId)
+							.createRequestBySeller(request)
 							.then((val) => {
 								this.requestSellerId = val.id;
 								console.log(this.requestSellerId);
