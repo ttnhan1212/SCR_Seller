@@ -17,44 +17,41 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-	<ion-card *ngFor="let request of requests">
-		<ion-item [routerLink]="[request.id]">
+	<ion-list>
+		<ion-item
+			*ngFor="let request of requests"
+			lines="none"
+			[routerLink]="[request.id]"
+		>
 			<ion-thumbnail slot="start">
 				<img
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-grid class="p-0 m-0">
-				<ion-row>
-					<ion-title style="background: gray;" class="m-0 p-0">
-						<p class="fs-20 text-center mt-2 text-dark">{{request.status}}</p>
-					</ion-title>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<p>2009</p>
-					</ion-col>
-					<ion-col>
-						<p>K-5</p>
-					</ion-col>
-					<ion-col>
-						<p>12가1234</p>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<p>{{request.miles}}</p>
-					</ion-col>
-					<ion-col>
-						<p>${{request.participants[1] || 0}}</p>
-					</ion-col>
-				</ion-row>
-				<!-- <ion-row>
-					<ion-col>
-						<ion-label>{{request.id}}</ion-label>
-					</ion-col>
-				</ion-row> -->
-			</ion-grid>
+			<ion-label style="margin-top: 25px;">
+				<ion-header
+					style="
+						background: #bdc3c7;
+						background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+						background: linear-gradient(to right, #2c3e50, #bdc3c7);
+					"
+					class="m-0 p-0"
+				>
+					<p class="fs-15 text-center text-dark">{{request.status}}</p>
+				</ion-header>
+				<div class="first">
+					<p>
+						2009
+						<span class="pull-right"
+							>K-5<span style="font-size: 10px;">12가1234</span></span
+						>
+					</p>
+					<p>
+						{{request.miles}}
+						<span class="pull-right">${{request.participants[0] || ''}}</span>
+					</p>
+				</div>
+			</ion-label>
 		</ion-item>
-	</ion-card>
+	</ion-list>
 </ion-content>
