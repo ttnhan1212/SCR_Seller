@@ -20,6 +20,7 @@ export class PlatenumberPage implements OnInit {
 	requestSellerId: string;
 
 	requestState: NavigationExtras;
+
 	constructor(
 		public vehicleService: VehicleService,
 		public requestService: RequestService,
@@ -28,17 +29,20 @@ export class PlatenumberPage implements OnInit {
 		public loadingController: LoadingController,
 		public toast: ToastService,
 		public route: Router,
-		public notiService: NotiService,
-	) {
-		// this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
-		this.afAuth.authState.subscribe((user) => {
+		public notiService: NotiService
+	) {}
+
+	ngOnInit() {
+		this.getUser();
+	}
+
+	async getUser() {
+		await this.afAuth.authState.subscribe((user) => {
 			if (user) {
 				this.sellerId = user.uid;
 			}
 		});
 	}
-
-	ngOnInit() {}
 
 	async createPlate() {
 		let vehicle = {};
@@ -86,7 +90,7 @@ export class PlatenumberPage implements OnInit {
 								});
 								this.route.navigate(
 									['/', 'request', val.id],
-									this.requestState,
+									this.requestState
 								);
 							})
 							.catch((err) => {

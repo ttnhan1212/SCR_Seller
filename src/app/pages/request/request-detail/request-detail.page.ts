@@ -26,11 +26,11 @@ export class RequestDetailPage implements OnInit {
 	detailForm: FormGroup;
 	name = new FormControl(
 		'',
-		Validators.compose([(Validators.minLength(3), Validators.required)]),
+		Validators.compose([(Validators.minLength(3), Validators.required)])
 	);
 	phone = new FormControl(
 		null,
-		Validators.compose([Validators.minLength(10), Validators.required]),
+		Validators.compose([Validators.minLength(10), Validators.required])
 	);
 	location = new FormControl('', Validators.required);
 	miles = new FormControl('', Validators.required);
@@ -53,7 +53,7 @@ export class RequestDetailPage implements OnInit {
 		public loadingController: LoadingController,
 		public toast: ToastService,
 		private formBuilder: FormBuilder,
-		public locationService: LocationService,
+		public locationService: LocationService
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		this.sample = '../../../../assets/images/png/spares/1.png';
@@ -79,7 +79,7 @@ export class RequestDetailPage implements OnInit {
 			sellerId: this.seller,
 			miles: this.miles,
 			other: this.other,
-			status: 'On-going',
+			status: 'Ongoing',
 			participants: [{ created: true }],
 		});
 	}
@@ -103,7 +103,7 @@ export class RequestDetailPage implements OnInit {
 			await loading.present();
 			await this.requestService.updateRequestBySeller(
 				this.detailForm.value,
-				this.request,
+				this.request
 			);
 			await this.requestService.updateRequest(this.id, this.detailForm.value);
 			await this.toast.showToast('Your request is successfully uploaded!');
