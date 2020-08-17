@@ -61,18 +61,35 @@
 		</ion-item-sliding>
 	</ion-item-group>
 
-	<ion-item-group
-		class="mt-8 text-center"
-		*ngIf="selectedDealer && participants"
-	>
-		<ion-label>Waiting for confirmation</ion-label>
-		<ion-spinner name="dots"></ion-spinner>
+	<ion-item-group class="mt-8" *ngIf="selectedDealer && participants">
+		<ion-title class="text-center mb-8"
+			>A Dealer has confirm the purchase</ion-title
+		>
+		<ion-label>Dealer Information</ion-label>
+		<ion-item lines="none">
+			<ion-avatar slot="start">
+				<img src="../../../../assets/images/photos/33327.jpg" />
+			</ion-avatar>
+			<ion-label>
+				<h2>{{selectedDealer.dealer.email}}</h2>
+				<p class="fs-25">${{selectedDealer.price}}</p>
+			</ion-label>
+			<ion-note slot="end">
+				Rating
+			</ion-note>
+		</ion-item>
+		<ion-button
+			expand="full"
+			color="tertiary"
+			[routerLink]="['/','home','visit',id]"
+			>To visit page</ion-button
+		>
 	</ion-item-group>
 
 	<ion-item-group class="mt-8" *ngIf="!selectedDealer">
 		<ion-label>Please select a Dealer</ion-label>
 		<ion-item-sliding *ngFor="let item of participants">
-			<ion-item>
+			<ion-item lines="none">
 				<ion-avatar slot="start">
 					<img src="../../../../assets/images/photos/33327.jpg" />
 				</ion-avatar>

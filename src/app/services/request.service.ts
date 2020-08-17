@@ -10,7 +10,7 @@ export class RequestService {
 
 	constructor(
 		private firestore: AngularFirestore,
-		private afAuth: AngularFireAuth,
+		private afAuth: AngularFireAuth
 	) {
 		this.afAuth.authState.subscribe((user) => {
 			if (user) {
@@ -92,6 +92,6 @@ export class RequestService {
 			.collection('requests')
 			.doc(id)
 			.collection('participants', (ref) => ref.where('selected', '==', true))
-			.snapshotChanges();
+			.valueChanges();
 	}
 }

@@ -15,7 +15,7 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	ongoing = {};
 	participants: any = [];
 	dealer = {};
-	selectedDealer: boolean;
+	selectedDealer: any;
 
 	myValueSub: Subscription;
 	dealerSub: Subscription;
@@ -23,7 +23,7 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	constructor(
 		public route: ActivatedRoute,
 		public requestService: RequestService,
-		public dealerService: DealerService,
+		public dealerService: DealerService
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 	}
@@ -75,10 +75,14 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 
 	async selectedRequest() {
 		await this.requestService.selectedRequest(this.id).subscribe((val) => {
-			if (val.length > 0) {
-				this.selectedDealer = Boolean(val);
-			} else {
-				this.selectedDealer = !Boolean(val);
+			if (val) {
+				this.selectedDealer = val[0];
+
+				this.dealerService
+					.getDealer(this.selectedDealer.userId)
+					.subscribe((res: any) => {
+						this.selectedDealer.dealer = { ...res.data() };
+					});
 			}
 		});
 	}

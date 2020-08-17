@@ -1,0 +1,50 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<ion-card class="m-0 p-0 ion-padding">
+		<ion-grid>
+			<ion-row class="mt-4 mb-5">
+				<ion-col>
+					<ion-label class="pl-2 pr-2 fs-35">2009</ion-label>
+					<ion-label class="pl-2 pr-2 fs-35">K-5</ion-label>
+					<ion-label class="pl-2 pr-2">12K1234</ion-label>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-label class="fs-20"
+						><strong>{{participants.price}}</strong></ion-label
+					>
+				</ion-col>
+				<ion-col>
+					<ion-label class="fs-20"><strong>{{dealer.miles}}</strong></ion-label>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
+
+	<ion-item-group class="mt-8">
+		<ion-title class="text-center mb-8"
+			>A Dealer has confirm the purchase</ion-title
+		>
+		<ion-label>Dealer Information</ion-label>
+		<ion-item lines="none">
+			<ion-avatar slot="start">
+				<img src="../../../../assets/images/photos/33327.jpg" />
+			</ion-avatar>
+			<ion-label>
+				<h2>{{dealer.email}}</h2>
+				<p class="fs-25">${{participants.price}}</p>
+			</ion-label>
+			<ion-note slot="end">
+				Rating
+			</ion-note>
+		</ion-item>
+	</ion-item-group>
+</ion-content>
