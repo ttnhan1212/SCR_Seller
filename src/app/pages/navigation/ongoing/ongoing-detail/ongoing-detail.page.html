@@ -89,7 +89,7 @@
 	<ion-item-group class="mt-8" *ngIf="!selectedDealer">
 		<ion-label>Please select a Dealer</ion-label>
 		<ion-item-sliding *ngFor="let item of participants">
-			<ion-item lines="none">
+			<ion-item lines="none" (click)="getDealerDetail(id, item.user)">
 				<ion-avatar slot="start">
 					<img src="../../../../assets/images/photos/33327.jpg" />
 				</ion-avatar>

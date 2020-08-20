@@ -1,5 +1,5 @@
 import { RequestService } from '../../../../services/request.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -22,6 +22,7 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	partSub: Subscription;
 	constructor(
 		public route: ActivatedRoute,
+		public router: Router,
 		public requestService: RequestService,
 		public dealerService: DealerService
 	) {
@@ -64,6 +65,7 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 							participant.dealer = { ...res.data() };
 						});
 				});
+				console.log(this.participants);
 			});
 	}
 
@@ -85,6 +87,19 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 					});
 			}
 		});
+	}
+
+	getDealerDetail(id: string, partId: string) {
+		const extraState: NavigationExtras = {
+			state: {
+				requestId: id,
+				participantsId: partId,
+			},
+		};
+		this.router.navigate(
+			['/', 'home', 'ongoing', 'dealer-detail', id],
+			extraState
+		);
 	}
 
 	ngOnDestroy() {

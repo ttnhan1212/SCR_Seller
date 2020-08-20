@@ -33,6 +33,13 @@ const routes: Routes = [
 			).then((m) => m.OngoingDetailPageModule),
 	},
 	{
+		path: 'home/ongoing/dealer-detail/:id',
+		loadChildren: () =>
+			import(
+				'./pages/navigation/ongoing/dealer-detail/dealer-detail.module'
+			).then((m) => m.DealerDetailPageModule),
+	},
+	{
 		path: 'home/visit/:id',
 		loadChildren: () =>
 			import('./pages/visit/visit.module').then((m) => m.VisitPageModule),
