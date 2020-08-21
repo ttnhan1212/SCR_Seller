@@ -33,10 +33,11 @@
 				<ion-avatar slot="start">
 					<img src="../../../../assets/images/photos/33327.jpg" />
 				</ion-avatar>
-				<ion-label>
-					<h2>{{dealer.email}}</h2>
-					<p class="fs-25">${{dealer.orgname}}</p>
-				</ion-label>
+				<div class="mt-3">
+					<p class="fs-10">({{dealer.orgname}})</p>
+					<h3>{{dealer.email}}</h3>
+					<p class="fs-10">{{dealer.phone}}</p>
+				</div>
 				<ion-note slot="end">
 					Rating
 				</ion-note>
@@ -174,10 +175,7 @@
 	</ion-list>
 </ion-content>
 <ion-footer class="ion-padding">
-	<ion-button
-		expand="block"
-		color="tertiary"
-		(click)="selectDealer(id, participants)"
+	<ion-button expand="block" color="tertiary" (click)="selectDealer()"
 		>Dealer Select</ion-button
 	>
 </ion-footer>

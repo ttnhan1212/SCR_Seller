@@ -10,9 +10,9 @@ import { DealerService } from 'src/app/services/dealer.service';
 	templateUrl: './ongoing-detail.page.html',
 	styleUrls: ['./ongoing-detail.page.scss'],
 })
-export class OngoingDetailPage implements OnInit, OnDestroy {
+export class OngoingDetailPage implements OnInit {
 	id: string;
-	ongoing = {};
+	ongoing: any = {};
 	participants: any = [];
 	dealer = {};
 	selectedDealer: any;
@@ -36,41 +36,36 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 	}
 
 	async getRequestById() {
-		this.myValueSub = await this.requestService
-			.getRequestById(this.id)
-			.subscribe((data) => {
-				this.ongoing = {
-					name: data.payload.data()['name'],
-				};
-			});
+		await this.requestService.getRequestById(this.id).subscribe((data: any) => {
+			this.ongoing = {
+				...data.payload.data(),
+			};
+			console.log('Ongoing', this.ongoing);
+		});
 	}
 
 	async getParticipant() {
-		this.dealerSub = await this.requestService
-			.getParticipant(this.id)
-			.subscribe((val) => {
-				this.participants = val.map((m) => {
-					return {
-						id: m.payload.doc.id,
-						bidTime: m.payload.doc.data()['bidTime'],
-						price: m.payload.doc.data()['price'],
-						user: m.payload.doc.data()['userId'],
-					};
-				});
-
-				this.partSub = this.participants.forEach((participant: any) => {
-					this.dealerService
-						.getDealer(participant.user)
-						.subscribe((res: any) => {
-							participant.dealer = { ...res.data() };
-						});
-				});
-				console.log(this.participants);
+		await this.requestService.getParticipant(this.id).subscribe((val) => {
+			this.participants = val.map((m) => {
+				return {
+					id: m.payload.doc.id,
+					...m.payload.doc.data(),
+				};
 			});
+
+			this.participants.forEach((participant: any) => {
+				this.dealerService
+					.getDealer(participant.userId)
+					.subscribe((res: any) => {
+						participant.dealer = { ...res.payload.data() };
+					});
+			});
+			console.log('Part', this.participants);
+		});
 	}
 
-	selectDealer(user) {
-		this.requestService.updateParticipant(this.id, user, {
+	async selectDealer(user) {
+		await this.requestService.updateParticipant(this.id, user, {
 			selected: true,
 		});
 	}
@@ -83,36 +78,23 @@ export class OngoingDetailPage implements OnInit, OnDestroy {
 				this.dealerService
 					.getDealer(this.selectedDealer.userId)
 					.subscribe((res: any) => {
-						this.selectedDealer.dealer = { ...res.data() };
+						this.selectedDealer.dealer = { ...res.payload.data() };
 					});
+				console.log('select', this.selectedDealer);
 			}
 		});
 	}
 
-	getDealerDetail(id: string, partId: string) {
+	getDealerDetail(partId: string, dealerId: string) {
 		const extraState: NavigationExtras = {
 			state: {
-				requestId: id,
-				participantsId: partId,
+				partId: partId,
+				dealerId: dealerId,
 			},
 		};
 		this.router.navigate(
-			['/', 'home', 'ongoing', 'dealer-detail', id],
+			['/', 'home', 'ongoing', 'dealer-detail', this.id],
 			extraState
 		);
-	}
-
-	ngOnDestroy() {
-		if (this.myValueSub) {
-			this.myValueSub.unsubscribe();
-		}
-
-		if (this.dealerSub) {
-			this.dealerSub.unsubscribe();
-		}
-
-		if (this.partSub) {
-			this.partSub.unsubscribe();
-		}
 	}
 }

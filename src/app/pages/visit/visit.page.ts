@@ -11,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisitPage implements OnInit {
 	id: string;
-	ongoing = {};
-	participants: any = {};
+	request: any = {};
 	dealer: any = {};
+	part: any = [];
 
 	myValueSub: Subscription;
 	dealerSub: Subscription;
@@ -28,33 +28,35 @@ export class VisitPage implements OnInit {
 
 	ngOnInit() {
 		this.getRequestById();
-		this.getParticipant();
 	}
 
 	async getRequestById() {
 		this.myValueSub = await this.requestService
 			.getRequestById(this.id)
-			.subscribe((data) => {
-				this.ongoing = {
-					name: data.payload.data()['name'],
+			.subscribe((data: any) => {
+				this.request = {
+					...data.payload.data(),
 				};
+				this.part = this.request.participants;
+				console.log(this.request);
+				console.log(this.part);
+
+				this.getParticipant();
 			});
 	}
 
 	async getParticipant() {
-		this.dealerSub = await this.requestService
-			.getRequestById(this.id)
-			.subscribe((val) => {
-				this.participants = val.payload.data();
-				console.log('Part', this.participants);
-
-				this.dealerService
-					.getDealer(this.participants.participants[0])
-					.subscribe((res: any) => {
-						this.dealer = { ...res.data() };
-						console.log('Dealer', this.dealer);
-					});
+		this.dealerSub = await this.dealerService
+			.getDealer(this.request.participants[0])
+			.subscribe((res: any) => {
+				this.dealer = { ...res.payload.data() };
+				console.log(this.dealer);
 			});
+	}
+
+	localeDate(time) {
+		let myDate = new Date(time * 1000);
+		return myDate.toLocaleString();
 	}
 
 	ngOnDestroy() {
@@ -64,10 +66,6 @@ export class VisitPage implements OnInit {
 
 		if (this.dealerSub) {
 			this.dealerSub.unsubscribe();
-		}
-
-		if (this.partSub) {
-			this.partSub.unsubscribe();
 		}
 	}
 }

@@ -61,7 +61,10 @@
 		</ion-item-sliding>
 	</ion-item-group>
 
-	<ion-item-group class="mt-8" *ngIf="selectedDealer && participants">
+	<ion-item-group
+		class="mt-8"
+		*ngIf="selectedDealer && ongoing.participants.length === 2"
+	>
 		<ion-title class="text-center mb-8"
 			>A Dealer has confirm the purchase</ion-title
 		>
@@ -78,18 +81,12 @@
 				Rating
 			</ion-note>
 		</ion-item>
-		<ion-button
-			expand="full"
-			color="tertiary"
-			[routerLink]="['/','home','visit',id]"
-			>To visit page</ion-button
-		>
 	</ion-item-group>
 
 	<ion-item-group class="mt-8" *ngIf="!selectedDealer">
 		<ion-label>Please select a Dealer</ion-label>
 		<ion-item-sliding *ngFor="let item of participants">
-			<ion-item lines="none" (click)="getDealerDetail(id, item.user)">
+			<ion-item lines="none" (click)="getDealerDetail(item.id, item.userId)">
 				<ion-avatar slot="start">
 					<img src="../../../../assets/images/photos/33327.jpg" />
 				</ion-avatar>
@@ -109,4 +106,37 @@
 			</ion-item-options>
 		</ion-item-sliding>
 	</ion-item-group>
+
+	<ion-item-group
+		class="mt-8"
+		*ngIf="selectedDealer && ongoing.participants.length <= 1"
+	>
+		<ion-title class="text-center mb-4"
+			>Waiting for Dealer Confirmation</ion-title
+		>
+		<ion-item lines="none">
+			<ion-avatar slot="start">
+				<img src="../../../../assets/images/photos/33327.jpg" />
+			</ion-avatar>
+			<ion-label>
+				<h2>{{selectedDealer.dealer.email}}</h2>
+				<p class="fs-25">${{selectedDealer.price}}</p>
+			</ion-label>
+			<ion-note slot="end">
+				Rating
+			</ion-note>
+		</ion-item>
+	</ion-item-group>
 </ion-content>
+
+<ion-footer
+	class="ion-padding"
+	*ngIf="selectedDealer && ongoing.participants.length === 2"
+>
+	<ion-button
+		expand="full"
+		color="tertiary"
+		[routerLink]="['/','home','visit',id]"
+		>To visit page
+	</ion-button>
+</ion-footer>
