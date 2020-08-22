@@ -12,10 +12,13 @@ import { Subscription } from 'rxjs';
 export class DealerDetailPage implements OnInit {
 	id: string;
 	dealer: any;
+	participant: any;
 
-	participants: any;
+	partId: string;
+	dealerId: string;
 
 	dataSub: Subscription;
+
 	constructor(
 		public dealerService: DealerService,
 		public requestService: RequestService,
@@ -23,9 +26,14 @@ export class DealerDetailPage implements OnInit {
 		public router: Router
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
-		this.dataSub = this.route.queryParams.subscribe((params) => {
-			if (this.router.getCurrentNavigation().extras.state) {
-				this.participants = this.router.getCurrentNavigation().extras.state.participantsId;
+
+		this.dataSub = this.route.queryParams.subscribe(() => {
+			const state = this.router.getCurrentNavigation().extras.state;
+			if (state) {
+				console.log(state);
+
+				this.partId = this.router.getCurrentNavigation().extras.state.partId;
+				this.dealerId = this.router.getCurrentNavigation().extras.state.dealerId;
 			}
 		});
 	}
@@ -36,16 +44,17 @@ export class DealerDetailPage implements OnInit {
 		}, 1000);
 	}
 
-	async getDealer() {
-		await this.dealerService.getDealer(this.participants).subscribe((val) => {
-			this.dealer = val.data();
-			console.log(this.dealer);
+	getDealer() {
+		this.dealerService.getDealer(this.dealerId).subscribe((val) => {
+			this.dealer = val.payload.data();
+			console.log('Dealer', this.dealer);
 		});
 	}
 
-	selectDealer(user) {
-		this.requestService.updateParticipant(this.id, user, {
+	async selectDealer() {
+		await this.requestService.updateParticipant(this.id, this.partId, {
 			selected: true,
 		});
+		this.router.navigate(['/', 'home', 'ongoing', this.id]);
 	}
 }
