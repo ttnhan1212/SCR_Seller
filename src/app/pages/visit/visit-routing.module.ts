@@ -8,10 +8,6 @@ const routes: Routes = [
     path: '',
     component: VisitPage
   },
-  {
-    path: 'review',
-    loadChildren: () => import('./review/review.module').then( m => m.ReviewPageModule)
-  }
 ];
 
 @NgModule({
