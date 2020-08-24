@@ -10,7 +10,7 @@
     "@angular-devkit/core" "10.0.7"
     rxjs "6.5.5"
 
-"@angular-devkit/build-angular@^0.1000.6":
+"@angular-devkit/build-angular@^0.1000.7":
   version "0.1000.7"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-0.1000.7.tgz#adef67302bfb5c9fa50bd291e4696e9a3918ec6f"
   integrity sha512-EeA+X+pu4w8Io+SpmKBkvVUxuhzgcwaRBi42lKM3D4ot0MtrsSJi6E40t5E/Km6kohibRkDBYY32uT0eG4WHsw==
@@ -100,7 +100,18 @@
     "@angular-devkit/core" "10.0.7"
     rxjs "6.5.5"
 
-"@angular-devkit/core@10.0.7", "@angular-devkit/core@^10.0.6":
+"@angular-devkit/core@10.0.6":
+  version "10.0.6"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-10.0.6.tgz#cbb40a34f976f9496270efc4fbdb3ad836b9723e"
+  integrity sha512-mVvqSEoeErZ7bAModk95EAa6R9Nl23rvX+/TXuKVTK2dziMFBOrwHjb1DYhnZxFIH4xfUftCx+BWHjXBXCPYlA==
+  dependencies:
+    ajv "6.12.3"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.5.5"
+    source-map "0.7.3"
+
+"@angular-devkit/core@10.0.7", "@angular-devkit/core@^10.0.7":
   version "10.0.7"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-10.0.7.tgz#f88c1fe316e83049703c658ec82b2d1f811b1e36"
   integrity sha512-pXaZgsQ8LHpRx4QGAUYDE8GwBQLAtoqPh6oUCwRJwBExm5rl13OGPTBWewHiq0ysV/SnFXvOjxwAaHQvC1AgZw==
@@ -123,6 +134,15 @@
     source-map "0.7.3"
 
 "@angular-devkit/schematics@10.0.7", "@angular-devkit/schematics@^10.0.6":
+  version "10.0.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-10.0.7.tgz#460272c3fa4a4838d2da65a0e3f512c557d486f1"
+  integrity sha512-eyyYPgpjtr3h7WbnNbkDubJ/p+8TgKU6abWd+NmBfTvyeHrpVFUYZabNRcdXwUDSVzfTQKdmLynIkESj/KROrg==
+  dependencies:
+    "@angular-devkit/core" "10.0.7"
+    ora "4.0.4"
+    rxjs "6.5.5"
+
+"@angular-devkit/schematics@10.0.7", "@angular-devkit/schematics@^10.0.7":
   version "10.0.7"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-10.0.7.tgz#460272c3fa4a4838d2da65a0e3f512c557d486f1"
   integrity sha512-eyyYPgpjtr3h7WbnNbkDubJ/p+8TgKU6abWd+NmBfTvyeHrpVFUYZabNRcdXwUDSVzfTQKdmLynIkESj/KROrg==
@@ -1376,7 +1396,7 @@
   dependencies:
     "@types/cordova" latest
 
-"@ionic/angular-toolkit@^2.3.1":
+"@ionic/angular-toolkit@^2.3.2":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@ionic/angular-toolkit/-/angular-toolkit-2.3.2.tgz#53d71c7043d47f8e07434bbb18396eb8f7ed3a21"
   integrity sha512-lGjJeK28IXn1mKxRsiIjJc6sBbVn9/NzuNL+6VqqJBS/wxHw8X2ANKkoAqakgB5hw1me0fGkkHZ8YbqE4tjOsA==
@@ -1432,7 +1452,7 @@
     wrap-ansi "^7.0.0"
     write-file-atomic "^3.0.0"
 
-"@ionic/cli@^6.11.0":
+"@ionic/cli@^6.11.1":
   version "6.11.1"
   resolved "https://registry.yarnpkg.com/@ionic/cli/-/cli-6.11.1.tgz#102a9b17b5f65bf5d98862b039f66389bb0e91b1"
   integrity sha512-Q0zwv7IDu5O5RWhw5N+t03ttzwH5EsJBhCWL7Qz9sDc++qpSbaJ9cA+OoVSxjY1ajNurD/kr8Eu44BjvfhDzOA==
@@ -1686,10 +1706,18 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@schematics/angular@10.0.7", "@schematics/angular@>=8.0.0":
+"@schematics/angular@10.0.7":
   version "10.0.7"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-10.0.7.tgz#feec7bd9fba02ab39606f865fa0a3b3d82ab7422"
   integrity sha512-0SljGZjA68tOsn7OIps79lTy9Y96OZglLnBqO6pSLlmCkGMbjFY2ssKQXJzwR0jJ5+TWBjWjpn2U5mir4yzOuQ==
+  dependencies:
+    "@angular-devkit/core" "10.0.7"
+    "@angular-devkit/schematics" "10.0.7"
+
+"@schematics/angular@>=8.0.0":
+  version "10.0.6"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-10.0.6.tgz#568590574dca1556280a0a04f625f79bee34ee4a"
+  integrity sha512-TPBpo0GnMJLvKE6rYZDkSy9pnkMH55rSJ6nfLDpQ5zzmhoD/QnASUr8trfTFs3+MqmPlX61xI00+HmStmI8sJQ==
   dependencies:
     "@angular-devkit/core" "10.0.7"
     "@angular-devkit/schematics" "10.0.7"
@@ -1736,6 +1764,11 @@
     "@types/node" "*"
 
 "@types/jasmine@*", "@types/jasmine@^3.5.12":
+  version "3.5.13"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.5.13.tgz#f5d34d7f9d0ad15e7c17adbaf1ebfaca68a60f73"
+  integrity sha512-bVSrTEWdCNH2RHN+E0QlEr4pGPMRA6puKOmL/X13ZeZmUS0q12ZR1rkB9PVvJSX0zi/OXrMDNvUai+PC380+rQ==
+
+"@types/jasmine@^3.5.13":
   version "3.5.13"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.5.13.tgz#f5d34d7f9d0ad15e7c17adbaf1ebfaca68a60f73"
   integrity sha512-bVSrTEWdCNH2RHN+E0QlEr4pGPMRA6puKOmL/X13ZeZmUS0q12ZR1rkB9PVvJSX0zi/OXrMDNvUai+PC380+rQ==
@@ -4675,7 +4708,7 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-firebase@^7.18.0:
+firebase@^7.19.0:
   version "7.19.0"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.19.0.tgz#cfa64ebc56f3ef095df31d20f1de4dc5fa80f793"
   integrity sha512-gS0nFagMfDLEucgcMD/tCfpLH+crnTurpyMsh6JEvith7GA8cRA4S3T3300xPL6dSZliI7EiGsCNBXBil6sAUw==
