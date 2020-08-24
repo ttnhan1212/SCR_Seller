@@ -20,6 +20,7 @@ export class PlatenumberPage implements OnInit {
 	requestSellerId: string;
 
 	requestState: NavigationExtras;
+
 	constructor(
 		public vehicleService: VehicleService,
 		public requestService: RequestService,
@@ -28,12 +29,20 @@ export class PlatenumberPage implements OnInit {
 		public loadingController: LoadingController,
 		public toast: ToastService,
 		public route: Router,
-		public notiService: NotiService,
-	) {
-		this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
+		public notiService: NotiService
+	) {}
+
+	ngOnInit() {
+		this.getUser();
 	}
 
-	ngOnInit() {}
+	async getUser() {
+		await this.afAuth.authState.subscribe((user) => {
+			if (user) {
+				this.sellerId = user.uid;
+			}
+		});
+	}
 
 	async createPlate() {
 		let vehicle = {};
@@ -52,11 +61,11 @@ export class PlatenumberPage implements OnInit {
 					this.plate = '';
 					let request = {};
 					request['vehiclesId'] = res.id;
-					request['status'] = 'draft';
+					request['status'] = 'Draft';
 					try {
 						this.toast.showToast('Your request is successfully created!');
 						this.requestService
-							.createRequestBySeller(request, this.sellerId)
+							.createRequestBySeller(request)
 							.then((val) => {
 								this.requestSellerId = val.id;
 								console.log(this.requestSellerId);
@@ -75,13 +84,13 @@ export class PlatenumberPage implements OnInit {
 
 								this.notiService.createNoti({
 									requestId: val.id,
-									status: 'ongoing',
+									status: 'On-going',
 									updateDate: Math.floor(new Date().getTime() / 1000.0),
 									user: this.sellerId,
 								});
 								this.route.navigate(
 									['/', 'request', val.id],
-									this.requestState,
+									this.requestState
 								);
 							})
 							.catch((err) => {

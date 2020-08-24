@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
 import { Request } from '../../../models/request';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-ongoing',
@@ -18,32 +18,72 @@ export class OngoingPage implements OnInit, OnDestroy {
 
 	logo: any;
 
+	sellerId: string;
+
+	now = Math.floor(new Date().getTime() / 1000.0);
+
 	constructor(
 		public requestService: RequestService,
 		public afAuth: AngularFireAuth,
 		public authService: AuthService,
 		public loadingController: LoadingController,
-		public toast: ToastService
+		public toast: ToastService,
 	) {
-		// this.sellerId = JSON.parse(localStorage.getItem("user")).uid;
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 	}
 
 	ngOnInit() {
-		this.requestSub = this.requestService.getRequest().subscribe((data) => {
-			this.requests = data.map((e) => {
-				const effectedTime = new Date(
-					e.payload.doc.data()['effectedTime'] * 1000
-				).toLocaleString();
-				const expireDate = new Date(
-					e.payload.doc.data()['expireDate'] * 1000
-				).toLocaleString();
+		this.updateRequestExpired();
+		this.getUser();
+	}
+
+	async getUser() {
+		await this.afAuth.authState.subscribe((user) => {
+			if (user) {
+				this.sellerId = user.uid;
+				this.getRequestBySeller(this.sellerId);
+			}
+		});
+	}
+
+	getRequestBySeller(id: string) {
+		this.requestSub = this.requestService
+			.getRequestBySeller(id)
+			.subscribe((data) => {
+				this.requests = data.map((e) => {
+					return {
+						id: e.payload.doc.id,
+						...(e.payload.doc.data() as Request),
+					};
+				});
+			});
+	}
+
+	async updateRequestExpired() {
+		await this.requestService.getAllRequest().subscribe((data) => {
+			const temp = data.map((e) => {
 				return {
 					id: e.payload.doc.id,
 					...(e.payload.doc.data() as Request),
 				};
 			});
+			temp.forEach((val) => {
+				const participant: any = val.participants;
+				if (
+					val.expiredTime <= this.now &&
+					(participant.created === true || val.participants === undefined)
+				) {
+					this.requestService.updateRequest(val.id, {
+						status: 'Expired',
+					});
+				}
+			});
 		});
+	}
+
+	localeDate(time: number) {
+		const myDate = new Date(time * 1000);
+		return myDate.toLocaleString();
 	}
 
 	ngOnDestroy() {

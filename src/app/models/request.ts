@@ -3,8 +3,8 @@ export class Request {
 	sellerId: string;
 	name: string;
 	vehiclesId: string;
-	effectedTime: Date;
-	expiredTime: Date;
+	effectedTime: number;
+	expiredTime: number;
 	phone: number;
 	location: string;
 	status: string;

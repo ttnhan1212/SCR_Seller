@@ -37,7 +37,7 @@ export class HomePage implements OnInit, OnDestroy {
 	constructor(
 		private modelService: ModelService,
 		public router: Router,
-		private fb: FormBuilder,
+		private fb: FormBuilder
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 		this.image = '../../../../assets/images/banners/banner2.jpg';
@@ -49,6 +49,10 @@ export class HomePage implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
+		this.getModel();
+	}
+
+	getModel() {
 		this.modelSub = this.modelService.getModel().subscribe(
 			(data: any) => {
 				this.models = data.map((e) => {
@@ -60,7 +64,7 @@ export class HomePage implements OnInit, OnDestroy {
 			},
 			(error: any) => {
 				console.log(error);
-			},
+			}
 		);
 	}
 
@@ -72,6 +76,9 @@ export class HomePage implements OnInit, OnDestroy {
 	}
 
 	async fetchYear(e: any) {
+		this.exportForm.patchValue({
+			year: null,
+		});
 		this.modelService.getModelYear(e.target.value).subscribe(
 			(data) => {
 				this.years = data.map((m) => {
@@ -82,7 +89,7 @@ export class HomePage implements OnInit, OnDestroy {
 			},
 			(err: any) => {
 				console.log(err);
-			},
+			}
 		);
 	}
 
@@ -94,6 +101,7 @@ export class HomePage implements OnInit, OnDestroy {
 		};
 		// Do useful stuff with the gathered data
 		this.router.navigate(['/', 'home', 'export'], exportState);
+		this.exportForm.reset();
 	}
 
 	doRefresh(event) {

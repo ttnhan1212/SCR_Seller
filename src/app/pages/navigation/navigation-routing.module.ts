@@ -5,10 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavigationPage } from './navigation.page';
 
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-import { ExportPageModule } from './export/export.module';
 import { ExportPage } from './export/export.page';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['welcome']);
 
 const routes: Routes = [
 	{
@@ -29,7 +28,7 @@ const routes: Routes = [
 				path: 'setting',
 				loadChildren: () =>
 					import('./settings/settings.module').then(
-						(m) => m.SettingsPageModule
+						(m) => m.SettingsPageModule,
 					),
 			},
 			{
@@ -41,7 +40,7 @@ const routes: Routes = [
 				path: 'notifications',
 				loadChildren: () =>
 					import('./notifications/notifications.module').then(
-						(m) => m.NotificationsPageModule
+						(m) => m.NotificationsPageModule,
 					),
 			},
 			{

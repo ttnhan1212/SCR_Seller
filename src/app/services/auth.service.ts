@@ -7,26 +7,10 @@ import { User } from 'firebase';
 	providedIn: 'root',
 })
 export class AuthService {
-	user: User;
-
-	constructor(public afAuth: AngularFireAuth, public router: Router) {
-		this.afAuth.authState.subscribe((user) => {
-			if (user) {
-				this.user = user;
-				localStorage.setItem('user', JSON.stringify(this.user));
-			} else {
-				localStorage.setItem('user', null);
-			}
-		});
-	}
+	constructor(public afAuth: AngularFireAuth, public router: Router) {}
 
 	async loginAny() {
 		await this.afAuth.signInAnonymously();
 		this.router.navigate(['home/seller']);
-	}
-
-	async logout() {
-		await this.afAuth.signOut();
-		this.router.navigate(['login']);
 	}
 }
