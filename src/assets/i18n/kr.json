@@ -1,0 +1,73 @@
+{
+    "welcome": {
+        "welcome_line": "Welcome to SCRoads",
+        "instruction": "Before you start",
+        "privacy_policy": "Privacy Policy",
+        "term_condition": "Term & Conditions",
+        "privacy_usage_agreement": "Privacy Usage Agreement",
+        "agree_all": "Agree All",
+        "start": "Start"
+    },
+    "seller": {
+        "model_label": "Model",
+        "model_input_placeholder": "Select your car model",
+        "year_label": "Year",
+        "check_export_availability": "Check export availability",
+        "request_quote": "Request Quote"
+    },
+    "request": {
+        "plate_numer": "Plate Number",
+        "plate_numer_placeholder": "Your Plate Number",
+        "confirm": "Confirm"
+    },
+    "request_detail": {
+        "upload_instruction": "Please upload car images",
+        "image_front": "Front",
+        "image_back": "Back",
+        "image_left": "Left",
+        "image_right": "Right",
+        "insurance_history": "See Insurance History",
+        "upload_requirement": "Please upload atleast 4 images",
+        "input_name": "Name",
+        "input_phone": "Phone",
+        "location_header": "Location",
+        "location_input_placeholer": "Select location",
+        "input_mileages": "Mileages",
+        "request_quote": "Request Quote"
+    },
+    "home_ongoing": {
+        "please_wait": "Please wait",
+        "proceed": "Proceed to next step",
+        "ended_trade": "Ended trade",
+        "expire": "Expired",
+        "pending-confirm": "Pending Confirm",
+        "on_going":"On-going"
+    },
+    "home_ongoing_detail": {
+        "max": "Max",
+        "average": "Average",
+        "min": "Min",
+        "select_dealer": "Please select a dealer"
+    },
+    "home_settings": {
+        "version_info": "Version Information",
+        "notifications_setting": "Notifications Setting",
+        "term_conditions": "Term & Conditions",
+        "privacy_policy": "Privacy Policy",
+        "contact": "Contact",
+        "contact_us": "Contact Us",
+        "guide": "Guide",
+        "FAQ": "FAQ",
+        "sign_out": "Sign Out"
+    },
+    "home_info": {
+        "information": "Informations",
+        "info_car_export": "What is car export?",
+        "info_term_condition": "Term & Conditions",
+        "infor": "Infor",
+        "paper_info": "Paper Infor"
+    },
+    "home_notifications": {
+        "notifications": "Notifications"
+    }
+}

@@ -9,6 +9,14 @@ import { WelcomePageRoutingModule } from './welcome-routing.module';
 
 import { WelcomePage } from './welcome.page';
 
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -16,6 +24,14 @@ import { WelcomePage } from './welcome.page';
 		IonicModule,
 		WelcomePageRoutingModule,
 		ComponentsModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient],
+			}
+		}),
+		HttpClientModule
 	],
 	declarations: [WelcomePage],
 })
