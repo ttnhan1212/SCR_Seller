@@ -24,7 +24,7 @@ export class OngoingDetailPage implements OnInit {
 		public route: ActivatedRoute,
 		public router: Router,
 		public requestService: RequestService,
-		public dealerService: DealerService
+		public dealerService: DealerService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 	}
@@ -94,7 +94,7 @@ export class OngoingDetailPage implements OnInit {
 		};
 		this.router.navigate(
 			['/', 'home', 'ongoing', 'dealer-detail', this.id],
-			extraState
+			extraState,
 		);
 	}
 }
