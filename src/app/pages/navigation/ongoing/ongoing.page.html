@@ -21,7 +21,7 @@
 		<ion-item
 			*ngFor="let request of requests"
 			lines="none"
-			[routerLink]="[request.id]"
+			[routerLink]="request.status === 'Complete' ? ['/','home','review']: [request.id]"
 		>
 			<ion-thumbnail slot="start">
 				<img

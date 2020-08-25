@@ -1,3 +1,4 @@
+import { BarRatingModule } from 'ngx-bar-rating';
 import { SellerService } from './services/seller.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,7 @@ import { AuthService } from './services/auth.service';
 		AngularFireAuthModule,
 		FormsModule,
 		ReactiveFormsModule,
+		BarRatingModule,
 	],
 	providers: [
 		AuthService,

@@ -12,7 +12,7 @@ const routes: Routes = [
 		path: 'home',
 		loadChildren: () =>
 			import('./pages/navigation/navigation.module').then(
-				(m) => m.NavigationPageModule,
+				(m) => m.NavigationPageModule
 			),
 	},
 	{
@@ -33,6 +33,23 @@ const routes: Routes = [
 			).then((m) => m.OngoingDetailPageModule),
 	},
 	{
+		path: 'home/ongoing/dealer-detail/:id',
+		loadChildren: () =>
+			import(
+				'./pages/navigation/ongoing/dealer-detail/dealer-detail.module'
+			).then((m) => m.DealerDetailPageModule),
+	},
+	{
+		path: 'home/visit/:id',
+		loadChildren: () =>
+			import('./pages/visit/visit.module').then((m) => m.VisitPageModule),
+	},
+	{
+		path: 'home/review',
+		loadChildren: () =>
+			import('./pages/review/review.module').then((m) => m.ReviewPageModule),
+	},
+	{
 		path: '',
 		redirectTo: '',
 		pathMatch: 'full',
@@ -42,21 +59,21 @@ const routes: Routes = [
 		path: 'privacypolicy',
 		loadChildren: () =>
 			import('./components/modals/privacypolicy/privacypolicy.module').then(
-				(m) => m.PrivacypolicyPageModule,
+				(m) => m.PrivacypolicyPageModule
 			),
 	},
 	{
 		path: 'puagreement',
 		loadChildren: () =>
 			import('./components/modals/puagreement/puagreement.module').then(
-				(m) => m.PuagreementPageModule,
+				(m) => m.PuagreementPageModule
 			),
 	},
 	{
 		path: 'termcondition',
 		loadChildren: () =>
 			import('./components/modals/termcondition/termcondition.module').then(
-				(m) => m.TermconditionPageModule,
+				(m) => m.TermconditionPageModule
 			),
 	},
 ];

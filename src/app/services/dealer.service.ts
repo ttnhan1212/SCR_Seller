@@ -10,7 +10,7 @@ export class DealerService {
 	constructor(private firestore: AngularFirestore) {}
 
 	getDealer(id: string) {
-		return this.firestore.collection('Dealer').doc(id).get();
+		return this.firestore.collection('Dealer').doc(id).snapshotChanges();
 	}
 	getDealerWithID(id: string) {
 		return this.firestore
