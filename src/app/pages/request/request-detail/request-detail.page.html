@@ -13,22 +13,30 @@
 				<ion-label class="pl-2 pr-2">12K1234</ion-label>
 			</ion-col>
 		</ion-row>
-		<ion-label>Please upload car images</ion-label>
+		<ion-label>{{'request_detail.upload_instruction' | translate}}</ion-label>
 		<ion-row class="mb-4 p-5">
 			<ion-col size="4">
-				<ion-label class="label fs-25">Front</ion-label>
+				<ion-label class="label fs-25"
+					>{{'request_detail.image_front' | translate}}</ion-label
+				>
 				<ion-img [src]="sample"></ion-img>
 			</ion-col>
 			<ion-col size="4">
-				<ion-label class="label fs-25">Back</ion-label>
+				<ion-label class="label fs-25"
+					>{{'request_detail.image_back' | translate}}</ion-label
+				>
 				<ion-img [src]="sample"></ion-img>
 			</ion-col>
 			<ion-col size="4">
-				<ion-label class="label fs-25">Left</ion-label>
+				<ion-label class="label fs-25"
+					>{{'request_detail.image_left' | translate}}</ion-label
+				>
 				<ion-img [src]="sample"></ion-img>
 			</ion-col>
 			<ion-col size="4">
-				<ion-label class="label fs-25">Right</ion-label>
+				<ion-label class="label fs-25"
+					>{{'request_detail.image_right' | translate}}</ion-label
+				>
 				<ion-img [src]="sample"></ion-img>
 			</ion-col>
 			<ion-col size="4">
@@ -37,26 +45,36 @@
 		</ion-row>
 		<ion-row>
 			<ion-col class="text-center">
-				<ion-button expand="block">See Insurance history</ion-button>
-				<ion-label>Please upload at least 4 images</ion-label>
+				<ion-button expand="block"
+					>{{'request_detail.insurance_history' | translate}}</ion-button
+				>
+				<ion-label
+					>{{'request_detail.upload_requirement' | translate}}</ion-label
+				>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
 	<form [formGroup]="detailForm">
 		<ion-item-group class="mb-5">
 			<ion-item>
-				<ion-label position="floating">Name</ion-label>
+				<ion-label position="floating"
+					>{{'request_detail.input_name' | translate}}</ion-label
+				>
 				<ion-input type="text" [formControl]="name"></ion-input>
 			</ion-item>
 			<ion-item>
-				<ion-label position="floating">Phone</ion-label>
+				<ion-label position="floating"
+					>{{'request_detail.input_phone' | translate}}</ion-label
+				>
 				<ion-input type="number" [formControl]="phone"></ion-input>
 			</ion-item>
 			<ion-item>
-				<ion-label position="floating">Location</ion-label>
+				<ion-label position="floating"
+					>{{'request_detail.location_header' | translate}}</ion-label
+				>
 				<ion-select
 					interface="action-sheet"
-					placeholder="Select your car year..."
+					placeholder="{{'request_detail.location_input_placeholder' | translate}}"
 					[formControl]="location"
 				>
 					<ion-select-option *ngFor="let item of locations">
@@ -65,11 +83,15 @@
 				</ion-select>
 			</ion-item>
 			<ion-item>
-				<ion-label position="floating">Mileages</ion-label>
+				<ion-label position="floating"
+					>{{'request_detail.input_mileages' | translate}}</ion-label
+				>
 				<ion-input type="number" [formControl]="miles"></ion-input>
 			</ion-item>
 			<ion-item>
-				<ion-label position="floating">Other</ion-label>
+				<ion-label position="floating"
+					>{{'request_detail.other_notes' | translate}}</ion-label
+				>
 				<ion-textarea type="text" [formControl]="other"></ion-textarea>
 			</ion-item>
 			<ion-input hidden [formControl]="seller" [value]="sellerId"></ion-input>
@@ -79,7 +101,7 @@
 			(click)="updateRequest()"
 			[disabled]="!detailForm.valid"
 		>
-			Request Quote
+			{{'request_detail.request_quote' | translate}}
 		</ion-button>
 	</form>
 </ion-content>

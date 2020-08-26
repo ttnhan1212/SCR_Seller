@@ -1,6 +1,10 @@
 <ion-content class="ion-padding">
-	<ion-title class="text-center title">Welcome to SCRoads</ion-title>
-	<ion-title class="text-center subtitle">Before you start:</ion-title>
+	<ion-title class="text-center title"
+		>{{'welcome.welcome_line'| translate}}</ion-title
+	>
+	<ion-title class="text-center subtitle"
+		>{{'welcome.instruction'| translate}}</ion-title
+	>
 	<ion-list class="ion-padding">
 		<ion-item *ngFor="let item of checkBoxList" lines="none">
 			<ion-label>{{item.value}}</ion-label>
@@ -15,7 +19,7 @@
 			></ion-checkbox>
 		</ion-item>
 		<ion-item lines="none">
-			<ion-label><strong>Agree All</strong></ion-label>
+			<ion-label><strong>{{'welcome.agree_all'| translate}}</strong></ion-label>
 			<ion-checkbox
 				slot="start"
 				name="selectallcheck"
@@ -31,6 +35,6 @@
 		(click)="anonyLogin()"
 		[disabled]="!masterCheck"
 	>
-		Start
+		{{'welcome.start'| translate}}
 	</ion-button>
 </ion-content>

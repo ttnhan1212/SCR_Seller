@@ -11,7 +11,9 @@
 		<ion-row>
 			<ion-col>
 				<ion-item lines="none">
-					<ion-label>Notifications Setting</ion-label>
+					<ion-label
+						>{{'home_settings.notifications_setting' | translate}}</ion-label
+					>
 					<ion-toggle></ion-toggle>
 				</ion-item>
 			</ion-col>
@@ -20,7 +22,7 @@
 		<ion-row>
 			<ion-col>
 				<ion-item lines="none">
-					<ion-label>Version Information</ion-label>
+					<ion-label>{{'home_settings.version_info' | translate}}</ion-label>
 					<ion-badge slot="end" color="tertiary">v1.01</ion-badge>
 				</ion-item>
 			</ion-col>
@@ -29,15 +31,15 @@
 		<ion-row>
 			<ion-col>
 				<ion-label>Version Infor</ion-label>
-				<br/>
+				<br />
 				<mat-accordion class="mt-2 mb-2">
 					<mat-expansion-panel>
 						<mat-expansion-panel-header>
 							<mat-panel-title>
-								Term & Conditions
+								{{'home_settings.term_conditions' | translate}}
 							</mat-panel-title>
 						</mat-expansion-panel-header>
-						<br/>
+						<br />
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
 						tempora magnam quam. Voluptate neque dignissimos eius doloremque
 						vero, fuga voluptatibus laboriosam, nesciunt deserunt nostrum
@@ -55,10 +57,10 @@
 					<mat-expansion-panel>
 						<mat-expansion-panel-header>
 							<mat-panel-title>
-								Privacy Policy
+								{{'home_settings.privacy_policy' | translate}}
 							</mat-panel-title>
 						</mat-expansion-panel-header>
-						<br/>
+						<br />
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
 						tempora magnam quam. Voluptate neque dignissimos eius doloremque
 						vero, fuga voluptatibus laboriosam, nesciunt deserunt nostrum
@@ -78,13 +80,13 @@
 
 		<ion-row>
 			<ion-col>
-				<ion-label>Contact</ion-label>
-				<br/>
+				<ion-label>{{'home_settings.contact' | translate}}</ion-label>
+				<br />
 				<mat-accordion class="mt-2 mb-2">
 					<mat-expansion-panel>
 						<mat-expansion-panel-header>
 							<mat-panel-title>
-								Contact Us
+								{{'home_settings.contact_us' | translate}}
 							</mat-panel-title>
 						</mat-expansion-panel-header>
 						<ion-item>
@@ -100,8 +102,8 @@
 
 		<ion-row>
 			<ion-col>
-				<ion-label>Guide</ion-label>
-				<br/>
+				<ion-label>{{'home_settings.guide' | translate}}</ion-label>
+				<br />
 				<mat-accordion class="mt-2 mb-2">
 					<mat-expansion-panel>
 						<mat-expansion-panel-header>
@@ -109,7 +111,7 @@
 								FAQ
 							</mat-panel-title>
 						</mat-expansion-panel-header>
-						<br/>
+						<br />
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem culpa
 						quis excepturi. Quisquam tenetur libero iusto beatae ipsa facere
 						nulla distinctio ex praesentium! Voluptatum deserunt alias, odit
@@ -118,9 +120,5 @@
 				</mat-accordion>
 			</ion-col>
 		</ion-row>
-
-		<!-- <ion-button shape="round" expand="block" (click)="logOut()" class="mt-5">
-			Sign Out
-		</ion-button> -->
 	</ion-grid>
 </ion-content>

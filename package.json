@@ -35,6 +35,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "@schematics/angular": "^9.1.12",
     "firebase": "^7.19.0",
+    "ngx-bar-rating": "^1.1.0",
     "rxjs": "^6.6.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

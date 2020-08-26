@@ -1,73 +1,82 @@
 {
-    "welcome": {
-        "welcome_line": "Welcome to SCRoads",
-        "instruction": "Before you start",
-        "privacy_policy": "Privacy Policy",
-        "term_condition": "Term & Conditions",
-        "privacy_usage_agreement": "Privacy Usage Agreement",
-        "agree_all": "Agree All",
-        "start": "Start"
-    },
-    "seller": {
-        "model_label": "Model",
-        "model_input_placeholder": "Select your car model",
-        "year_label": "Year",
-        "check_export_availability": "Check export availability",
-        "request_quote": "Request Quote"
-    },
-    "request": {
-        "plate_numer": "Plate Number",
-        "plate_numer_placeholder": "Your Plate Number",
-        "confirm": "Confirm"
-    },
-    "request_detail": {
-        "upload_instruction": "Please upload car images",
-        "image_front": "Front",
-        "image_back": "Back",
-        "image_left": "Left",
-        "image_right": "Right",
-        "insurance_history": "See Insurance History",
-        "upload_requirement": "Please upload atleast 4 images",
-        "input_name": "Name",
-        "input_phone": "Phone",
-        "location_header": "Location",
-        "location_input_placeholer": "Select location",
-        "input_mileages": "Mileages",
-        "request_quote": "Request Quote"
-    },
-    "home_ongoing": {
-        "please_wait": "Please wait",
-        "proceed": "Proceed to next step",
-        "ended_trade": "Ended trade",
-        "expire": "Expired",
-        "pending-confirm": "Pending Confirm",
-        "on_going":"On-going"
-    },
-    "home_ongoing_detail": {
-        "max": "Max",
-        "average": "Average",
-        "min": "Min",
-        "select_dealer": "Please select a dealer"
-    },
-    "home_settings": {
-        "version_info": "Version Information",
-        "notifications_setting": "Notifications Setting",
-        "term_conditions": "Term & Conditions",
-        "privacy_policy": "Privacy Policy",
-        "contact": "Contact",
-        "contact_us": "Contact Us",
-        "guide": "Guide",
-        "FAQ": "FAQ",
-        "sign_out": "Sign Out"
-    },
-    "home_info": {
-        "information": "Informations",
-        "info_car_export": "What is car export?",
-        "info_term_condition": "Term & Conditions",
-        "infor": "Infor",
-        "paper_info": "Paper Infor"
-    },
-    "home_notifications": {
-        "notifications": "Notifications"
-    }
+	"splash": {
+		"daily": "Total Request Count (Daily)",
+		"monthly": "Total Request Count (Monthly)"
+	},
+	"welcome": {
+		"welcome_line": "수출로에 오신것을 환영합니다",
+		"instruction": "Before you start",
+		"privacy_policy": "개인정보 수집",
+		"term_condition": "이용약관",
+		"privacy_usage_agreement": "개인정보 이용동의",
+		"agree_all": "전체 섵책하기",
+		"start": "시작하기"
+	},
+	"seller": {
+		"model_label": "차종",
+		"model_input_placeholder": "차종을 선택해 주세요",
+		"year_label": "년식",
+		"year_input_placeholder": "년식을 선택해 주세요",
+		"check_export_availability": "내차 수출차 확인",
+		"request_quote": "내차 견적의뢰"
+	},
+	"request": {
+		"plate_number": "차량번호",
+		"plate_number_placeholder": "차량 번호를 입력해 주세요",
+		"confirm": "확인"
+	},
+	"request_detail": {
+		"upload_instruction": "이렇게 촬영해주세요",
+		"image_front": "정면 사진(필수)",
+		"image_back": "후면 사진(필수)",
+		"image_left": "좌측 사진(필수)",
+		"image_right": "우측 사진(필수)",
+		"insurance_history": "사고이력 보기",
+		"upload_requirement": "사진을 최소 4개 등록해 주세요",
+		"input_name": "판매자",
+		"name_input_placeholer": "홍길동",
+		"input_phone": "전화번호",
+		"phone_input_placeholer": "전화번호",
+		"location_header": "거래 위치",
+		"location_input_placeholder": "서울",
+		"input_mileages": "주행거리",
+		"other_notes": "차량 특이 사항",
+		"other_notes_input_placeholer": "차량 범퍼가 많이 찌그러졌어요. 에어컨이 안나와요",
+		"request_quote": "견적의뢰"
+	},
+	"home_ongoing": {
+		"please_wait": "기다려 주세요",
+		"proceed": "상태를 눌러 다음단계를 완료해 주세요",
+		"ended_trade": "거래가 종료되었습니다",
+		"expire": "expire",
+		"pending-confirm": "Pending Confirm",
+		"on_going": "On-going"
+	},
+	"home_ongoing_detail": {
+		"max": "Max",
+		"average": "Average",
+		"min": "Min",
+		"select_dealer": "Please select a dealer"
+	},
+	"home_settings": {
+		"version_info": "버전 정보",
+		"notifications_setting": "알림설정",
+		"term_conditions": "이용약관",
+		"privacy_policy": "개인정보 취급방침",
+		"contact": "수출로 연락처",
+		"contact_us": "Contact Us",
+		"guide": "가이드",
+		"FAQ": "FAQ",
+		"sign_out": "로그아웃"
+	},
+	"home_info": {
+		"information": "안내 내용",
+		"info_car_export": "수출차란?",
+		"info_term_condition": "감가정보",
+		"infor": "이용안내",
+		"paper_info": "서류정보"
+	},
+	"home_notifications": {
+		"notifications": "알림"
+	}
 }

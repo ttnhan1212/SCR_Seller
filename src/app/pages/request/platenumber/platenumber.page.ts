@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { NotiService } from './../../../services/noti.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { RequestService } from '../../../services/request.service';
@@ -29,8 +30,17 @@ export class PlatenumberPage implements OnInit {
 		public loadingController: LoadingController,
 		public toast: ToastService,
 		public route: Router,
-		public notiService: NotiService
-	) {}
+		public notiService: NotiService,
+		private translate: TranslateService,
+	) {
+		translate.addLangs(['en', 'kr']);
+
+		// this language will be used as a fallback when a translation isn't found in the current language
+		translate.setDefaultLang('kr');
+
+		// the lang to use, if the lang isn't available, it will use the current loader to get them
+		translate.use('kr');
+	}
 
 	ngOnInit() {
 		this.getUser();
@@ -90,7 +100,7 @@ export class PlatenumberPage implements OnInit {
 								});
 								this.route.navigate(
 									['/', 'request', val.id],
-									this.requestState
+									this.requestState,
 								);
 							})
 							.catch((err) => {

@@ -22,10 +22,12 @@
 	</ion-refresher>
 	<form [formGroup]="exportForm" (ngSubmit)="exportSubmit()">
 		<ion-item class="ion-margin-bottom">
-			<ion-label position="stacked">Model</ion-label>
+			<ion-label position="stacked"
+				>{{'seller.model_label'| translate}}</ion-label
+			>
 			<ion-select
 				interface="action-sheet"
-				placeholder="Select your car model..."
+				placeholder="{{'seller.model_input_placeholder' | translate}}"
 				(ionChange)="fetchYear($event)"
 				[formControl]="model"
 			>
@@ -35,10 +37,12 @@
 			</ion-select>
 		</ion-item>
 		<ion-item class="ion-margin-bottom">
-			<ion-label position="stacked">Year</ion-label>
+			<ion-label position="stacked"
+				>{{'seller.year_label' | translate}}</ion-label
+			>
 			<ion-select
 				interface="action-sheet"
-				placeholder="Select your car year..."
+				placeholder="{{'seller.year_input_placeholder'| translate}}"
 				[formControl]="year"
 			>
 				<ion-select-option *ngFor="let year of years">
@@ -53,7 +57,7 @@
 			[disabled]="!exportForm.valid"
 			color="tertiary"
 		>
-			Check export availability
+			{{'seller.check_export_availability'| translate}}
 		</ion-button>
 	</form>
 	<ion-card class="m-0">
@@ -73,7 +77,7 @@
 			[routerLink]="['/','request','plate']"
 			color="tertiary"
 		>
-			Request Quote
+			{{'seller.request_quote' | translate}}
 		</ion-button>
 	</ion-card>
 	<ion-item-divider></ion-item-divider>

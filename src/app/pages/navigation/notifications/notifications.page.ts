@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NotiService } from './../../../services/noti.service';
 import { Request } from '../../../models/request';
@@ -22,8 +23,16 @@ export class NotificationsPage implements OnInit, OnDestroy {
 		public notiService: NotiService,
 		public requestService: RequestService,
 		private afAuth: AngularFireAuth,
+		private translate: TranslateService,
 	) {
 		// this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
+		translate.addLangs(['en', 'kr']);
+
+		// this language will be used as a fallback when a translation isn't found in the current language
+		translate.setDefaultLang('kr');
+
+		// the lang to use, if the lang isn't available, it will use the current loader to get them
+		translate.use('kr');
 	}
 
 	ngOnInit() {

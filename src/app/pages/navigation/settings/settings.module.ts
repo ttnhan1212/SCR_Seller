@@ -1,3 +1,6 @@
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +12,10 @@ import { SettingsPageRoutingModule } from './settings-routing.module';
 import { SettingsPage } from './settings.page';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+export function HttpLoaderFactory(http: HttpClient) {
+	return new TranslateHttpLoader(http);
+}
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -16,6 +23,14 @@ import { MatExpansionModule } from '@angular/material/expansion';
 		IonicModule,
 		SettingsPageRoutingModule,
 		MatExpansionModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient],
+			},
+		}),
+		HttpClientModule,
 	],
 	declarations: [SettingsPage],
 })

@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from 'src/app/services/toast.service';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from './../../../services/auth.service';
@@ -28,8 +29,17 @@ export class OngoingPage implements OnInit, OnDestroy {
 		public authService: AuthService,
 		public loadingController: LoadingController,
 		public toast: ToastService,
+		private translate: TranslateService,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
+
+		translate.addLangs(['en', 'kr']);
+
+		// this language will be used as a fallback when a translation isn't found in the current language
+		translate.setDefaultLang('kr');
+
+		// the lang to use, if the lang isn't available, it will use the current loader to get them
+		translate.use('kr');
 	}
 
 	ngOnInit() {

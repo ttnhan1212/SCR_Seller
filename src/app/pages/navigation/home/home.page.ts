@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ModelService } from './../../../services/model.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -37,7 +38,8 @@ export class HomePage implements OnInit, OnDestroy {
 	constructor(
 		private modelService: ModelService,
 		public router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private translate: TranslateService,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 		this.image = '../../../../assets/images/banners/banner2.jpg';
@@ -46,6 +48,14 @@ export class HomePage implements OnInit, OnDestroy {
 			model: this.model,
 			year: this.year,
 		});
+
+		translate.addLangs(['en', 'kr']);
+
+		// this language will be used as a fallback when a translation isn't found in the current language
+		translate.setDefaultLang('kr');
+
+		// the lang to use, if the lang isn't available, it will use the current loader to get them
+		translate.use('kr');
 	}
 
 	ngOnInit() {
@@ -64,7 +74,7 @@ export class HomePage implements OnInit, OnDestroy {
 			},
 			(error: any) => {
 				console.log(error);
-			}
+			},
 		);
 	}
 
@@ -89,7 +99,7 @@ export class HomePage implements OnInit, OnDestroy {
 			},
 			(err: any) => {
 				console.log(err);
-			}
+			},
 		);
 	}
 

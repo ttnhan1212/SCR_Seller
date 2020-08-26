@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { LocationService } from './../../../services/location.service';
 import { ToastService } from '../../../services/toast.service';
 import { LoadingController } from '@ionic/angular';
@@ -26,11 +27,11 @@ export class RequestDetailPage implements OnInit {
 	detailForm: FormGroup;
 	name = new FormControl(
 		'',
-		Validators.compose([(Validators.minLength(3), Validators.required)])
+		Validators.compose([(Validators.minLength(3), Validators.required)]),
 	);
 	phone = new FormControl(
 		null,
-		Validators.compose([Validators.minLength(10), Validators.required])
+		Validators.compose([Validators.minLength(10), Validators.required]),
 	);
 	location = new FormControl('', Validators.required);
 	miles = new FormControl('', Validators.required);
@@ -53,7 +54,8 @@ export class RequestDetailPage implements OnInit {
 		public loadingController: LoadingController,
 		public toast: ToastService,
 		private formBuilder: FormBuilder,
-		public locationService: LocationService
+		public locationService: LocationService,
+		private translate: TranslateService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		this.sample = '../../../../assets/images/png/spares/1.png';
@@ -82,6 +84,14 @@ export class RequestDetailPage implements OnInit {
 			status: 'Ongoing',
 			participants: [{ created: true }],
 		});
+
+		translate.addLangs(['en', 'kr']);
+
+		// this language will be used as a fallback when a translation isn't found in the current language
+		translate.setDefaultLang('kr');
+
+		// the lang to use, if the lang isn't available, it will use the current loader to get them
+		translate.use('kr');
 	}
 
 	ngOnInit() {
@@ -103,7 +113,7 @@ export class RequestDetailPage implements OnInit {
 			await loading.present();
 			await this.requestService.updateRequestBySeller(
 				this.detailForm.value,
-				this.request
+				this.request,
 			);
 			await this.requestService.updateRequest(this.id, this.detailForm.value);
 			await this.toast.showToast('Your request is successfully uploaded!');
