@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { SellerService } from './services/seller.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +34,7 @@ import { AuthService } from './services/auth.service';
 		FormsModule,
 		ReactiveFormsModule,
 		BarRatingModule,
+		TranslateModule.forRoot(),
 	],
 	providers: [
 		AuthService,

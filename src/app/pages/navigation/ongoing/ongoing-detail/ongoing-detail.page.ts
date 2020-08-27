@@ -42,7 +42,7 @@ export class OngoingDetailPage implements OnInit {
 	ngOnInit() {
 		this.getRequestById();
 		this.getParticipant();
-		this.selectedRequest();
+		// this.selectedRequest();
 	}
 
 	async getRequestById() {
@@ -70,7 +70,9 @@ export class OngoingDetailPage implements OnInit {
 						participant.dealer = { ...res.payload.data() };
 					});
 			});
+			this.selectedRequest();
 			console.log('Part', this.participants);
+			console.log(this.participants.length);
 		});
 	}
 
@@ -106,5 +108,9 @@ export class OngoingDetailPage implements OnInit {
 			['/', 'home', 'ongoing', 'dealer-detail', this.id],
 			extraState,
 		);
+	}
+
+	checkArray() {
+		return Array.isArray(this.ongoing.participants);
 	}
 }

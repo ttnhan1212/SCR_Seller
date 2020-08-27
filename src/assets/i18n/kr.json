@@ -9,7 +9,7 @@
 		"privacy_policy": "개인정보 수집",
 		"term_condition": "이용약관",
 		"privacy_usage_agreement": "개인정보 이용동의",
-		"agree_all": "전체 섵책하기",
+		"agree_all": "선택하기",
 		"start": "시작하기"
 	},
 	"seller": {
@@ -50,7 +50,7 @@
 		"ended_trade": "거래가 종료되었습니다",
 		"expire": "expire",
 		"pending-confirm": "Pending Confirm",
-		"on_going": "On-going"
+		"on_going": "진행중"
 	},
 	"home_ongoing_detail": {
 		"max": "Max",

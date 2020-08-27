@@ -55,7 +55,7 @@ export class RequestDetailPage implements OnInit {
 		public toast: ToastService,
 		private formBuilder: FormBuilder,
 		public locationService: LocationService,
-		private translate: TranslateService,
+		translate: TranslateService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		this.sample = '../../../../assets/images/png/spares/1.png';
@@ -81,7 +81,7 @@ export class RequestDetailPage implements OnInit {
 			sellerId: this.seller,
 			miles: this.miles,
 			other: this.other,
-			status: 'Ongoing',
+			status: '진행중',
 			participants: [{ created: true }],
 		});
 
