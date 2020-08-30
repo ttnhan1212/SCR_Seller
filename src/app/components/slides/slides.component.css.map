@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,AAAC,CACT,OAAO,CAAE,UAAU,CACnB,OAAO,CAAE,KAAK,CAKd,AAPD,AAGC,SAHQ,CAGR,EAAE,AAAC,CACF,SAAS,CAAE,IAAI,CACf,WAAW,CAAE,IAAI,CACjB",
+    "sources": [
+        "slides.component.scss"
+    ],
+    "names": [],
+    "file": "slides.component.css"
+}

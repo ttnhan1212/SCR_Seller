@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACE,AAAD,aAAM,AAAC,CACN,MAAM,CAAE,MAAM,CACd,KAAK,CAAE,GAAG,CACV,AAGF,AAAA,KAAK,AAAA,kBAAkB,CAAE,KAAK,CAAC,kBAAkB,AAAC,CACjD,WAAW,CAAE,yBAAyB,CACtC,AAED,AAAA,KAAK,AAAA,kBAAkB,CAAE,KAAK,CAAC,kBAAkB,AAAC,CACjD,QAAQ,CAAE,eAAe,CACzB,AAED,AAAA,2BAA2B,AAAA,aAAa,CACxC,2BAA2B,AAAA,aAAa,AAAA,MAAM,AAAC,CAC7C,UAAU,CAAG,OAAO,CACrB",
+    "sources": [
+        "settings.page.scss"
+    ],
+    "names": [],
+    "file": "settings.page.css"
+}

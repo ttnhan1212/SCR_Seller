@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,AAAC,CACN,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,GAAG,CACR,IAAI,CAAE,GAAG,CAET,SAAS,CAAE,qBAAqB,CAChC",
+    "sources": [
+        "request-detail.page.scss"
+    ],
+    "names": [],
+    "file": "request-detail.page.css"
+}

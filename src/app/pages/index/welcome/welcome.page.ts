@@ -35,17 +35,17 @@ export class WelcomePage implements OnInit {
 		this.checkBoxList = [
 			{
 				id: 1,
-				value: 'Privacy Policy',
+				value: '개인정보 수집',
 				isChecked: false,
 			},
 			{
 				id: 2,
-				value: 'Terms & Condition',
+				value: '이용약관',
 				isChecked: false,
 			},
 			{
 				id: 3,
-				value: 'Privacy Usage Agreement',
+				value: '개인정보 이용동의',
 				isChecked: false,
 			},
 		];

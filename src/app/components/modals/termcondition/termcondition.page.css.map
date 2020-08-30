@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,AAAC,CACR,aAAa,CAAA,KAAC,CACd",
+    "sources": [
+        "termcondition.page.scss"
+    ],
+    "names": [],
+    "file": "termcondition.page.css"
+}

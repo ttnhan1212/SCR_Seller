@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,AAAC,CACR,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,GAAG,CACR,IAAI,CAAE,GAAG,CAET,SAAS,CAAE,qBAAqB,CAEhC,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CACZ,AAED,AAAA,CAAC,AAAC,CACD,WAAW,CAAE,0BAA0B,CACvC",
+    "sources": [
+        "platenumber.page.scss"
+    ],
+    "names": [],
+    "file": "platenumber.page.css"
+}

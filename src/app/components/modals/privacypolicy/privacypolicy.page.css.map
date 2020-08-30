@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,AAAC,CACR,aAAa,CAAA,KAAC,CACd",
+    "sources": [
+        "privacypolicy.page.scss"
+    ],
+    "names": [],
+    "file": "privacypolicy.page.css"
+}
