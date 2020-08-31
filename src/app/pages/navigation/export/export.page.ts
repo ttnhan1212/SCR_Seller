@@ -26,7 +26,7 @@ export class ExportPage implements OnInit, OnDestroy {
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
-		private modelService: ModelService
+		private modelService: ModelService,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 		this.image = '../../../../assets/images/banners/banner2.jpg';

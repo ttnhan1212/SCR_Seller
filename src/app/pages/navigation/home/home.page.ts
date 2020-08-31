@@ -1,3 +1,5 @@
+import { DealerService } from 'src/app/services/dealer.service';
+import { RequestService } from 'src/app/services/request.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ModelService } from './../../../services/model.service';
@@ -10,6 +12,7 @@ import {
 	Validators,
 	FormBuilder,
 } from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
 	selector: 'app-request',
@@ -35,11 +38,16 @@ export class HomePage implements OnInit, OnDestroy {
 		speed: 400,
 	};
 
+	review_all: any[];
+	request: any;
+
 	constructor(
 		private modelService: ModelService,
 		public router: Router,
 		private fb: FormBuilder,
 		private translate: TranslateService,
+		public requestService: RequestService,
+		public dealerService: DealerService,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 		this.image = '../../../../assets/images/banners/banner2.jpg';
@@ -49,17 +57,18 @@ export class HomePage implements OnInit, OnDestroy {
 			year: this.year,
 		});
 
-		translate.addLangs(['en', 'kr']);
+		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
-		translate.setDefaultLang('kr');
+		this.translate.setDefaultLang('kr');
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use('kr');
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {
 		this.getModel();
+		this.reviewSection();
 	}
 
 	getModel() {
@@ -76,6 +85,27 @@ export class HomePage implements OnInit, OnDestroy {
 				console.log(error);
 			},
 		);
+	}
+
+	async reviewSection() {
+		await this.requestService.getAllReview().subscribe((val) => {
+			this.review_all = val.map((m) => {
+				return {
+					id: m.payload.doc.id,
+					...m.payload.doc.data(),
+				};
+			});
+			this.review_all.forEach((n) => {
+				this.requestService.getRequestById(n.requestId).subscribe((v) => {
+					if (v.payload.data()['finalPrice']) {
+						n.finalPrice = v.payload.data()['finalPrice'];
+					} else {
+						n.finalPrice = 0;
+					}
+				});
+			});
+			console.log(this.review_all);
+		});
 	}
 
 	ngOnDestroy() {
@@ -112,12 +142,5 @@ export class HomePage implements OnInit, OnDestroy {
 		// Do useful stuff with the gathered data
 		this.router.navigate(['/', 'home', 'export'], exportState);
 		this.exportForm.reset();
-	}
-
-	doRefresh(event) {
-		setTimeout(() => {
-			this.router.navigate(['home', 'seller']);
-			event.target.complete();
-		}, 2000);
 	}
 }

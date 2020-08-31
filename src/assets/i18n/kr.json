@@ -21,6 +21,7 @@
 		"request_quote": "내차 견적의뢰"
 	},
 	"request": {
+		"request": "",
 		"plate_number": "차량번호",
 		"plate_number_placeholder": "차량 번호를 입력해 주세요",
 		"confirm": "확인"

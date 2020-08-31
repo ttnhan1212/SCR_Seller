@@ -21,14 +21,14 @@
 		<ion-item
 			*ngFor="let request of requests"
 			lines="none"
-			[routerLink]="request.status === 'Complete' ? ['/','home','review']: [request.id]"
+			[routerLink]="request.status === 'Complete' ? ['/','home','review', request.id]: [request.id]"
 		>
 			<ion-thumbnail slot="start">
 				<img
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px;">
+			<ion-label style="margin-top: 25px">
 				<ion-header
 					style="
 						background: #bdc3c7;
@@ -43,7 +43,7 @@
 					<p>
 						2009
 						<span class="pull-right"
-							>K-5<span style="font-size: 10px;">12가1234</span></span
+							>K-5<span style="font-size: 10px">12가1234</span></span
 						>
 					</p>
 					<p>

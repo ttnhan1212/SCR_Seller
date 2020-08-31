@@ -9,6 +9,9 @@ import { ReviewPageRoutingModule } from './review-routing.module';
 
 import { ReviewPage } from './review.page';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -16,6 +19,8 @@ import { ReviewPage } from './review.page';
 		IonicModule,
 		ReviewPageRoutingModule,
 		BarRatingModule,
+		MatFormFieldModule,
+		MatInputModule,
 	],
 	declarations: [ReviewPage],
 })

@@ -20,7 +20,7 @@ export class ErrorsPage implements OnInit {
 
 	ngOnInit() {}
 
-	navigateHome = () => {
+	navigateHome() {
 		this.router.navigate(['home', 'seller']);
-	};
+	}
 }

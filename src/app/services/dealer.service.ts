@@ -18,4 +18,12 @@ export class DealerService {
 			.valueChanges()
 			.pipe(take(1));
 	}
+
+	createReviewInDealer(id: string, review: any) {
+		this.firestore
+			.collection('Dealer')
+			.doc(id)
+			.collection('Review')
+			.add(review);
+	}
 }

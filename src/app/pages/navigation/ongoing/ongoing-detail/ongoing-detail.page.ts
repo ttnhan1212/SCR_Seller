@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../../services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { RequestService } from '../../../../services/request.service';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
@@ -27,16 +28,17 @@ export class OngoingDetailPage implements OnInit {
 		public requestService: RequestService,
 		public dealerService: DealerService,
 		private translate: TranslateService,
+		private loader: LoaderService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 
-		translate.addLangs(['en', 'kr']);
+		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
-		translate.setDefaultLang('kr');
+		this.translate.setDefaultLang('kr');
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use('kr');
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {
@@ -46,11 +48,13 @@ export class OngoingDetailPage implements OnInit {
 	}
 
 	async getRequestById() {
+		await this.loader.showLoader();
 		await this.requestService.getRequestById(this.id).subscribe((data: any) => {
 			this.ongoing = {
 				...data.payload.data(),
 			};
 			console.log('Ongoing', this.ongoing);
+			this.loader.hideLoader();
 		});
 	}
 

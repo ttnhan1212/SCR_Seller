@@ -20,6 +20,7 @@
 		"request_quote": "Request Quote"
 	},
 	"request": {
+		"request": "Request",
 		"plate_number": "Plate Number",
 		"plate_number_placeholder": "Your Plate Number",
 		"confirm": "Confirm"

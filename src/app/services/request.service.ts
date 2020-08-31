@@ -10,7 +10,7 @@ export class RequestService {
 
 	constructor(
 		private firestore: AngularFirestore,
-		private afAuth: AngularFireAuth
+		private afAuth: AngularFireAuth,
 	) {
 		this.afAuth.authState.subscribe((user) => {
 			if (user) {
@@ -25,7 +25,9 @@ export class RequestService {
 
 	getRequestBySeller(sellerId: string) {
 		return this.firestore
-			.collection('requests', (ref) => ref.where('sellerId', '==', sellerId))
+			.collection('requests', (ref) =>
+				ref.where('sellerId', '==', sellerId).where('reviewed', '==', false),
+			)
 			.snapshotChanges();
 	}
 
@@ -48,6 +50,7 @@ export class RequestService {
 	updateRequest(id: string, request: any) {
 		this.firestore.collection('requests').doc(id).update(request);
 	}
+
 	updateRequestBySeller(request: any, requestId: string) {
 		this.firestore
 			.collection('Seller')
@@ -102,5 +105,13 @@ export class RequestService {
 			.doc(id)
 			.collection('participants', (ref) => ref.where('selected', '==', true))
 			.valueChanges();
+	}
+
+	createReview(review: any) {
+		this.firestore.collection('Review').add(review);
+	}
+
+	getAllReview() {
+		return this.firestore.collection('Review').snapshotChanges();
 	}
 }

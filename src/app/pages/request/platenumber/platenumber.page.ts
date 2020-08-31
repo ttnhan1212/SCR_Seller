@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NotiService } from './../../../services/noti.service';
 import { Router, NavigationExtras } from '@angular/router';
@@ -32,14 +33,15 @@ export class PlatenumberPage implements OnInit {
 		public route: Router,
 		public notiService: NotiService,
 		private translate: TranslateService,
+		public loader: LoaderService,
 	) {
-		translate.addLangs(['en', 'kr']);
+		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
-		translate.setDefaultLang('kr');
+		this.translate.setDefaultLang('kr');
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use('kr');
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {
@@ -56,15 +58,10 @@ export class PlatenumberPage implements OnInit {
 
 	async createPlate() {
 		let vehicle = {};
-
-		const loading = await this.loadingController.create({
-			message: 'Please wait...',
-			showBackdrop: true,
-		});
 		vehicle['platenumber'] = this.plate;
 
 		try {
-			await loading.present();
+			await this.loader.showLoader();
 			await this.vehicleService
 				.createVehicle(vehicle)
 				.then((res) => {
@@ -113,10 +110,10 @@ export class PlatenumberPage implements OnInit {
 				.catch((error) => {
 					this.toast.showToast(error.message);
 				});
-			await loading.dismiss();
+			await this.loader.hideLoader();
 		} catch (error) {
 			this.toast.showToast(error.message);
-			await loading.dismiss();
+			await this.loader.hideLoader();
 		}
 	}
 }

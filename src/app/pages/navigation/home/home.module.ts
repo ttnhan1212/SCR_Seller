@@ -1,3 +1,4 @@
+import { BarRatingModule } from 'ngx-bar-rating';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 			},
 		}),
 		HttpClientModule,
+		BarRatingModule,
 	],
 	declarations: [HomePage],
 })

@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from 'src/app/services/toast.service';
 import { LoadingController } from '@ionic/angular';
@@ -30,16 +31,17 @@ export class OngoingPage implements OnInit, OnDestroy {
 		public loadingController: LoadingController,
 		public toast: ToastService,
 		private translate: TranslateService,
+		private loader: LoaderService,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 
-		translate.addLangs(['en', 'kr']);
+		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
-		translate.setDefaultLang('kr');
+		this.translate.setDefaultLang('kr');
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use('kr');
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {
@@ -56,8 +58,9 @@ export class OngoingPage implements OnInit, OnDestroy {
 		});
 	}
 
-	getRequestBySeller(id: string) {
-		this.requestSub = this.requestService
+	async getRequestBySeller(id: string) {
+		await this.loader.showLoader();
+		this.requestSub = await this.requestService
 			.getRequestBySeller(id)
 			.subscribe((data) => {
 				this.requests = data.map((e) => {
@@ -66,6 +69,7 @@ export class OngoingPage implements OnInit, OnDestroy {
 						...(e.payload.doc.data() as Request),
 					};
 				});
+				this.loader.hideLoader();
 			});
 	}
 

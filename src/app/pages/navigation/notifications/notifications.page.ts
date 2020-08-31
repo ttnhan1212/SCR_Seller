@@ -26,13 +26,13 @@ export class NotificationsPage implements OnInit, OnDestroy {
 		private translate: TranslateService,
 	) {
 		// this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
-		translate.addLangs(['en', 'kr']);
+		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
-		translate.setDefaultLang('kr');
+		this.translate.setDefaultLang('kr');
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use('kr');
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {
@@ -40,7 +40,7 @@ export class NotificationsPage implements OnInit, OnDestroy {
 	}
 
 	async getUser() {
-		this.afAuth.authState.subscribe((user) => {
+		await this.afAuth.authState.subscribe((user) => {
 			if (user) {
 				this.sellerId = user.uid;
 			}
