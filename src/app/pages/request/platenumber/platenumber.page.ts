@@ -83,20 +83,20 @@ export class PlatenumberPage implements OnInit {
 						this.requestService
 							.createRequest(request)
 							.then((val) => {
-								this.requestState = {
-									state: {
-										requestSellerId: this.requestSellerId,
-									},
-								};
-
 								this.notiService.createNoti({
 									requestId: val.id,
 									status: 'On-going',
 									updateDate: Math.floor(new Date().getTime() / 1000.0),
 									user: this.sellerId,
 								});
+								this.requestState = {
+									state: {
+										requestSellerId: this.requestSellerId,
+										requestId: val.id,
+									},
+								};
 								this.route.navigate(
-									['/', 'request', val.id],
+									['/', 'request', 'image-guide'],
 									this.requestState,
 								);
 							})

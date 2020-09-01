@@ -16,6 +16,8 @@ export class VisitPage implements OnInit {
 	dealer: any = {};
 	part: any = [];
 
+	rate: undefined;
+
 	myValueSub: Subscription;
 	dealerSub: Subscription;
 	partSub: Subscription;

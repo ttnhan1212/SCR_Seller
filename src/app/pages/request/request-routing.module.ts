@@ -17,6 +17,13 @@ const routes: Routes = [
 					),
 			},
 			{
+				path: 'image-guide',
+				loadChildren: () =>
+					import('./image-guide/image-guide.module').then(
+						(m) => m.ImageGuidePageModule,
+					),
+			},
+			{
 				path: ':id',
 				component: RequestDetailPage,
 				loadChildren: () =>

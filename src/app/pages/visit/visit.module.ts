@@ -8,13 +8,16 @@ import { VisitPageRoutingModule } from './visit-routing.module';
 
 import { VisitPage } from './visit.page';
 
+import { BarRatingModule } from 'ngx-bar-rating';
+
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    VisitPageRoutingModule
-  ],
-  declarations: [VisitPage]
+	imports: [
+		CommonModule,
+		FormsModule,
+		IonicModule,
+		VisitPageRoutingModule,
+		BarRatingModule,
+	],
+	declarations: [VisitPage],
 })
 export class VisitPageModule {}

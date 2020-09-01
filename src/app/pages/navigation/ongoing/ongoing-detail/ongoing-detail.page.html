@@ -20,17 +20,17 @@
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.max' | translate}}</ion-label>
 					<br />
-					<ion-label class="fs-20"><strong>2,000,000</strong></ion-label>
+					<ion-label class="fs-20"><strong>₩2,000,000</strong></ion-label>
 				</ion-col>
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.average' | translate}}</ion-label>
 					<br />
-					<ion-label class="fs-20"><strong>1,790,000</strong></ion-label>
+					<ion-label class="fs-20"><strong>₩1,790,000</strong></ion-label>
 				</ion-col>
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.min' | translate}}</ion-label>
 					<br />
-					<ion-label class="fs-20"><strong>1,230,000</strong></ion-label>
+					<ion-label class="fs-20"><strong>₩1,230,000</strong></ion-label>
 				</ion-col>
 			</ion-row>
 		</ion-grid>
@@ -75,14 +75,16 @@
 			</ion-avatar>
 			<ion-label>
 				<h2>{{selectedDealer.dealer.email}}</h2>
-				<p class="fs-25">${{selectedDealer.price}}</p>
+				<p class="fs-25">₩{{selectedDealer.price}}</p>
 			</ion-label>
 			<ion-note slot="end"> Rating </ion-note>
 		</ion-item>
 	</ion-item-group>
 
 	<ion-item-group class="mt-8" *ngIf="!selectedDealer && participants">
-		<ion-label>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label>
+		<ion-label style="line-height: normal"
+			>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label
+		>
 		<ion-item-sliding *ngFor="let item of participants">
 			<ion-item lines="none" (click)="getDealerDetail(item.id, item.userId)">
 				<ion-avatar slot="start">
@@ -90,7 +92,7 @@
 				</ion-avatar>
 				<ion-label>
 					<h2>{{item.dealer.email}}</h2>
-					<p class="fs-25">${{item.price}}</p>
+					<p class="fs-25">₩{{item.price}}</p>
 				</ion-label>
 				<ion-note slot="end"> Rating </ion-note>
 				<ion-icon slot="end" name="chevron-back-outline"></ion-icon>
@@ -107,7 +109,7 @@
 		class="mt-8"
 		*ngIf="selectedDealer && participants.length > 1"
 	>
-		<ion-title class="text-center mb-4"
+		<ion-title class="text-center mb-4" style="line-height: normal"
 			>Waiting for Dealer Confirmation</ion-title
 		>
 		<ion-item lines="none">
@@ -116,7 +118,7 @@
 			</ion-avatar>
 			<ion-label>
 				<h2>{{selectedDealer.dealer.email}}</h2>
-				<p class="fs-25">${{selectedDealer.price}}</p>
+				<p class="fs-25">₩{{selectedDealer.price}}</p>
 			</ion-label>
 			<ion-note slot="end"> Rating </ion-note>
 		</ion-item>

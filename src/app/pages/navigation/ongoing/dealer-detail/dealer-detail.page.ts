@@ -25,7 +25,6 @@ export class DealerDetailPage implements OnInit {
 		public requestService: RequestService,
 		public route: ActivatedRoute,
 		public router: Router,
-		private loader: LoaderService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 
@@ -45,11 +44,8 @@ export class DealerDetailPage implements OnInit {
 	}
 
 	getDealer() {
-		this.loader.showLoader();
 		this.dealerService.getDealer(this.dealerId).subscribe((val) => {
 			this.dealer = val.payload.data();
-			console.log('Dealer', this.dealer);
-			this.loader.hideLoader();
 		});
 	}
 

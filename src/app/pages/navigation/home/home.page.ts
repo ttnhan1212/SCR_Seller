@@ -88,7 +88,7 @@ export class HomePage implements OnInit, OnDestroy {
 	}
 
 	async reviewSection() {
-		await this.requestService.getAllReview().subscribe((val) => {
+		await this.requestService.getAllReview().subscribe((val: any) => {
 			this.review_all = val.map((m) => {
 				return {
 					id: m.payload.doc.id,
