@@ -19,6 +19,8 @@ export class OngoingDetailPage implements OnInit {
 	dealer = {};
 	selectedDealer: any;
 
+	now = Math.floor(new Date().getTime() / 1000.0);
+
 	myValueSub: Subscription;
 	dealerSub: Subscription;
 	partSub: Subscription;

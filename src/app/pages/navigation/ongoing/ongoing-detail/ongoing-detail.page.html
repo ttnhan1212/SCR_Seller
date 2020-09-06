@@ -81,7 +81,33 @@
 		</ion-item>
 	</ion-item-group>
 
-	<ion-item-group class="mt-8" *ngIf="!selectedDealer && participants">
+	<ion-item-group
+		class="mt-8"
+		*ngIf="!selectedDealer && participants && ongoing.effectedTime >= now && ongoing.expiredTime < now"
+	>
+		<ion-label style="line-height: normal"
+			>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label
+		>
+		<ion-item
+			lines="none"
+			*ngFor="let item of participants"
+			(click)="getDealerDetail(item.id, item.userId)"
+		>
+			<ion-avatar slot="start">
+				<img src="../../../../assets/images/photos/33327.jpg" />
+			</ion-avatar>
+			<ion-label>
+				<h2>{{item.dealer.email}}</h2>
+				<p class="fs-25">₩{{item.price}}</p>
+			</ion-label>
+			<ion-note slot="end"> Rating </ion-note>
+		</ion-item>
+	</ion-item-group>
+
+	<ion-item-group
+		class="mt-8"
+		*ngIf="!selectedDealer && participants && ongoing.effectedTime >= now && ongoing.expiredTime > now"
+	>
 		<ion-label style="line-height: normal"
 			>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label
 		>
