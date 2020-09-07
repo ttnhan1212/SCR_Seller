@@ -85,7 +85,7 @@ export class PlatenumberPage implements OnInit {
 							.then((val) => {
 								this.notiService.createNoti({
 									requestId: val.id,
-									status: 'On-going',
+									status: 1,
 									updateDate: Math.floor(new Date().getTime() / 1000.0),
 									user: this.sellerId,
 								});

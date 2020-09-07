@@ -14,11 +14,14 @@ export class DealerDetailPage implements OnInit {
 	id: string;
 	dealer: any;
 	participant: any;
+	request: any;
 
 	partId: string;
 	dealerId: string;
 
 	dataSub: Subscription;
+
+	now = Math.floor(new Date().getTime() / 1000.0);
 
 	constructor(
 		public dealerService: DealerService,
@@ -38,14 +41,23 @@ export class DealerDetailPage implements OnInit {
 	}
 
 	ngOnInit() {
+		this.getRequest();
 		setTimeout(() => {
 			this.getDealer();
 		}, 1000);
+		console.log(this.now);
 	}
 
 	getDealer() {
 		this.dealerService.getDealer(this.dealerId).subscribe((val) => {
 			this.dealer = val.payload.data();
+		});
+	}
+
+	getRequest() {
+		this.requestService.getRequestById(this.id).subscribe((val) => {
+			this.request = val.payload.data();
+			console.log(this.request);
 		});
 	}
 

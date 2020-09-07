@@ -172,8 +172,13 @@
 		</ion-item>
 	</ion-list>
 </ion-content>
-<ion-footer class="ion-padding">
+<ion-footer class="ion-padding" *ngIf="request && request.expiredTime < now">
 	<ion-button expand="block" color="tertiary" (click)="selectDealer()"
+		>Dealer Select</ion-button
+	>
+</ion-footer>
+<ion-footer class="ion-padding" *ngIf="request && request.expiredTime > now">
+	<ion-button expand="block" color="tertiary" disabled
 		>Dealer Select</ion-button
 	>
 </ion-footer>

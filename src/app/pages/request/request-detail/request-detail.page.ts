@@ -84,7 +84,7 @@ export class RequestDetailPage implements OnInit {
 			sellerId: this.seller,
 			miles: this.miles,
 			other: this.other,
-			status: '진행중',
+			status: 1,
 			reviewed: this.reviewed,
 			participants: [{ created: true }],
 		});

@@ -84,11 +84,11 @@ export class OngoingPage implements OnInit, OnDestroy {
 			temp.forEach((val) => {
 				const participant: any = val.participants;
 				if (
-					val.expiredTime <= this.now &&
+					val.expiredTime < this.now &&
 					(participant.created === true || val.participants === undefined)
 				) {
 					this.requestService.updateRequest(val.id, {
-						status: 'Expired',
+						status: 2,
 					});
 				}
 			});

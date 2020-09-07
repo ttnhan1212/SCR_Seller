@@ -68,7 +68,7 @@ export class RequestService {
 		return this.firestore
 			.collection('requests')
 			.doc(id)
-			.collection('participants')
+			.collection('participants', (ref) => ref.orderBy('bidTime', 'desc'))
 			.snapshotChanges();
 	}
 

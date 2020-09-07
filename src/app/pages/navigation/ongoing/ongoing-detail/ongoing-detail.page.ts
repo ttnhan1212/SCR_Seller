@@ -86,6 +86,7 @@ export class OngoingDetailPage implements OnInit {
 		await this.requestService.updateParticipant(this.id, user, {
 			selected: true,
 		});
+		await this.requestService.updateRequest(this.id, { status: 3 });
 	}
 
 	async selectedRequest() {

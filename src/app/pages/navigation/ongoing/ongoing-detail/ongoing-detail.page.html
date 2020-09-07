@@ -83,11 +83,9 @@
 
 	<ion-item-group
 		class="mt-8"
-		*ngIf="!selectedDealer && participants && ongoing.effectedTime >= now && ongoing.expiredTime < now"
+		*ngIf="!selectedDealer && participants && ongoing.effectedTime <= now && ongoing.expiredTime > now"
 	>
-		<ion-label style="line-height: normal"
-			>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label
-		>
+		<ion-label style="line-height: normal">Dealer Preview</ion-label>
 		<ion-item
 			lines="none"
 			*ngFor="let item of participants"
@@ -106,7 +104,7 @@
 
 	<ion-item-group
 		class="mt-8"
-		*ngIf="!selectedDealer && participants && ongoing.effectedTime >= now && ongoing.expiredTime > now"
+		*ngIf="!selectedDealer && participants && ongoing.effectedTime < now && ongoing.expiredTime < now"
 	>
 		<ion-label style="line-height: normal"
 			>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label
