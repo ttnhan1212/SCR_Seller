@@ -7,7 +7,7 @@ export class Request {
 	expiredTime: number;
 	phone: number;
 	location: string;
-	status: string;
+	status: number;
 	miles: number;
 	other: string;
 	participants: [];

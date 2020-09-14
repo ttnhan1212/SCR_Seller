@@ -45,7 +45,7 @@ export class OngoingPage implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		this.updateRequestExpired();
+		// this.updateRequestExpired();
 		this.getUser();
 	}
 
@@ -70,6 +70,7 @@ export class OngoingPage implements OnInit, OnDestroy {
 					};
 				});
 				this.loader.hideLoader();
+				console.log(this.requests);
 			});
 	}
 

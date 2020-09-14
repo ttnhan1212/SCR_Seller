@@ -21,6 +21,12 @@ export class OngoingDetailPage implements OnInit {
 
 	now = Math.floor(new Date().getTime() / 1000.0);
 
+	priceArray: any[];
+	total: number;
+	min: number;
+	max: number;
+	average: number;
+
 	myValueSub: Subscription;
 	dealerSub: Subscription;
 	partSub: Subscription;
@@ -68,6 +74,9 @@ export class OngoingDetailPage implements OnInit {
 					...m.payload.doc.data(),
 				};
 			});
+			this.priceArray = val.map((price) => {
+				return price.payload.doc.data()['price'];
+			});
 
 			this.participants.forEach((participant: any) => {
 				this.dealerService
@@ -76,17 +85,34 @@ export class OngoingDetailPage implements OnInit {
 						participant.dealer = { ...res.payload.data() };
 					});
 			});
+
+			this.sum();
+			this.average = Math.round(this.total / this.priceArray.length);
+			this.max = this.priceArray.reduce((a, b) => Math.max(a, b));
+			this.min = this.priceArray.reduce((a, b) => Math.min(a, b));
+
 			this.selectedRequest();
 			console.log('Part', this.participants);
 			console.log(this.participants.length);
+			console.log(this.priceArray);
+			console.log(this.min, this.max, this.average);
 		});
 	}
 
+	sum() {
+		this.total = this.priceArray.reduce((a, b) => a + b, 0);
+	}
+
 	async selectDealer(user) {
+		await this.requestService.updateRequest(this.id, {
+			status: 3,
+		});
+		console.log('Pass Update Request');
+
 		await this.requestService.updateParticipant(this.id, user, {
 			selected: true,
 		});
-		await this.requestService.updateRequest(this.id, { status: 3 });
+		console.log('Complete selected Dealer');
 	}
 
 	async selectedRequest() {
