@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LocationService } from './../../../services/location.service';
 import { ToastService } from '../../../services/toast.service';
@@ -37,6 +38,7 @@ export class RequestDetailPage implements OnInit {
 	miles = new FormControl('', Validators.required);
 	other = new FormControl('', Validators.required);
 	seller = new FormControl('', Validators.required);
+	reviewed: Boolean = false;
 
 	effDate = Math.floor(new Date().getTime() / 1000.0);
 	expDate = Math.floor(new Date().getTime() / 1000.0 + 7200);
@@ -55,7 +57,8 @@ export class RequestDetailPage implements OnInit {
 		public toast: ToastService,
 		private formBuilder: FormBuilder,
 		public locationService: LocationService,
-		translate: TranslateService,
+		private translate: TranslateService,
+		private loader: LoaderService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		this.sample = '../../../../assets/images/png/spares/1.png';
@@ -81,17 +84,18 @@ export class RequestDetailPage implements OnInit {
 			sellerId: this.seller,
 			miles: this.miles,
 			other: this.other,
-			status: '진행중',
+			status: 1,
+			reviewed: this.reviewed,
 			participants: [{ created: true }],
 		});
 
-		translate.addLangs(['en', 'kr']);
+		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
-		translate.setDefaultLang('kr');
+		this.translate.setDefaultLang('kr');
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use('kr');
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {
@@ -105,23 +109,19 @@ export class RequestDetailPage implements OnInit {
 	}
 
 	async updateRequest() {
-		const loading = await this.loadingController.create({
-			message: 'Please wait...',
-			showBackdrop: true,
-		});
 		try {
-			await loading.present();
+			await this.loader.showLoader();
 			await this.requestService.updateRequestBySeller(
 				this.detailForm.value,
 				this.request,
 			);
 			await this.requestService.updateRequest(this.id, this.detailForm.value);
 			await this.toast.showToast('Your request is successfully uploaded!');
-			await loading.dismiss();
+			await this.loader.hideLoader();
 			await this.router.navigate(['/', 'home', 'ongoing']);
 		} catch (error) {
 			this.toast.showToast(error.message);
-			await loading.dismiss();
+			await this.loader.hideLoader();
 		}
 	}
 }

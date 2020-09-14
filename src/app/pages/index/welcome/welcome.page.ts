@@ -1,9 +1,10 @@
+import { LoaderService } from './../../../services/loader.service';
 import { SellerService } from './../../../services/seller.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './../../../services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 import { PrivacypolicyPage } from '../../../components/modals/privacypolicy/privacypolicy.page';
 import { PuagreementPage } from '../../../components/modals/puagreement/puagreement.page';
@@ -25,7 +26,7 @@ export class WelcomePage implements OnInit {
 
 	constructor(
 		private modalController: ModalController,
-		public loadingController: LoadingController,
+		public loader: LoaderService,
 		public toast: ToastService,
 		public authService: AuthService,
 		public afAuth: AngularFireAuth,
@@ -50,13 +51,13 @@ export class WelcomePage implements OnInit {
 			},
 		];
 
-		translate.addLangs(['en', 'kr']);
+		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
-		translate.setDefaultLang('kr');
+		this.translate.setDefaultLang('kr');
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
-		translate.use('kr');
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {}
@@ -128,12 +129,8 @@ export class WelcomePage implements OnInit {
 	}
 
 	async anonyLogin() {
-		const loading = await this.loadingController.create({
-			message: 'Please wait...',
-			showBackdrop: true,
-		});
 		try {
-			await loading.present();
+			await this.loader.showLoader();
 			await this.authService.loginAny();
 			await this.afAuth.onAuthStateChanged((user) => {
 				if (user) {
@@ -143,10 +140,10 @@ export class WelcomePage implements OnInit {
 					});
 				}
 			});
-			await loading.dismiss();
+			await this.loader.hideLoader();
 		} catch (error) {
 			this.toast.showToast(error.message);
-			await loading.dismiss();
+			await this.loader.hideLoader();
 		}
 	}
 }

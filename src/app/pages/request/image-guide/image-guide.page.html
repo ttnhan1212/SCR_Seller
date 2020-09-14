@@ -1,0 +1,64 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-button slot="end" fill="clear" [routerLink]="['/','home','seller']">
+			<ion-icon name="log-out-outline"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-title class="text-center title">Image Guide</ion-title>
+	<ion-card>
+		<ion-card-content>
+			<ion-grid>
+				<ion-row>
+					<ion-col size="6" class="guide-item">
+						<ion-label>정면 사진(필수)</ion-label>
+						<img
+							src="../../../../assets/images/photos/81336832_497842197508775_1794897267136659456_o.jpg"
+						/>
+					</ion-col>
+					<ion-col size="6" class="guide-item">
+						<ion-label>정면 사진(필수)</ion-label>
+						<img
+							src="../../../../assets/images/photos/81336832_497842197508775_1794897267136659456_o.jpg"
+						/>
+					</ion-col>
+					<ion-col size="6" class="guide-item">
+						<ion-label>정면 사진(필수)</ion-label>
+						<img
+							src="../../../../assets/images/photos/81336832_497842197508775_1794897267136659456_o.jpg"
+						/>
+					</ion-col>
+					<ion-col size="6" class="guide-item">
+						<ion-label>정면 사진(필수)</ion-label>
+						<img
+							src="../../../../assets/images/photos/81336832_497842197508775_1794897267136659456_o.jpg"
+						/>
+					</ion-col>
+					<ion-col size="6" class="guide-item">
+						<ion-label>정면 사진(필수)</ion-label>
+						<img
+							src="../../../../assets/images/photos/81336832_497842197508775_1794897267136659456_o.jpg"
+						/>
+					</ion-col>
+					<ion-col size="6" class="guide-item">
+						<ion-label>정면 사진(필수)</ion-label>
+						<img
+							src="../../../../assets/images/photos/81336832_497842197508775_1794897267136659456_o.jpg"
+						/>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+<ion-footer class="ion-padding">
+	<ion-button expand="block" color="tertiary" (click)="requestDetail()">
+		Next Step
+	</ion-button>
+</ion-footer>

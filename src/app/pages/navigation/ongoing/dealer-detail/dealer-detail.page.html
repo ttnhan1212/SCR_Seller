@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-toolbar>
 		<ion-buttons slot="start">
-			<ion-back-button></ion-back-button>Back
+			<ion-back-button></ion-back-button>
 		</ion-buttons>
 		<ion-button slot="end" fill="clear" [routerLink]="['/','home','seller']">
 			<ion-icon name="log-out-outline"></ion-icon>
@@ -38,9 +38,7 @@
 					<h3>{{dealer.email}}</h3>
 					<p class="fs-10">{{dealer.phone}}</p>
 				</div>
-				<ion-note slot="end">
-					Rating
-				</ion-note>
+				<ion-note slot="end"> Rating </ion-note>
 			</ion-item>
 		</ion-card-content>
 	</ion-card>
@@ -52,7 +50,7 @@
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px;">
+			<ion-label style="margin-top: 25px">
 				<ion-header class="m-0 p-0">
 					<p class="fs-15 text-center">
 						<ion-skeleton-text animated></ion-skeleton-text>
@@ -60,7 +58,7 @@
 				</ion-header>
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
-					<p>$4,230,000</p>
+					<p>₩4,230,000</p>
 					<p>
 						<ion-skeleton-text animated></ion-skeleton-text>
 					</p>
@@ -73,7 +71,7 @@
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px;">
+			<ion-label style="margin-top: 25px">
 				<ion-header class="m-0 p-0">
 					<p class="fs-15 text-center">
 						<ion-skeleton-text animated></ion-skeleton-text>
@@ -81,7 +79,7 @@
 				</ion-header>
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
-					<p>$4,230,000</p>
+					<p>₩4,230,000</p>
 					<p>
 						<ion-skeleton-text animated></ion-skeleton-text>
 					</p>
@@ -94,7 +92,7 @@
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px;">
+			<ion-label style="margin-top: 25px">
 				<ion-header class="m-0 p-0">
 					<p class="fs-15 text-center">
 						<ion-skeleton-text animated></ion-skeleton-text>
@@ -102,7 +100,7 @@
 				</ion-header>
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
-					<p>$4,230,000</p>
+					<p>₩4,230,000</p>
 					<p>
 						<ion-skeleton-text animated></ion-skeleton-text>
 					</p>
@@ -115,7 +113,7 @@
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px;">
+			<ion-label style="margin-top: 25px">
 				<ion-header class="m-0 p-0">
 					<p class="fs-15 text-center">
 						<ion-skeleton-text animated></ion-skeleton-text>
@@ -123,7 +121,7 @@
 				</ion-header>
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
-					<p>$4,230,000</p>
+					<p>₩4,230,000</p>
 					<p>
 						<ion-skeleton-text animated></ion-skeleton-text>
 					</p>
@@ -136,7 +134,7 @@
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px;">
+			<ion-label style="margin-top: 25px">
 				<ion-header class="m-0 p-0">
 					<p class="fs-15 text-center">
 						<ion-skeleton-text animated></ion-skeleton-text>
@@ -144,7 +142,7 @@
 				</ion-header>
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
-					<p>$4,230,000</p>
+					<p>₩4,230,000</p>
 					<p>
 						<ion-skeleton-text animated></ion-skeleton-text>
 					</p>
@@ -157,7 +155,7 @@
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px;">
+			<ion-label style="margin-top: 25px">
 				<ion-header class="m-0 p-0">
 					<p class="fs-15 text-center">
 						<ion-skeleton-text animated></ion-skeleton-text>
@@ -165,7 +163,7 @@
 				</ion-header>
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
-					<p>$4,230,000</p>
+					<p>₩4,230,000</p>
 					<p>
 						<ion-skeleton-text animated></ion-skeleton-text>
 					</p>
@@ -174,8 +172,13 @@
 		</ion-item>
 	</ion-list>
 </ion-content>
-<ion-footer class="ion-padding">
+<ion-footer class="ion-padding" *ngIf="request && request.expiredTime < now">
 	<ion-button expand="block" color="tertiary" (click)="selectDealer()"
+		>Dealer Select</ion-button
+	>
+</ion-footer>
+<ion-footer class="ion-padding" *ngIf="request && request.expiredTime > now">
+	<ion-button expand="block" color="tertiary" disabled
 		>Dealer Select</ion-button
 	>
 </ion-footer>

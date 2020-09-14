@@ -1,3 +1,4 @@
+import { LoaderService } from './../../services/loader.service';
 import { DealerService } from './../../services/dealer.service';
 import { RequestService } from 'src/app/services/request.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,13 +16,16 @@ export class VisitPage implements OnInit {
 	dealer: any = {};
 	part: any = [];
 
+	rate: undefined;
+
 	myValueSub: Subscription;
 	dealerSub: Subscription;
 	partSub: Subscription;
 	constructor(
 		public route: ActivatedRoute,
 		public requestService: RequestService,
-		public dealerService: DealerService
+		public dealerService: DealerService,
+		public loader: LoaderService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 	}
@@ -31,6 +35,7 @@ export class VisitPage implements OnInit {
 	}
 
 	async getRequestById() {
+		await this.loader.showLoader();
 		this.myValueSub = await this.requestService
 			.getRequestById(this.id)
 			.subscribe((data: any) => {
@@ -42,6 +47,7 @@ export class VisitPage implements OnInit {
 				console.log(this.part);
 
 				this.getParticipant();
+				this.loader.hideLoader();
 			});
 	}
 

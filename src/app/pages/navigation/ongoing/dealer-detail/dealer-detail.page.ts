@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../../services/loader.service';
 import { RequestService } from './../../../../services/request.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DealerService } from './../../../../services/dealer.service';
@@ -13,25 +14,26 @@ export class DealerDetailPage implements OnInit {
 	id: string;
 	dealer: any;
 	participant: any;
+	request: any;
 
 	partId: string;
 	dealerId: string;
 
 	dataSub: Subscription;
 
+	now = Math.floor(new Date().getTime() / 1000.0);
+
 	constructor(
 		public dealerService: DealerService,
 		public requestService: RequestService,
 		public route: ActivatedRoute,
-		public router: Router
+		public router: Router,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 
 		this.dataSub = this.route.queryParams.subscribe(() => {
 			const state = this.router.getCurrentNavigation().extras.state;
 			if (state) {
-				console.log(state);
-
 				this.partId = this.router.getCurrentNavigation().extras.state.partId;
 				this.dealerId = this.router.getCurrentNavigation().extras.state.dealerId;
 			}
@@ -39,15 +41,23 @@ export class DealerDetailPage implements OnInit {
 	}
 
 	ngOnInit() {
+		this.getRequest();
 		setTimeout(() => {
 			this.getDealer();
 		}, 1000);
+		console.log(this.now);
 	}
 
 	getDealer() {
 		this.dealerService.getDealer(this.dealerId).subscribe((val) => {
 			this.dealer = val.payload.data();
-			console.log('Dealer', this.dealer);
+		});
+	}
+
+	getRequest() {
+		this.requestService.getRequestById(this.id).subscribe((val) => {
+			this.request = val.payload.data();
+			console.log(this.request);
 		});
 	}
 

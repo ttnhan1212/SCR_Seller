@@ -20,17 +20,23 @@
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.max' | translate}}</ion-label>
 					<br />
-					<ion-label class="fs-20"><strong>2,000,000</strong></ion-label>
+					<ion-label *ngIf="max" class="fs-15"
+						><strong>₩{{max}}</strong></ion-label
+					>
 				</ion-col>
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.average' | translate}}</ion-label>
 					<br />
-					<ion-label class="fs-20"><strong>1,790,000</strong></ion-label>
+					<ion-label *ngIf="average" class="fs-15"
+						><strong>₩{{average}}</strong></ion-label
+					>
 				</ion-col>
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.min' | translate}}</ion-label>
 					<br />
-					<ion-label class="fs-20"><strong>1,230,000</strong></ion-label>
+					<ion-label *ngIf="min" class="fs-15"
+						><strong>₩{{min}}</strong></ion-label
+					>
 				</ion-col>
 			</ion-row>
 		</ion-grid>
@@ -63,9 +69,9 @@
 
 	<ion-item-group
 		class="mt-8"
-		*ngIf="selectedDealer && ongoing.participants.length === 2"
+		*ngIf="selectedDealer && checkArray() && ongoing.participants.length === 2"
 	>
-		<ion-title class="text-center mb-8"
+		<ion-title class="text-center mb-5"
 			>A Dealer has confirm the purchase</ion-title
 		>
 		<ion-label>Dealer Information</ion-label>
@@ -74,23 +80,49 @@
 				<img src="../../../../assets/images/photos/33327.jpg" />
 			</ion-avatar>
 			<ion-label>
-				<h2>{{selectedDealer.dealer.email}}</h2>
-				<p class="fs-25">${{selectedDealer.price}}</p>
+				<h2>{{selectedDealer.dealer?.email}}</h2>
+				<p class="fs-25">₩{{selectedDealer.price}}</p>
 			</ion-label>
 			<ion-note slot="end"> Rating </ion-note>
 		</ion-item>
 	</ion-item-group>
 
-	<ion-item-group class="mt-8" *ngIf="!selectedDealer && participants">
-		<ion-label>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label>
+	<ion-item-group
+		class="mt-8"
+		*ngIf="!selectedDealer && participants && ongoing.effectedTime <= now && ongoing.expiredTime > now"
+	>
+		<ion-label style="line-height: normal">Dealer Preview</ion-label>
+		<ion-item
+			lines="none"
+			*ngFor="let item of participants"
+			(click)="getDealerDetail(item.id, item.userId)"
+		>
+			<ion-avatar slot="start">
+				<img src="../../../../assets/images/photos/33327.jpg" />
+			</ion-avatar>
+			<ion-label>
+				<h2>{{item.dealer?.email}}</h2>
+				<p class="fs-25">₩{{item.price}}</p>
+			</ion-label>
+			<ion-note slot="end"> Rating </ion-note>
+		</ion-item>
+	</ion-item-group>
+
+	<ion-item-group
+		class="mt-8"
+		*ngIf="!selectedDealer && participants && ongoing.effectedTime < now && ongoing.expiredTime < now"
+	>
+		<ion-label style="line-height: normal"
+			>{{'home_ongoing_detail.select_dealer' | translate}}</ion-label
+		>
 		<ion-item-sliding *ngFor="let item of participants">
 			<ion-item lines="none" (click)="getDealerDetail(item.id, item.userId)">
 				<ion-avatar slot="start">
 					<img src="../../../../assets/images/photos/33327.jpg" />
 				</ion-avatar>
 				<ion-label>
-					<h2>{{item.dealer.email}}</h2>
-					<p class="fs-25">${{item.price}}</p>
+					<h2>{{item.dealer?.email}}</h2>
+					<p class="fs-25">₩{{item.price}}</p>
 				</ion-label>
 				<ion-note slot="end"> Rating </ion-note>
 				<ion-icon slot="end" name="chevron-back-outline"></ion-icon>
@@ -105,9 +137,9 @@
 
 	<ion-item-group
 		class="mt-8"
-		*ngIf="selectedDealer && participants.length > 1"
+		*ngIf="selectedDealer && participants.length >= 1 && !checkArray()"
 	>
-		<ion-title class="text-center mb-4"
+		<ion-title class="text-center mb-4" style="line-height: normal"
 			>Waiting for Dealer Confirmation</ion-title
 		>
 		<ion-item lines="none">
@@ -115,8 +147,8 @@
 				<img src="../../../../assets/images/photos/33327.jpg" />
 			</ion-avatar>
 			<ion-label>
-				<h2>{{selectedDealer.dealer.email}}</h2>
-				<p class="fs-25">${{selectedDealer.price}}</p>
+				<h2>{{selectedDealer.dealer?.email}}</h2>
+				<p class="fs-25">₩{{selectedDealer.price}}</p>
 			</ion-label>
 			<ion-note slot="end"> Rating </ion-note>
 		</ion-item>
@@ -125,7 +157,7 @@
 
 <ion-footer
 	class="ion-padding"
-	*ngIf="selectedDealer && ongoing.participants.length === 2"
+	*ngIf="selectedDealer && checkArray() && ongoing.participants.length === 2"
 >
 	<ion-button
 		expand="full"

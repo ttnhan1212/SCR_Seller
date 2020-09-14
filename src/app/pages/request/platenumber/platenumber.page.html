@@ -7,26 +7,29 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content class="p-1">
-	<ion-card class="p-2">
-		<ion-item class="mt-4">
-			<ion-label position="floating"
-				>{{'request.plate_number'|translate}}</ion-label
+<ion-content>
+	<ion-card class="plate-card">
+		<ion-card-content>
+			<ion-item>
+				<ion-label position="floating"
+					>{{'request.plate_number'|translate}}</ion-label
+				>
+				<ion-input
+					type="text"
+					placeholder="{{'request.plate_number_placeholder'| translate}}"
+					[(ngModel)]="plate"
+					class="mt-4"
+				></ion-input>
+			</ion-item>
+			<ion-button
+				expand="block"
+				color="tertiary"
+				[disabled]="!plate"
+				(click)="createPlate()"
+				class="mt-5"
 			>
-			<ion-input
-				type="text"
-				placeholder="{{'request.plate_number_placeholder'| translate}}"
-				[(ngModel)]="plate"
-			></ion-input>
-		</ion-item>
-		<ion-button
-			class="mt-4"
-			expand="block"
-			color="tertiary"
-			[disabled]="!plate"
-			(click)="createPlate()"
-		>
-			{{'request.confirm'|translate}}
-		</ion-button>
+				{{'request.confirm'|translate}}
+			</ion-button>
+		</ion-card-content>
 	</ion-card>
 </ion-content>

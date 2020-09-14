@@ -17,9 +17,6 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-		<ion-refresher-content></ion-refresher-content>
-	</ion-refresher>
 	<form [formGroup]="exportForm" (ngSubmit)="exportSubmit()">
 		<ion-item class="ion-margin-bottom">
 			<ion-label position="stacked"
@@ -84,225 +81,32 @@
 	<ion-grid class="p-0">
 		<ion-row>
 			<ion-col size="6" class="ion-no-padding">
-				<ion-card [routerLink]="['/','home','setting']">
+				<ion-card
+					*ngFor="let item of review_all"
+					[routerLink]="['home','review','detail',item.id]"
+				>
 					<ion-img class="item__image" [src]="image"></ion-img>
 					<ion-card-header>
-						<ion-card-title>Name</ion-card-title>
+						<ion-grid class="ion-no-padding">
+							<ion-row class="ion-no-padding">
+								<bar-rating
+									[(rate)]="item.star"
+									[max]="5"
+									[theme]="'fontawesome'"
+									class="not-active"
+								></bar-rating>
+							</ion-row>
+							<ion-row class="ion-no-padding">
+								<ion-col>
+									<ion-card-title>K5</ion-card-title>
+								</ion-col>
+								<ion-col>
+									<ion-card-title>₩{{item.finalPrice}}</ion-card-title>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
 					</ion-card-header>
-					<ion-card-content>Descriptions</ion-card-content>
-					<div class="item-overly-trans">
-						<div class="rating-stars">
-							<input
-								type="number"
-								readonly="readonly"
-								class="rating-value star"
-								name="rating-stars-value"
-								value="3"
-							/>
-							<div class="rating-stars-container">
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</ion-card>
-			</ion-col>
-			<ion-col size="6" class="ion-no-padding">
-				<ion-card [routerLink]="['/','home','setting']">
-					<ion-img class="item__image" [src]="image"></ion-img>
-					<ion-card-header>
-						<ion-card-title>Name</ion-card-title>
-					</ion-card-header>
-					<ion-card-content>Descriptions</ion-card-content>
-					<div class="item-overly-trans">
-						<div class="rating-stars">
-							<input
-								type="number"
-								readonly="readonly"
-								class="rating-value star"
-								name="rating-stars-value"
-								value="3"
-							/>
-							<div class="rating-stars-container">
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</ion-card>
-			</ion-col>
-			<ion-col size="6" class="ion-no-padding">
-				<ion-card [routerLink]="['/','home','setting']">
-					<ion-img class="item__image" [src]="image"></ion-img>
-					<ion-card-header>
-						<ion-card-title>Name</ion-card-title>
-					</ion-card-header>
-					<ion-card-content>Descriptions</ion-card-content>
-					<div class="item-overly-trans">
-						<div class="rating-stars">
-							<input
-								type="number"
-								readonly="readonly"
-								class="rating-value star"
-								name="rating-stars-value"
-								value="3"
-							/>
-							<div class="rating-stars-container">
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</ion-card>
-			</ion-col>
-			<ion-col size="6" class="ion-no-padding">
-				<ion-card [routerLink]="['/','home','setting']">
-					<ion-img class="item__image" [src]="image"></ion-img>
-					<ion-card-header>
-						<ion-card-title>Name</ion-card-title>
-					</ion-card-header>
-					<ion-card-content>Descriptions</ion-card-content>
-					<div class="item-overly-trans">
-						<div class="rating-stars">
-							<input
-								type="number"
-								readonly="readonly"
-								class="rating-value star"
-								name="rating-stars-value"
-								value="3"
-							/>
-							<div class="rating-stars-container">
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</ion-card>
-			</ion-col>
-			<ion-col size="6" class="ion-no-padding">
-				<ion-card [routerLink]="['/','home','setting']">
-					<ion-img class="item__image" [src]="image"></ion-img>
-					<ion-card-header>
-						<ion-card-title>Name</ion-card-title>
-					</ion-card-header>
-					<ion-card-content>Descriptions</ion-card-content>
-					<div class="item-overly-trans">
-						<div class="rating-stars">
-							<input
-								type="number"
-								readonly="readonly"
-								class="rating-value star"
-								name="rating-stars-value"
-								value="3"
-							/>
-							<div class="rating-stars-container">
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</ion-card>
-			</ion-col>
-			<ion-col size="6" class="ion-no-padding">
-				<ion-card [routerLink]="['/','home','setting']">
-					<ion-img class="item__image" [src]="image"></ion-img>
-					<ion-card-header>
-						<ion-card-title>Name</ion-card-title>
-					</ion-card-header>
-					<ion-card-content>Descriptions</ion-card-content>
-					<div class="item-overly-trans">
-						<div class="rating-stars">
-							<input
-								type="number"
-								readonly="readonly"
-								class="rating-value star"
-								name="rating-stars-value"
-								value="3"
-							/>
-							<div class="rating-stars-container">
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="rating-star sm">
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-					</div>
+					<ion-card-content> {{item.review}} </ion-card-content>
 				</ion-card>
 			</ion-col>
 		</ion-row>
