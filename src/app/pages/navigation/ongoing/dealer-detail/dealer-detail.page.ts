@@ -62,6 +62,9 @@ export class DealerDetailPage implements OnInit {
 	}
 
 	async selectDealer() {
+		await this.requestService.updateRequest(this.id, {
+			status: 3,
+		});
 		await this.requestService.updateParticipant(this.id, this.partId, {
 			selected: true,
 		});

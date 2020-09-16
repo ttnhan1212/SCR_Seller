@@ -107,19 +107,15 @@ export class OngoingDetailPage implements OnInit {
 		await this.requestService.updateRequest(this.id, {
 			status: 3,
 		});
-		console.log('Pass Update Request');
-
 		await this.requestService.updateParticipant(this.id, user, {
 			selected: true,
 		});
-		console.log('Complete selected Dealer');
 	}
 
 	async selectedRequest() {
 		await this.requestService.selectedRequest(this.id).subscribe((val) => {
 			if (val) {
 				this.selectedDealer = val[0];
-
 				this.dealerService
 					.getDealer(this.selectedDealer.userId)
 					.subscribe((res: any) => {
