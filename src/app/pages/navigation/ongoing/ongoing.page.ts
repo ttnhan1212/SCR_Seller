@@ -1,13 +1,13 @@
 import { LoaderService } from './../../../services/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from 'src/app/services/toast.service';
-import { LoadingController } from '@ionic/angular';
+import { IonInfiniteScroll, LoadingController } from '@ionic/angular';
 import { AuthService } from './../../../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
 import { Request } from '../../../models/request';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-ongoing',
@@ -17,12 +17,17 @@ import { Subscription, Observable } from 'rxjs';
 export class OngoingPage implements OnInit, OnDestroy {
 	requests: Request[];
 	requestSub: Subscription;
+	temp: any[];
 
 	logo: any;
 
 	sellerId: string;
 
 	now = Math.floor(new Date().getTime() / 1000.0);
+
+	limit = 5;
+
+	@ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
 	constructor(
 		public requestService: RequestService,
@@ -54,14 +59,26 @@ export class OngoingPage implements OnInit, OnDestroy {
 			if (user) {
 				this.sellerId = user.uid;
 				this.getRequestBySeller(this.sellerId);
+				this.getAllRequestBySeller(this.sellerId);
 			}
+		});
+	}
+
+	getAllRequestBySeller(id: string) {
+		this.requestService.getAllRequestBySeller(id).subscribe((data) => {
+			this.temp = data.map((e) => {
+				return {
+					...(e.payload.doc.data() as any),
+				};
+			});
+			console.log(this.temp);
 		});
 	}
 
 	async getRequestBySeller(id: string) {
 		await this.loader.showLoader();
 		this.requestSub = await this.requestService
-			.getRequestBySeller(id)
+			.getRequestBySellerWithLimit(id, this.limit)
 			.subscribe((data) => {
 				this.requests = data.map((e) => {
 					return {
@@ -72,6 +89,31 @@ export class OngoingPage implements OnInit, OnDestroy {
 				this.loader.hideLoader();
 				console.log(this.requests);
 			});
+	}
+
+	loadData(event) {
+		setTimeout(() => {
+			this.limit = this.limit + 5;
+			this.requestService
+				.getRequestBySellerWithLimit(this.sellerId, this.limit)
+				.subscribe((data) => {
+					this.requests = data.map((e) => {
+						return {
+							id: e.payload.doc.id,
+							...(e.payload.doc.data() as Request),
+						};
+					});
+					console.log(this.requests);
+				});
+			event.target.complete();
+
+			// App logic to determine if all data is loaded
+			// and disable the infinite scroll
+			if (this.requests.length === this.temp.length) {
+				this.toast.showToast('No more data load');
+				event.target.disabled = true;
+			}
+		}, 1000);
 	}
 
 	async updateRequestExpired() {

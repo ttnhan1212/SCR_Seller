@@ -13,6 +13,14 @@ export class NotiService {
 			.snapshotChanges();
 	}
 
+	getNotiLimit(id: string, limit: number) {
+		return this.firestore
+			.collection('notifications', (ref) =>
+				ref.where('user', '==', id).orderBy('updateDate', 'desc').limit(limit),
+			)
+			.snapshotChanges();
+	}
+
 	createNoti(noti: any) {
 		return this.firestore.collection('notifications').add(noti);
 	}

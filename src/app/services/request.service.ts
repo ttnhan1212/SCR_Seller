@@ -23,13 +23,22 @@ export class RequestService {
 		return this.firestore.collection('requests').snapshotChanges();
 	}
 
-	getRequestBySeller(sellerId: string) {
+	getAllRequestBySeller(sellerId: string) {
+		return this.firestore
+			.collection('requests', (ref) =>
+				ref.where('sellerId', '==', sellerId).where('reviewed', '==', false),
+			)
+			.snapshotChanges();
+	}
+
+	getRequestBySellerWithLimit(sellerId: string, limit: number) {
 		return this.firestore
 			.collection('requests', (ref) =>
 				ref
 					.where('sellerId', '==', sellerId)
 					.where('reviewed', '==', false)
-					.orderBy('expiredTime', 'desc'),
+					.orderBy('expiredTime', 'desc')
+					.limit(limit),
 			)
 			.snapshotChanges();
 	}

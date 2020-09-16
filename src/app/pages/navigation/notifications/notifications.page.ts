@@ -1,3 +1,4 @@
+import { ToastService } from './../../../services/toast.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NotiService } from './../../../services/noti.service';
@@ -13,6 +14,10 @@ import { Subscription } from 'rxjs';
 })
 export class NotificationsPage implements OnInit, OnDestroy {
 	noti: any[];
+	temp: any[];
+
+	limit = 5;
+
 	itemrequest: Request[];
 
 	notiSub: Subscription;
@@ -24,6 +29,7 @@ export class NotificationsPage implements OnInit, OnDestroy {
 		public requestService: RequestService,
 		private afAuth: AngularFireAuth,
 		private translate: TranslateService,
+		private toast: ToastService,
 	) {
 		// this.sellerId = JSON.parse(localStorage.getItem('user')).uid;
 		this.translate.addLangs(['en', 'kr']);
@@ -45,22 +51,64 @@ export class NotificationsPage implements OnInit, OnDestroy {
 				this.sellerId = user.uid;
 			}
 			this.getNoti(this.sellerId);
+			this.getAllNoti(this.sellerId);
 		});
 	}
 
-	getNoti(id: string) {
-		this.notiSub = this.notiService.getNoti(id).subscribe((data) => {
-			this.noti = data.map((e) => {
+	getAllNoti(id: string) {
+		this.notiService.getNoti(id).subscribe((val) => {
+			this.temp = val.map((e) => {
 				return {
 					...(e.payload.doc.data() as {}),
 				};
 			});
-			this.noti.forEach((val) => {
-				this.requestService.getRequestById(val.requestId).subscribe((m) => {
-					val.request = { ...(m.payload.data() as {}) };
+			console.log(this.temp);
+		});
+	}
+
+	getNoti(id: string) {
+		this.notiSub = this.notiService
+			.getNotiLimit(id, this.limit)
+			.subscribe((data) => {
+				this.noti = data.map((e) => {
+					return {
+						...(e.payload.doc.data() as {}),
+					};
+				});
+				this.noti.forEach((val) => {
+					this.requestService.getRequestById(val.requestId).subscribe((m) => {
+						val.request = { ...(m.payload.data() as {}) };
+					});
 				});
 			});
-		});
+	}
+
+	loadData(event) {
+		setTimeout(() => {
+			this.limit = this.limit + 5;
+			this.notiService
+				.getNotiLimit(this.sellerId, this.limit)
+				.subscribe((data) => {
+					this.noti = data.map((e) => {
+						return {
+							...(e.payload.doc.data() as {}),
+						};
+					});
+					this.noti.forEach((val) => {
+						this.requestService.getRequestById(val.requestId).subscribe((m) => {
+							val.request = { ...(m.payload.data() as {}) };
+						});
+					});
+				});
+			event.target.complete();
+
+			// App logic to determine if all data is loaded
+			// and disable the infinite scroll
+			if (this.noti.length === this.temp.length) {
+				this.toast.showToast('No more data load');
+				event.target.disabled = true;
+			}
+		}, 1000);
 	}
 
 	localeDate(time) {
