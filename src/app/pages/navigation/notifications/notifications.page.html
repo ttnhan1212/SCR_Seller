@@ -163,26 +163,56 @@
 	<ion-list *ngIf="noti">
 		<ion-item
 			*ngFor="let item of noti"
+			lines="none"
 			[routerLink]="['/','home','ongoing', item.requestId]"
 		>
 			<ion-thumbnail slot="start">
-				<img src="../../../../assets/images/photos/8627.jpg" />
+				<img
+					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+				/>
 			</ion-thumbnail>
 			<ion-grid class="p-0 m-0">
-				<ion-row>
+				<ion-row class="ion-no-padding">
 					<ion-col size="8">
-						<ion-title
+						<ion-header
 							style="
 								background: #bdc3c7;
 								background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
 								background: linear-gradient(to right, #2c3e50, #bdc3c7);
 							"
 							class="m-0 p-0"
+							[ngSwitch]="item.status"
 						>
-							<p class="fs-20 text-center mt-2 text-dark">{{item.status}}</p>
-						</ion-title>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="1">
+								Quote in progress
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="2">
+								Please select the dealer
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="3">
+								Waiting for dealer's confirmation
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="4">
+								Selected dealer cancel, please reselect dealer
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="5">
+								Trade processing
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="6">
+								Selected dealer cancel, please reselect dealer
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="7">
+								Write review
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchCase="8">
+								Trade complete
+							</p>
+							<p class="fs-15 text-center text-dark" *ngSwitchDefault="">
+								Trade complete
+							</p>
+						</ion-header>
 					</ion-col>
-					<ion-col size="4" class="mt-2">
+					<ion-col size="4" class="mt-2 fs-11">
 						{{localeDate(item.updateDate) | date}}
 					</ion-col>
 				</ion-row>
@@ -193,10 +223,10 @@
 				</ion-row>
 				<ion-row>
 					<ion-col>
-						<p>{{item.request?.miles}} Km</p>
+						<p>{{item.request?.miles}}Km</p>
 					</ion-col>
 					<ion-col>
-						<p>{{item.request?.price || 'N/a'}}</p>
+						<p class="pull-right">{{item.request?.price || 0}}</p>
 					</ion-col>
 				</ion-row>
 				<ion-row>
