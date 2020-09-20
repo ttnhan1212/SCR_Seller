@@ -21,7 +21,7 @@
 		<ion-item
 			*ngFor="let request of requests"
 			lines="none"
-			[routerLink]="(request.status === 7) ? ['/','home','review', request.id]: [request.id]"
+			[routerLink]="request.status >= 7 ? ['/','home','review', request.id]: [request.id]"
 		>
 			<ion-thumbnail slot="start">
 				<img

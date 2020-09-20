@@ -40,8 +40,9 @@ export class RequestDetailPage implements OnInit {
 	seller = new FormControl('', Validators.required);
 	reviewed: Boolean = false;
 
-	effDate = Math.floor(new Date().getTime() / 1000.0);
-	expDate = Math.floor(new Date().getTime() / 1000.0 + 7200);
+	efDateObj = new Date();
+	effDate = null;
+	expDate = null;
 
 	sample: any;
 
@@ -62,6 +63,10 @@ export class RequestDetailPage implements OnInit {
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		this.sample = '../../../../assets/images/png/spares/1.png';
+		this.efDateObj.setMinutes(0);
+		this.efDateObj.setSeconds(0);
+		this.effDate = Math.floor(this.efDateObj.getTime() / 1000);
+		this.expDate = Math.floor(this.efDateObj.getTime() / 1000 + 7200);
 
 		this.afAuth.authState.subscribe((user) => {
 			if (user) {

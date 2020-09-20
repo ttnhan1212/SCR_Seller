@@ -70,7 +70,11 @@ export class ReviewPage implements OnInit {
 			requestId: this.id,
 			dealerId: this.request.participants[0],
 		});
-		await this.requestService.updateRequest(this.id, { reviewed: true });
+		await this.requestService.updateRequest(this.id, {
+			reviewed: true,
+			expired: true,
+			status: 9,
+		});
 		await this.loader.hideLoader();
 		await this.router.navigate(['/', 'home', 'seller']);
 	}
