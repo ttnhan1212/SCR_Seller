@@ -12,11 +12,17 @@ export class DealerService {
 	getDealer(id: string) {
 		return this.firestore.collection('Dealer').doc(id).snapshotChanges();
 	}
-	getDealerWithID(id: string) {
+
+	getDealerReview(id: string) {
 		return this.firestore
-			.collection('Dealer', (ref) => ref.where('id', '==', id))
-			.valueChanges()
-			.pipe(take(1));
+			.collection('Dealer')
+			.doc(id)
+			.collection('Review')
+			.snapshotChanges();
+	}
+
+	getReviewDetail(id: string) {
+		return this.firestore.collection('Review').doc(id).snapshotChanges();
 	}
 
 	createReviewInDealer(id: string, review: any) {

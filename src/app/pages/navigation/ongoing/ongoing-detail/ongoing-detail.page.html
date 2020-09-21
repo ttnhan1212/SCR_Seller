@@ -68,23 +68,29 @@
 	</ion-item-group>
 
 	<ion-item-group
-		class="mt-8"
+		class="mt-4"
 		*ngIf="selectedDealer && checkArray() && ongoing.participants.length === 2"
 	>
-		<ion-title class="text-center mb-5"
-			>A Dealer has confirm the purchase</ion-title
-		>
-		<ion-label>Dealer Information</ion-label>
-		<ion-item lines="none">
-			<ion-avatar slot="start">
-				<img src="../../../../assets/images/photos/33327.jpg" />
-			</ion-avatar>
-			<ion-label>
-				<h2>{{selectedDealer.dealer?.email}}</h2>
-				<p class="fs-25">₩{{selectedDealer.price}}</p>
-			</ion-label>
-			<ion-note slot="end"> Rating </ion-note>
-		</ion-item>
+		<ion-title class="text-center mb-4">
+			A Dealer has confirm the purchase
+		</ion-title>
+		<ion-card lines="none" class="text-center">
+			<img class="mt-4" src="../../../../../assets/images/photos/OBC8OG0.jpg" />
+			<ion-card-header class="bar-rating">
+				<bar-rating
+					*ngIf="selectedDealer.dealer?.averStar"
+					[(ngModel)]="selectedDealer.dealer.averStar"
+					[max]="5"
+					[theme]="'fontawesome'"
+					class="not-active"
+				>
+				</bar-rating>
+			</ion-card-header>
+			<ion-card-content>
+				<p class="fs-20">{{selectedDealer.dealer?.email}}</p>
+				<p class="fs-20">₩{{selectedDealer.price}}</p>
+			</ion-card-content>
+		</ion-card>
 	</ion-item-group>
 
 	<ion-item-group
@@ -98,13 +104,22 @@
 			(click)="getDealerDetail(item.id, item.userId)"
 		>
 			<ion-avatar slot="start">
-				<img src="../../../../assets/images/photos/33327.jpg" />
+				<img
+					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+				/>
 			</ion-avatar>
 			<ion-label>
-				<h2>{{item.dealer?.email}}</h2>
-				<p class="fs-25">₩{{item.price}}</p>
+				<p class="fs-20" style="line-height: normal">{{item.dealer?.email}}</p>
+				<p class="fs-20">₩{{item.price}}</p>
+				<bar-rating
+					*ngIf="item.dealer?.averStar"
+					[(ngModel)]="item.dealer.averStar"
+					[max]="5"
+					[theme]="'fontawesome'"
+					class="not-active"
+				>
+				</bar-rating>
 			</ion-label>
-			<ion-note slot="end"> Rating </ion-note>
 		</ion-item>
 	</ion-item-group>
 
@@ -118,13 +133,23 @@
 		<ion-item-sliding *ngFor="let item of participants">
 			<ion-item lines="none" (click)="getDealerDetail(item.id, item.userId)">
 				<ion-avatar slot="start">
-					<img src="../../../../assets/images/photos/33327.jpg" />
+					<img
+						src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+					/>
 				</ion-avatar>
 				<ion-label>
-					<h2>{{item.dealer?.email}}</h2>
-					<p class="fs-25">₩{{item.price}}</p>
+					<p class="fs-20" style="line-height: normal">
+						{{item.dealer?.email}}
+					</p>
+					<p class="fs-20">₩{{item.price}}</p>
+					<bar-rating
+						[(ngModel)]="item.dealer.averStar"
+						[max]="5"
+						[theme]="'fontawesome'"
+						class="not-active"
+					>
+					</bar-rating>
 				</ion-label>
-				<ion-note slot="end"> Rating </ion-note>
 				<ion-icon slot="end" name="chevron-back-outline"></ion-icon>
 			</ion-item>
 			<ion-item-options side="end">
@@ -136,22 +161,29 @@
 	</ion-item-group>
 
 	<ion-item-group
-		class="mt-8"
+		class="mt-4"
 		*ngIf="selectedDealer && participants.length >= 1 && !checkArray()"
 	>
 		<ion-title class="text-center mb-4" style="line-height: normal"
 			>Waiting for Dealer Confirmation</ion-title
 		>
-		<ion-item lines="none">
-			<ion-avatar slot="start">
-				<img src="../../../../assets/images/photos/33327.jpg" />
-			</ion-avatar>
-			<ion-label>
-				<h2>{{selectedDealer.dealer?.email}}</h2>
-				<p class="fs-25">₩{{selectedDealer.price}}</p>
-			</ion-label>
-			<ion-note slot="end"> Rating </ion-note>
-		</ion-item>
+		<ion-card lines="none" class="text-center">
+			<img class="mt-4" src="../../../../../assets/images/photos/OBC8OG0.jpg" />
+			<ion-card-header class="bar-rating">
+				<bar-rating
+					*ngIf="selectedDealer.dealer?.averStar"
+					[(ngModel)]="selectedDealer.dealer.averStar"
+					[max]="5"
+					[theme]="'fontawesome'"
+					class="not-active"
+				>
+				</bar-rating>
+			</ion-card-header>
+			<ion-card-content>
+				<p class="fs-20">{{selectedDealer.dealer?.email}}</p>
+				<p class="fs-20">₩{{selectedDealer.price}}</p>
+			</ion-card-content>
+		</ion-card>
 	</ion-item-group>
 </ion-content>
 

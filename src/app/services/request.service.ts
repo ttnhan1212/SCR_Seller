@@ -26,7 +26,7 @@ export class RequestService {
 	getAllRequestBySeller(sellerId: string) {
 		return this.firestore
 			.collection('requests', (ref) =>
-				ref.where('sellerId', '==', sellerId).where('reviewed', '==', false),
+				ref.where('sellerId', '==', sellerId).where('expired', '==', false),
 			)
 			.snapshotChanges();
 	}
@@ -36,7 +36,7 @@ export class RequestService {
 			.collection('requests', (ref) =>
 				ref
 					.where('sellerId', '==', sellerId)
-					.where('reviewed', '==', false)
+					.where('expired', '==', false)
 					.orderBy('expiredTime', 'desc')
 					.limit(limit),
 			)

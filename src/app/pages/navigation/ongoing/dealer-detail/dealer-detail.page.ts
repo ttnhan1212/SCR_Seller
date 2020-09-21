@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class DealerDetailPage implements OnInit {
 	id: string;
 	dealer: any;
-	participant: any;
+	review: any[];
 	request: any;
 
 	partId: string;
@@ -44,13 +44,42 @@ export class DealerDetailPage implements OnInit {
 		this.getRequest();
 		setTimeout(() => {
 			this.getDealer();
+			this.getDealerReview();
 		}, 1000);
-		console.log(this.now);
 	}
 
 	getDealer() {
 		this.dealerService.getDealer(this.dealerId).subscribe((val) => {
 			this.dealer = val.payload.data();
+		});
+	}
+
+	getDealerReview() {
+		this.dealerService.getDealerReview(this.dealerId).subscribe((val) => {
+			this.review = val.map((rev) => {
+				return {
+					...rev.payload.doc.data(),
+				};
+			});
+
+			this.review.forEach((res) => {
+				this.requestService
+					.getRequestById(res.requestId)
+					.subscribe((m: any) => {
+						res.revRequest = { ...m.payload.data() };
+					});
+			});
+
+			let star = [];
+			star = val.map((m) => {
+				return m.payload.doc.data()['star'];
+			});
+			const sumStar = star.reduce((a, b) => a + b, 0);
+			const averStar = Math.floor(sumStar / star.length);
+			this.dealer.averStar = averStar;
+			
+			console.log(this.review);
+			console.log(this.dealer);
 		});
 	}
 

@@ -81,7 +81,7 @@
 	<ion-grid class="p-0">
 		<ion-row>
 			<ion-col size="6" class="ion-no-padding" *ngFor="let item of review_all">
-				<ion-card [routerLink]="['home','review','detail',item.id]">
+				<ion-card [routerLink]="['/','home','review','detail',item.id]">
 					<ion-img class="item__image" [src]="image"></ion-img>
 					<ion-card-header>
 						<ion-grid class="ion-no-padding">

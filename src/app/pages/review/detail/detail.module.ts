@@ -5,18 +5,18 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DealerDetailPageRoutingModule } from './dealer-detail-routing.module';
+import { DetailPageRoutingModule } from './detail-routing.module';
 
-import { DealerDetailPage } from './dealer-detail.page';
+import { DetailPage } from './detail.page';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		IonicModule,
-		DealerDetailPageRoutingModule,
+		DetailPageRoutingModule,
 		BarRatingModule,
 	],
-	declarations: [DealerDetailPage],
+	declarations: [DetailPage],
 })
-export class DealerDetailPageModule {}
+export class DetailPageModule {}

@@ -38,135 +38,41 @@
 					<h3>{{dealer.email}}</h3>
 					<p class="fs-10">{{dealer.phone}}</p>
 				</div>
-				<ion-note slot="end"> Rating </ion-note>
+				<ion-note slot="end">
+					<bar-rating
+						[(ngModel)]="dealer.averStar"
+						[max]="5"
+						[theme]="'fontawesome'"
+						class="not-active"
+					>
+					</bar-rating>
+				</ion-note>
 			</ion-item>
 		</ion-card-content>
 	</ion-card>
 	<ion-label>Review Section</ion-label>
-	<ion-list class="ion-no-padding">
+	<ion-list class="ion-no-padding" *ngFor="let item of review">
 		<ion-item lines="none">
 			<ion-thumbnail slot="start">
 				<img
 					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px">
-				<ion-header class="m-0 p-0">
-					<p class="fs-15 text-center">
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</ion-header>
+			<ion-label>
+				<bar-rating
+					[(ngModel)]="item.star"
+					[max]="5"
+					[theme]="'fontawesome'"
+					class="not-active"
+				>
+				</bar-rating>
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
-					<p>₩4,230,000</p>
 					<p>
-						<ion-skeleton-text animated></ion-skeleton-text>
+						{{item.revRequest?.finalPrice === 0 ?
+						item.revRequest?.participants[1] : item.revRequest?.finalPrice}}
 					</p>
-				</div>
-			</ion-label>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-thumbnail slot="start">
-				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-				/>
-			</ion-thumbnail>
-			<ion-label style="margin-top: 25px">
-				<ion-header class="m-0 p-0">
-					<p class="fs-15 text-center">
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</ion-header>
-				<div>
-					<p>K5 <span class="fs-10">2009</span></p>
-					<p>₩4,230,000</p>
-					<p>
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</div>
-			</ion-label>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-thumbnail slot="start">
-				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-				/>
-			</ion-thumbnail>
-			<ion-label style="margin-top: 25px">
-				<ion-header class="m-0 p-0">
-					<p class="fs-15 text-center">
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</ion-header>
-				<div>
-					<p>K5 <span class="fs-10">2009</span></p>
-					<p>₩4,230,000</p>
-					<p>
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</div>
-			</ion-label>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-thumbnail slot="start">
-				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-				/>
-			</ion-thumbnail>
-			<ion-label style="margin-top: 25px">
-				<ion-header class="m-0 p-0">
-					<p class="fs-15 text-center">
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</ion-header>
-				<div>
-					<p>K5 <span class="fs-10">2009</span></p>
-					<p>₩4,230,000</p>
-					<p>
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</div>
-			</ion-label>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-thumbnail slot="start">
-				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-				/>
-			</ion-thumbnail>
-			<ion-label style="margin-top: 25px">
-				<ion-header class="m-0 p-0">
-					<p class="fs-15 text-center">
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</ion-header>
-				<div>
-					<p>K5 <span class="fs-10">2009</span></p>
-					<p>₩4,230,000</p>
-					<p>
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</div>
-			</ion-label>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-thumbnail slot="start">
-				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-				/>
-			</ion-thumbnail>
-			<ion-label style="margin-top: 25px">
-				<ion-header class="m-0 p-0">
-					<p class="fs-15 text-center">
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
-				</ion-header>
-				<div>
-					<p>K5 <span class="fs-10">2009</span></p>
-					<p>₩4,230,000</p>
-					<p>
-						<ion-skeleton-text animated></ion-skeleton-text>
-					</p>
+					<p>"{{item.review}}"</p>
 				</div>
 			</ion-label>
 		</ion-item>

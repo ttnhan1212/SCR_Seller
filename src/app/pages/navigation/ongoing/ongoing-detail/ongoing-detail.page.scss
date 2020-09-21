@@ -1,0 +1,14 @@
+.not-active {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+}
+
+.bar-rating {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin-top: -10px;
+	margin-bottom: -20px;
+}

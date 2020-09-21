@@ -50,6 +50,13 @@ const routes: Routes = [
 			import('./pages/review/review.module').then((m) => m.ReviewPageModule),
 	},
 	{
+		path: 'home/review/detail/:id',
+		loadChildren: () =>
+			import('./pages/review/detail/detail.module').then(
+				(m) => m.DetailPageModule,
+			),
+	},
+	{
 		path: '',
 		redirectTo: '',
 		pathMatch: 'full',

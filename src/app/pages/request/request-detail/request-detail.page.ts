@@ -38,7 +38,7 @@ export class RequestDetailPage implements OnInit {
 	miles = new FormControl('', Validators.required);
 	other = new FormControl('', Validators.required);
 	seller = new FormControl('', Validators.required);
-	reviewed: Boolean = false;
+	expired: Boolean = false;
 
 	efDateObj = new Date();
 	effDate = null;
@@ -90,7 +90,7 @@ export class RequestDetailPage implements OnInit {
 			miles: this.miles,
 			other: this.other,
 			status: 1,
-			reviewed: this.reviewed,
+			expired: this.expired,
 			participants: [{ created: true }],
 		});
 

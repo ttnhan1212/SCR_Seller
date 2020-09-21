@@ -50,7 +50,7 @@ export class OngoingPage implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		// this.updateRequestExpired();
+		this.updateRequestExpired();
 		this.getUser();
 	}
 
@@ -127,11 +127,12 @@ export class OngoingPage implements OnInit, OnDestroy {
 			temp.forEach((val) => {
 				const participant: any = val.participants;
 				if (
-					val.expiredTime < this.now &&
-					(participant.created === true || val.participants === undefined)
+					val.expiredTime === val.expiredTime + 172800 &&
+					participant.created === true &&
+					val.participants === undefined
 				) {
 					this.requestService.updateRequest(val.id, {
-						status: 2,
+						expired: true,
 					});
 				}
 			});

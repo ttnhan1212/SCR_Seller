@@ -1,0 +1,78 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-button slot="end" fill="clear" [routerLink]="['/','home','seller']">
+			<ion-icon name="log-out-outline"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="review">
+	<ion-slides pager="true" [options]="slideOpts">
+		<ion-slide>
+			<ion-img [src]="image"></ion-img>
+		</ion-slide>
+		<ion-slide>
+			<ion-img [src]="image"></ion-img>
+		</ion-slide>
+		<ion-slide>
+			<ion-img [src]="image"></ion-img>
+		</ion-slide>
+	</ion-slides>
+
+	<ion-list class="ion-no-padding">
+		<ion-item lines="none">
+			<ion-label> Review Star </ion-label>
+			<bar-rating
+				[(rate)]="star"
+				[max]="5"
+				[theme]="'fontawesome'"
+				class="not-active"
+			></bar-rating>
+		</ion-item>
+		<ion-card>
+			<ion-card-header> Request Information </ion-card-header>
+			<ion-card-content>
+				<ion-item lines="none">
+					<ion-label>Seller Name</ion-label>
+					<p>{{review.request?.name}}</p>
+				</ion-item>
+				<ion-item lines="none">
+					<ion-label>Phone</ion-label>
+					<p>{{review.request?.phone}}</p>
+				</ion-item>
+				<ion-item lines="none">
+					<ion-label>Location</ion-label>
+					<p>{{review.request?.location}}</p>
+				</ion-item>
+				<ion-item lines="none">
+					<ion-label>Miles</ion-label>
+					<p>{{review.request?.miles}} km</p>
+				</ion-item>
+			</ion-card-content>
+		</ion-card>
+		<ion-card>
+			<ion-card-header> Dealer Information </ion-card-header>
+			<ion-card-content>
+				<ion-item lines="none">
+					<ion-label>Dealer Name</ion-label>
+					<p>{{review.dealer?.ceoName}}</p>
+				</ion-item>
+				<ion-item lines="none">
+					<ion-label>Email</ion-label>
+					<p>{{review.dealer?.email}}</p>
+				</ion-item>
+				<ion-item lines="none">
+					<ion-label>Organization Name</ion-label>
+					<p>{{review.dealer?.orgname}}</p>
+				</ion-item>
+				<ion-item lines="none">
+					<ion-label>Phone</ion-label>
+					<p>{{review.dealer?.phone}}</p>
+				</ion-item>
+			</ion-card-content>
+		</ion-card>
+	</ion-list>
+</ion-content>

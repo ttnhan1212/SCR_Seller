@@ -84,6 +84,20 @@ export class OngoingDetailPage implements OnInit {
 					.subscribe((res: any) => {
 						participant.dealer = { ...res.payload.data() };
 					});
+				this.dealerService
+					.getDealerReview(participant.userId)
+					.subscribe((val) => {
+						let allStar = [];
+						allStar = val.map((star) => {
+							return star.payload.doc.data()['star'];
+						});
+						const sumStar: number = allStar.reduce((a, b) => a + b, 0);
+						const averStar: number = Math.round(sumStar / allStar.length);
+						participant.dealer = {
+							...participant.dealer,
+							averStar,
+						};
+					});
 			});
 
 			this.sum();
@@ -120,6 +134,18 @@ export class OngoingDetailPage implements OnInit {
 					.getDealer(this.selectedDealer.userId)
 					.subscribe((res: any) => {
 						this.selectedDealer.dealer = { ...res.payload.data() };
+					});
+
+				this.dealerService
+					.getDealerReview(this.selectedDealer.userId)
+					.subscribe((val) => {
+						let review = [];
+						review = val.map((m) => {
+							return m.payload.doc.data()['star'];
+						});
+						const sumStar = review.reduce((a, b) => a + b, 0);
+						const averStar = Math.floor(sumStar / review.length);
+						this.selectedDealer.dealer.averStar = averStar;
 					});
 				console.log('select', this.selectedDealer);
 			}
