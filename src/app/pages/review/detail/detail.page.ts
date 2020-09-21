@@ -15,8 +15,6 @@ export class DetailPage implements OnInit {
 	dealerId: string;
 	image: any;
 
-	star: number = 5;
-
 	slideOpts = {
 		initialSlide: 1,
 		speed: 400,

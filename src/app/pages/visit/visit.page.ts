@@ -15,6 +15,7 @@ export class VisitPage implements OnInit {
 	request: any = {};
 	dealer: any = {};
 	part: any = [];
+	review: any[];
 
 	rate: undefined;
 
@@ -57,6 +58,32 @@ export class VisitPage implements OnInit {
 			.subscribe((res: any) => {
 				this.dealer = { ...res.payload.data() };
 				console.log(this.dealer);
+			});
+
+		this.dealerService
+			.getDealerReview(this.request.participants[0])
+			.subscribe((val) => {
+				this.review = val.map((m) => {
+					return {
+						...m.payload.doc.data(),
+					};
+				});
+
+				this.review.forEach((res) => {
+					this.requestService
+						.getRequestById(res.requestId)
+						.subscribe((m: any) => {
+							res.revRequest = { ...m.payload.data() };
+						});
+				});
+
+				let allStar = [];
+				allStar = val.map((n) => {
+					return n.payload.doc.data()['star'];
+				});
+				const sumStar = allStar.reduce((a, b) => a + b, 0);
+				const averStar = Math.floor(sumStar / allStar.length);
+				this.dealer.averStar = averStar;
 			});
 	}
 
