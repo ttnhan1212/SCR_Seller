@@ -1,3 +1,4 @@
+import { MainPipe } from './../../../pipes/mainPipe.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 			},
 		}),
 		HttpClientModule,
+		MainPipe,
 	],
 	declarations: [NotificationsPage],
 })

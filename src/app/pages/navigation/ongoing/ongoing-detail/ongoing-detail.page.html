@@ -21,21 +21,21 @@
 					<ion-label>{{'home_ongoing_detail.max' | translate}}</ion-label>
 					<br />
 					<ion-label *ngIf="max" class="fs-15"
-						><strong>₩{{max}}</strong></ion-label
+						><strong>￦{{max | number}}</strong></ion-label
 					>
 				</ion-col>
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.average' | translate}}</ion-label>
 					<br />
 					<ion-label *ngIf="average" class="fs-15"
-						><strong>₩{{average}}</strong></ion-label
+						><strong>￦{{average | number}}</strong></ion-label
 					>
 				</ion-col>
 				<ion-col>
 					<ion-label>{{'home_ongoing_detail.min' | translate}}</ion-label>
 					<br />
 					<ion-label *ngIf="min" class="fs-15"
-						><strong>₩{{min}}</strong></ion-label
+						><strong>￦{{min | number}}</strong></ion-label
 					>
 				</ion-col>
 			</ion-row>
@@ -88,7 +88,7 @@
 			</ion-card-header>
 			<ion-card-content>
 				<p class="fs-20">{{selectedDealer.dealer?.email}}</p>
-				<p class="fs-20">₩{{selectedDealer.price}}</p>
+				<p class="fs-20">￦{{selectedDealer.price | number}}</p>
 			</ion-card-content>
 		</ion-card>
 	</ion-item-group>
@@ -104,13 +104,11 @@
 			(click)="getDealerDetail(item.id, item.userId)"
 		>
 			<ion-avatar slot="start">
-				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-				/>
+				<img src="../../../../../assets/images/photos/31887.jpg" />
 			</ion-avatar>
 			<ion-label>
 				<p class="fs-20" style="line-height: normal">{{item.dealer?.email}}</p>
-				<p class="fs-20">₩{{item.price}}</p>
+				<p class="fs-20">￦{{item.price | number}}</p>
 				<bar-rating
 					*ngIf="item.dealer?.averStar"
 					[(ngModel)]="item.dealer.averStar"
@@ -133,15 +131,13 @@
 		<ion-item-sliding *ngFor="let item of participants">
 			<ion-item lines="none" (click)="getDealerDetail(item.id, item.userId)">
 				<ion-avatar slot="start">
-					<img
-						src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-					/>
+					<img src="../../../../../assets/images/photos/31887.jpg" />
 				</ion-avatar>
 				<ion-label>
 					<p class="fs-20" style="line-height: normal">
 						{{item.dealer?.email}}
 					</p>
-					<p class="fs-20">₩{{item.price}}</p>
+					<p class="fs-20">￦{{item.price | number}}</p>
 					<bar-rating
 						[(ngModel)]="item.dealer.averStar"
 						[max]="5"
@@ -181,7 +177,7 @@
 			</ion-card-header>
 			<ion-card-content>
 				<p class="fs-20">{{selectedDealer.dealer?.email}}</p>
-				<p class="fs-20">₩{{selectedDealer.price}}</p>
+				<p class="fs-20">￦{{selectedDealer.price | number}}</p>
 			</ion-card-content>
 		</ion-card>
 	</ion-item-group>

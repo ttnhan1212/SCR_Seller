@@ -54,9 +54,7 @@
 	<ion-list class="ion-no-padding" *ngFor="let item of review">
 		<ion-item lines="none" class="ion-no-padding">
 			<ion-thumbnail slot="start">
-				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-				/>
+				<img src="../../../../../assets/images/photos/31887.jpg" />
 			</ion-thumbnail>
 			<ion-label>
 				<bar-rating
@@ -69,8 +67,9 @@
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
 					<p>
-						₩{{item.revRequest?.finalPrice === 0 ?
-						item.revRequest?.participants[1] : item.revRequest?.finalPrice}}
+						￦{{(item.revRequest?.finalPrice === 0 ?
+						item.revRequest?.participants[1] : item.revRequest?.finalPrice) |
+						number}}
 					</p>
 					<p>"{{item.review}}"</p>
 				</div>

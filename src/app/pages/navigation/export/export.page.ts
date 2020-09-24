@@ -29,7 +29,7 @@ export class ExportPage implements OnInit, OnDestroy {
 		private modelService: ModelService,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
-		this.image = '../../../../assets/images/banners/banner2.jpg';
+		this.image = '../../../../assets/images/photos/31887.jpg';
 
 		this.dataSub = this.route.queryParams.subscribe((params) => {
 			if (this.router.getCurrentNavigation().extras.state) {

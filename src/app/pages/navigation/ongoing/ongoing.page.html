@@ -17,23 +17,40 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+	<ion-item lines="none">
+		<ul class="fa-ul">
+			<li>
+				<i class="fa-li fa fa-circle wait-status"></i
+				>{{'home_ongoing.please_wait' | translate}}
+			</li>
+			<li>
+				<i class="fa-li fa fa-circle proceed-status"></i
+				>{{'home_ongoing.proceed' | translate}}
+			</li>
+			<li>
+				<i class="fa-li fa fa-circle ended-status"></i
+				>{{'home_ongoing.ended_trade' | translate}}
+			</li>
+		</ul>
+	</ion-item>
 	<ion-list>
 		<ion-item
 			*ngFor="let request of requests"
 			lines="none"
 			[routerLink]="request.status === 1 ? [] : (request.status >= 7 ? ['/','home','review', request.id] : [request.id])"
 		>
-			<ion-thumbnail slot="start">
+			<ion-thumbnail slot="start" style="border-radius: 5px">
 				<img
-					src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+					src="../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-49.png"
 				/>
 			</ion-thumbnail>
 			<ion-label style="margin-top: 25px">
-				<ion-header
+				<div
 					style="
 						background: #bdc3c7;
 						background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
 						background: linear-gradient(to right, #2c3e50, #bdc3c7);
+						border-radius: 5px;
 					"
 					class="m-0 p-0"
 					[ngSwitch]="request.status"
@@ -68,7 +85,7 @@
 					<p class="fs-15 text-center text-dark" *ngSwitchDefault="">
 						Trade complete
 					</p>
-				</ion-header>
+				</div>
 				<div class="first">
 					<p>
 						2009
@@ -77,8 +94,10 @@
 						>
 					</p>
 					<p>
-						{{request.miles}}
-						<span class="pull-right">${{request.participants[1] || 0}}</span>
+						{{request.miles | number}} Km
+						<span class="pull-right"
+							>￦{{request.participants[1] || 0 | number}}</span
+						>
 					</p>
 				</div>
 			</ion-label>

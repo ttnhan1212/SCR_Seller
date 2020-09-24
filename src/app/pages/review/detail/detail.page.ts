@@ -30,7 +30,8 @@ export class DetailPage implements OnInit {
 		public loader: LoaderService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
-		this.image = '../../../../assets/images/banners/banner2.jpg';
+		this.image =
+			'../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-57.png';
 	}
 
 	ngOnInit() {

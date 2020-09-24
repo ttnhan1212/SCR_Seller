@@ -50,7 +50,7 @@ export class HomePage implements OnInit, OnDestroy {
 		public dealerService: DealerService,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
-		this.image = '../../../../assets/images/banners/banner2.jpg';
+		this.image = '../../../../assets/images/photos/31887.jpg';
 
 		this.exportForm = this.fb.group({
 			model: this.model,

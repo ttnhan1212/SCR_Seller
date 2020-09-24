@@ -82,28 +82,27 @@
 		<ion-row>
 			<ion-col size="6" class="ion-no-padding" *ngFor="let item of review_all">
 				<ion-card [routerLink]="['/','home','review','detail',item.id]">
-					<ion-img class="item__image" [src]="image"></ion-img>
-					<ion-card-header>
-						<ion-grid class="ion-no-padding">
-							<ion-row class="ion-no-padding">
-								<bar-rating
-									[(rate)]="item.star"
-									[max]="5"
-									[theme]="'fontawesome'"
-									class="not-active"
-								></bar-rating>
-							</ion-row>
-							<ion-row class="ion-no-padding">
-								<ion-col>
-									<ion-card-title>K5</ion-card-title>
-								</ion-col>
-								<ion-col>
-									<ion-card-title>₩{{item.finalPrice}}</ion-card-title>
-								</ion-col>
-							</ion-row>
-						</ion-grid>
+					<ion-img
+						class="item__image"
+						src="../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-49.png"
+					></ion-img>
+					<ion-card-header class="ion-no-padding ml-4">
+						<bar-rating
+							[(rate)]="item.star"
+							[max]="5"
+							[theme]="'fontawesome'"
+							class="not-active"
+						></bar-rating>
 					</ion-card-header>
-					<ion-card-content> {{item.review}} </ion-card-content>
+					<ion-card-content>
+						<div class="ion-no-padding">
+							<p>
+								K5
+								<span class="pull-right">￦{{item.finalPrice | number}}</span>
+							</p>
+						</div>
+						<div>{{item.review}}</div>
+					</ion-card-content>
 				</ion-card>
 			</ion-col>
 		</ion-row>

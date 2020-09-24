@@ -63,6 +63,7 @@ export class RequestDetailPage implements OnInit {
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		this.sample = '../../../../assets/images/png/spares/1.png';
+
 		this.efDateObj.setMinutes(0);
 		this.efDateObj.setSeconds(0);
 		this.effDate = Math.floor(this.efDateObj.getTime() / 1000);
@@ -71,12 +72,6 @@ export class RequestDetailPage implements OnInit {
 		this.afAuth.authState.subscribe((user) => {
 			if (user) {
 				this.sellerId = user.uid;
-			}
-		});
-
-		this.route.queryParams.subscribe((params) => {
-			if (this.router.getCurrentNavigation().extras.state) {
-				this.request = this.router.getCurrentNavigation().extras.state.requestSellerId;
 			}
 		});
 
@@ -116,10 +111,6 @@ export class RequestDetailPage implements OnInit {
 	async updateRequest() {
 		try {
 			await this.loader.showLoader();
-			await this.requestService.updateRequestBySeller(
-				this.detailForm.value,
-				this.request,
-			);
 			await this.requestService.updateRequest(this.id, this.detailForm.value);
 			await this.toast.showToast('Your request is successfully uploaded!');
 			await this.loader.hideLoader();

@@ -22,8 +22,11 @@
 
 	<ion-item-group class="mt-4">
 		<ion-label> Final Price </ion-label>
-		<ion-item lines="none">
-			<ion-input class="fs-20 fw-700" value="2000000" readonly></ion-input>
+		<ion-item lines="none" *ngIf="request">
+			<p class="fs-20 fw-700">
+				￦{{ (request.finalPrice ? request.finalPrice : request.participants[1])
+				| number }}
+			</p>
 		</ion-item>
 
 		<ion-label>Dealer Information</ion-label>

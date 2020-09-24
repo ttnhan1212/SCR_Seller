@@ -56,59 +56,94 @@ export class PlatenumberPage implements OnInit {
 		});
 	}
 
-	async createPlate() {
-		let vehicle = {};
-		vehicle['platenumber'] = this.plate;
+	// async createPlate() {
+	// 	try {
+	// 		await this.loader.showLoader();
+	// 		await this.vehicleService
+	// 			.createVehicle(vehicle)
+	// 			.then((res) => {
+	// 				let request = {};
+	// 				request['vehiclesId'] = res.id;
+	// 				request['status'] = 'Draft';
+	// 				try {
+	// 					this.toast.showToast('Your request is successfully created!');
+	// 					this.requestService
+	// 						.createRequest({ plateNum: this.plate })
+	// 						.then((val) => {
+	// 							this.notiService.createNoti({
+	// 								requestId: val.id,
+	// 								status: 1,
+	// 								updateDate: Math.floor(new Date().getTime() / 1000.0),
+	// 								user: this.sellerId,
+	// 							});
 
+	// 							this.requestService
+	// 								.createRequestBySeller(val.id, request)
+	// 								.then((val) => {
+	// 									this.requestSellerId = val.id;
+	// 									console.log(this.requestSellerId);
+	// 								})
+	// 								.catch((err) => {
+	// 									console.log(err.message);
+	// 								});
+	// 							this.requestState = {
+	// 								state: {
+	// 									requestSellerId: this.requestSellerId,
+	// 									requestId: val.id,
+	// 								},
+	// 							};
+	// 							this.route.navigate(
+	// 								['/', 'request', 'image-guide'],
+	// 								this.requestState,
+	// 							);
+	// 						})
+	// 						.catch((err) => {
+	// 							console.log(err.message);
+	// 						});
+	// 				} catch (error) {
+	// 					this.toast.showToast(error.message);
+	// 				}
+	// 			})
+	// 			.catch((error) => {
+	// 				this.toast.showToast(error.message);
+	// 			});
+	// 		await this.loader.hideLoader();
+	// 	} catch (error) {
+	// 		this.toast.showToast(error.message);
+	// 		await this.loader.hideLoader();
+	// 	}
+	// }
+
+	async createPlate() {
 		try {
 			await this.loader.showLoader();
-			await this.vehicleService
-				.createVehicle(vehicle)
-				.then((res) => {
-					this.plate = '';
-					let request = {};
-					request['vehiclesId'] = res.id;
-					request['status'] = 'Draft';
-					try {
-						this.toast.showToast('Your request is successfully created!');
-						this.requestService
-							.createRequestBySeller(request)
-							.then((val) => {
-								this.requestSellerId = val.id;
-								console.log(this.requestSellerId);
-							})
-							.catch((err) => {
-								console.log(err.message);
-							});
-						this.requestService
-							.createRequest(request)
-							.then((val) => {
-								this.notiService.createNoti({
-									requestId: val.id,
-									status: 1,
-									updateDate: Math.floor(new Date().getTime() / 1000.0),
-									user: this.sellerId,
-								});
-								this.requestState = {
-									state: {
-										requestSellerId: this.requestSellerId,
-										requestId: val.id,
-									},
-								};
-								this.route.navigate(
-									['/', 'request', 'image-guide'],
-									this.requestState,
-								);
-							})
-							.catch((err) => {
-								console.log(err.message);
-							});
-					} catch (error) {
-						this.toast.showToast(error.message);
-					}
+			await this.requestService
+				.createRequest({ plateNum: this.plate })
+				.then((val) => {
+					this.notiService.createNoti({
+						requestId: val.id,
+						status: 1,
+						updateDate: Math.floor(new Date().getTime() / 1000.0),
+						user: this.sellerId,
+					});
+
+					this.requestService.createRequestBySeller(val.id, {
+						requestId: val.id,
+						createDate: Math.floor(new Date().getTime() / 1000.0),
+					});
+					this.requestState = {
+						state: {
+							requestId: val.id,
+						},
+					};
+					this.route.navigate(
+						['/', 'request', 'image-guide'],
+						this.requestState,
+					);
+					this.toast.showToast('Your request is successfully created!');
 				})
-				.catch((error) => {
-					this.toast.showToast(error.message);
+				.catch((err) => {
+					console.log(err.message);
 				});
 			await this.loader.hideLoader();
 		} catch (error) {

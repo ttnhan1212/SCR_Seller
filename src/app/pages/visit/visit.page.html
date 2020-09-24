@@ -24,12 +24,12 @@
 			<ion-row>
 				<ion-col class="text-center">
 					<ion-label class="fs-20">
-						<strong>{{request.miles}}km</strong>
+						<strong>{{request.miles | number}} Km</strong>
 					</ion-label>
 				</ion-col>
 				<ion-col class="text-center">
 					<ion-label class="fs-20">
-						<strong>₩{{part[1]}}</strong>
+						<strong>￦{{part[1] | number}}</strong>
 					</ion-label>
 				</ion-col>
 			</ion-row>
@@ -105,8 +105,9 @@
 				<div>
 					<p>K5 <span class="fs-10">2009</span></p>
 					<p>
-						₩{{item.revRequest?.finalPrice === 0 ?
-						item.revRequest?.participants[1] : item.revRequest?.finalPrice}}
+						￦{{(item.revRequest?.finalPrice === 0 ?
+						item.revRequest?.participants[1] : item.revRequest?.finalPrice) |
+						number}}
 					</p>
 					<p>"{{item.review}}"</p>
 				</div>

@@ -51,12 +51,13 @@ export class RequestService {
 		return this.firestore.collection('requests').add(request);
 	}
 
-	createRequestBySeller(request: any) {
+	createRequestBySeller(id: string, request: any) {
 		return this.firestore
 			.collection('Seller')
 			.doc(this.loggedUser.uid)
 			.collection('Requests')
-			.add(request);
+			.doc(id)
+			.set(request);
 	}
 
 	updateRequest(id: string, request: any) {
