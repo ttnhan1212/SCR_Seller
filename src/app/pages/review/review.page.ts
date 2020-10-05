@@ -1,3 +1,5 @@
+import { AdsModalComponent } from './../navigation/modal/ads-modal/ads-modal.component';
+import { ModalController } from '@ionic/angular';
 import { DealerService } from './../../services/dealer.service';
 import { LoaderService } from './../../services/loader.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,12 +27,24 @@ export class ReviewPage implements OnInit {
 		public route: ActivatedRoute,
 		public router: Router,
 		private loader: LoaderService,
+		private modalCtrl: ModalController,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 	}
 
 	ngOnInit() {
 		this.getRequestById();
+		setTimeout(() => {
+			this.openAds();
+		}, 2000);
+	}
+
+	async openAds() {
+		const modal = await this.modalCtrl.create({
+			component: AdsModalComponent,
+		});
+
+		await modal.present();
 	}
 
 	async getRequestById() {

@@ -1,9 +1,11 @@
+import { AdsModalComponent } from '../modal/ads-modal/ads-modal.component';
+import { ModalController } from '@ionic/angular';
 import { DealerService } from 'src/app/services/dealer.service';
 import { RequestService } from 'src/app/services/request.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ModelService } from './../../../services/model.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Model } from '../../../models/model';
 import { Router, NavigationExtras } from '@angular/router';
 import {
@@ -12,14 +14,13 @@ import {
 	Validators,
 	FormBuilder,
 } from '@angular/forms';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
 	selector: 'app-request',
 	templateUrl: './home.page.html',
 	styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements OnInit {
 	models: Model[];
 	modelSub: Subscription;
 	yearSub: Subscription;
@@ -48,6 +49,7 @@ export class HomePage implements OnInit, OnDestroy {
 		private translate: TranslateService,
 		public requestService: RequestService,
 		public dealerService: DealerService,
+		private modalCtrl: ModalController,
 	) {
 		this.logo = '../../../assets/images/logo/scroadslight.svg';
 		this.image = '../../../../assets/images/photos/31887.jpg';
@@ -69,6 +71,17 @@ export class HomePage implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.getModel();
 		this.reviewSection();
+		setTimeout(() => {
+			this.openAds();
+		}, 3000);
+	}
+
+	async openAds() {
+		const modal = await this.modalCtrl.create({
+			component: AdsModalComponent,
+		});
+
+		await modal.present();
 	}
 
 	getModel() {
@@ -106,13 +119,6 @@ export class HomePage implements OnInit, OnDestroy {
 			});
 			console.log(this.review_all);
 		});
-	}
-
-	ngOnDestroy() {
-		if (this.modelSub && this.yearSub) {
-			this.modelSub.unsubscribe();
-			this.yearSub.unsubscribe();
-		}
 	}
 
 	async fetchYear(e: any) {

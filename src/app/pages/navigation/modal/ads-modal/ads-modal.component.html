@@ -1,0 +1,16 @@
+<ion-content class="ion-padding">
+	<ion-card class="ads-center">
+		<img [src]="ads[randomInt].ads_img_path" alt="Ads Image" />
+	</ion-card>
+</ion-content>
+
+<ion-footer>
+	<ion-button
+		(click)="dismissModal()"
+		expand="block"
+		fill="clear"
+		shape="round"
+	>
+		Close
+	</ion-button>
+</ion-footer>
