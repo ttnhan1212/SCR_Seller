@@ -46,12 +46,12 @@ export class NotificationsPage implements OnInit, OnDestroy {
 	}
 
 	async getUser() {
-		await this.afAuth.authState.subscribe((user) => {
+		await this.afAuth.currentUser.then((user) => {
 			if (user) {
 				this.sellerId = user.uid;
+				this.getNoti(this.sellerId);
+				this.getAllNoti(this.sellerId);
 			}
-			this.getNoti(this.sellerId);
-			this.getAllNoti(this.sellerId);
 		});
 	}
 

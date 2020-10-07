@@ -69,7 +69,7 @@ export class RequestDetailPage implements OnInit {
 		this.effDate = Math.floor(this.efDateObj.getTime() / 1000);
 		this.expDate = Math.floor(this.efDateObj.getTime() / 1000 + 7200);
 
-		this.afAuth.authState.subscribe((user) => {
+		this.afAuth.currentUser.then((user) => {
 			if (user) {
 				this.sellerId = user.uid;
 			}

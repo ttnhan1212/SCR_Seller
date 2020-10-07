@@ -5,6 +5,10 @@
 	}
 }
 
+ion-title {
+	padding: 0 !important;
+}
+
 .item {
 	display: flex !important;
 	flex-direction: column !important;
@@ -37,10 +41,6 @@
 	width: 80vw;
 
 	z-index: 1;
-}
-
-ion-ripple-effect {
-	color: #5260ff;
 }
 
 .fa {

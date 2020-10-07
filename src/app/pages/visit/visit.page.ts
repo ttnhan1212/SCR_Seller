@@ -17,8 +17,6 @@ export class VisitPage implements OnInit {
 	part: any = [];
 	review: any[];
 
-	rate: undefined;
-
 	myValueSub: Subscription;
 	dealerSub: Subscription;
 	partSub: Subscription;
@@ -85,11 +83,6 @@ export class VisitPage implements OnInit {
 				const averStar = Math.floor(sumStar / allStar.length);
 				this.dealer.averStar = averStar;
 			});
-	}
-
-	localeDate(time) {
-		let myDate = new Date(time * 1000);
-		return myDate.toLocaleString();
 	}
 
 	ngOnDestroy() {

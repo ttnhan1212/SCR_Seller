@@ -77,7 +77,7 @@ export class DealerDetailPage implements OnInit {
 			const sumStar = star.reduce((a, b) => a + b, 0);
 			const averStar = Math.floor(sumStar / star.length);
 			this.dealer.averStar = averStar;
-			
+
 			console.log(this.review);
 			console.log(this.dealer);
 		});

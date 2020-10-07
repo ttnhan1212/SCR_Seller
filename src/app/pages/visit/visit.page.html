@@ -83,7 +83,7 @@
 				>To be determined</ion-title
 			>
 			<ion-title class="text-center" *ngIf="request.visitDate"
-				>{{localeDate(request.visitDate)}}</ion-title
+				>{{request.visitDate * 1000 | date}}</ion-title
 			>
 		</ion-card-content>
 	</ion-card>

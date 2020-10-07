@@ -1,9 +1,9 @@
 .item ion-thumbnail {
-	min-width: 5rem;
-	min-height: 5rem;
+	min-width: 7.5rem;
+	min-height: 7.5rem;
 	img {
-		max-width: 5rem;
-		min-width: 5rem;
+		object-fit: cover;
+		margin-left: -1rem;
 	}
 }
 
@@ -15,5 +15,5 @@
 	border: 0.5px solid black;
 	border-radius: 10px;
 
-	margin-bottom: 6px;
+	margin-bottom: 8px;
 }

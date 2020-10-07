@@ -77,16 +77,19 @@
 			{{'seller.request_quote' | translate}}
 		</ion-button>
 	</ion-card>
-	<ion-item-divider></ion-item-divider>
-	<ion-grid class="p-0">
-		<ion-row>
-			<ion-col size="6" class="ion-no-padding" *ngFor="let item of review_all">
-				<ion-card [routerLink]="['/','home','review','detail',item.id]">
+	<div class="mb-4"></div>
+	<ion-grid class="m-0 p-0">
+		<ion-row class="m-0 p-0">
+			<ion-col size="6" *ngFor="let item of review_all">
+				<ion-card
+					[routerLink]="['/','home','review','detail',item.id]"
+					class="m-0 p-0"
+				>
 					<ion-img
 						class="item__image"
 						src="../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-49.png"
 					></ion-img>
-					<ion-card-header class="ion-no-padding ml-4">
+					<ion-card-header class="m-0 p-0 ml-4">
 						<bar-rating
 							[(rate)]="item.star"
 							[max]="5"
@@ -95,13 +98,13 @@
 						></bar-rating>
 					</ion-card-header>
 					<ion-card-content>
-						<div class="ion-no-padding">
+						<div>
 							<p>
 								K5
 								<span class="pull-right">￦{{item.finalPrice | number}}</span>
 							</p>
 						</div>
-						<div>{{item.review}}</div>
+						<p>{{item.review}}</p>
 					</ion-card-content>
 				</ion-card>
 			</ion-col>

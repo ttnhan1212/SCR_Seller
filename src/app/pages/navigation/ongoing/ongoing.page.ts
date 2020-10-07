@@ -55,7 +55,7 @@ export class OngoingPage implements OnInit, OnDestroy {
 	}
 
 	async getUser() {
-		await this.afAuth.authState.subscribe((user) => {
+		await this.afAuth.currentUser.then((user) => {
 			if (user) {
 				this.sellerId = user.uid;
 				this.getRequestBySeller(this.sellerId);
@@ -137,11 +137,6 @@ export class OngoingPage implements OnInit, OnDestroy {
 				}
 			});
 		});
-	}
-
-	localeDate(time: number) {
-		const myDate = new Date(time * 1000);
-		return myDate.toLocaleString();
 	}
 
 	ngOnDestroy() {

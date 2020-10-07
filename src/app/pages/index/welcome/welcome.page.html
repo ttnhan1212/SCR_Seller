@@ -1,40 +1,40 @@
 <ion-content class="ion-padding">
-	<ion-title class="text-center title"
-		>{{'welcome.welcome_line'| translate}}</ion-title
-	>
-	<ion-title class="text-center subtitle"
-		>{{'welcome.instruction'| translate}}</ion-title
-	>
-	<ion-list class="ion-padding">
-		<ion-item *ngFor="let item of checkBoxList" lines="none">
-			<ion-label>{{item.value}}</ion-label>
-			<ion-checkbox
-				slot="start"
-				#checkBoxList
-				name="itemoption"
-				(click)="modalNavigate(item.id)"
-				[(ngModel)]="item.isChecked"
-				[attr.data-id]="item.id"
-				(ionChange)="checkEvent()"
-			></ion-checkbox>
-		</ion-item>
-		<ion-item lines="none">
-			<ion-label><strong>{{'welcome.agree_all'| translate}}</strong></ion-label>
-			<ion-checkbox
-				slot="start"
-				name="selectallcheck"
-				[(ngModel)]="masterCheck"
-				[indeterminate]="isIndeterminate"
-				(click)="checkMaster($event)"
-			></ion-checkbox>
-		</ion-item>
-	</ion-list>
-	<ion-button
-		expand="block"
-		color="warning"
-		(click)="anonyLogin()"
-		[disabled]="!masterCheck"
-	>
-		{{'welcome.start'| translate}}
-	</ion-button>
+	<ion-title class="title">{{'welcome.welcome_line'| translate}}</ion-title>
+	<ion-title class="subtitle">{{'welcome.instruction'| translate}}</ion-title>
+	<ion-item>
+		<ion-list class="ion-padding">
+			<ion-item *ngFor="let item of checkBoxList" lines="none">
+				<ion-label>{{item.value}}</ion-label>
+				<ion-checkbox
+					slot="start"
+					#checkBoxList
+					name="itemoption"
+					(click)="modalNavigate(item.id)"
+					[(ngModel)]="item.isChecked"
+					[attr.data-id]="item.id"
+					(ionChange)="checkEvent()"
+				></ion-checkbox>
+			</ion-item>
+			<ion-item lines="none">
+				<ion-label
+					><strong>{{'welcome.agree_all'| translate}}</strong></ion-label
+				>
+				<ion-checkbox
+					slot="start"
+					name="selectallcheck"
+					[(ngModel)]="masterCheck"
+					[indeterminate]="isIndeterminate"
+					(click)="checkMaster($event)"
+				></ion-checkbox>
+			</ion-item>
+		</ion-list>
+		<ion-button
+			expand="block"
+			color="warning"
+			(click)="anonyLogin()"
+			[disabled]="!masterCheck"
+		>
+			{{'welcome.start'| translate}}
+		</ion-button>
+	</ion-item>
 </ion-content>

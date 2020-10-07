@@ -8,17 +8,17 @@
 </ion-header>
 
 <ion-content>
-	<ion-card class="plate-card">
-		<ion-card-content>
+	<ion-card class="m-0 p-0 plate-card">
+		<ion-card-content class="m-0 p-2">
 			<ion-item>
-				<ion-label position="floating"
+				<ion-label position="stacked"
 					>{{'request.plate_number'|translate}}</ion-label
 				>
 				<ion-input
 					type="text"
 					placeholder="{{'request.plate_number_placeholder'| translate}}"
 					[(ngModel)]="plate"
-					class="mt-4"
+					class="mt-2"
 				></ion-input>
 			</ion-item>
 			<ion-button
@@ -26,7 +26,7 @@
 				color="tertiary"
 				[disabled]="!plate"
 				(click)="createPlate()"
-				class="mt-5"
+				class="mt-6"
 			>
 				{{'request.confirm'|translate}}
 			</ion-button>

@@ -39,11 +39,13 @@ export class DetailPage implements OnInit {
 	}
 
 	getUser() {
-		this.afAuth.authState.subscribe((user) => {
+		this.loader.showLoader();
+		this.afAuth.currentUser.then((user) => {
 			if (user) {
 				this.dealerId = user.uid;
 				this.getReview();
 			}
+			this.loader.hideLoader();
 		});
 	}
 

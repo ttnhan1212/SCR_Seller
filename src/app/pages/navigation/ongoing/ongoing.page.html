@@ -16,8 +16,8 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-	<ion-item lines="none">
+<ion-content>
+	<ion-item lines="none" class="mt-4">
 		<ul class="fa-ul">
 			<li>
 				<i class="fa-li fa fa-circle wait-status"></i
@@ -33,18 +33,20 @@
 			</li>
 		</ul>
 	</ion-item>
-	<ion-list>
+	<ion-list style="margin-top: 25px">
 		<ion-item
 			*ngFor="let request of requests"
 			lines="none"
 			[routerLink]="request.status === 1 ? [] : (request.status >= 7 ? ['/','home','review', request.id] : [request.id])"
+			style="margin-bottom: 1.5rem"
 		>
-			<ion-thumbnail slot="start" style="border-radius: 5px">
+			<ion-thumbnail slot="start">
 				<img
+					style="border-radius: 6px"
 					src="../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-49.png"
 				/>
 			</ion-thumbnail>
-			<ion-label style="margin-top: 25px" [ngSwitch]="request.status">
+			<ion-label [ngSwitch]="request.status">
 				<div
 					style="background: #ffc107; border-radius: 5px"
 					class="m-0 p-0"

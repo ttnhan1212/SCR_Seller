@@ -3,5 +3,12 @@
 }
 
 .plate-card {
-	margin-top: 14rem;
+	position: absolute;
+
+	width: 90vw !important;
+
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
 }

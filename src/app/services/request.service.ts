@@ -12,9 +12,9 @@ export class RequestService {
 		private firestore: AngularFirestore,
 		private afAuth: AngularFireAuth,
 	) {
-		this.afAuth.authState.subscribe((user) => {
+		this.afAuth.currentUser.then((user) => {
 			if (user) {
-				this.loggedUser = user;
+				this.loggedUser = user.uid;
 			}
 		});
 	}
@@ -54,7 +54,7 @@ export class RequestService {
 	createRequestBySeller(id: string, request: any) {
 		return this.firestore
 			.collection('Seller')
-			.doc(this.loggedUser.uid)
+			.doc(this.loggedUser)
 			.collection('Requests')
 			.doc(id)
 			.set(request);
@@ -67,7 +67,7 @@ export class RequestService {
 	updateRequestBySeller(request: any, requestId: string) {
 		this.firestore
 			.collection('Seller')
-			.doc(this.loggedUser.uid)
+			.doc(this.loggedUser)
 			.collection('Requests')
 			.doc(requestId)
 			.update(request);

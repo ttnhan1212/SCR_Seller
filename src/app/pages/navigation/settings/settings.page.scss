@@ -1,20 +1,25 @@
 .smllogo {
 	&__img {
 		height: 2.6rem;
-		width: 31%;
+		width: 45%;
 	}
 }
 
-.item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+ion-title {
+	padding: 0 !important;
+}
+
+.item.sc-ion-label-md-h,
+.item .sc-ion-label-md-h {
 	font-family: 'Noto Sans KR' !important;
 }
 
-.item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+.item.sc-ion-label-md-h,
+.item .sc-ion-label-md-h {
 	overflow: none !important;
 }
 
 .mat-expansion-panel-header.mat-expanded,
 .mat-expansion-panel-header.mat-expanded:hover {
-  background:  #e4e1df;
+	background: #e4e1df;
 }
-

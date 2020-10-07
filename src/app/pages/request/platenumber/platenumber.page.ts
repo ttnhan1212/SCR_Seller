@@ -35,6 +35,12 @@ export class PlatenumberPage implements OnInit {
 		private translate: TranslateService,
 		public loader: LoaderService,
 	) {
+		this.afAuth.currentUser.then((val) => {
+			if (val) {
+				this.sellerId = val.uid;
+			}
+		});
+
 		this.translate.addLangs(['en', 'kr']);
 
 		// this language will be used as a fallback when a translation isn't found in the current language
@@ -44,17 +50,7 @@ export class PlatenumberPage implements OnInit {
 		this.translate.use('kr');
 	}
 
-	ngOnInit() {
-		this.getUser();
-	}
-
-	async getUser() {
-		await this.afAuth.authState.subscribe((user) => {
-			if (user) {
-				this.sellerId = user.uid;
-			}
-		});
-	}
+	ngOnInit() {}
 
 	// async createPlate() {
 	// 	try {
