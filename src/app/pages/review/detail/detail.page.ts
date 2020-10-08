@@ -38,9 +38,9 @@ export class DetailPage implements OnInit {
 		this.getUser();
 	}
 
-	getUser() {
-		this.loader.showLoader();
-		this.afAuth.currentUser.then((user) => {
+	async getUser() {
+		await this.loader.showLoader();
+		await this.afAuth.currentUser.then((user) => {
 			if (user) {
 				this.dealerId = user.uid;
 				this.getReview();
