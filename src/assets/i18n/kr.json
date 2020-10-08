@@ -43,7 +43,8 @@
 		"input_mileages": "주행거리",
 		"other_notes": "차량 특이 사항",
 		"other_notes_input_placeholer": "차량 범퍼가 많이 찌그러졌어요. 에어컨이 안나와요",
-		"request_quote": "견적의뢰"
+		"request_quote": "견적의뢰",
+		"header": "Request Detail"
 	},
 	"home_ongoing": {
 		"please_wait": "기다려 주세요",
@@ -68,7 +69,10 @@
 		"contact_us": "Contact Us",
 		"guide": "가이드",
 		"FAQ": "FAQ",
-		"sign_out": "로그아웃"
+		"sign_out": "로그아웃",
+		"version_infor": "Version Infor",
+		"phone": "Phone",
+		"email": "Email"
 	},
 	"home_info": {
 		"information": "안내 내용",
@@ -79,5 +83,41 @@
 	},
 	"home_notifications": {
 		"notifications": "알림"
+	},
+	"404_page": {
+		"title": "404 Not Found",
+		"home_button": "Go to Homepage"
+	},
+	"image_guide": {
+		"header": "Image Guide",
+		"next_step_btn": "NEXT STEP"
+	},
+	"loading": {
+		"content": "Please wait..."
+	},
+	"home_review_detail": {
+		"review_star": "Review Star",
+		"content": "Content",
+		"request_information_card": {
+			"header": "Request Information",
+			"seller_name": "Seller Name",
+			"phone": "Phone",
+			"location": "Location",
+			"miles_unit": "Miles",
+			"km_unit": "km"
+		},
+		"dealer_infomation_card": {
+			"header": "Dealer Information",
+			"dealer_name": "Dealer Name",
+			"email": "Email",
+			"organization_name": "Organization Name",
+			"phone": "Phone"
+		}
+	},
+	"app-ads-modal": {
+		"close:": "Close"
+	},
+	"platenumber_page": {
+		"toast_success": "Your request is successfully created!"
 	}
 }

@@ -38,7 +38,8 @@
 		"location_header": "Location",
 		"location_input_placeholer": "Select location",
 		"input_mileages": "Mileages",
-		"request_quote": "Request Quote"
+		"request_quote": "Request Quote",
+		"header": "Request Detail"
 	},
 	"home_ongoing": {
 		"please_wait": "Please wait",
@@ -52,7 +53,8 @@
 		"max": "Max",
 		"average": "Average",
 		"min": "Min",
-		"select_dealer": "Please select a dealer"
+		"select_dealer": "Please select a dealer",
+		"dealer_preview": "Dealer Preview"
 	},
 	"home_settings": {
 		"version_info": "Version Information",
@@ -63,7 +65,10 @@
 		"contact_us": "Contact Us",
 		"guide": "Guide",
 		"FAQ": "FAQ",
-		"sign_out": "Sign Out"
+		"sign_out": "Sign Out",
+		"version_infor": "Version Infor",
+		"phone": "Phone",
+		"email": "Email"
 	},
 	"home_info": {
 		"information": "Informations",
@@ -78,5 +83,37 @@
 	"404_page": {
 		"title": "404 Not Found",
 		"home_button": "Go to Homepage"
+	},
+	"image_guide": {
+		"header": "Image Guide",
+		"next_step_btn": "NEXT STEP"
+	},
+	"loading": {
+		"content": "Please wait..."
+	},
+	"home_review_detail": {
+		"review_star": "Review Star",
+		"content": "Content",
+		"request_information_card": {
+			"header": "Request Information",
+			"seller_name": "Seller Name",
+			"phone": "Phone",
+			"location": "Location",
+			"miles_unit": "Miles",
+			"km_unit": "km"
+		},
+		"dealer_infomation_card": {
+			"header": "Dealer Information",
+			"dealer_name": "Dealer Name",
+			"email": "Email",
+			"organization_name": "Organization Name",
+			"phone": "Phone"
+		}
+	},
+	"app-ads-modal": {
+		"close:": "Close"
+	},
+	"platenumber_page": {
+		"toast_success": "Your request is successfully created!"
 	}
 }

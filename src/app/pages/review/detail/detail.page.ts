@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { DealerService } from 'src/app/services/dealer.service';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-detail',
@@ -28,10 +29,19 @@ export class DetailPage implements OnInit {
 		private route: ActivatedRoute,
 		private afAuth: AngularFireAuth,
 		public loader: LoaderService,
+		private translate: TranslateService,
 	) {
 		this.id = this.route.snapshot.paramMap.get('id'); //get id parameter
 		this.image =
 			'../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-57.png';
+
+		this.translate.addLangs(['en', 'kr']);
+
+		// this language will be used as a fallback when a translation isn't found in the current language
+		this.translate.setDefaultLang('kr');
+
+		// the lang to use, if the lang isn't available, it will use the current loader to get them
+		this.translate.use('kr');
 	}
 
 	ngOnInit() {

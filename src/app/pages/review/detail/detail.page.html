@@ -24,7 +24,7 @@
 
 	<ion-list class="ion-no-padding">
 		<ion-item lines="none">
-			<ion-label> Review Star </ion-label>
+			<ion-label>{{'home_review_detail.review_star' | translate}} </ion-label>
 			<bar-rating
 				[(rate)]="review.star"
 				[max]="5"
@@ -33,47 +33,47 @@
 			></bar-rating>
 		</ion-item>
 		<ion-item>
-			<ion-label> Content </ion-label>
+			<ion-label> {{'home_review_detail.content' | translate}} </ion-label>
 			<p>{{review.review}}</p>
 		</ion-item>
 		<ion-card>
-			<ion-card-header> Request Information </ion-card-header>
+			<ion-card-header>{{'home_review_detail.request_information_card.header' | translate}}</ion-card-header>
 			<ion-card-content>
 				<ion-item lines="none">
-					<ion-label>Seller Name</ion-label>
+					<ion-label>{{'home_review_detail.request_information_card.seller_name' | translate}}</ion-label>
 					<p>{{review.request?.name}}</p>
 				</ion-item>
 				<ion-item lines="none">
-					<ion-label>Phone</ion-label>
+					<ion-label>{{'home_review_detail.request_information_card.phone' | translate}}</ion-label>
 					<p>{{review.request?.phone}}</p>
 				</ion-item>
 				<ion-item lines="none">
-					<ion-label>Location</ion-label>
+					<ion-label>{{'home_review_detail.request_information_card.location' | translate}}</ion-label>
 					<p>{{review.request?.location}}</p>
 				</ion-item>
 				<ion-item lines="none">
-					<ion-label>Miles</ion-label>
-					<p>{{review.request?.miles | number}} km</p>
+					<ion-label>{{'home_review_detail.request_information_card.miles_unit' | translate}}</ion-label>
+					<p>{{review.request?.miles | number}} {{'home_review_detail.request_information_card.km_unit' | translate}}</p>
 				</ion-item>
 			</ion-card-content>
 		</ion-card>
 		<ion-card>
-			<ion-card-header> Dealer Information </ion-card-header>
+			<ion-card-header>{{'home_review_detail.dealer_infomation_card.header' | translate}}</ion-card-header>
 			<ion-card-content>
 				<ion-item lines="none">
-					<ion-label>Dealer Name</ion-label>
+					<ion-label>{{'home_review_detail.dealer_infomation_card.dealer_name' | translate}}</ion-label>
 					<p>{{review.dealer?.ceoName}}</p>
 				</ion-item>
 				<ion-item lines="none">
-					<ion-label>Email</ion-label>
+					<ion-label>{{'home_review_detail.dealer_infomation_card.email' | translate}}</ion-label>
 					<p>{{review.dealer?.email}}</p>
 				</ion-item>
 				<ion-item lines="none">
-					<ion-label>Organization Name</ion-label>
+					<ion-label>{{'home_review_detail.dealer_infomation_card.organization_name' | translate}}</ion-label>
 					<p>{{review.dealer?.orgname}}</p>
 				</ion-item>
 				<ion-item lines="none">
-					<ion-label>Phone</ion-label>
+					<ion-label>{{'home_review_detail.dealer_infomation_card.phone' | translate}}</ion-label>
 					<p>{{review.dealer?.phone}}</p>
 				</ion-item>
 			</ion-card-content>
