@@ -94,7 +94,8 @@
 	},
 	"image_guide": {
 		"header": "Image Guide",
-		"next_step_btn": "NEXT STEP"
+		"next_step_btn": "NEXT STEP",
+		"successfully_uploaded_msg": "Your request is successfully uploaded"
 	},
 	"loading": {
 		"content": "Please wait..."

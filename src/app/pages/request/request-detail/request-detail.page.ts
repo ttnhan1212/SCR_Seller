@@ -24,6 +24,7 @@ export class RequestDetailPage implements OnInit {
 	id: string;
 	sellerId: string;
 	request: any;
+	toastSuccesMsg: string;
 
 	detailForm: FormGroup;
 	name = new FormControl(
@@ -96,6 +97,10 @@ export class RequestDetailPage implements OnInit {
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
 		this.translate.use('kr');
+
+		this.translate.get("image_guide.successfully_uploaded_msg").subscribe((res: string) => {
+			this.toastSuccesMsg = res;
+		});
 	}
 
 	ngOnInit() {
@@ -112,7 +117,7 @@ export class RequestDetailPage implements OnInit {
 		try {
 			await this.loader.showLoader();
 			await this.requestService.updateRequest(this.id, this.detailForm.value);
-			await this.toast.showToast('Your request is successfully uploaded!');
+			await this.toast.showToast(this.toastSuccesMsg);
 			await this.loader.hideLoader();
 			await this.router.navigate(['/', 'home', 'ongoing']);
 		} catch (error) {

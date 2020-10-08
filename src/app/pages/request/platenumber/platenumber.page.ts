@@ -22,6 +22,7 @@ export class PlatenumberPage implements OnInit {
 	requestSellerId: string;
 
 	requestState: NavigationExtras;
+	toastSuccesMsg: string;
 
 	constructor(
 		public vehicleService: VehicleService,
@@ -48,6 +49,10 @@ export class PlatenumberPage implements OnInit {
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
 		this.translate.use('kr');
+
+		this.translate.get("platenumber_page.toast_success").subscribe((res: string) => {
+			this.toastSuccesMsg = res;
+		});
 	}
 
 	ngOnInit() {}
@@ -136,7 +141,7 @@ export class PlatenumberPage implements OnInit {
 						['/', 'request', 'image-guide'],
 						this.requestState,
 					);
-					this.toast.showToast('Your request is successfully created!');
+					this.toast.showToast(this.toastSuccesMsg);
 				})
 				.catch((err) => {
 					console.log(err.message);
