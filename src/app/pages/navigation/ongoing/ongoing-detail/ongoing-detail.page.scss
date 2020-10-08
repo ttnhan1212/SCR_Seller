@@ -12,3 +12,11 @@
 	margin-top: -10px;
 	margin-bottom: -20px;
 }
+
+.ongoing_card {
+	border-radius: 20px;
+
+	ion-card-content {
+		margin-bottom: -10px !important;
+	}
+}
