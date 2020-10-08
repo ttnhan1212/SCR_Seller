@@ -75,7 +75,7 @@
 		*ngIf="selectedDealer && checkArray() && ongoing.participants.length === 2"
 	>
 		<ion-title class="text-center mb-4">
-			A Dealer has confirm the purchase
+			{{'home_ongoing_detail.confirm_purchase' | translate}}
 		</ion-title>
 		<ion-card lines="none" class="text-center">
 			<img class="mt-4" src="../../../../../assets/images/photos/OBC8OG0.jpg" />
@@ -100,7 +100,7 @@
 		class="mt-6"
 		*ngIf="!selectedDealer && participants && ongoing.effectedTime <= now && ongoing.expiredTime > now"
 	>
-		<ion-label style="line-height: normal">Dealer Preview</ion-label>
+		<ion-label style="line-height: normal">{{'home_ongoing_detail.dealer_preview' | translate}}</ion-label>
 		<ion-item
 			class="m-0"
 			lines="none"
@@ -171,7 +171,7 @@
 		*ngIf="selectedDealer && participants.length >= 1 && !checkArray()"
 	>
 		<ion-title class="text-center mb-4" style="line-height: normal"
-			>Waiting for Dealer Confirmation</ion-title
+			>{{'home_ongoing_detail.waiting_confirmation' | translate}}</ion-title
 		>
 		<ion-card lines="none" class="text-center">
 			<img class="mt-4" src="../../../../../assets/images/photos/OBC8OG0.jpg" />
@@ -201,6 +201,6 @@
 		expand="full"
 		color="tertiary"
 		[routerLink]="['/','home','visit',id]"
-		>To visit page
+		>{{'home_ongoing_detail.visit_page' | translate}}
 	</ion-button>
 </ion-footer>

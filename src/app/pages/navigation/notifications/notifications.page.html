@@ -32,7 +32,7 @@
 							*ngSwitchCase="1"
 							class="m-0 p-0"
 						>
-							<p class="fs-15 text-center text-dark">Quote in progress</p>
+							<p class="fs-15 text-center text-dark">{{'notifications.qoute_in_progress_status' | translate}}</p>
 						</div>
 						<div
 							style="background: #bdc3c7; border-radius: 6px"
@@ -40,7 +40,7 @@
 							class="m-0 p-0"
 						>
 							<p class="fs-15 text-center text-dark">
-								Please select the dealer
+								{{'notifications.select_dealer_status' | translate}}
 							</p>
 						</div>
 						<div
@@ -49,7 +49,7 @@
 							class="m-0 p-0"
 						>
 							<p class="fs-15 text-center text-dark">
-								Waiting for dealer's confirmation
+								{{'notifications.waiting_confirmation_status' | translate}}
 							</p>
 						</div>
 						<div
@@ -58,7 +58,7 @@
 							class="m-0 p-0"
 						>
 							<p class="fs-15 text-center text-dark">
-								Selected dealer cancel, please reselect dealer
+								{{'notifications.selected_dealer_cancer_status' | translate}}
 							</p>
 						</div>
 						<div
@@ -66,7 +66,7 @@
 							*ngSwitchCase="5"
 							class="m-0 p-0"
 						>
-							<p class="fs-15 text-center text-dark">Trade processing</p>
+							<p class="fs-15 text-center text-dark">{{'notifications.trade_processing_status' | translate}}</p>
 						</div>
 						<div
 							style="background: #bdc3c7; border-radius: 6px"
@@ -74,7 +74,7 @@
 							class="m-0 p-0"
 						>
 							<p class="fs-15 text-center text-dark">
-								Selected dealer cancel, please reselect dealer
+								{{'notifications.selected_dealer_cancer_status' | translate}}
 							</p>
 						</div>
 						<div
@@ -82,21 +82,21 @@
 							*ngSwitchCase="7"
 							class="m-0 p-0"
 						>
-							<p class="fs-15 text-center text-dark">Write review</p>
+							<p class="fs-15 text-center text-dark">{{'notifications.write_review_status' | translate}}</p>
 						</div>
 						<div
 							style="background: #bdc3c7; border-radius: 6px"
 							*ngSwitchCase="8"
 							class="m-0 p-0"
 						>
-							<p class="fs-15 text-center text-dark">Trade complete</p>
+							<p class="fs-15 text-center text-dark">{{'notifications.trade_complete_status' | translate}}</p>
 						</div>
 						<div
 							style="background: #bdc3c7; border-radius: 6px"
 							*ngSwitchDefault=""
 							class="m-0 p-0"
 						>
-							<p class="fs-15 text-center text-dark">Trade complete</p>
+							<p class="fs-15 text-center text-dark">{{'notifications.trade_complete_status' | translate}}</p>
 						</div>
 					</ion-col>
 					<ion-col size="4" class="mt-1 fs-10">
@@ -109,7 +109,7 @@
 				</div>
 				<div>
 					<p>
-						{{item.request?.miles | number}} Km
+						{{item.request?.miles | number}} {{'notifications.km_unit' | translate}}
 						<span class="pull-right"
 							>￦{{item.request?.price || 0 | number}}
 						</span>
@@ -121,7 +121,7 @@
 	<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
 		<ion-infinite-scroll-content
 			loadingSpinner="bubbles"
-			loadingText="Loading more data..."
+			loadingText="{{'notifications.loading_more' | translate}}"
 		>
 		</ion-infinite-scroll-content>
 	</ion-infinite-scroll>

@@ -54,7 +54,10 @@
 		"average": "Average",
 		"min": "Min",
 		"select_dealer": "Please select a dealer",
-		"dealer_preview": "Dealer Preview"
+		"dealer_preview": "Dealer Preview",
+		"confirm_purchase": "A Dealer has confirm the purchase",
+		"waiting_confirmation": "Waiting for Dealer Confirmation",
+		"visit_page": "To visit page"
 	},
 	"home_settings": {
 		"version_info": "Version Information",
@@ -115,5 +118,22 @@
 	},
 	"platenumber_page": {
 		"toast_success": "Your request is successfully created!"
+	},
+	"notifications": {
+		"qoute_in_progress_status": "Quote in progress",
+		"select_dealer_status": "Please select the dealer",
+		"waiting_confirmation_status": "Waiting for dealer's confirmation",
+		"selected_dealer_cancer_status": "Selected dealer cancel, please reselect dealer",
+		"trade_processing_status": "Trade processing",
+		"write_review_status": "Write review",
+		"trade_complete_status": "Trade complete",
+		"km_unit": "Km",
+		"loading_more": "Loading more data...",
+		"no_more": "No more data load"
+	},
+	"date_ago_content": {
+		"just_now": "Just now",
+		"ago": "ago",
+		"agos": "s ago"
 	}
 }

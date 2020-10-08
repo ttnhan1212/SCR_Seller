@@ -1,5 +1,5 @@
 import { ToastService } from './../../../services/toast.service';
-import { TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NotiService } from './../../../services/noti.service';
 import { Request } from '../../../models/request';
@@ -23,6 +23,7 @@ export class NotificationsPage implements OnInit, OnDestroy {
 	notiSub: Subscription;
 
 	sellerId: string;
+	noMoreText: string;
 
 	constructor(
 		public notiService: NotiService,
@@ -39,6 +40,16 @@ export class NotificationsPage implements OnInit, OnDestroy {
 
 		// the lang to use, if the lang isn't available, it will use the current loader to get them
 		this.translate.use('kr');
+
+		this.translate.get("notifications.loading_more").subscribe((res: string) => {
+			this.noMoreText = res;
+		});
+
+		this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+			this.translate.get("notifications.loading_more").subscribe((res: string) => {
+				this.noMoreText = res;
+			});
+		});
 	}
 
 	ngOnInit() {
@@ -105,7 +116,7 @@ export class NotificationsPage implements OnInit, OnDestroy {
 			// App logic to determine if all data is loaded
 			// and disable the infinite scroll
 			if (this.noti.length === this.temp.length) {
-				this.toast.showToast('No more data load');
+				this.toast.showToast(this.noMoreText);
 				event.target.disabled = true;
 			}
 		}, 1000);
