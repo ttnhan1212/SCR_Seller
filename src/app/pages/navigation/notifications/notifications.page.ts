@@ -44,12 +44,6 @@ export class NotificationsPage implements OnInit, OnDestroy {
 		this.translate.get("notifications.loading_more").subscribe((res: string) => {
 			this.noMoreText = res;
 		});
-
-		this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-			this.translate.get("notifications.loading_more").subscribe((res: string) => {
-				this.noMoreText = res;
-			});
-		});
 	}
 
 	ngOnInit() {

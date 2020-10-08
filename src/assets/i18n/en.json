@@ -135,5 +135,9 @@
 		"just_now": "Just now",
 		"ago": "ago",
 		"agos": "s ago"
+	},
+	"loader_service_messages": {
+		"loader_hide_2s": "This Loader Will Auto Hide in 2 Seconds",
+		"please_wait": "Please wait..."
 	}
 }

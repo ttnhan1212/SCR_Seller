@@ -11,7 +11,7 @@ export class DateAgoPipe implements PipeTransform {
 	agoText: string;
 	agosText: string;
 
-	constructor(private translate: TranslateService,) {
+	constructor(private translate: TranslateService) {
 		this.translate.get("date_ago_content.just_now").subscribe((res: string) => {
 			this.justNowText = res;
 		});
