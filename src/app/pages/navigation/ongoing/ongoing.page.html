@@ -6,11 +6,7 @@
 		<ion-button fill="clear" slot="end" [routerLink]="['/','home','infor']">
 			<ion-icon name="information-circle-outline"></ion-icon>
 		</ion-button>
-		<ion-button
-			fill="clear"
-			slot="end"
-			[routerLink]="['/','home','notifications']"
-		>
+		<ion-button fill="clear" slot="end" [routerLink]="['/','home','notifications']">
 			<ion-icon name="notifications-outline"></ion-icon>
 		</ion-button>
 	</ion-toolbar>
@@ -20,137 +16,83 @@
 	<ion-item lines="none" class="mt-4">
 		<ul class="fa-ul">
 			<li>
-				<i class="fa-li fa fa-circle wait-status"></i
-				>{{'home_ongoing.please_wait' | translate}}
+				<i class="fa-li fa fa-circle wait-status"></i>{{'home_ongoing.please_wait' | translate}}
 			</li>
 			<li>
-				<i class="fa-li fa fa-circle proceed-status"></i
-				>{{'home_ongoing.proceed' | translate}}
+				<i class="fa-li fa fa-circle proceed-status"></i>{{'home_ongoing.proceed' | translate}}
 			</li>
 			<li>
-				<i class="fa-li fa fa-circle ended-status"></i
-				>{{'home_ongoing.ended_trade' | translate}}
+				<i class="fa-li fa fa-circle ended-status"></i>{{'home_ongoing.ended_trade' | translate}}
 			</li>
 		</ul>
 	</ion-item>
 	<ion-list style="margin-top: 25px">
-		<ion-item
-			*ngFor="let request of requests"
-			lines="none"
+		<ion-item *ngFor="let request of requests" lines="none"
 			[routerLink]="request.status === 1 ? [] : (request.status >= 7 ? ['/','home','review', request.id] : [request.id])"
-			style="margin-bottom: 1.5rem"
-		>
+			style="margin-bottom: 1.5rem">
 			<ion-thumbnail slot="start">
-				<img
-					style="border-radius: 6px"
-					src="../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-49.png"
-				/>
+				<img style="border-radius: 6px"
+					src="../../../../assets/images/photos/KakaoTalk_Photo_2020-09-22-09-31-49.png" />
 			</ion-thumbnail>
 			<ion-label [ngSwitch]="request.status">
-				<div
-					style="background: #ffc107; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="1"
-				>
-					<p class="fs-15 text-center text-dark">Quote in progress</p>
+				<div style="background: #ffc107; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="1">
+					<p class="fs-15 text-center text-dark">{{'ongoing.qoute_in_progress_status' | translate}}</p>
 				</div>
-				<div
-					style="background: #ffc107; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="2"
-				>
+				<div style="background: #ffc107; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="2">
 					<p class="fs-15 text-center text-dark">
-						<span *ngIf="request.expiredTime >= now">Quote in progress</span>
+						<span
+							*ngIf="request.expiredTime >= now">{{'ongoing.qoute_in_progress_status' | translate}}</span>
 					</p>
 				</div>
-				<div
-					style="background: #28a745; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="2"
-				>
+				<div style="background: #28a745; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="2">
 					<p class="fs-15 text-center text-dark">
 						<span *ngIf="request.expiredTime < now">
-							Please select the dealer
+							{{'ongoing.select_dealer_status' | translate}}
 						</span>
 					</p>
 				</div>
-				<div
-					style="background: #ffc107; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="3"
-				>
+				<div style="background: #ffc107; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="3">
 					<p class="fs-15 text-center text-dark">
-						Waiting for dealer's confirmation
+						{{'ongoing.waiting_confirmation_status' | translate}}
 					</p>
 				</div>
-				<div
-					style="background: #28a745; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="4"
-				>
+				<div style="background: #28a745; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="4">
 					<p class="fs-15 text-center text-dark">
-						Selected dealer cancel, please reselect dealer
+						{{'ongoing.selected_dealer_cancer_status' | translate}}
 					</p>
 				</div>
-				<div
-					style="background: #ffc107; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="5"
-				>
-					<p class="fs-15 text-center text-dark">Trade processing</p>
+				<div style="background: #ffc107; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="5">
+					<p class="fs-15 text-center text-dark">{{'ongoing.trade_processing_status' | translate}}</p>
 				</div>
-				<div
-					style="background: #28a745; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="6"
-				>
+				<div style="background: #28a745; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="6">
 					<p class="fs-15 text-center text-dark">
-						Selected dealer cancel, please reselect dealer
+						{{'ongoing.selected_dealer_cancer_status' | translate}}
 					</p>
 				</div>
-				<div
-					style="background: #28a745; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="7"
-				>
-					<p class="fs-15 text-center text-dark">Write review</p>
+				<div style="background: #28a745; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="7">
+					<p class="fs-15 text-center text-dark">{{'ongoing.write_review_status' | translate}}</p>
 				</div>
-				<div
-					style="background: #6c757d; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchCase="8"
-				>
-					<p class="fs-15 text-center text-dark">Trade complete</p>
+				<div style="background: #6c757d; border-radius: 5px" class="m-0 p-0" *ngSwitchCase="8">
+					<p class="fs-15 text-center text-dark">{{'ongoing.trade_complete_status' | translate}}</p>
 				</div>
-				<div
-					style="background: #6c757d; border-radius: 5px"
-					class="m-0 p-0"
-					*ngSwitchDefault=""
-				>
-					<p class="fs-15 text-center text-dark">Trade complete</p>
+				<div style="background: #6c757d; border-radius: 5px" class="m-0 p-0" *ngSwitchDefault="">
+					<p class="fs-15 text-center text-dark">{{'ongoing.trade_complete_status' | translate}}</p>
 				</div>
 				<div class="first">
 					<p>
 						2009
-						<span class="pull-right"
-							>K-5<span style="font-size: 10px">12가1234</span></span
-						>
+						<span class="pull-right">K-5<span style="font-size: 10px">12가1234</span></span>
 					</p>
 					<p>
-						{{request.miles | number}} Km
-						<span class="pull-right"
-							>￦{{request.participants[1] || 0 | number}}</span
-						>
+						{{request.miles | number}} {{'ongoing.km_unit' | translate}}
+						<span class="pull-right">￦{{request.participants[1] || 0 | number}}</span>
 					</p>
 				</div>
 			</ion-label>
 		</ion-item>
 	</ion-list>
 	<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-		<ion-infinite-scroll-content
-			loadingSpinner="bubbles"
-			loadingText="Loading more data..."
-		>
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{'ongoing.loading_more' | translate}}">
 		</ion-infinite-scroll-content>
 	</ion-infinite-scroll>
 </ion-content>

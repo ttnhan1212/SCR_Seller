@@ -8,6 +8,9 @@ import { IonicModule } from '@ionic/angular';
 import { DealerDetailPageRoutingModule } from './dealer-detail-routing.module';
 
 import { DealerDetailPage } from './dealer-detail.page';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from 'src/app/pages/index/splash/splash.module';
 
 @NgModule({
 	imports: [
@@ -16,6 +19,13 @@ import { DealerDetailPage } from './dealer-detail.page';
 		IonicModule,
 		DealerDetailPageRoutingModule,
 		BarRatingModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient],
+			},
+		}),
 	],
 	declarations: [DealerDetailPage],
 })

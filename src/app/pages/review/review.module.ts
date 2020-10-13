@@ -11,6 +11,13 @@ import { ReviewPage } from './review.page';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+	return new TranslateHttpLoader(http);
+}
 
 @NgModule({
 	imports: [
@@ -21,6 +28,13 @@ import { MatInputModule } from '@angular/material/input';
 		BarRatingModule,
 		MatFormFieldModule,
 		MatInputModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient],
+			},
+		}),
 	],
 	declarations: [ReviewPage],
 })

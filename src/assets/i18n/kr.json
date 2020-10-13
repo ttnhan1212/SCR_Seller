@@ -18,7 +18,8 @@
 		"year_label": "년식",
 		"year_input_placeholder": "년식을 선택해 주세요",
 		"check_export_availability": "내차 수출차 확인",
-		"request_quote": "내차 견적의뢰"
+		"request_quote": "내차 견적의뢰",
+		"cancel": "Cancel"
 	},
 	"request": {
 		"request": "Request",
@@ -58,6 +59,7 @@
 		"max": "Max",
 		"average": "Average",
 		"min": "Min",
+		"select": "Select",
 		"select_dealer": "Please select a dealer",
 		"dealer_preview": "Dealer Preview",
 		"confirm_purchase": "A Dealer has confirm the purchase",
@@ -76,7 +78,8 @@
 		"sign_out": "로그아웃",
 		"version_infor": "Version Infor",
 		"phone": "Phone",
-		"email": "Email"
+		"email": "Email",
+		"faq": "FAQ"
 	},
 	"home_info": {
 		"information": "안내 내용",
@@ -144,5 +147,37 @@
 	"loader_service_messages": {
 		"loader_hide_2s": "This Loader Will Auto Hide in 2 Seconds",
 		"please_wait": "Please wait..."
+	},
+	"export_page": {
+		"quote": "Request Quote"
+	},
+	"dealer_detail": {
+		"header": "Dealer Information",
+		"review_section": "Review Section",
+		"dealer_se": "Dealer Select"
+	},
+	"ongoing": {
+		"qoute_in_progress_status": "Quote in progress",
+		"select_dealer_status": "Please select the dealer",
+		"waiting_confirmation_status": "Waiting for dealer's confirmation",
+		"selected_dealer_cancer_status": "Selected dealer cancel, please reselect dealer",
+		"trade_processing_status": "Trade processing",
+		"write_review_status": "Write review",
+		"trade_complete_status": "Trade complete",
+		"km_unit": "Km",
+		"loading_more": "Loading more data...",
+		"no_more": "No more data load"
+	},
+	"review": {
+		"final_price": "Final Price",
+		"dealer_infortion": "Dealer Information",
+		"leave_comment": "Please leave the comment",
+		"confirm_trade": "Confirm the trade"
+	},
+	"visit": {
+		"dealer_infortion": "Dealer Information",
+		"dealer_visit": "Dealer visit time",
+		"determine": "To be determined",
+		"review_section": "Review Section"
 	}
 }

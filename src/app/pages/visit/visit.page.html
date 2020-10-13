@@ -37,7 +37,7 @@
 	</ion-card>
 
 	<ion-item-group class="mt-4" *ngIf="!dealer">
-		<ion-label>Dealer Information</ion-label>
+		<ion-label>{{'visit.dealer_infortion' | translate}}</ion-label>
 		<ion-item lines="none">
 			<ion-avatar slot="start">
 				<ion-skeleton-text animated></ion-skeleton-text>
@@ -55,7 +55,7 @@
 	</ion-item-group>
 
 	<ion-item-group class="mt-4" *ngIf="dealer">
-		<ion-label>Dealer Information</ion-label>
+		<ion-label>{{'visit.dealer_infortion' | translate}}</ion-label>
 		<ion-item lines="none">
 			<ion-avatar slot="start">
 				<img src="../../../../assets/images/photos/33327.jpg" />
@@ -76,18 +76,18 @@
 		</ion-item>
 	</ion-item-group>
 
-	<ion-label>Dealer visit time</ion-label>
+	<ion-label>{{'visit.dealer_visit' | translate}}</ion-label>
 	<ion-card class="ion-no-padding">
 		<ion-card-content>
 			<ion-title class="text-center" *ngIf="!request.visitDate"
-				>To be determined</ion-title
+				>{{'visit.determine' | translate}}</ion-title
 			>
 			<ion-title class="text-center" *ngIf="request.visitDate"
 				>{{request.visitDate * 1000 | date}}</ion-title
 			>
 		</ion-card-content>
 	</ion-card>
-	<ion-label>Review Section</ion-label>
+	<ion-label>{{'visit.review_section' | translate}}</ion-label>
 	<ion-list class="ion-no-padding" *ngFor="let item of review">
 		<ion-item lines="none">
 			<ion-thumbnail slot="start">

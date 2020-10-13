@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-	<ion-label>Dealer Information</ion-label>
+	<ion-label>{{'dealer_detail.header' | translate}}</ion-label>
 	<ion-card class="mt-3 p-0" *ngIf="!dealer">
 		<ion-card-content class="p-0">
 			<ion-item lines="none">
@@ -50,7 +50,7 @@
 			</ion-item>
 		</ion-card-content>
 	</ion-card>
-	<ion-label>Review Section</ion-label>
+	<ion-label>{{'dealer_detail.review_section' | translate}}</ion-label>
 	<ion-list class="m-0 p-0" *ngFor="let item of review">
 		<ion-item lines="none" class="p-0">
 			<ion-thumbnail slot="start">
@@ -79,11 +79,11 @@
 </ion-content>
 <ion-footer class="ion-padding" *ngIf="request && request.expiredTime < now">
 	<ion-button expand="block" color="tertiary" (click)="selectDealer()"
-		>Dealer Select</ion-button
+		>{{'dealer_detail.dealer_select' | translate}}</ion-button
 	>
 </ion-footer>
 <ion-footer class="ion-padding" *ngIf="request && request.expiredTime > now">
 	<ion-button expand="block" color="tertiary" disabled
-		>Dealer Select</ion-button
+		>{{'dealer_detail.dealer_select' | translate}}</ion-button
 	>
 </ion-footer>

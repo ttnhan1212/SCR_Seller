@@ -21,7 +21,7 @@
 	</ion-grid>
 
 	<ion-item-group class="mt-4">
-		<ion-label> Final Price </ion-label>
+		<ion-label>{{'review.final_price' | translate}}</ion-label>
 		<ion-item lines="none" *ngIf="request">
 			<p class="fs-20 fw-700">
 				￦{{ (request.finalPrice ? request.finalPrice : request.participants[1])
@@ -29,7 +29,7 @@
 			</p>
 		</ion-item>
 
-		<ion-label>Dealer Information</ion-label>
+		<ion-label>{{'review.dealer_infortion' | translate}}</ion-label>
 		<ion-item lines="none" *ngIf="!dealer">
 			<ion-avatar slot="start">
 				<ion-skeleton-text></ion-skeleton-text>
@@ -58,7 +58,7 @@
 		</ion-item>
 
 		<mat-form-field appearance="outline" class="mt-4" style="width: 100%">
-			<mat-label>Please leave the comment</mat-label>
+			<mat-label>{{'review.leave_comment' | translate}}</mat-label>
 			<textarea
 				matInput
 				rows="10"
@@ -74,6 +74,6 @@
 		color="tertiary"
 		(click)="submitReview()"
 		[disabled]="!rate || !review"
-		>Confirm the trade</ion-button
+		>{{'review.confirm_trade' | translate}}</ion-button
 	>
 </ion-footer>
