@@ -9,6 +9,9 @@ import { VisitPageRoutingModule } from './visit-routing.module';
 import { VisitPage } from './visit.page';
 
 import { BarRatingModule } from 'ngx-bar-rating';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../index/splash/splash.module';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
 	imports: [
@@ -17,6 +20,13 @@ import { BarRatingModule } from 'ngx-bar-rating';
 		IonicModule,
 		VisitPageRoutingModule,
 		BarRatingModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateModule,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient],
+			},
+		}),
 	],
 	declarations: [VisitPage],
 })
